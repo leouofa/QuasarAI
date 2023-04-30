@@ -1,0 +1,23 @@
+doctype html
+html lang="en"
+  head
+    = display_meta_tags site: "Daily Planet", description: "The News Tool", separator: "&mdash;".html_safe
+    meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+
+    = vite_stylesheet_tag 'application.sass', 'data-turbo-track': 'reload'
+    = stylesheet_link_tag *'https://fonts.googleapis.com/css2?family=Space Grotesk:wght@400;600;700&display=swap', media: 'none', onload: "if(media!='all')media='all'"
+    = vite_javascript_tag 'application', 'data-turbo-track': 'reload'
+    = csrf_meta_tags
+    = canonical_tag
+    = action_cable_meta_tag
+
+    -if @no_preview
+      meta name="turbo-cache-control" content="no-preview"
+
+    -if @no_cache
+      meta name="turbo-cache-control" content="no-cache"
+
+
+  body data-controller="notifications"
+    = yield
+    = render 'partials/notifications'

@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "critical";
+    src: url("critical.woff2") format("woff2"), url("critical.woff") format("woff");
+}
+
+.icon.-menu
+{
+    font-family: critical !important;
+    font-weight: bold;
+    line-height: 1;
+    width: 1em !important;
+    height: 1em !important;
+    vertical-align: text-bottom !important;
+    margin-bottom: -.1em;
+    font-size: 21px;
+}
+
+.icon.-menu:before {
+    font-family: critical !important;
+    content: "\f101";
+}

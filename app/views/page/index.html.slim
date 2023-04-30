@@ -1,0 +1,11 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        =r ux.h1 text: 'Welcome Page', class: 'text-center'
+        =r ux.text class: 'text-center', text: 'This page is protected by devise. You can only see it if you are logged in.'
+
+      =r ux.divider
+
+      =r ux.segment 'basic text-center'
+        = current_user.inspect

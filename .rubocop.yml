@@ -1,0 +1,17 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-rails
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'bin/bundle'
+    - 'bin/yarn'
+    - 'lib/generators/**/*'
+    - 'config/spring.rb'
+    - 'config/puma.rb'
+    - '.irbrc'
+

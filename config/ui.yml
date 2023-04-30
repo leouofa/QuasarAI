@@ -1,0 +1,168 @@
+ui:
+  # grid items
+  container:
+    tag: div
+    css_class: 'container'
+
+  grid:
+    tag: div
+    css_class: 'grid'
+
+  row:
+    tag: div
+    css_class: 'row'
+    ui: :off
+
+  column:
+    tag: div
+    css_class: 'wide column'
+    ui: false
+
+  # base items
+  header:
+    tag: div
+    css_class: 'header'
+
+  h1:
+    tag: h1
+    css_class: 'header huge'
+
+  h2:
+    tag: h2
+    css_class: 'header large'
+
+  h3:
+    tag: h3
+    css_class: 'header medium'
+
+  h4:
+    tag: h4
+    css_class: 'header small'
+
+  h5:
+    tag: h5
+    css_class: 'header'
+
+  h6:
+    tag: h6
+    css_class: 'header'
+
+  text:
+    tag: p
+    css_class: 'text'
+    ui: :off
+
+  icon:
+    tag: i
+    css_class: 'icon'
+    ui: false
+
+  table:
+    tag: table
+    css_class: table
+
+  tr:
+    tag: tr
+    css_class: ''
+    ui: false
+
+  td:
+    tag: td
+    css_class: ''
+    ui: false
+
+  divider:
+    tag: div
+    css_class: 'divider'
+
+  button:
+    tag: button
+    css_class: 'button'
+
+  buttons:
+    tag: div
+    css_class: 'buttons'
+
+  sidebar:
+    tag: div
+    css_class: 'sidebar'
+
+  menu:
+    tag: div
+    css_class: 'menu'
+    ui: false
+
+  list:
+    tag: div
+    css_class: 'list'
+
+  checkbox:
+    tag: div
+    css_class: 'checkbox'
+
+  content:
+    tag: div
+    css_class: 'content'
+    ui: false
+
+  description:
+    tag: div
+    css_class: 'description'
+    ui: false
+
+  segments:
+    tag: div
+    css_class: 'segments'
+
+  segment:
+    tag: div
+    css_class: 'segment'
+
+  items:
+    tag: div
+    css_class: 'items'
+
+  item:
+    tag: div
+    css_class: 'item'
+    ui: false
+
+  cards:
+    tag: div
+    css_class: 'cards'
+
+  card:
+    tag: div
+    css_class: 'card'
+
+  breadcrumb:
+    tag: div
+    css_class: 'breadcrumb'
+
+  form:
+    tag: form
+    css_class: 'form'
+
+  field:
+    tag: div
+    css_class: 'input'
+
+  # non semantic ui components
+
+  fragment:
+    tag: div
+    css_class: fragment
+    ui: false
+
+  component:
+    tag: div
+    css_class: 'component'
+    ui: false
+
+  tagging:
+    tag: div
+    css_class: 'label'
+
+  div:
+    tag: div
+    ui: false

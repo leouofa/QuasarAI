@@ -1,0 +1,40 @@
+{
+  "name": "story_pro",
+  "private": true,
+  "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/turbo-rails": "^7.1.0",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rollup/plugin-inject": "^5.0.3",
+    "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
+    "fantasticon": "^1.2.2",
+    "fomantic-ui": "^2.9.0-beta.48",
+    "gulp": "^4.0.2",
+    "jquery": "^3.6.0",
+    "jquery-address": "^1.6.0",
+    "postcss": "^8.4.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.7.1",
+    "sass": "^1.37.5",
+    "stimulus-vite-helpers": "^3.0.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "underscore": "^1.13.1",
+    "vite-plugin-rails": "^0.1.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "vite": "^4.3.0",
+    "vite-plugin-ruby": "^3.2.0"
+  },
+  "browserslist": [
+    "last 3 chrome versions and last 1 year",
+    "last 2 and_chr versions",
+    "last 2 safari versions and last 1 year",
+    "last 4 ios_saf versions and last 2 years",
+    "last 3 firefox versions"
+  ]
+}

@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "regular";
+    src: url("regular.woff2") format("woff2"), url("regular.woff") format("woff");
+}
+
+.icon.-users
+{
+    font-family: regular !important;
+    font-weight: bold;
+    line-height: 1;
+    width: 1em !important;
+    height: 1em !important;
+    vertical-align: text-bottom !important;
+    margin-bottom: -.1em;
+    font-size: 21px;
+}
+
+.icon.-users:before {
+    font-family: regular !important;
+    content: "\f101";
+}

@@ -1,3 +1,38 @@
+GIT
+  remote: https://github.com/jumph4x/canonical-rails.git
+  revision: 7d6d958a3b53c794ed2f7ecc04e3e7fe670bd86a
+  specs:
+    canonical-rails (0.2.14)
+      actionmailer (>= 4.1, <= 7.1)
+      activerecord (>= 4.1, <= 7.1)
+      railties (>= 4.1, <= 7.1)
+      sprockets-rails (~> 3.0)
+
+GIT
+  remote: https://github.com/kaminari/kaminari.git
+  revision: ff07a285215cfb8a5f70515e86decf4a16ff643c
+  branch: master
+  specs:
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
+
+GIT
+  remote: https://github.com/realstorypro/rapid-ui.git
+  revision: fa56a4ca118d969f46839ff5d28188af306f9f45
+  specs:
+    rapid_ui (1.2.0)
+      view_component
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -66,30 +101,115 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.4)
+      public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
+    apipie-rails (1.0.0)
+      actionpack (>= 5.0)
+      activesupport (>= 5.0)
+    appsignal (3.4.1)
+      rack
+    ast (2.4.2)
+    awesome_print (1.9.2)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    byebug (11.1.3)
+    capybara (3.39.0)
+      addressable
+      matrix
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (>= 1.5, < 3.0)
+      xpath (~> 3.2)
     concurrent-ruby (1.2.2)
+    config (4.1.0)
+      deep_merge (~> 1.2, >= 1.2.1)
+      dry-validation (~> 1.0, >= 1.0.0)
+    connection_pool (2.4.0)
     crass (1.0.6)
     date (3.3.3)
-    debug (1.7.2)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
+    deep_cloneable (3.2.0)
+      activerecord (>= 3.1.0, < 8)
+    deep_merge (1.2.2)
+    devise (4.9.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+    diff-lcs (1.5.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
+    dry-cli (1.0.0)
+    dry-configurable (1.0.1)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-core (1.0.0)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (1.0.0)
+    dry-initializer (3.1.1)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-schema (1.13.1)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 1.0, >= 1.0.1)
+      dry-core (~> 1.0, < 2)
+      dry-initializer (~> 3.0)
+      dry-logic (>= 1.4, < 2)
+      dry-types (>= 1.7, < 2)
+      zeitwerk (~> 2.6)
+    dry-types (1.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
+    dry-validation (1.10.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      dry-initializer (~> 3.0)
+      dry-schema (>= 1.12, < 2)
+      zeitwerk (~> 2.6)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (3.2.0)
+      i18n (>= 1.8.11, < 2)
+    friendly_id (5.5.0)
+      activerecord (>= 4.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hiredis (0.6.3)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.1.6)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
-    io-console (0.6.0)
-    irb (1.6.4)
-      reline (>= 0.3.0)
+    invisible_captcha (2.1.0)
+      rails (>= 5.2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json (2.6.3)
+    jsonb_accessor (1.3.7)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      pg (>= 0.18.1)
     loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -99,10 +219,15 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
+    maruku (0.7.3)
+    matrix (0.4.2)
+    meta-tags (2.18.0)
+      actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.0)
+    multi_xml (0.6.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -115,13 +240,32 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
+    parallel (1.23.0)
+    parser (3.2.2.1)
+      ast (~> 2.4.1)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
     pg (1.5.3)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
+    rack-attack (6.6.1)
+      rack (>= 1.0, < 3)
+    rack-canonical-host (1.2.0)
+      addressable (> 0, < 3)
+      rack (>= 1, < 4)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
+    rack-proxy (0.7.6)
+      rack
     rack-test (2.1.0)
       rack (>= 1.3)
+    rack_session_access (0.2.0)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (7.0.4.3)
       actioncable (= 7.0.4.3)
       actionmailbox (= 7.0.4.3)
@@ -136,6 +280,10 @@ GEM
       activesupport (= 7.0.4.3)
       bundler (>= 1.15.0)
       railties (= 7.0.4.3)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -148,10 +296,78 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    rainbow (3.1.1)
     rake (13.0.6)
-    redis (4.8.1)
-    reline (0.3.3)
-      io-console (~> 0.5)
+    redis (5.0.6)
+      redis-client (>= 0.9.0)
+    redis-client (0.14.1)
+      connection_pool
+    regexp_parser (2.8.0)
+    responders (3.1.0)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
+    rexml (3.2.5)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.12.0)
+    rspec_tap (0.2.0)
+    rubocop (1.50.2)
+      json (~> 2.3)
+      parallel (~> 1.10)
+      parser (>= 3.2.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.28.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.28.0)
+      parser (>= 3.2.1.0)
+    rubocop-rails (2.19.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
+    ruby-progressbar (1.13.0)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.9.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
+    sidekiq (7.0.9)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
+    simple_scheduler (1.2.0)
+      rails (>= 5.0)
+      sidekiq (>= 5.0)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
+    slack-notifier (2.4.0)
+    slim (5.1.0)
+      temple (~> 0.10.0)
+      tilt (>= 2.0.6, < 2.2)
+    slim-rails (3.6.2)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 6.0, != 5.0.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -161,44 +377,117 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    temple (0.10.0)
     thor (1.2.1)
+    tilt (2.1.0)
     timeout (0.3.2)
+    tty-color (0.6.0)
+    tty-cursor (0.7.1)
+    tty-prompt (0.23.1)
+      pastel (~> 0.8)
+      tty-reader (~> 0.8)
+    tty-reader (0.9.0)
+      tty-cursor (~> 0.7)
+      tty-screen (~> 0.8)
+      wisper (~> 2.0)
+    tty-screen (0.8.1)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.4.2)
+    view_component (3.0.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
+    vite_rails (3.0.14)
+      railties (>= 5.1, < 8)
+      vite_ruby (~> 3.0, >= 3.2.2)
+    vite_ruby (3.3.1)
+      dry-cli (>= 0.7, < 2)
+      rack-proxy (~> 0.6, >= 0.6.1)
+      zeitwerk (~> 2.2)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (5.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    wisper (2.0.1)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
     zeitwerk (2.6.8)
 
 PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  annotate
+  apipie-rails
+  appsignal
+  awesome_print
   bootsnap
-  debug
-  importmap-rails
+  byebug
+  canonical-rails!
+  capybara
+  config
+  deep_cloneable (~> 3.2.0)
+  devise
+  dotenv-rails
+  factory_bot_rails
+  faker
+  friendly_id
+  hiredis
+  httparty
+  invisible_captcha
   jbuilder
+  jsonb_accessor
+  kaminari!
+  maruku
+  meta-tags
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-attack
+  rack-canonical-host
+  rack-cors
+  rack_session_access
   rails (~> 7.0.4, >= 7.0.4.3)
-  redis (~> 4.0)
+  rails-controller-testing
+  rapid_ui!
+  redis
+  rspec-rails
+  rspec_tap
+  rubocop
+  rubocop-rails
+  selenium-webdriver
+  sidekiq
+  simple_form
+  simple_scheduler
+  sitemap_generator
+  slack-notifier
+  slim-rails
   sprockets-rails
   stimulus-rails
+  tty-prompt
   turbo-rails
-  tzinfo-data
+  view_component
+  vite_rails
   web-console
+  webdrivers
 
 RUBY VERSION
-   ruby 3.2.1p31
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.4.6

@@ -1,0 +1,23 @@
+{
+  "base": "app/frontend/semantic/",
+  "paths": {
+    "source": {
+      "config": "src/theme.config",
+      "definitions": "src/definitions/",
+      "site": "src/site/",
+      "themes": "src/themes/"
+    },
+    "output": {
+      "packaged": "dist/",
+      "uncompressed": "dist/components/",
+      "compressed": "dist/components/",
+      "themes": "dist/themes/"
+    },
+    "clean": "dist/"
+  },
+  "permission": false,
+  "autoInstall": true,
+  "rtl": false,
+  "version": "2.9.2",
+  "components": ["reset", "site", "button", "container", "divider", "header", "icon", "image", "input", "label", "list", "loader", "segment", "breadcrumb", "form", "grid", "menu", "card", "item", "checkbox", "dimmer", "dropdown", "modal", "popup", "progress", "sidebar", "tab", "transition", "api", "state", "visibility", "toast"]
+}
