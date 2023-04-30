@@ -32,7 +32,6 @@ gem 'sidekiq'
 
 # Authentication
 gem 'devise'
-gem 'devise-async'
 
 # Pagination
 gem 'kaminari', github: 'kaminari/kaminari', branch: 'master'
