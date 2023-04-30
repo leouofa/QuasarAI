@@ -37,6 +37,13 @@ gem 'turbo-rails'
 gem 'view_component'
 gem 'vite_rails'
 
+# Errors
+gem 'appsignal'
+
+# Middleware
+gem 'rack-attack'
+gem 'rack-cors'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
