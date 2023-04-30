@@ -39,3 +39,4 @@ node_modules
 /.idea/*
 
 .env
+.irb_history

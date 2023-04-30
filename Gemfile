@@ -12,7 +12,6 @@ gem 'awesome_print'
 gem "bootsnap", require: false
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'config'
-gem 'devise'
 gem 'deep_cloneable', '~> 3.2.0'
 gem 'friendly_id'
 gem 'httparty'
@@ -30,6 +29,10 @@ gem 'hiredis'
 gem "pg", "~> 1.1"
 gem 'redis'
 gem 'sidekiq'
+
+# Authentication
+gem 'devise'
+gem 'devise-async'
 
 # Pagination
 gem 'kaminari', github: 'kaminari/kaminari', branch: 'master'
@@ -63,7 +66,6 @@ end
 group :development do
   gem "web-console"
   gem 'annotate'
-  gem 'awesome_print'
 end
 
 group :test do
