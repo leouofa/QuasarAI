@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "@@font@@";
+    src: url("@@woff2@@") format("woff2"), url("@@woff@@") format("woff");
+}
+
+{{# each codepoints }}
+{{# if ../selector }}
+.icon{{ ../selector }}.-{{ ../prefix }}-{{ @key }}{{#if @last}}{{else}},{{/if}}
+{{ else }}
+.icon{{ tag }}.-{{ ../prefix }}-{{ @key }}{{#if @last}}{{else}},{{/if}}
+{{/ if }}
+{{/ each }}
+{
+    font-family: @@font@@ !important;
+    font-weight: bold;
+    line-height: 1;
+    width: 1em !important;
+    height: 1em !important;
+    vertical-align: text-bottom !important;
+    margin-bottom: -.1em;
+    font-size: 21px;
+}
+
+{{# each codepoints }}
+{{# if ../selector }}
+.icon.-{{ ../selector }}{{ ../prefix }}-{{ @key }}:before {
+{{ else }}
+.icon.-{{ tag }}{{ ../prefix }}-{{ @key }}:before {
+{{/ if }}
+    font-family: @@font@@ !important;
+    content: "\\{{ codepoint this }}";
+}
+{{/ each }}

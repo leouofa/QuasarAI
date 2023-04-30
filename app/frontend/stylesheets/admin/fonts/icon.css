@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "admin";
+    src: url("admin.woff2") format("woff2"), url("admin.woff") format("woff");
+}
+
+.icon.-menu,
+.icon.-users
+{
+    font-family: admin !important;
+    font-weight: bold;
+    line-height: 1;
+    width: 1em !important;
+    height: 1em !important;
+    vertical-align: text-bottom !important;
+    margin-bottom: -.1em;
+    font-size: 21px;
+}
+
+.icon.-menu:before {
+    font-family: admin !important;
+    content: "\f101";
+}
+.icon.-users:before {
+    font-family: admin !important;
+    content: "\f102";
+}

@@ -9,9 +9,15 @@ html lang="en"
     = vite_javascript_tag 'application', 'data-turbo-track': 'reload'
     = csrf_meta_tags
     = canonical_tag
+    = action_cable_meta_tag
+
+    -if @no_preview
+      meta name="turbo-cache-control" content="no-preview"
+
+    -if @no_cache
+      meta name="turbo-cache-control" content="no-cache"
 
 
-  body.auth data-controller="notifications"
-    =r ux.fragment 'hero auth'
-      = yield
+  body data-controller="notifications"
+    = yield
     = render 'partials/notifications'
