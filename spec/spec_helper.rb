@@ -3,11 +3,6 @@
 require 'capybara/rspec'
 require 'rack_session_access/capybara'
 require 'byebug'
-require 'knapsack_pro'
-
-KnapsackPro::Adapters::RSpecAdapter.bind
-
-`rake blueprints:update`
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
