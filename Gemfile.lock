@@ -9,6 +9,24 @@ GIT
       sprockets-rails (~> 3.0)
 
 GIT
+  remote: https://github.com/kaminari/kaminari.git
+  revision: ff07a285215cfb8a5f70515e86decf4a16ff643c
+  branch: master
+  specs:
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
+
+GIT
   remote: https://github.com/realstorypro/rapid-ui.git
   revision: fa56a4ca118d969f46839ff5d28188af306f9f45
   specs:
@@ -88,6 +106,9 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    apipie-rails (1.0.0)
+      actionpack (>= 5.0)
+      activesupport (>= 5.0)
     appsignal (3.4.1)
       rack
     ast (2.4.2)
@@ -114,6 +135,8 @@ GEM
     connection_pool (2.4.0)
     crass (1.0.6)
     date (3.3.3)
+    deep_cloneable (3.2.0)
+      activerecord (>= 3.1.0, < 8)
     deep_merge (1.2.2)
     devise (4.9.2)
       bcrypt (~> 3.0)
@@ -170,6 +193,9 @@ GEM
     globalid (1.1.0)
       activesupport (>= 5.0)
     hiredis (0.6.3)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     invisible_captcha (2.1.0)
@@ -191,6 +217,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
+    maruku (0.7.3)
     matrix (0.4.2)
     meta-tags (2.18.0)
       actionpack (>= 3.2.0, < 7.1)
@@ -198,6 +225,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.0)
+    multi_xml (0.6.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -404,6 +432,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  apipie-rails
   appsignal
   awesome_print
   bootsnap
@@ -411,14 +440,18 @@ DEPENDENCIES
   canonical-rails!
   capybara
   config
+  deep_cloneable (~> 3.2.0)
   devise
   dotenv-rails
   factory_bot_rails
   friendly_id
   hiredis
+  httparty
   invisible_captcha
   jbuilder
   jsonb_accessor
+  kaminari!
+  maruku
   meta-tags
   pg (~> 1.1)
   puma (~> 5.0)

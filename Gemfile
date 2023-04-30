@@ -7,11 +7,16 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "puma", "~> 5.0"
 
 # Core
+gem 'apipie-rails'
+gem 'awesome_print'
 gem "bootsnap", require: false
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'config'
 gem 'devise'
+gem 'deep_cloneable', '~> 3.2.0'
 gem 'friendly_id'
+gem 'httparty'
+gem 'maruku'
 gem 'invisible_captcha'
 gem 'jsonb_accessor'
 gem "jbuilder"
@@ -25,6 +30,9 @@ gem 'hiredis'
 gem "pg", "~> 1.1"
 gem 'redis'
 gem 'sidekiq'
+
+# Pagination
+gem 'kaminari', github: 'kaminari/kaminari', branch: 'master'
 
 # Frontend
 gem 'meta-tags'
