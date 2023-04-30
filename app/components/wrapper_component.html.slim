@@ -1,0 +1,12 @@
+- if @component.url
+  = link_to @component.url, tag_arguments
+    - if @component.text
+      = @component.text
+    - else
+      = content
+- else
+  = content_tag @component.tag, tag_arguments
+    - if @component.text
+      = @component.text
+    - else
+      = content
