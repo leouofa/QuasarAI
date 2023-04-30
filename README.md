@@ -1,24 +1,14 @@
-# README
+#### Mailcatcher
+Is the best way to test emails in development. It catches all emails sent by your application and displays them in a web interface. You can also use it to test HTML emails during development.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Install mailcatcher gem on OSX
+```bash
+gem install mailcatcher --pre
+```
 
-Things you may want to cover:
+Run mailcatcher
+```bash
+mailcatcher
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The emails can be viewed at http://localhost:1080
