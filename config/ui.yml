@@ -57,6 +57,20 @@ ui:
     css_class: 'icon'
     ui: false
 
+  table:
+    tag: table
+    css_class: table
+
+  tr:
+    tag: tr
+    css_class: ''
+    ui: false
+
+  td:
+    tag: td
+    css_class: ''
+    ui: false
+
   divider:
     tag: div
     css_class: 'divider'
