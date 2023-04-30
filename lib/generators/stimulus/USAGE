@@ -1,0 +1,8 @@
+Description:
+    Stubs out a new Stimulus controller.
+
+Example:
+    `rails generate stimulus Thing`
+
+    This will create a new Stimulus controller at:
+       `app/frontend/controllers/thing_controller.js`
