@@ -1,6 +1,6 @@
 class PageController < ApplicationController
-  before_action :authenticate_user!
-
+  include RestrictedAccess
   def index
   end
+
 end
