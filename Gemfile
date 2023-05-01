@@ -32,6 +32,7 @@ gem 'sidekiq'
 
 # Authentication
 gem 'devise'
+gem 'devise-tailwindcssed', github: 'realstorypro/devise-tailwindcssed-ruby', branch: 'ruby-3.2-support'
 
 # Pagination
 gem 'kaminari', github: 'kaminari/kaminari', branch: 'master'

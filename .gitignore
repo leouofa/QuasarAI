@@ -40,3 +40,5 @@ node_modules
 
 .env
 .irb_history
+
+/.vite/
