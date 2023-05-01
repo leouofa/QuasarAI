@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   apipie
 
   root "page#index"
+  resources :unauthorized, only: %i[index]
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
