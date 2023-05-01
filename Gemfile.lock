@@ -27,6 +27,15 @@ GIT
     kaminari-core (1.2.2)
 
 GIT
+  remote: https://github.com/realstorypro/devise-tailwindcssed-ruby.git
+  revision: 39c29ee8b13a2f969ed45b4c4764248a8f2b4acb
+  branch: ruby-3.2-support
+  specs:
+    devise-tailwindcssed (0.1.3)
+      rails (>= 5.2.3.4, < 7.1)
+      railties (> 4.0, < 7.1)
+
+GIT
   remote: https://github.com/realstorypro/rapid-ui.git
   revision: fa56a4ca118d969f46839ff5d28188af306f9f45
   specs:
@@ -444,6 +453,7 @@ DEPENDENCIES
   config
   deep_cloneable (~> 3.2.0)
   devise
+  devise-tailwindcssed!
   dotenv-rails
   factory_bot_rails
   faker

@@ -1,0 +1,30 @@
+=r ux.div "w-full max-w-sm"
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "bg-white mb-10 px-8 pt-1 pb-8 rounded shadow-md" }) do |f|
+    =r ux.h2 "font-hairline mb-6 text-center"
+      | Sign Up
+    = devise_error_messages!
+
+    =r ux.div "mb-4"
+      = f.label :email, class: "block font-bold mb-2 text-gray-700 text-sm"
+      = f.email_field :email, autocomplete: "email", placeholder: "user@example.com", class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none shadow focus:shadow-outline"
+
+    =r ux.div "mb-4"
+      = f.label :password, class: "block font-bold mb-2 text-gray-700 text-sm"
+      - if @minimum_password_length
+        =r ux.small
+          =r ux.em "text-gray-600"
+            ="(#{@minimum_password_length} characters minimum)"
+      = f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+
+    =r ux.div "mb-4"
+      = f.label :password_confirmation, class: "block font-bold mb-2 text-gray-700 text-sm"
+      = f.password_field :password_confirmation,
+        autocomplete: "new-password",
+        class: "appearance-none border leading-tight focus:outline-none px-3 py-2 rounded shadow focus:shadow-outline text-gray-700 w-full"
+
+    =r ux.div "mb-4"
+      = f.submit "Sign Up",
+        class: "button bg-blue-500 hover:bg-blue-700 font-bold text-white focus:outline-none py-2 px-4 rounded focus:shadow-outline w-full"
+
+    = render "devise/shared/links"
+  = render "devise/shared/form_footer"

@@ -11,7 +11,7 @@ ui:
   row:
     tag: div
     css_class: 'row'
-    ui: :off
+    ui: false
 
   column:
     tag: div
@@ -50,7 +50,7 @@ ui:
   text:
     tag: p
     css_class: 'text'
-    ui: :off
+    ui: false
 
   icon:
     tag: i
@@ -165,4 +165,17 @@ ui:
 
   div:
     tag: div
+    ui: false
+
+  small:
+    tag: small
+    ui: false
+
+  em:
+    tag: em
+    ui: false
+
+
+  br:
+    tag: br
     ui: false
