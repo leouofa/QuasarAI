@@ -1,0 +1,64 @@
+html
+  scroll-behavior: smooth
+
+/// Body ///
+// ensuring the body is normally overflowing
+body
+  font-family: $body-font-family
+  overflow: hidden
+  overflow-y: auto
+
+/// Primary Buttons
+.ui.button.primary
+  min-width: 250px
+  border-radius: 10em
+
+  @include media("<tablet")
+    min-width: 150px
+
+  &:hover
+    background: black
+    color: white
+
+  &:active
+    background: #0e0e0e
+    color: white
+    outline: solid rgba(17, 18, 250, 0.1) 5px
+
+
+  &:focus
+    background: #101010
+    color: white
+
+/// Links
+a
+  &:active
+    outline: solid rgba(17, 18, 250, 0.1) 5px
+    outline-offset: 3px
+
+
+/// Text Formatting
+.text
+  &.centered
+    text-align: center
+
+  &.lead
+    font-size: 1.25em
+
+/// Link Formatting
+a.no-underline
+  text-decoration: none
+
+/// Sidebar
+.ui.sidebar
+
+  &.inverted.menu
+    background: $black
+
+  .ui.header
+    text-transform: none
+
+/// Modal
+.ui.modal .actions
+  .negative
+    background: black

@@ -1,0 +1,74 @@
+.segment.basic.menu-wrapper
+  padding: 0
+
+  .ui.container,
+  .column
+    padding-left: 0
+    padding-right: 0
+
+  .menu
+    border: 0
+
+  .menu.row
+    margin-bottom: 0
+    padding-bottom: 0
+
+  .internal.ui.menu
+    width: 100%
+    border-top: 0
+    border-bottom: 0
+    z-index: 100
+
+    .menu a.item
+      color: #ffffff
+
+    .item
+      padding-top: 11px
+      padding-bottom: 12px
+
+    .logo-item
+      @include media(">tablet")
+        padding-left: 0
+
+      &:hover, &:active
+        background: transparent
+        outline-offset: -15px
+
+    .item.dropdown
+      &:hover, &:active
+        background: transparent
+
+    .logo
+      width: auto
+      max-height: 45px
+
+    @include media("<desktop")
+      .desktop.only
+        display: none !important
+
+    @include media(">phone")
+      .mobile.only
+        display: none !important
+
+    @include media("<desktop")
+      .menu.mobile.only
+        display: flex !important
+
+        .item
+          @include media(">tablet")
+            padding-right: 0
+
+
+    .ui.dropdown .menu
+      margin-top: -11px
+
+      .item
+        min-height: 1em
+
+      .item > a:not(.ui)
+        color: black
+        text-decoration: none
+
+      .divider
+        margin: 0
+        border-bottom: 0
