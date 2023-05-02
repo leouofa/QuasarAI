@@ -8,8 +8,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  feed       :string
+#  stream_id  :string
 #
 class SubTopic < ApplicationRecord
   belongs_to :topic
-  has_one :feed, dependent: :destroy
+  has_many :feeds, dependent: :destroy
 end
