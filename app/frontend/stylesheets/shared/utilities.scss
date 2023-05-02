@@ -565,6 +565,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   } @else if ($im-media-support and length($conditions) > 0) {
     @media #{unquote(parse-expression(nth($conditions, 1)))} {
       // Recursive call
+      // #noinspection SassUnresolvedFunction
       @include media(slice($conditions, 2)...) {
       @content;
     }
