@@ -1,0 +1,33 @@
+topics:
+  - name: Gaming
+    maximum_topics: 6
+    subtopics:
+      - name: Action
+        feed: feed/https://feedly.com/f/alert/84708e45-f057-41bb-87e8-99df56d358e9
+      - name: Adventure
+        feed: feed/https://feedly.com/f/alert/627b968a-3473-4d4f-ade7-321976996695
+      - name: Puzzle
+        feed: feed/https://feedly.com/f/alert/55b44c1b-b0a7-47b0-8100-67c0cd9a914e
+      - name: Role Playing
+        feed: feed/https://feedly.com/f/alert/45bf01b0-96ad-4d26-a17a-9866aa0fb92d
+      - name: Simulation
+        feed: feed/https://feedly.com/f/alert/05785e57-c996-4d63-b6e9-158ebaf106fd
+      - name: Strategy
+        feed: feed/https://feedly.com/f/alert/575682bc-bd36-46ab-bd33-90a40357e93c
+  - name: Team Sports
+    maximum_topics: 6
+    subtopics:
+      - name: American Football
+        feed: feed/https://feedly.com/f/alert/c84be72f-892f-48d0-9ec6-a9ced03f6065
+      - name: Soccer
+        feed: feed/https://feedly.com/f/alert/f38eef1e-1feb-4899-b164-e401a1ee463a
+      - name: Basketball
+        feed: feed/https://feedly.com/f/alert/aa390cd3-71d3-4793-8265-3971122b802b
+      - name: Baseball
+        feed: feed/https://feedly.com/f/alert/d6c2b0d8-67cd-4a7c-910a-dcde54a4ebe7
+      - name: Cricket
+        feed: feed/https://feedly.com/f/alert/383f7f0a-c212-4d39-9381-09d4712114e3
+      - name: Rugby
+        feed: feed/https://feedly.com/f/alert/80849568-f621-4c53-ad75-02b1215a284e
+      - name: Volleyball
+        feed: feed/https://feedly.com/f/alert/df0497a0-23e9-45a8-869a-951ef3ec8022
