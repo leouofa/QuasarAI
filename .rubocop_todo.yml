@@ -114,3 +114,16 @@ Style/SymbolArray:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 127
+
+
+Rails/FilePath:
+  Exclude:
+    - 'config/initializers/apipie.rb'
+    -
+Metrics/ParameterLists:
+  Exclude:
+    - 'app/mailers/admin_mailer.rb'
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/devise_helper.rb'

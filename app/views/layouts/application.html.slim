@@ -21,7 +21,7 @@ html lang="en"
   body data-controller="notifications"
     =r ux.sidebar class: 'ui vertical inverted menu large right', id: "main-menu", controller: 'sidebar'
 
-      = link_to "Home", root_path, class: "item #{is_active?(root_path)}", data: { action: 'click->sidebar#hide' }
+      = link_to "Home", root_path, class: "item #{menu_active?(root_path)}", data: { action: 'click->sidebar#hide' }
       = link_to "Account Settings", edit_user_registration_path, class: "item ", data: { action: 'click->sidebar#hide' }
       =r ux.item
         = link_to destroy_user_session_path, method: :delete, class: "ui button fluid primary", data: { action: 'click->sidebar#hide' }

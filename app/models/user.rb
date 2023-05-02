@@ -31,7 +31,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :lockable, :trackable, :confirmable
 
-
   def make_admin
     update(admin: true)
   end
@@ -47,5 +46,4 @@ class User < ApplicationRecord
   def remove_access
     update(has_access: false)
   end
-
 end
