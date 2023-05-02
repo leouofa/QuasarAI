@@ -11,7 +11,7 @@
         =r ux.label text: @topics.count, class: 'circular purple'
 
       - @topics.each do |topic|
-        =r ux.segment
+        =r ux.segment '!mb-20'
           =r ux.h3
             = topic.name
             =r ux.label text: topic.sub_topics.count, class: 'circular black'
@@ -19,3 +19,6 @@
           - topic.sub_topics.each do |sub_topic|
             =r ux.h5 text: sub_topic.name
 
+      =r ux.h2 'center aligned'
+        | Feeds
+        =r ux.label text: @feeds.count, class: 'circular purple'
