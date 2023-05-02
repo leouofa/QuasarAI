@@ -159,7 +159,7 @@ ui:
     css_class: 'component'
     ui: false
 
-  tagging:
+  label:
     tag: div
     css_class: 'label'
 

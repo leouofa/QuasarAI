@@ -7,7 +7,9 @@
 #  topic_id   :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  feed       :string
 #
 class SubTopic < ApplicationRecord
   belongs_to :topic
+  has_one :feed, dependent: :destroy
 end

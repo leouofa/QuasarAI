@@ -2,10 +2,20 @@
   =r ux.row
     =r ux.column width: 16
       =r ux.segment 'basic'
-        =r ux.h1 text: 'Welcome Page', class: 'text-center'
-        =r ux.text class: 'text-center', text: 'This page is protected by devise. You can only see it if you are logged in.'
+        =r ux.text class: 'text-center', text: '🔒 This page is protected by devise. You can only see it if you are logged in & authorized. 🔒'
 
       =r ux.divider
 
-      =r ux.segment 'basic text-center'
-        = current_user.inspect
+      =r ux.h2 'center aligned'
+        | Topics
+        =r ux.label text: @topics.count, class: 'circular purple'
+
+      - @topics.each do |topic|
+        =r ux.segment
+          =r ux.h3
+            = topic.name
+            =r ux.label text: topic.sub_topics.count, class: 'circular black'
+          =r ux.divider
+          - topic.sub_topics.each do |sub_topic|
+            =r ux.h5 text: sub_topic.name
+

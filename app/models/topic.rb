@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Topic < ApplicationRecord
-  has_many :sub_topics
+  has_many :sub_topics, dependent: :destroy
 end
