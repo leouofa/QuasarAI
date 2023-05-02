@@ -179,3 +179,12 @@ ui:
   br:
     tag: br
     ui: false
+
+
+  p:
+    tag: p
+    ui: false
+
+  code:
+    tag: code
+    ui: false

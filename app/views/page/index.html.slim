@@ -19,6 +19,10 @@
           - topic.sub_topics.each do |sub_topic|
             =r ux.h5 text: sub_topic.name
 
+            =r ux.segment 'secondary'
+              =r ux.code text: sub_topic.stream_id
+              =r ux.divider
+
       =r ux.h2 'center aligned'
         | Feeds
         =r ux.label text: @feeds.count, class: 'circular purple'
