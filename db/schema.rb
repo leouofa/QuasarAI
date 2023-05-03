@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_014752) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_144332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_014752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "uuid"
+    t.text "markdown_content"
     t.index ["feed_id"], name: "index_feed_items_on_feed_id"
     t.index ["uuid"], name: "index_feed_items_on_uuid", unique: true
   end
@@ -53,6 +54,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_014752) do
     t.string "feed"
     t.string "stream_id"
     t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "feed_item_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_item_id"], name: "index_taggings_on_feed_item_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topics", force: :cascade do |t|
@@ -90,4 +106,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_014752) do
   add_foreign_key "feed_items", "feeds"
   add_foreign_key "feeds", "sub_topics"
   add_foreign_key "sub_topics", "topics"
+  add_foreign_key "taggings", "feed_items"
+  add_foreign_key "taggings", "tags"
 end

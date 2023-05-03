@@ -318,6 +318,8 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    reverse_markdown (2.1.1)
+      nokogiri
     rexml (3.2.5)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
@@ -359,6 +361,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     sidekiq (7.1.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
@@ -483,11 +487,13 @@ DEPENDENCIES
   rails-controller-testing
   rapid_ui!
   redis
+  reverse_markdown
   rspec-rails
   rspec_tap
   rubocop
   rubocop-rails
   selenium-webdriver
+  shoulda-matchers (~> 5.0)
   sidekiq
   simple_form
   simple_scheduler
