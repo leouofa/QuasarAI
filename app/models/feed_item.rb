@@ -6,9 +6,9 @@
 #  feed_id    :bigint           not null
 #  payload    :jsonb
 #  content    :text
-#  uuid       :uuid
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  uuid       :string
 #
 class FeedItem < ApplicationRecord
   belongs_to :feed

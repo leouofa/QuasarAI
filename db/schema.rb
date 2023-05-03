@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_012208) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_014752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,9 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_012208) do
     t.bigint "feed_id", null: false
     t.jsonb "payload"
     t.text "content"
-    t.uuid "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
     t.index ["feed_id"], name: "index_feed_items_on_feed_id"
     t.index ["uuid"], name: "index_feed_items_on_uuid", unique: true
   end
