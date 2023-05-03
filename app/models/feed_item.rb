@@ -17,6 +17,9 @@ class FeedItem < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
+  has_one :assignments, dependent: :destroy
+  has_one :stories, through: :assignments
+
   jsonb_accessor :payload,
                  url: :string,
                  author: :string,
