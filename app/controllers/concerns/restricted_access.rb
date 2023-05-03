@@ -11,5 +11,4 @@ module RestrictedAccess
   def check_access
     redirect_to unauthorized_index_path unless current_user.has_access?
   end
-
 end

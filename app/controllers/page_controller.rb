@@ -4,5 +4,4 @@ class PageController < ApplicationController
     @topics = Topic.all.order(:name)
     @feeds = Feed.all
   end
-
 end

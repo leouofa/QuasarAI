@@ -5,7 +5,8 @@ CanonicalRails.setup do |config|
 
   config.protocol # = 'https://'
 
-  # This is the main host, not just the TLD, omit slashes and protocol. If you have more than one, pick the one you want to rank in search results.
+  # This is the main host, not just the TLD, omit slashes and protocol. If you have more than one,
+  # pick the one you want to rank in search results.
 
   config.host = ENV['URL_WITHOUT_PROTOCOL']
   config.port # = '3000'

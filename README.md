@@ -1,3 +1,10 @@
+### ActiveJobs
+
+```ruby
+# Ingests feedly topics
+FeedSubTopicsJob.perform_now
+```
+
 #### Mailcatcher
 Is the best way to test emails in development. It catches all emails sent by your application and displays them in a web interface. You can also use it to test HTML emails during development.
 

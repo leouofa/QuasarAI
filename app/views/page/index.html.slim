@@ -23,6 +23,19 @@
               =r ux.code text: sub_topic.stream_id
               =r ux.divider
 
+              - if sub_topic.feeds.last.present?
+                =r ux.segment 'tertiary'
+                  =r ux.h4 'right aligned'
+                    = sub_topic.feeds.last.created_at.strftime("Injested on %m/%d/%Y")
+                  =r ux.divider
+                  =r ux.pre 'overflow-hidden !max-h-80'
+                    = JSON.pretty_generate(sub_topic.feeds.last.payload)[0..1000]
+
       =r ux.h2 'center aligned'
-        | Feeds
+        | Total Feeds
         =r ux.label text: @feeds.count, class: 'circular purple'
+      =r ux.divider
+      =r ux.pre
+        = JSON.pretty_generate(@feeds.last.payload)
+
+

@@ -5,7 +5,7 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 #
 
-Rails.application.config.content_security_policy do |policy| #
+Rails.application.config.content_security_policy do |policy|
   policy.connect_src :self, :https
 
   policy.connect_src(*policy.connect_src, "ws://#{ViteRuby.config.host_with_port}") if Rails.env.development?

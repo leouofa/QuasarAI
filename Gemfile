@@ -61,6 +61,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'tty-prompt'
+  gem 'webmock'
 end
 
 group :development do
