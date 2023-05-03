@@ -12,14 +12,12 @@ class IngestFeedJob < ApplicationJob
     formatted_today_date = Time.now.utc.to_date.strftime("%m/%d/%Y")
     @last_feed = @sub_topic.feeds.last
 
-    unless @last_feed.created_at.strftime("%m/%d/%Y") == formatted_today_date
-      puts 'its blank', formatted_today_date, @last_feed.created_at.strftime("%m/%d/%Y")
-      ingest_feed
-    end
+    return if @last_feed.created_at.strftime("%m/%d/%Y") == formatted_today_date
+
+    ingest_feed
   end
 
   def ingest_feed
-    puts 'Ingesting feedly feed'
     feed = Feedly.get_contents(@sub_topic.stream_id)
     Feed.create(sub_topic: @sub_topic, payload: feed)
   end
