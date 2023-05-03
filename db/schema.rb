@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_210113) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_014752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feed_items", force: :cascade do |t|
+    t.bigint "feed_id", null: false
+    t.jsonb "payload"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "uuid"
+    t.index ["feed_id"], name: "index_feed_items_on_feed_id"
+    t.index ["uuid"], name: "index_feed_items_on_uuid", unique: true
+  end
 
   create_table "feeds", force: :cascade do |t|
     t.bigint "sub_topic_id", null: false
     t.jsonb "payload"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "processed", default: false
     t.index ["sub_topic_id"], name: "index_feeds_on_sub_topic_id"
   end
 
@@ -75,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_210113) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feed_items", "feeds"
   add_foreign_key "feeds", "sub_topics"
   add_foreign_key "sub_topics", "topics"
 end
