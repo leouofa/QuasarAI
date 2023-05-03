@@ -188,3 +188,7 @@ ui:
   code:
     tag: code
     ui: false
+
+  pre:
+    tag: pre
+    ui: false
