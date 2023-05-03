@@ -21,13 +21,12 @@ class ProcessFeedItemsJob < ApplicationJob
         begin
           FeedItem.create(feed:, content:, uuid:, author:, crawled:, published:, url:)
         rescue ActiveRecord::RecordNotUnique => e
-          if e.cause.is_a?(PG::UniqueViolation) && e.cause.message.include?('uuid')
-            # Handle the duplicate UUID case
-            puts "A record with the UUID '#{uuid}' already exists."
-          else
-            # Re-raise the error if it's not related to the UUID unique constraint
-            raise e
-          end
+          raise e unless e.cause.is_a?(PG::UniqueViolation) && e.cause.message.include?('uuid')
+
+          # Handle the duplicate UUID case
+          Rails.logger.debug "A record with the UUID '#{uuid}' already exists."
+
+          # Re-raise the error if it's not related to the UUID unique constraint
         end
       end
 

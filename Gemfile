@@ -16,6 +16,7 @@ gem 'deep_cloneable', '~> 3.2.0'
 gem 'friendly_id'
 gem 'httparty'
 gem 'maruku'
+gem 'reverse_markdown'
 gem 'invisible_captcha'
 gem 'jsonb_accessor'
 gem "jbuilder"
@@ -78,6 +79,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec_tap', require: false
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
 end
 
