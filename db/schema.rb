@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_195926) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_001525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_195926) do
     t.datetime "updated_at", null: false
     t.string "uuid"
     t.text "markdown_content"
+    t.boolean "processed", default: false
     t.index ["feed_id"], name: "index_feed_items_on_feed_id"
     t.index ["uuid"], name: "index_feed_items_on_uuid", unique: true
   end
@@ -61,6 +62,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_195926) do
     t.boolean "complete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "story_tags", force: :cascade do |t|
+    t.bigint "story_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_story_tags_on_story_id"
+    t.index ["tag_id"], name: "index_story_tags_on_tag_id"
   end
 
   create_table "sub_topics", force: :cascade do |t|
@@ -124,6 +134,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_195926) do
   add_foreign_key "assignments", "stories"
   add_foreign_key "feed_items", "feeds"
   add_foreign_key "feeds", "sub_topics"
+  add_foreign_key "story_tags", "stories"
+  add_foreign_key "story_tags", "tags"
   add_foreign_key "sub_topics", "topics"
   add_foreign_key "taggings", "feed_items"
   add_foreign_key "taggings", "tags"

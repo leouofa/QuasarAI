@@ -10,6 +10,7 @@
 #  updated_at       :datetime         not null
 #  uuid             :string
 #  markdown_content :text
+#  processed        :boolean          default(FALSE)
 #
 class FeedItem < ApplicationRecord
   belongs_to :feed
@@ -17,8 +18,8 @@ class FeedItem < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
-  has_one :assignments, dependent: :destroy
-  has_one :stories, through: :assignments
+  has_one :assignment, dependent: :destroy
+  has_one :story, through: :assignment
 
   jsonb_accessor :payload,
                  url: :string,
