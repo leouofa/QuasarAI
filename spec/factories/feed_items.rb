@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :feed_item do
-    association :feed
-    url { Faker::Internet.url }
-    crawled { Faker::Date.between(from: 2.days.ago, to: Date.today) }
-    published { Faker::Date.between(from: 2.days.ago, to: Date.today) }
+    feed
+    payload { { url: Faker::Internet.url, author: Faker::Name.name, crawled: Faker::Time.backward, published: Faker::Time.backward } }
     content { Faker::Lorem.paragraph }
-    markdown_content { Faker::Markdown.sandwich(sentences: 2) }
+    uuid { Faker::Internet.uuid }
+    markdown_content { Faker::Markdown.emphasis }
+    processed { false }
   end
 end

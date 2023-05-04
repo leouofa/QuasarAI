@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :tagging do
+  factory :assignment do
+    story
     feed_item
-    tag
   end
 end

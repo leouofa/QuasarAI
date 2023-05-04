@@ -11,4 +11,6 @@
 #
 class Feed < ApplicationRecord
   belongs_to :sub_topic
+
+  has_many :feed_items, dependent: :destroy
 end

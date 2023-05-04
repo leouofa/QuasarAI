@@ -10,4 +10,6 @@
 class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :feed_items, through: :taggings
+  has_many :feeds, through: :feed_items
+  has_many :sub_topics, through: :feeds
 end

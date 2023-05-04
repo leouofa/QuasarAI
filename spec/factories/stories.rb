@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :feed do
-    sub_topic
+  factory :story do
+    prefix { Faker::Lorem.word }
     payload { { some_key: Faker::Lorem.word, another_key: Faker::Lorem.sentence } }
-    processed { false }
+    complete { false }
   end
 end
