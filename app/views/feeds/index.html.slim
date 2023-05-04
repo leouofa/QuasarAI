@@ -1,0 +1,37 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        =r ux.text class: 'text-center', text: '🔒 This page is protected by devise. You can only see it if you are logged in & authorized. 🔒'
+
+      =r ux.divider
+
+      =r ux.h2 'center aligned'
+        | Recent Feeds
+        =r ux.label text: @feeds.count, class: 'circular purple'
+
+      - @feeds.each do |feed|
+        =r ux.segment '!mb-20 !bg-zinc-200 !border-2 !border-zinc-300 !shadow-lg !rounded-2xl !px-10 !py-10'
+          =r ux.code '!text-xs'
+            =r ux.strong text: "Feed ID: #{feed.id}", class: ''
+            br
+            -if feed.feed_items.count > 0
+              =r ux.div text: "Feed Items: #{ feed.feed_items.count }", class: ''
+              =r ux.divider '!h-1 bg-zinc-700'
+              - feed.feed_items.each do |feed_item|
+                br
+                =r ux.strong 'text-green-700'
+                  = feed_item.created_at.strftime("Ingested on %m/%d/%Y")
+                br
+                =r ux.strong 'text-purple-700 !mb-20'
+                  | Tags: &nbsp;
+                - feed_item.tags.each do |tag|
+                  =r ux.span text: "#{tag.name}  | ", class: 'text-green-700'
+                =r ux.div 'mt-10'
+                  = feed_item.content.html_safe
+                  = markdown(feed_item.markdown_content)
+
+            - else
+              =r ux.div text: "Feed Items: 0", class: ''
+
+

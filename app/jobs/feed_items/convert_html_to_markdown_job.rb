@@ -4,7 +4,7 @@ module FeedItems
 
     def perform(*_args)
       FeedItem.where(markdown_content: nil).all.each do |feed_item|
-        feed_item.update(markdown_content: ReverseMarkdown.convert(feed_item.content))
+        feed_item.update(markdown_content: ReverseMarkdown.convert(feed_item.content, unknown_tags: :drop))
       end
     end
   end

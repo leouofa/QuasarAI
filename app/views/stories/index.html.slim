@@ -1,0 +1,23 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        =r ux.text class: 'text-center', text: '🔒 This page is protected by devise. You can only see it if you are logged in & authorized. 🔒'
+
+      =r ux.divider
+
+      =r ux.h2 'center aligned'
+        | Stories
+        =r ux.label text: @stories.count, class: 'circular purple'
+
+      - @stories.each do |story|
+        =r ux.segment '!mb-20 !bg-zinc-200 !border-2 !border-zinc-300 !shadow-2xl !rounded-2xl !px-10 !py-10 overflow-x-hidden'
+          =r ux.code
+            =r ux.strong 'text-purple-300 !mb-80'
+            | Tag: &nbsp;
+            = story.tag.name
+          - story.feed_items.each do |feed_item|
+            =r ux.div 'mt-10'
+              =r ux.h5 text: feed_item.title
+              = markdown(feed_item.markdown_content)
+              =r ux.divider
