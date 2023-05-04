@@ -1,7 +1,7 @@
 module Stories
   class CreateStoriesJob < ApplicationJob
     queue_as :default
-    MINIMUM_NUMBER_OF_TAGS_FOR_STORY = 2
+    MINIMUM_TAG_ARRAY_SIZE = 2
 
     def perform(sub_topic:)
       process_sub_topic(sub_topic: sub_topic)
@@ -21,8 +21,8 @@ module Stories
 
 
       # too few tags don't do anything
-      return if sorted_unprocessed_tag_frequency.size < 2
-      return if sorted_unprocessed_tag_frequency[1][1] < MINIMUM_NUMBER_OF_TAGS_FOR_STORY
+      return if sorted_unprocessed_tag_frequency.size < MINIMUM_TAG_ARRAY_SIZE
+      return if sorted_unprocessed_tag_frequency[1][1] < sub_topic.min_tags_for_story
 
       story_tag_name = sorted_unprocessed_tag_frequency[1][0]
       story_tag_frequency = sorted_unprocessed_tag_frequency[1][1]
@@ -37,12 +37,16 @@ module Stories
       story.tag = tag
       story.save
 
-      available_feed_items.sample(MINIMUM_NUMBER_OF_TAGS_FOR_STORY).each do |available_feed_item|
+      available_feed_items.sample(sub_topic.min_tags_for_story).each do |available_feed_item|
         story.feed_items << available_feed_item
         available_feed_item.update(processed: true)
       end
 
-      Rails.logger.debug "Creating story for subtopic: #{sub_topic.name}, with tag name: #{story_tag_name} and frequency: #{story_tag_frequency}."
+      Rails.logger.debug "\nPROCESSING:: ================BEGIN====================="
+      Rails.logger.debug "\nPROCESSING:: #{sorted_unprocessed_tag_frequency.inspect}."
+      Rails.logger.debug "\nPROCESSING:: Creating story for subtopic: #{sub_topic.name}, with tag name: #{story_tag_name} and frequency: #{story_tag_frequency}."
+      Rails.logger.debug "\nPROCESSING:: ================END======================="
+      Rails.logger.debug "\n"
 
       process_sub_topic(sub_topic: sub_topic)
     end

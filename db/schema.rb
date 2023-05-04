@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_001525) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_172301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,8 +78,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_001525) do
     t.bigint "topic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "feed"
     t.string "stream_id"
+    t.integer "min_tags_for_story"
     t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
   end
 
