@@ -11,31 +11,29 @@
         =r ux.label text: @topics.count, class: 'circular purple'
 
       - @topics.each do |topic|
-        =r ux.segment '!mb-20'
+        =r ux.segment '!mb-20 !bg-zinc-200 !border-2 !border-zinc-300 !shadow-2xl !rounded-2xl !px-10 !py-10'
           =r ux.h3
             = topic.name
             =r ux.label text: topic.sub_topics.count, class: 'circular black'
           =r ux.divider
           - topic.sub_topics.each do |sub_topic|
-            =r ux.h5 text: sub_topic.name
-
-            =r ux.segment 'secondary'
-              =r ux.code text: sub_topic.stream_id
-              =r ux.divider
-
+            =r ux.div 'flex'
               - if sub_topic.feeds.last.present?
-                =r ux.segment 'tertiary'
-                  =r ux.h4 'right aligned'
-                    = sub_topic.feeds.last.created_at.strftime("Ingested on %m/%d/%Y")
-                  =r ux.divider
-                  =r ux.pre 'overflow-hidden !max-h-80'
-                    = JSON.pretty_generate(sub_topic.feeds.last.payload)[0..1000]
+                -if sub_topic.feeds.last.created_at.strftime("%m/%d/%Y") == Time.now.utc.to_date.strftime("%m/%d/%Y")
+                  =r ux.div 'w-3 h-3 bg-green-700 rounded-full'
+                - else
+                  =r ux.div 'w-3 h-3 bg-red-700 rounded-full'
+              - else
+                =r ux.div 'w-3 h-3 bg-red-700 rounded-full'
+              =r ux.h5 text: sub_topic.name, class: '!text-right !text-shadow-sm !mt-0 !mt-[-4px] !ml-2'
 
-      =r ux.h2 'center aligned'
-        | Total Feeds
-        =r ux.label text: @feeds.count, class: 'circular purple'
-      =r ux.divider
-      =r ux.pre
-        = JSON.pretty_generate(@feeds.last.payload)
-
-
+            =r ux.segment 'secondary !bg-zinc-300 !border-2 !border-zinc-400 !shadow-md !mb-12'
+              =r ux.pre 'overflow-hidden !max-h-80 !text-xs '
+                =r ux.strong text: sub_topic.stream_id, class: 'text-purple-500'
+                - if sub_topic.feeds.last.present?
+                  br
+                  =r ux.strong class: 'text-green-800', text: sub_topic.feeds.last.created_at.strftime("Last Updated %m/%d/%Y")
+                  br
+                  br
+                  .span.text-gray-700
+                    = JSON.pretty_generate(sub_topic.feeds.last.payload)[0..100]

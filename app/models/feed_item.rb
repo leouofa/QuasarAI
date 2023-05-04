@@ -22,6 +22,7 @@ class FeedItem < ApplicationRecord
   has_one :story, through: :assignment
 
   jsonb_accessor :payload,
+                 title: :string,
                  url: :string,
                  author: :string,
                  crawled: :datetime,

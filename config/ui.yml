@@ -192,3 +192,12 @@ ui:
   pre:
     tag: pre
     ui: false
+
+  strong:
+    tag: strong
+    ui: false
+
+
+  span:
+    tag: span
+    ui: false

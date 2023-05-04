@@ -48,6 +48,7 @@ gem "stimulus-rails"
 gem 'turbo-rails'
 gem 'view_component'
 gem 'vite_rails'
+gem 'redcarpet'
 
 # Errors
 gem 'appsignal'

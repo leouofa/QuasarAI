@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   apipie
 
   root "page#index"
+  resources :feeds, only: %i[index]
+  resources :stories, only: %i[index]
+
   resources :unauthorized, only: %i[index]
 
   namespace :api, defaults: { format: 'json' } do

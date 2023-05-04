@@ -3,8 +3,9 @@ module FeedItems
     queue_as :default
 
     def perform(*_args)
-      feeds = Feed.where("created_at >= ? AND created_at <= ?",
-                         Time.zone.now.utc.beginning_of_day, Time.zone.now.utc.end_of_day)
+      # feeds = Feed.where("created_at >= ? AND created_at <= ?",
+      #                    Time.zone.now.utc.beginning_of_day, Time.zone.now.utc.end_of_day)
+      feeds = Feed.where(processed: false)
 
       feeds.each do |feed|
         next if feed.processed
@@ -12,6 +13,7 @@ module FeedItems
         feed.payload['items'].each do |feed_item|
           next if feed_item['fullContent'].blank? && feed_item['content'].blank?
 
+          title = feed_item['title']
           content = feed_item['fullContent'] || feed_item['content']
           uuid = feed_item['id']
           author = feed_item['author']
@@ -22,7 +24,7 @@ module FeedItems
           tags  = feed_item['commonTopics'].collect { |topic| topic['label'] } if feed_item['commonTopics'].present?
 
           begin
-            new_feed_item = FeedItem.create(feed:, content:, uuid:, author:, crawled:, published:, url:)
+            new_feed_item = FeedItem.create(feed:, title:, content:, uuid:, author:, crawled:, published:, url:)
 
             if feed_item['commonTopics'].present?
               tags.each do |tag|
