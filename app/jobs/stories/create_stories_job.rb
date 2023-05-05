@@ -35,6 +35,7 @@ module Stories
 
       story = Story.new
       story.tag = tag
+      story.sub_topic = sub_topic
       story.save
 
       available_feed_items.sample(sub_topic.min_tags_for_story).each do |available_feed_item|

@@ -2,12 +2,13 @@
 #
 # Table name: stories
 #
-#  id         :bigint           not null, primary key
-#  prefix     :string
-#  payload    :jsonb
-#  complete   :boolean
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint           not null, primary key
+#  prefix       :string
+#  payload      :jsonb
+#  complete     :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  sub_topic_id :bigint           not null
 #
 class Story < ApplicationRecord
   has_many :assignments, dependent: :destroy
@@ -15,4 +16,6 @@ class Story < ApplicationRecord
 
   has_one :story_tag, dependent: :destroy
   has_one :tag, through: :story_tag
+
+  belongs_to :sub_topic
 end

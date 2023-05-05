@@ -13,15 +13,17 @@
       - @stories.each do |story|
         =r ux.segment '!mb-20 !bg-zinc-200 !border-2 !border-zinc-300 !shadow-2xl !rounded-2xl !px-10 !py-10 overflow-x-hidden'
           =r ux.code
-            =r ux.strong 'text-purple-300 !mb-80'
-            | Tag: &nbsp;
-            = story.tag.name
+            =r ux.strong 'text-blue-800 !mb-80'
+              | Tag: &nbsp;
+              = story.tag.name
           - story.feed_items.each do |feed_item|
             =r ux.div 'mt-10'
-              =r ux.h5 text: "Title: #{feed_item.title}"
               =r ux.pre
+                =r ux.strong text: "Title: #{feed_item.title}"
                 =r ux.div text: "URL: #{feed_item.url}"
                 =r ux.div text: "Author: #{feed_item.author}"
                 =r ux.div text: "Published: #{feed_item.published}"
+                =r ux.div text: "Topic: #{story.sub_topic.topic.name}"
+                =r ux.div text: "Sub Topic: #{story.sub_topic.name}"
               = markdown(feed_item.markdown_content)
               =r ux.divider

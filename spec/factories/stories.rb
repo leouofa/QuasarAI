@@ -2,12 +2,13 @@
 #
 # Table name: stories
 #
-#  id         :bigint           not null, primary key
-#  prefix     :string
-#  payload    :jsonb
-#  complete   :boolean
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint           not null, primary key
+#  prefix       :string
+#  payload      :jsonb
+#  complete     :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  sub_topic_id :bigint           not null
 #
 FactoryBot.define do
   factory :story do
