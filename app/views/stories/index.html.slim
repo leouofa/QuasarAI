@@ -18,6 +18,10 @@
             = story.tag.name
           - story.feed_items.each do |feed_item|
             =r ux.div 'mt-10'
-              =r ux.h5 text: feed_item.title
+              =r ux.h5 text: "Title: #{feed_item.title}"
+              =r ux.pre
+                =r ux.div text: "URL: #{feed_item.url}"
+                =r ux.div text: "Author: #{feed_item.author}"
+                =r ux.div text: "Published: #{feed_item.published}"
               = markdown(feed_item.markdown_content)
               =r ux.divider
