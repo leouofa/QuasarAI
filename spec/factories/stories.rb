@@ -9,6 +9,9 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  sub_topic_id :bigint           not null
+#  stem         :text
+#  processed    :boolean          default(FALSE)
+#  invalid_json :boolean          default(FALSE)
 #
 FactoryBot.define do
   factory :story do

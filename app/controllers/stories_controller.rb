@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    @parsed_story = JSON.parse(@story.stem)
+    @parsed_story = JSON.parse(@story.stem) if @story.stem
   end
 
 end
