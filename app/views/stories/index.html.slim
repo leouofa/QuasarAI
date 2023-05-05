@@ -16,6 +16,7 @@
             =r ux.strong 'text-blue-800 !mb-80'
               | Tag: &nbsp;
               = story.tag.name
+            = link_to story_path(story), story_path(story)
           - story.feed_items.each do |feed_item|
             =r ux.div 'mt-10'
               =r ux.pre

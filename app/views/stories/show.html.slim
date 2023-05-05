@@ -1,0 +1,8 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        -@parsed_story.each do |section|
+          h2= section['header']
+          - section['paragraphs'].each do |paragraph|
+            p= paragraph
