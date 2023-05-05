@@ -24,6 +24,7 @@ gem 'rack-canonical-host'
 gem 'simple_scheduler'
 gem 'sitemap_generator'
 gem 'slack-notifier'
+gem 'ruby-openai'
 
 # Database
 gem 'hiredis'

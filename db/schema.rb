@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_172301) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_05_135313) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_172301) do
     t.boolean "complete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sub_topic_id", null: false
+    t.text "stem"
+    t.boolean "processed", default: false
+    t.boolean "invalid_json", default: false
+    t.index ["sub_topic_id"], name: "index_stories_on_sub_topic_id"
   end
 
   create_table "story_tags", force: :cascade do |t|
@@ -134,6 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_172301) do
   add_foreign_key "assignments", "stories"
   add_foreign_key "feed_items", "feeds"
   add_foreign_key "feeds", "sub_topics"
+  add_foreign_key "stories", "sub_topics"
   add_foreign_key "story_tags", "stories"
   add_foreign_key "story_tags", "tags"
   add_foreign_key "sub_topics", "topics"

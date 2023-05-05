@@ -1,0 +1,14 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        - if @parsed_story
+          = link_to '< Back to all stories', stories_path
+          =r ux.h1 text: @parsed_story['title']
+          -@parsed_story['content'].each do |section|
+            h2= section['header']
+            =r ux.small text: section['generative_image_idea']
+            - section['paragraphs'].each do |paragraph|
+              p= paragraph
+        - else
+          =r ux.h2 text: 'The story stem is not present.', class: 'text-center'
