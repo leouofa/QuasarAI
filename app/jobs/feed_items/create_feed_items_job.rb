@@ -1,5 +1,5 @@
 module FeedItems
-  class ProcessJob < ApplicationJob
+  class CreateFeedItemsJob < ApplicationJob
     queue_as :default
 
     def perform(*_args)

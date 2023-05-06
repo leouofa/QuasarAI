@@ -1,5 +1,5 @@
 module Feeds
-  class GetSubTopicFeedsJob < ApplicationJob
+  class CreateFeedsFromSubtopicsJob < ApplicationJob
     queue_as :default
 
     def perform(*_args)
