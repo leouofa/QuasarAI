@@ -13,4 +13,5 @@
 class SubTopic < ApplicationRecord
   belongs_to :topic
   has_many :feeds, dependent: :destroy
+  has_many :stories, dependent: :destroy
 end
