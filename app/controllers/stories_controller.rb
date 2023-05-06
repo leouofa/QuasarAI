@@ -1,11 +1,16 @@
 class StoriesController < ApplicationController
+  include RestrictedAccess
   def index
-    @stories = Story.all.order(id: :desc).limit(10)
+    @stories = Story.all.order(id: :desc).page params[:page]
   end
 
   def show
     @story = Story.find(params[:id])
-    @parsed_story = JSON.parse(@story.stem) if @story.stem
+    begin
+      @parsed_story = JSON.parse(@story.stem) if @story.stem
+    rescue JSON::ParserError
+      false
+    end
   end
 
 end

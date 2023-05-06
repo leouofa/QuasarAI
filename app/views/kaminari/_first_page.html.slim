@@ -1,0 +1,8 @@
+- unless current_page.first?
+  = link_to url, title: t('views.pagination.first').html_safe, class: 'item',
+          data: { action: 'mouseenter->hover-link-preloader#startPreload mouseleave->hover-link-preloader#cancelPreload', destination: url}
+    =r ux.icon 'angle double left'
+- else
+  =r ux.item 'disabled'
+    =r ux.icon 'angle double left disabled'
+

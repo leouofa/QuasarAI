@@ -1,11 +1,11 @@
 doctype html
 html lang="en"
   head
-    = display_meta_tags site: "Daily Planet", description: "The News Tool", separator: "&mdash;".html_safe
+    = display_meta_tags site: "Enterprise", description: "The News Vessel", separator: "&mdash;".html_safe
     meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
 
     = vite_stylesheet_tag 'admin.sass', 'data-turbo-track': 'reload'
-    = stylesheet_link_tag *'https://fonts.googleapis.com/css2?family=Space Grotesk:wght@400;600;700&display=swap', media: 'none', onload: "if(media!='all')media='all'"
+    / = stylesheet_link_tag *'https://fonts.googleapis.com/css2?family=Space Grotesk:wght@400;600;700&display=swap', media: 'none', onload: "if(media!='all')media='all'"
     = vite_javascript_tag 'admin', 'data-turbo-track': 'reload'
     = csrf_meta_tags
     = canonical_tag
@@ -33,13 +33,13 @@ html lang="en"
           =r ux.grid
             =r ux.row 'menu'
               =r ux.column size: 16
-                =r ux.menu ui: :on, class: 'inverted black large internal !bg-zinc-900'
+                =r ux.menu ui: :on, class: 'inverted black large internal !bg-zinc-900 !font-mono'
                   =r ux.item url: root_path, class: 'logo-item'
-                    / = image_tag 'icon-inverted.png', class: 'ui image logo', alt: 'StoryPRO Logo'
-                    =r ux.header text: '🚀 Enterprise', class: 'inverted logo'
-                    = link_to "Dashboard", root_path, class: "item"
-                    = link_to "Feeds", feeds_path, class: "item"
-                    = link_to "Stories", stories_path, class: "item"
+                    =r ux.header text: '{ Enterprise }', class: 'inverted logo !font-mono'
+                  = link_to "Dashboard", root_path, class: "item"
+                  = link_to "Feeds", feeds_path, class: "item"
+                  = link_to "Stories", stories_path, class: "item"
+                  = link_to "Tags", tags_path, class: "item"
                   =r ux.menu class: 'right', only: :mobile
                     =r ux.item class: 'hamburger', action: 'click->sidenav#toggle'
                       =r ux.icon 'large sidebar'
@@ -57,3 +57,11 @@ html lang="en"
       =r ux.component 'internal mt-20'
         = yield
       = render 'partials/notifications'
+
+      =r ux.segment "footer fragment vertical !mt-20"
+        =r ux.container 'center aligned wide'
+          =r ux.grid "stackable left aligned mobile"
+            =r ux.column computer: 16, tablet: 16, mobile: 16, class: "middle aligned"
+              =r ux.list "copyright horizontal mini link !text-center !flex !items-center !justify-center"
+                =r ux.item '!text-gray-700'
+                  | "Computers make excellent and efficient servants, but I have no wish to serve under them." – Spock 🖖

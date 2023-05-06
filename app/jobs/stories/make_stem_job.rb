@@ -3,6 +3,8 @@ module Stories
     queue_as :default
 
     def perform(story:)
+      return if story.processed
+
       @client = OpenAI::Client.new
 
       feed_items = []
@@ -32,37 +34,35 @@ module Stories
       SYSTEM_ROLE
 
       question = <<~QUESTION
-         - You have received the following as a news brief about `#{story.tag.name}`.
-         - It is your job to write an article consisting of 6 sections, each section has the following format:
-         ```
-         + header
-         + generative_image_idea
-         -- paragraph1
-         -- paragraph2
-         -- paragraph3
-         ```
+        - You have received the following as a news brief about `#{story.tag.name}`.
+        - It is your job to write an article consisting of 6 sections, each section has the following format:
+        ```
+        + header
+        -- paragraph1
+        -- paragraph2
+        -- paragraph3
+        ```
 
-         - The header should be a short single sentence that summarizes the section.
-         - The generative_image_idea should be a 1 - 2 sentences that describes the image that should be generated based on the contents of the header.#{' '}
-         - Do not use names and places in the generative_image_idea, instead focus on archetypes.
-         - The paragraphs should be 3-5 sentences that support the header.
-         - The article should have a title that summarizes the entire article.
-         - The return result must be in json format in the following structure:
-         ```#{' '}
-          title: "article title"
-          content: [
-             {
-               "header": "header text",
-               "generative_image_idea": "image idea"
-               "paragraphs": ["paragraph1 text", "paragraph2 text", paragraph3 text"]
-             },
-             {
-               "header": "header text",
-               "generative_image_idea": "image idea"
-               "paragraphs": ["paragraph1 text", "paragraph2 text", paragraph3 text"]
-             }
-          ]#{'    '}
-        ````
+        - The header should be a short single sentence that summarizes the section.
+        - The paragraphs should be 4-5 sentences that support the header.
+        - The article should have a title that summarizes the entire article.
+        - The article should have a 4-5 sentence summary that summarizes the entire article.
+        - The return result MUST be in JSON format in the following structure:
+
+        ```
+         title: "article title",
+         summary: "article summary",
+         content: [
+            {
+              "header": "header text",
+              "paragraphs": ["paragraph1 text", "paragraph2 text", paragraph3 text"]
+            },
+            {
+              "header": "header text",
+              "paragraphs": ["paragraph1 text", "paragraph2 text", paragraph3 text"]
+            }
+         ]
+        ```
       QUESTION
 
 
@@ -72,31 +72,27 @@ module Stories
         { role: "user", content: brief }
       ]
 
-      # response = chat(messages:)
-      #
-      # invalid_json = if valid_json?(response["choices"][0]["message"]["content"])
-      #                  false
-      #                else
-      #                  true
-      #                end
 
       invalid_json = true
       counter = 0
+      response = nil
 
-      while invalid_json && counter < 3 do
+      while invalid_json && counter < 4 do
         response = chat(messages:)
 
         counter += 1
+
+        break if response["error"].present?
+
         invalid_json = false if valid_json?(response["choices"][0]["message"]["content"])
-                       #   false
-                       # else
-                       #   true
-                       # end
-        puts "invalid_json: #{invalid_json} | counter: #{counter}"
+        Rails.logger.debug "invalid_json: #{invalid_json} | counter: #{counter}"
       end
 
-
-      story.update(stem: response["choices"][0]["message"]["content"], processed: true, invalid_json:)
+      if response["error"].present?
+        story.update(processed: true, invalid_json:)
+      else
+        story.update(stem: response["choices"][0]["message"]["content"], processed: true, invalid_json:)
+      end
     end
 
     def valid_json?(json_string)

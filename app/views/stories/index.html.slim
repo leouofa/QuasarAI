@@ -6,12 +6,15 @@
 
       =r ux.divider
 
-      =r ux.h2 'center aligned'
+      =r ux.h2 'center aligned !font-mono'
         | Stories
-        =r ux.label text: @stories.count, class: 'circular purple'
+        =r ux.label text: @stories.count, class: 'circular !bg-blue-700 !text-white'
+
+      =r ux.div 'text-center'
+        = paginate @stories
 
       - @stories.each do |story|
-        =r ux.segment '!mb-20 !bg-zinc-200 !border-2 !border-zinc-300 !shadow-2xl !rounded-2xl !px-10 !py-10 overflow-x-hidden'
+        =r ux.segment '!mt-10 !mb-20 !bg-zinc-200 !border-4 !border-zinc-300 !shadow-xl !px-10 !py-10 overflow-x-hidden'
           =r ux.code
             =r ux.div 'text-right'
               = link_to 'Show Story', story_path(story)
@@ -37,5 +40,4 @@
                 =r ux.div text: "Published: #{feed_item.published}"
                 =r ux.div text: "Topic: #{story.sub_topic.topic.name}"
                 =r ux.div text: "Sub Topic: #{story.sub_topic.name}"
-              / = markdown(feed_item.markdown_content)
               =r ux.divider
