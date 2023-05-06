@@ -10,8 +10,7 @@
 @importFonts: false;
 @importGoogleFonts: false;
 
-@headerFont        : 'Space Grotesk', sans-serif;
-@pageFont          : 'Space Grotesk', sans-serif;
+@fontName: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 /*-------------------
       Base Sizes
