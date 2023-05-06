@@ -10,6 +10,9 @@
         | Recent Feeds
         =r ux.label text: @feeds.count, class: 'circular purple'
 
+      =r ux.div 'text-center'
+        = paginate @feeds
+
       - @feeds.each do |feed|
         =r ux.segment '!mb-20 !bg-zinc-200 !border-2 !border-zinc-300 !shadow-lg !rounded-2xl !px-10 !py-10'
           =r ux.code '!text-xs'
@@ -26,7 +29,7 @@
                 =r ux.div text: "Published: #{feed_item.published}"
                 =r ux.span 'text-black !mb-20'
                   = "Tags: #{feed_item.tags.map { |tag| "#{tag.name}" }.join(', ')}"
-                =r ux.div 'mt-10 p-5 bg-zinc-100 !rounded-2xl'
+                =r ux.div 'mt-10 p-5 bg-zinc-100 !rounded-2xl overflow-x-hidden'
                   = markdown(feed_item.markdown_content)
 
             - else

@@ -16,6 +16,7 @@ module Stories
 
       unprocessed_tag_frequency = Tag.joins(taggings: { feed_item: :feed })
                                      .where(feed_items: { processed: false }, feeds: { sub_topic_id: sub_topic.id })
+                                     .where.not(feed_items: { markdown_content: nil })
                                      .group(:name).count(:id)
       sorted_unprocessed_tag_frequency = unprocessed_tag_frequency.sort { |a, b| b.last <=> a.last }
 

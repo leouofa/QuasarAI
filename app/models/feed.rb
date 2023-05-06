@@ -13,4 +13,6 @@ class Feed < ApplicationRecord
   belongs_to :sub_topic
 
   has_many :feed_items, dependent: :destroy
+
+  paginates_per 5
 end

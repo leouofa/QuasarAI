@@ -1,0 +1,7 @@
+- if page.current?
+  = link_to url, title: page, class: 'item active'
+    = page
+- else
+  = link_to url, title: page, class: 'item',
+          data: { action: 'mouseenter->hover-link-preloader#startPreload mouseleave->hover-link-preloader#cancelPreload', destination: url}
+    = page
