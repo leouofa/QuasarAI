@@ -1,0 +1,56 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        =r ux.text class: 'text-center', text: '🔒 This page is protected by devise. You can only see it if you are logged in & authorized. 🔒'
+
+      =r ux.divider
+
+      =r ux.h2 'center aligned'
+        | Stories
+        =r ux.label text: @tags.count, class: 'circular purple'
+
+      =r ux.div 'text-center'
+        = paginate @tags
+
+      =r ux.div 'flex justify-center mt-10'
+        =r ux.table class: 'very basic celled max-w-xl', ui: true
+          =r ux.thead
+            =r ux.tr
+              =r ux.th text: 'Tag'
+              =r ux.th text: 'Count'
+          - @tags.each do |tag_name, tag_count|
+            =r ux.tr
+              =r ux.td
+                = tag_name
+              =r ux.td
+                = tag_count
+        br
+        / =r ux.segment '!mb-20 !bg-zinc-200 !border-2 !border-zinc-300 !shadow-2xl !rounded-2xl !px-10 !py-10 overflow-x-hidden'
+        /   =r ux.code
+        /     =r ux.div 'text-right'
+        /       = link_to 'Show Story', story_path(story)
+        /
+        /     =r ux.strong 'text-blue-800 !mb-80'
+        /       = "Tag: #{story.tag.name}"
+        /     br
+        /     =r ux.strong "#{story.processed ? ' text-green-800' : 'text-red-800'} !mb-80"
+        /       = "Processed: #{story.processed}"
+        /     - if story.invalid_json
+        /       br
+        /       br
+        /       =r ux.label text: "Invalid JSON", class: 'red'
+        /
+        /     =r ux.divider
+        /     =r ux.div text: 'Feed Items: ', class: 'mb-4 text-blue-600'
+        /   - story.feed_items.each do |feed_item|
+        /     =r ux.div 'mt-0'
+        /       =r ux.pre
+        /         =r ux.strong text: "Title: #{feed_item.title}"
+        /         =r ux.div text: "URL: #{feed_item.url}"
+        /         =r ux.div text: "Author: #{feed_item.author}"
+        /         =r ux.div text: "Published: #{feed_item.published}"
+        /         =r ux.div text: "Topic: #{story.sub_topic.topic.name}"
+        /         =r ux.div text: "Sub Topic: #{story.sub_topic.name}"
+        /       / = markdown(feed_item.markdown_content)
+        /       =r ux.divider

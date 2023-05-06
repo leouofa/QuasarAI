@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+  include RestrictedAccess
   def index
     @stories = Story.all.order(id: :desc).page params[:page]
   end

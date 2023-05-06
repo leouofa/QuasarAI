@@ -40,6 +40,7 @@ html lang="en"
                     = link_to "Dashboard", root_path, class: "item"
                     = link_to "Feeds", feeds_path, class: "item"
                     = link_to "Stories", stories_path, class: "item"
+                    = link_to "Tags", tags_path, class: "item"
                   =r ux.menu class: 'right', only: :mobile
                     =r ux.item class: 'hamburger', action: 'click->sidenav#toggle'
                       =r ux.icon 'large sidebar'

@@ -61,6 +61,16 @@ ui:
     tag: table
     css_class: table
 
+  thead:
+    tag: thead
+    css_class: ''
+    ui: false
+
+  th:
+    tag: th
+    css_class: ''
+    ui: false
+
   tr:
     tag: tr
     css_class: ''
