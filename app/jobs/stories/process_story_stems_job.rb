@@ -1,5 +1,5 @@
 module Stories
-  class ProcessStoriesJob < ApplicationJob
+  class ProcessStoryStemsJob < ApplicationJob
     queue_as :default
 
     def perform(*args)

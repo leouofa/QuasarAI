@@ -20,13 +20,18 @@ module Stories
                                      .group(:name).count(:id)
       sorted_unprocessed_tag_frequency = unprocessed_tag_frequency.sort { |a, b| b.last <=> a.last }
 
+      # Removing excluded tags
+      if Settings.excluded_tags.present?
+        entries_to_remove = Settings.excluded_tags
+        sorted_unprocessed_tag_frequency.delete_if { |entry| entries_to_remove.include?(entry[0]) }
+      end
 
       # too few tags don't do anything
       return if sorted_unprocessed_tag_frequency.size < MINIMUM_TAG_ARRAY_SIZE
-      return if sorted_unprocessed_tag_frequency[1][1] < sub_topic.min_tags_for_story
+      return if sorted_unprocessed_tag_frequency[0][1] < sub_topic.min_tags_for_story
 
-      story_tag_name = sorted_unprocessed_tag_frequency[1][0]
-      story_tag_frequency = sorted_unprocessed_tag_frequency[1][1]
+      story_tag_name = sorted_unprocessed_tag_frequency[0][0]
+      story_tag_frequency = sorted_unprocessed_tag_frequency[0][1]
       tag = Tag.find_by(name: story_tag_name)
 
       available_feed_items = FeedItem.joins(taggings: :tag)

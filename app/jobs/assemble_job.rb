@@ -14,5 +14,8 @@ class AssembleJob < ApplicationJob
     # Process SubTopics into Stories
     Stories::ProcessSubtopicsJob.perform_now
 
+    # Create Stemmed Stories
+    Stories::ProcessStoryStemsJob.perform_now
+
   end
 end

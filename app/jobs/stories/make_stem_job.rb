@@ -34,7 +34,7 @@ module Stories
       SYSTEM_ROLE
 
       question = <<~QUESTION
-        - You have received the following as a news brief about `#{story.tag.name}`.
+        - You have received the following as a news brief about `#{story.sub_topic.name}` and `#{story.tag.name}`.
         - It is your job to write an article consisting of 6 sections, each section has the following format:
         ```
         + header

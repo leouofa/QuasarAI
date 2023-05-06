@@ -8,7 +8,7 @@
 
       =r ux.h2 'center aligned !font-mono'
         | Tags
-        =r ux.label text: @tags.count, class: 'circular !bg-purple-700 !text-white'
+        =r ux.label text: @total_tags, class: 'circular !bg-purple-700 !text-white'
 
       =r ux.div 'text-center'
         = paginate @tags

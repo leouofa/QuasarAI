@@ -3,8 +3,6 @@ module FeedItems
     queue_as :default
 
     def perform(*_args)
-      # feeds = Feed.where("created_at >= ? AND created_at <= ?",
-      #                    Time.zone.now.utc.beginning_of_day, Time.zone.now.utc.end_of_day)
       feeds = Feed.where(processed: false)
 
       feeds.each do |feed|
