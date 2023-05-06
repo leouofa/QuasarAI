@@ -24,10 +24,18 @@
             br
             =r ux.strong "#{story.processed ? ' text-green-800' : 'text-red-800'} !mb-80"
               = "Processed: #{story.processed}"
-            - if story.invalid_json
-              br
-              br
-              =r ux.label text: "Invalid JSON", class: 'red'
+            - if story.images.count.positive?
+              =r ux.div
+                = "Images: #{story.images.count}"
+
+            =r ux.div 'mt-5 mb-5'
+              - if story.invalid_json
+                =r ux.label text: "Invalid JSON", class: 'red'
+
+              - if story.invalid_images
+                =r ux.label text: "Invalid Images", class: 'purple'
+
+
 
             =r ux.divider
             =r ux.div text: 'Feed Items: ', class: 'mb-4 text-blue-600'

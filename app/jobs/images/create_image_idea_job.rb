@@ -59,7 +59,7 @@ class Images::CreateImageIdeaJob < ApplicationJob
       Rails.logger.debug "invalid_json: #{invalid_images} | counter: #{counter}"
     end
 
-    if response["error"].present?
+    if response["error"].present? || invalid_images
       story.update(invalid_images: true)
     else
       image_ideas = JSON.parse(response["choices"][0]["message"]["content"])["images"]
