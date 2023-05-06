@@ -1,4 +1,4 @@
-class Images::CreateImageJob < ApplicationJob
+class Images::CreateImageIdeaJob < ApplicationJob
   queue_as :default
 
   def perform(story:)
@@ -7,41 +7,40 @@ class Images::CreateImageJob < ApplicationJob
     return if story.invalid_images
     return if story.images.count.positive?
 
-    story.stem
-
     system_role = <<~SYSTEM_ROLE
       You are a senior graphics illustrator working for the New York times.
     SYSTEM_ROLE
 
     question = <<~QUESTION
-      - You have received the following story in JSON format
       - The story is about `#{story.sub_topic.name}` and `#{story.tag.name}`.
       - It is your job to come up with 3 ai image ideas that support the story.
-      - The each idea should be 4-5 sentences that support the story.
-      - The image ideas should be different from each other.
-      - Don't use real people or places in the image ideas.
-      - Make sure the image ideas are violet or offensive.
+      - The each image idea should be 4-5 sentences that support the story.
       - Make images in sci-fi, cyberpunk, synthwave or fantasy styles.
-      - The return result MUST be in JSON format in the following structure:
+
+       Return the answer as a JSON object with the following structure:
 
       ```
-       images: [
-          {
-            "description": "image description"
-          },
-          {
-            "description": "image description"
-          }
-       ]
+      { "images": [
+        { "description": "image idea 1" },
+        { "description": "image idea 2" },
+        { "description": "image idea 3" } ]
+      }
       ```
     QUESTION
 
-    brief = story.stem
+
+
+    brief = <<~BRIEF
+      You have received the following story in JSON format:
+
+      #{story.stem}
+    BRIEF
+
 
     messages = [
       { role: "system", content: system_role },
-      { role: "user", content: question },
-      { role: "user", content: brief }
+      { role: "user", content: brief },
+      { role: "user", content: question }
     ]
 
 
@@ -61,7 +60,7 @@ class Images::CreateImageJob < ApplicationJob
     end
 
     if response["error"].present?
-      story.update(invalid_images:)
+      story.update(invalid_images: true)
     else
       image_ideas = JSON.parse(response["choices"][0]["message"]["content"])["images"]
 
