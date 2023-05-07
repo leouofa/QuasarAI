@@ -1,5 +1,5 @@
 module Stories
-  class ProcessSubtopicsJob < ApplicationJob
+  class CreateStoriesFromSubtopicsJob < ApplicationJob
     queue_as :default
 
     def perform(*args)

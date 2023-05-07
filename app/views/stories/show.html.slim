@@ -5,6 +5,16 @@
         - if @parsed_story
           = link_to '< Back to all stories', stories_path
           =r ux.h1 text: @parsed_story['title']
+          =r ux.text text: @parsed_story['summary']
+
+          -if @story.images.present?
+            =r ux.h3 text: 'Image Ideas'
+            =r ux.list 'bulleted !mb-20'
+              - @story.images.each do |image|
+                =r ux.item
+                  = image.idea
+
+
           -@parsed_story['content'].each do |section|
             h2= section['header']
             =r ux.small text: section['generative_image_idea']

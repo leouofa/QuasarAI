@@ -3,19 +3,22 @@ class AssembleJob < ApplicationJob
 
   def perform(*args)
     # Get New Feeds
-    Feeds::GetSubTopicFeedsJob.perform_now
+    Feeds::CreateFeedsFromSubtopicsJob.perform_now
 
     # Create Feed Items From Feeds
-    FeedItems::ProcessJob.perform_now
+    FeedItems::CreateFeedItemsJob.perform_now
 
     # Convert HTML to Markdown
     FeedItems::ConvertHtmlToMarkdownJob.perform_now
 
     # Process SubTopics into Stories
-    Stories::ProcessSubtopicsJob.perform_now
+    Stories::CreateStoriesFromSubtopicsJob.perform_now
 
     # Create Stemmed Stories
     Stories::ProcessStoryStemsJob.perform_now
+
+    # Images from processed stories
+    Images::CreateImageIdeasFromStoriesJob.perform_now
 
   end
 end
