@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_06_203811) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_07_133500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,7 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_06_203811) do
     t.text "stem"
     t.boolean "processed", default: false
     t.boolean "invalid_json", default: false
-    t.boolean "invalid_images"
+    t.boolean "invalid_images", default: false
     t.index ["sub_topic_id"], name: "index_stories_on_sub_topic_id"
   end
 

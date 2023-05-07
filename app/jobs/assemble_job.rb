@@ -18,6 +18,7 @@ class AssembleJob < ApplicationJob
     Stories::ProcessStoryStemsJob.perform_now
 
     # Images from processed stories
+    Images::CreateImageIdeasFromStoriesJob.perform_now
 
   end
 end
