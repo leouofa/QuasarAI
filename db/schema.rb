@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_07_133500) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_07_165120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_07_133500) do
     t.string "uploaded_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "invalid_prompt", default: false
     t.index ["story_id"], name: "index_images_on_story_id"
+  end
+
+  create_table "imaginations", force: :cascade do |t|
+    t.integer "aspect_ratio", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "payload", default: {}, null: false
+    t.integer "status", default: 0, null: false
+    t.uuid "message_uuid", default: -> { "gen_random_uuid()" }, null: false
+    t.bigint "image_id"
   end
 
   create_table "stories", force: :cascade do |t|
