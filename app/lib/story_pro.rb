@@ -254,11 +254,11 @@ module StoryPro
     send_post_request('tags', payload)
   end
 
-  # TODO: NOT WORKING
-  def self.get_tag(id)
-    raise ArgumentError, "id is required" unless id
-    send_get_request("tags/#{id}")
-  end
+  # TODO: API NOT IMPLEMENTED
+  # def self.get_tag(id)
+  #   raise ArgumentError, "id is required" unless id
+  #   send_get_request("tags/#{id}")
+  # end
 
   def self.update_tag(id, name:, promotion_only: nil)
     raise ArgumentError, "id is required" unless id
@@ -297,11 +297,11 @@ module StoryPro
     send_post_request('categories', payload)
   end
 
-  # TODO: NOT WORKING
-  def self.get_category(id)
-    raise ArgumentError, "id is required" unless id
-    send_get_request("categories/#{id}")
-  end
+  # TODO: API NOT IMPLEMENTED
+  # def self.get_category(id)
+  #   raise ArgumentError, "id is required" unless id
+  #   send_get_request("categories/#{id}")
+  # end
 
   def self.update_category(id, name: nil, color_id: nil)
     raise ArgumentError, "id is required" unless id
