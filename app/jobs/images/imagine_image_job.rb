@@ -42,6 +42,8 @@ class Images::ImagineImageJob < ApplicationJob
       rescue StandardError => _e
         image.update(invalid_prompt: true)
       end
+
+      throttle_requests
     end
 
     image.update(processed: true)
