@@ -44,6 +44,8 @@ module StoryPro
                 req = Net::HTTP::Put.new(uri.request_uri, headers)
                 req.body = payload.to_json
                 req
+              when :delete
+                Net::HTTP::Delete.new(uri.request_uri, headers)
               end
 
     response = http.request(request)
@@ -121,6 +123,11 @@ module StoryPro
     send_request(:put, "discussions/#{id}", payload: payload)
   end
 
+  def self.delete_discussion(id)
+    raise ArgumentError, "id is required" unless id
+    send_request(:delete, "discussions/#{id}")
+  end
+
   def self.create_article(name: nil, user_id: nil, category_id: nil)
     create_entry('article', name: name, user_id: user_id, category_id: category_id)
   end
@@ -134,6 +141,11 @@ module StoryPro
     end
 
     send_request(:put, "articles/#{id}", payload: payload)
+  end
+
+  def self.delete_article(id)
+    raise ArgumentError, "id is required" unless id
+    send_request(:delete, "articles/#{id}")
   end
 
   def self.create_video(name: nil, user_id: nil, category_id: nil)
@@ -151,6 +163,11 @@ module StoryPro
     send_request(:put, "videos/#{id}", payload: payload)
   end
 
+  def self.delete_video(id)
+    raise ArgumentError, "id is required" unless id
+    send_request(:delete, "videos/#{id}")
+  end
+
   def self.create_promotion(name: nil, user_id: nil, category_id: nil, url: nil)
     create_entry('promotion', name: name, user_id: user_id, category_id: category_id, url: url)
   end
@@ -165,6 +182,12 @@ module StoryPro
 
     send_request(:put, "promotions/#{id}", payload: payload)
   end
+
+  def self.delete_promotion(id)
+    raise ArgumentError, "id is required" unless id
+    send_request(:delete, "promotions/#{id}")
+  end
+
 
   def self.create_tag(name:, promotion_only: false)
     raise ArgumentError, "name is required" unless name
@@ -193,6 +216,11 @@ module StoryPro
     send_request(:put, "tags/#{id}", payload: payload)
   end
 
+  def self.delete_tag(id)
+    raise ArgumentError, "id is required" unless id
+    send_request(:delete, "tags/#{id}")
+  end
+
   def self.create_category(name:, color_id:)
     raise ArgumentError, "name is required" unless name
     raise ArgumentError, "color_id is required" unless color_id
@@ -216,6 +244,11 @@ module StoryPro
     payload['color_id'] = color_id if color_id
 
     send_request(:put, "categories/#{id}", payload: payload)
+  end
+
+  def self.delete_category(id)
+    raise ArgumentError, "id is required" unless id
+    send_request(:delete, "categories/#{id}")
   end
 end
 
