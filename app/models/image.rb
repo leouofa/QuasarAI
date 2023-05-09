@@ -15,6 +15,6 @@ class Image < ApplicationRecord
   has_many :imaginations
 
   def card_imagination
-    imaginations.where(aspect_ratio: :card)
+    imaginations.where(aspect_ratio: :card).last
   end
 end

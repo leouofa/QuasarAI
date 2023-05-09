@@ -28,9 +28,9 @@
               =r ux.div
                 = "Images: #{story.images.count}"
 
-            - if story.images.first&.card_imagination.present? && story.images.first.card_imagination.last.payload["imageUrl"].present?
+            - if story.images.first&.card_imagination.present? && story.images.first.card_imagination.payload["imageUrl"].present?
               =r ux.div
-                = image_tag story.images.first.card_imagination.last.payload["imageUrl"], class: 'w-1/2'
+                = image_tag story.images.first.card_imagination.payload["imageUrl"], class: 'w-1/2'
 
             =r ux.div 'mt-5 mb-5'
               - if story.invalid_json

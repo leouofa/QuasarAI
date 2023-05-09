@@ -4,7 +4,7 @@ class Images::ImagineImageJob < ApplicationJob
   def perform(image:)
 
     # check if the card imagination exists
-    unless image.card_imagination.count.positive?
+    unless image.card_imagination.present?
       imagination = Imagination.create(image:, aspect_ratio: :card, status: :pending, message_uuid: SecureRandom.uuid)
       prompt = "#{image.idea} --ar 2:1"
 
@@ -15,5 +15,7 @@ class Images::ImagineImageJob < ApplicationJob
         image.update(invalid_prompt: true)
       end
     end
+
+
   end
 end
