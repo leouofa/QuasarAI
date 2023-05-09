@@ -12,7 +12,7 @@
 #  stem           :text
 #  processed      :boolean          default(FALSE)
 #  invalid_json   :boolean          default(FALSE)
-#  invalid_images :boolean
+#  invalid_images :boolean          default(FALSE)
 #
 class Story < ApplicationRecord
   has_many :assignments, dependent: :destroy

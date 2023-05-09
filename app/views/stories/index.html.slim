@@ -28,6 +28,10 @@
               =r ux.div
                 = "Images: #{story.images.count}"
 
+            - if story.images.first&.card_imagination.present? && story.images.first.card_imagination.payload["imageUrl"].present?
+              =r ux.div
+                = image_tag story.images.first.card_imagination.payload["imageUrl"], class: 'w-1/2'
+
             =r ux.div 'mt-5 mb-5'
               - if story.invalid_json
                 =r ux.label text: "Invalid JSON", class: 'red'
@@ -49,3 +53,6 @@
                 =r ux.div text: "Topic: #{story.sub_topic.topic.name}"
                 =r ux.div text: "Sub Topic: #{story.sub_topic.name}"
               =r ux.divider
+
+      =r ux.div 'text-center'
+        = paginate @stories
