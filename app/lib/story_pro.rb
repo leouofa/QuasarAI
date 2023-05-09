@@ -104,12 +104,34 @@ module StoryPro
     send_post_request(pluralize(type), payload)
   end
 
-  def self.pluralize(word)
-    word.end_with?('s') ? word : "#{word}s"
+  def self.get_users(role: nil)
+    allowed_roles = %w[admin editor member banned]
+
+    if role && !allowed_roles.include?(role)
+      raise ArgumentError, "Invalid role: '#{role}'. Allowed values are: #{allowed_roles.join(', ')}"
+    end
+
+    query_params = {}
+    query_params['role'] = role if role
+
+    send_get_request('users', query_params)
+  end
+
+  def self.get_colors
+    send_get_request('colors')
+  end
+
+  def self.get_discussion_fields
+    send_get_request('discussions/new')
   end
 
   def self.create_discussion(name: nil, user_id: nil, category_id: nil)
     create_entry('discussion', name: name, user_id: user_id, category_id: category_id)
+  end
+
+  def self.get_discussion(id)
+    raise ArgumentError, "id is required" unless id
+    send_get_request("discussions/#{id}")
   end
 
   def self.update_discussion(id, **options)
@@ -128,8 +150,17 @@ module StoryPro
     send_request(:delete, "discussions/#{id}")
   end
 
+  def self.get_article_fields
+    send_get_request('articles/new')
+  end
+
   def self.create_article(name: nil, user_id: nil, category_id: nil)
     create_entry('article', name: name, user_id: user_id, category_id: category_id)
+  end
+
+  def self.get_article(id)
+    raise ArgumentError, "id is required" unless id
+    send_get_request("articles/#{id}")
   end
 
   def self.update_article(id, **options)
@@ -148,8 +179,17 @@ module StoryPro
     send_request(:delete, "articles/#{id}")
   end
 
+  def self.get_video_fields
+    send_get_request('videos/new')
+  end
+
   def self.create_video(name: nil, user_id: nil, category_id: nil)
     create_entry('video', name: name, user_id: user_id, category_id: category_id)
+  end
+
+  def self.get_video(id)
+    raise ArgumentError, "id is required" unless id
+    send_get_request("videos/#{id}")
   end
 
   def self.update_video(id, **options)
@@ -168,8 +208,17 @@ module StoryPro
     send_request(:delete, "videos/#{id}")
   end
 
+  def self.get_promotion_fields
+    send_get_request('promotions/new')
+  end
+
   def self.create_promotion(name: nil, user_id: nil, category_id: nil, url: nil)
     create_entry('promotion', name: name, user_id: user_id, category_id: category_id, url: url)
+  end
+
+  def self.get_promotion(id)
+    raise ArgumentError, "id is required" unless id
+    send_get_request("promotions/#{id}")
   end
 
   def self.update_promotion(id, **options)
@@ -188,6 +237,9 @@ module StoryPro
     send_request(:delete, "promotions/#{id}")
   end
 
+  def self.get_tag_fields
+    send_get_request('tags/new')
+  end
 
   def self.create_tag(name:, promotion_only: false)
     raise ArgumentError, "name is required" unless name
@@ -200,6 +252,12 @@ module StoryPro
     }
 
     send_post_request('tags', payload)
+  end
+
+  # TODO: NOT WORKING
+  def self.get_tag(id)
+    raise ArgumentError, "id is required" unless id
+    send_get_request("tags/#{id}")
   end
 
   def self.update_tag(id, name:, promotion_only: nil)
@@ -221,6 +279,10 @@ module StoryPro
     send_request(:delete, "tags/#{id}")
   end
 
+  def self.get_category_fields
+    send_get_request('categories/new')
+  end
+
   def self.create_category(name:, color_id:)
     raise ArgumentError, "name is required" unless name
     raise ArgumentError, "color_id is required" unless color_id
@@ -233,6 +295,12 @@ module StoryPro
     }
 
     send_post_request('categories', payload)
+  end
+
+  # TODO: NOT WORKING
+  def self.get_category(id)
+    raise ArgumentError, "id is required" unless id
+    send_get_request("categories/#{id}")
   end
 
   def self.update_category(id, name: nil, color_id: nil)
@@ -249,6 +317,10 @@ module StoryPro
   def self.delete_category(id)
     raise ArgumentError, "id is required" unless id
     send_request(:delete, "categories/#{id}")
+  end
+
+  def self.pluralize(word)
+    word.end_with?('s') ? word : "#{word}s"
   end
 end
 
