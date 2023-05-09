@@ -117,5 +117,32 @@ module StoryPro
   def self.create_promotion(name: nil, user_id: nil, category_id: nil, url: nil)
     create_entry('promotion', name: name, user_id: user_id, category_id: category_id, url: url)
   end
+
+  def self.create_tag(name:, promotion_only: false)
+    raise ArgumentError, "name is required" unless name
+
+    payload = {
+      'tag' => {
+        'name' => name,
+        'promotion_only' => promotion_only.to_s
+      }
+    }
+
+    send_post_request('tags', payload)
+  end
+
+  def self.create_category(name:, color_id:)
+    raise ArgumentError, "name is required" unless name
+    raise ArgumentError, "color_id is required" unless color_id
+
+    payload = {
+      'category' => {
+        'name' => name,
+        'color_id' => color_id
+      }
+    }
+
+    send_post_request('categories', payload)
+  end
 end
 
