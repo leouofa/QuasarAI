@@ -40,6 +40,10 @@ module StoryPro
                 req
               when :get
                 Net::HTTP::Get.new(uri.request_uri, headers)
+              when :put
+                req = Net::HTTP::Put.new(uri.request_uri, headers)
+                req.body = payload.to_json
+                req
               end
 
     response = http.request(request)
@@ -106,16 +110,60 @@ module StoryPro
     create_entry('discussion', name: name, user_id: user_id, category_id: category_id)
   end
 
+  def self.update_discussion(id, **options)
+    raise ArgumentError, "id is required" unless id
+
+    payload = { 'discussion' => {} }
+    options.each do |key, value|
+      payload['discussion'][key.to_s] = value
+    end
+
+    send_request(:put, "discussions/#{id}", payload: payload)
+  end
+
   def self.create_article(name: nil, user_id: nil, category_id: nil)
     create_entry('article', name: name, user_id: user_id, category_id: category_id)
+  end
+
+  def self.update_article(id, **options)
+    raise ArgumentError, "id is required" unless id
+
+    payload = { 'article' => {} }
+    options.each do |key, value|
+      payload['article'][key.to_s] = value
+    end
+
+    send_request(:put, "articles/#{id}", payload: payload)
   end
 
   def self.create_video(name: nil, user_id: nil, category_id: nil)
     create_entry('video', name: name, user_id: user_id, category_id: category_id)
   end
 
+  def self.update_video(id, **options)
+    raise ArgumentError, "id is required" unless id
+
+    payload = { 'video' => {} }
+    options.each do |key, value|
+      payload['video'][key.to_s] = value
+    end
+
+    send_request(:put, "videos/#{id}", payload: payload)
+  end
+
   def self.create_promotion(name: nil, user_id: nil, category_id: nil, url: nil)
     create_entry('promotion', name: name, user_id: user_id, category_id: category_id, url: url)
+  end
+
+  def self.update_promotion(id, **options)
+    raise ArgumentError, "id is required" unless id
+
+    payload = { 'promotion' => {} }
+    options.each do |key, value|
+      payload['promotion'][key.to_s] = value
+    end
+
+    send_request(:put, "promotions/#{id}", payload: payload)
   end
 
   def self.create_tag(name:, promotion_only: false)
@@ -131,6 +179,20 @@ module StoryPro
     send_post_request('tags', payload)
   end
 
+  def self.update_tag(id, name:, promotion_only: nil)
+    raise ArgumentError, "id is required" unless id
+    raise ArgumentError, "name is required" unless name
+
+    payload = {
+      'tag' => {
+        'name' => name
+      }
+    }
+    payload['tag']['promotion_only'] = promotion_only.to_s unless promotion_only.nil?
+
+    send_request(:put, "tags/#{id}", payload: payload)
+  end
+
   def self.create_category(name:, color_id:)
     raise ArgumentError, "name is required" unless name
     raise ArgumentError, "color_id is required" unless color_id
@@ -143,6 +205,17 @@ module StoryPro
     }
 
     send_post_request('categories', payload)
+  end
+
+  def self.update_category(id, name: nil, color_id: nil)
+    raise ArgumentError, "id is required" unless id
+    raise ArgumentError, "Either name or color_id must be provided" if name.nil? && color_id.nil?
+
+    payload = {}
+    payload['name'] = name if name
+    payload['color_id'] = color_id if color_id
+
+    send_request(:put, "categories/#{id}", payload: payload)
   end
 end
 
