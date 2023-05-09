@@ -14,6 +14,11 @@
                 =r ux.item
                   = image.idea
 
+          =r ux.h3 text: 'Rendered Images'
+          - @images.each do |image|
+            - if image.card_imagination.present? && image.card_imagination.last&.payload["imageUrl"].present?
+              = image_tag image.card_imagination.last&.payload["imageUrl"], class: 'w-full'
+
 
           -@parsed_story['content'].each do |section|
             h2= section['header']

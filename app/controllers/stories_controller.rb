@@ -12,6 +12,7 @@ class StoriesController < ApplicationController
     rescue JSON::ParserError
       false
     end
+    @images = Image.where(story: @story, invalid_prompt: false)
   end
 
 end
