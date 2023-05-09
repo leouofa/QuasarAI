@@ -1,7 +1,7 @@
 class AssembleJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(*_args)
     # Get New Feeds
     Feeds::CreateFeedsFromSubtopicsJob.perform_now
 
