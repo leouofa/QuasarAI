@@ -65,19 +65,17 @@ module Stories
         ```
       QUESTION
 
-
       messages = [
         { role: "system", content: system_role },
         { role: "user", content: question },
         { role: "user", content: brief }
       ]
 
-
       invalid_json = true
       counter = 0
       response = nil
 
-      while invalid_json && counter < 4 do
+      while invalid_json && counter < 4
         response = chat(messages:)
 
         counter += 1
@@ -111,6 +109,5 @@ module Stories
         }
       )
     end
-
   end
 end

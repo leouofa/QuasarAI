@@ -15,7 +15,9 @@
 FactoryBot.define do
   factory :feed_item do
     feed
-    payload { { url: Faker::Internet.url, author: Faker::Name.name, crawled: Faker::Time.backward, published: Faker::Time.backward } }
+    payload do
+      { url: Faker::Internet.url, author: Faker::Name.name, crawled: Faker::Time.backward, published: Faker::Time.backward }
+    end
     content { Faker::Lorem.paragraph }
     uuid { Faker::Internet.uuid }
     markdown_content { Faker::Markdown.emphasis }

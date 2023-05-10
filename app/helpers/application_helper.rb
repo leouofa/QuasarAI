@@ -7,6 +7,7 @@ module ApplicationHelper
     ]
     Markdown.new(text, *options).to_html.html_safe
   end
+
   def menu_active?(test_path)
     return 'active' if request.path == test_path
 

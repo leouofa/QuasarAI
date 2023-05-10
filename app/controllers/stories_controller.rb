@@ -14,5 +14,4 @@ class StoriesController < ApplicationController
     end
     @images = Image.where(story: @story, invalid_prompt: false)
   end
-
 end

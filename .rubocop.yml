@@ -19,4 +19,6 @@ AllCops:
     - '.irbrc'
     - 'lib/tasks/themes.rake'
     - 'lib/cli/**/*'
+    - 'app/lib/story_pro.rb'
+    - 'app/jobs/**/*'
 

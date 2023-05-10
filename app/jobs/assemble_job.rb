@@ -22,6 +22,5 @@ class AssembleJob < ApplicationJob
 
     # Create Imaginations from Image Ideas
     Images::ImagineImagesJob.perform_now
-
   end
 end

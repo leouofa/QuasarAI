@@ -56,11 +56,11 @@ module StoryPro
   end
 
   def self.send_post_request(endpoint, payload)
-    send_request(:post, endpoint, payload: payload)
+    send_request(:post, endpoint, payload:)
   end
 
   def self.send_get_request(endpoint, query_params = {})
-    send_request(:get, endpoint, query_params: query_params)
+    send_request(:get, endpoint, query_params:)
   end
 
   def self.get_entries(kind: nil, status: nil)
@@ -126,11 +126,12 @@ module StoryPro
   end
 
   def self.create_discussion(name: nil, user_id: nil, category_id: nil)
-    create_entry('discussion', name: name, user_id: user_id, category_id: category_id)
+    create_entry('discussion', name:, user_id:, category_id:)
   end
 
   def self.get_discussion(id)
     raise ArgumentError, "id is required" unless id
+
     send_get_request("discussions/#{id}")
   end
 
@@ -142,11 +143,12 @@ module StoryPro
       payload['discussion'][key.to_s] = value
     end
 
-    send_request(:put, "discussions/#{id}", payload: payload)
+    send_request(:put, "discussions/#{id}", payload:)
   end
 
   def self.delete_discussion(id)
     raise ArgumentError, "id is required" unless id
+
     send_request(:delete, "discussions/#{id}")
   end
 
@@ -155,11 +157,12 @@ module StoryPro
   end
 
   def self.create_article(name: nil, user_id: nil, category_id: nil)
-    create_entry('article', name: name, user_id: user_id, category_id: category_id)
+    create_entry('article', name:, user_id:, category_id:)
   end
 
   def self.get_article(id)
     raise ArgumentError, "id is required" unless id
+
     send_get_request("articles/#{id}")
   end
 
@@ -171,11 +174,12 @@ module StoryPro
       payload['article'][key.to_s] = value
     end
 
-    send_request(:put, "articles/#{id}", payload: payload)
+    send_request(:put, "articles/#{id}", payload:)
   end
 
   def self.delete_article(id)
     raise ArgumentError, "id is required" unless id
+
     send_request(:delete, "articles/#{id}")
   end
 
@@ -184,11 +188,12 @@ module StoryPro
   end
 
   def self.create_video(name: nil, user_id: nil, category_id: nil)
-    create_entry('video', name: name, user_id: user_id, category_id: category_id)
+    create_entry('video', name:, user_id:, category_id:)
   end
 
   def self.get_video(id)
     raise ArgumentError, "id is required" unless id
+
     send_get_request("videos/#{id}")
   end
 
@@ -200,11 +205,12 @@ module StoryPro
       payload['video'][key.to_s] = value
     end
 
-    send_request(:put, "videos/#{id}", payload: payload)
+    send_request(:put, "videos/#{id}", payload:)
   end
 
   def self.delete_video(id)
     raise ArgumentError, "id is required" unless id
+
     send_request(:delete, "videos/#{id}")
   end
 
@@ -213,11 +219,12 @@ module StoryPro
   end
 
   def self.create_promotion(name: nil, user_id: nil, category_id: nil, url: nil)
-    create_entry('promotion', name: name, user_id: user_id, category_id: category_id, url: url)
+    create_entry('promotion', name:, user_id:, category_id:, url:)
   end
 
   def self.get_promotion(id)
     raise ArgumentError, "id is required" unless id
+
     send_get_request("promotions/#{id}")
   end
 
@@ -229,11 +236,12 @@ module StoryPro
       payload['promotion'][key.to_s] = value
     end
 
-    send_request(:put, "promotions/#{id}", payload: payload)
+    send_request(:put, "promotions/#{id}", payload:)
   end
 
   def self.delete_promotion(id)
     raise ArgumentError, "id is required" unless id
+
     send_request(:delete, "promotions/#{id}")
   end
 
@@ -260,6 +268,7 @@ module StoryPro
 
   def self.get_tag(id)
     raise ArgumentError, "id is required" unless id
+
     send_get_request("tags/#{id}")
   end
 
@@ -274,11 +283,12 @@ module StoryPro
     }
     payload['tag']['promotion_only'] = promotion_only.to_s unless promotion_only.nil?
 
-    send_request(:put, "tags/#{id}", payload: payload)
+    send_request(:put, "tags/#{id}", payload:)
   end
 
   def self.delete_tag(id)
     raise ArgumentError, "id is required" unless id
+
     send_request(:delete, "tags/#{id}")
   end
 
@@ -306,6 +316,7 @@ module StoryPro
 
   def self.get_category(id)
     raise ArgumentError, "id is required" unless id
+
     send_get_request("categories/#{id}")
   end
 
@@ -317,11 +328,12 @@ module StoryPro
     payload['name'] = name if name
     payload['color_id'] = color_id if color_id
 
-    send_request(:put, "categories/#{id}", payload: payload)
+    send_request(:put, "categories/#{id}", payload:)
   end
 
   def self.delete_category(id)
     raise ArgumentError, "id is required" unless id
+
     send_request(:delete, "categories/#{id}")
   end
 
@@ -331,18 +343,19 @@ module StoryPro
 
   def self.add_element(element:, parent_id:, parent_component:, area:)
     valid_areas = {
-      'articles' => ['header', 'content', 'reference'],
-      'videos' => ['header', 'content', 'reference'],
-      'discussions' => ['header', 'content', 'reference'],
-      'promotions' => ['header', 'content', 'reference'],
+      'articles' => %w[header content reference],
+      'videos' => %w[header content reference],
+      'discussions' => %w[header content reference],
+      'promotions' => %w[header content reference],
       'site_settings_theme_homepage' => ['homepage'],
-      'site_settings_theme_css' => ['page', 'fullscreen', 'regular', 'featured']
+      'site_settings_theme_css' => %w[page fullscreen regular featured]
     }
 
     if valid_areas[parent_component].nil?
       raise ArgumentError, "Invalid parent_component: '#{parent_component}'"
     elsif !valid_areas[parent_component].include?(area)
-      raise ArgumentError, "Invalid area: '#{area}' for parent_component '#{parent_component}'. Allowed values are: #{valid_areas[parent_component].join(', ')}"
+      raise ArgumentError,
+            "Invalid area: '#{area}' for parent_component '#{parent_component}'. Allowed values are: #{valid_areas[parent_component].join(', ')}"
     end
 
     payload = {
@@ -359,16 +372,17 @@ module StoryPro
     raise ArgumentError, "id is required" unless id
     raise ArgumentError, "element is required" unless element
 
-    payload = {element => {}}
+    payload = { element => {} }
     options.each do |key, value|
       payload[element][key.to_s] = value
     end
 
-    send_request(:put, "elements/#{id}", payload: payload)
+    send_request(:put, "elements/#{id}", payload:)
   end
 
   def self.delete_element(id)
     raise ArgumentError, "id is required" unless id
+
     send_request(:delete, "elements/#{id}")
   end
 
@@ -384,4 +398,3 @@ module StoryPro
     word.end_with?('s') ? word : "#{word}s"
   end
 end
-

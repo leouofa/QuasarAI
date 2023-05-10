@@ -9,8 +9,8 @@
 #  updated_at   :datetime         not null
 #
 class Assignment < ApplicationRecord
-  belongs_to :story, required: true
-  belongs_to :feed_item, required: true
+  belongs_to :story, optional: false
+  belongs_to :feed_item, optional: false
 
   validates :feed_item_id, uniqueness: { scope: :story_id }
 end

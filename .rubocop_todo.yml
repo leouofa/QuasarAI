@@ -127,3 +127,14 @@ Metrics/ParameterLists:
 Rails/OutputSafety:
   Exclude:
     - 'app/helpers/devise_helper.rb'
+    - 'app/helpers/application_helper.rb'
+
+Rails/UniqueValidationWithoutIndex:
+  Exclude:
+    - 'app/models/assignment.rb'
+    - 'app/models/story_tag.rb'
+    - 'app/models/tagging.rb'
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'lib/tasks/stories.rake'
