@@ -237,6 +237,10 @@ module StoryPro
     send_request(:delete, "promotions/#{id}")
   end
 
+  def self.get_tags
+    send_get_request('tags')
+  end
+
   def self.get_tag_fields
     send_get_request('tags/new')
   end
@@ -276,6 +280,10 @@ module StoryPro
   def self.delete_tag(id)
     raise ArgumentError, "id is required" unless id
     send_request(:delete, "tags/#{id}")
+  end
+
+  def self.get_categories
+    send_get_request('categories')
   end
 
   def self.get_category_fields
@@ -366,6 +374,10 @@ module StoryPro
 
   def self.get_distinct_elements
     send_get_request('elements/distinct')
+  end
+
+  def self.get_settings
+    send_get_request('settings')
   end
 
   def self.pluralize(word)
