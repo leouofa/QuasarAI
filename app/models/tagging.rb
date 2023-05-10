@@ -9,7 +9,7 @@
 #  updated_at   :datetime         not null
 #
 class Tagging < ApplicationRecord
-  belongs_to :feed_item, required: true
-  belongs_to :tag, required: true
+  belongs_to :feed_item, optional: false
+  belongs_to :tag, optional: false
   validates :tag_id, uniqueness: { scope: :feed_item_id }
 end

@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class StoryTag < ApplicationRecord
-  belongs_to :story, required: true
-  belongs_to :tag, required: true
+  belongs_to :story, optional: false
+  belongs_to :tag, optional: false
   validates :tag_id, uniqueness: { scope: :story_id }
 end

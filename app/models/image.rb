@@ -12,7 +12,7 @@
 #
 class Image < ApplicationRecord
   belongs_to :story
-  has_many :imaginations
+  has_many :imaginations, dependent: :destroy
 
   def card_imagination
     imaginations.where(aspect_ratio: :card).last

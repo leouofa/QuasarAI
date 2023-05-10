@@ -72,7 +72,6 @@ module NextLeg
       "buttonMessageId" => button_message_id
     }
 
-
     send_request("button", payload)
   end
 end

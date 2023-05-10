@@ -1,2 +1,4 @@
-module Webhooks::MidjourneyHelper
+module Webhooks
+  module MidjourneyHelper
+  end
 end

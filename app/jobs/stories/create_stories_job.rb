@@ -4,7 +4,7 @@ module Stories
     MINIMUM_TAG_ARRAY_SIZE = 2
 
     def perform(sub_topic:)
-      process_sub_topic(sub_topic: sub_topic)
+      process_sub_topic(sub_topic:)
     end
 
     def process_sub_topic(sub_topic:)
@@ -55,7 +55,7 @@ module Stories
       Rails.logger.debug "\nPROCESSING:: ================END======================="
       Rails.logger.debug "\n"
 
-      process_sub_topic(sub_topic: sub_topic)
+      process_sub_topic(sub_topic:)
     end
   end
 end
