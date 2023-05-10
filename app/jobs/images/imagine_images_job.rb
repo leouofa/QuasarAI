@@ -1,4 +1,4 @@
-class Image::ImagineImagesJob < ApplicationJob
+class Images::ImagineImagesJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)

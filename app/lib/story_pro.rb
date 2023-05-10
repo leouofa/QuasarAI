@@ -319,6 +319,40 @@ module StoryPro
     send_request(:delete, "categories/#{id}")
   end
 
+  def self.get_elements
+    send_get_request('elements')
+  end
+
+  def self.add_element(element:, parent_id:, parent_component:, area:)
+    valid_areas = {
+      'articles' => ['header', 'content', 'reference'],
+      'videos' => ['header', 'content', 'reference'],
+      'discussions' => ['header', 'content', 'reference'],
+      'promotions' => ['header', 'content', 'reference'],
+      'site_settings_theme_homepage' => ['homepage'],
+      'site_settings_theme_css' => ['page', 'fullscreen', 'regular', 'featured']
+    }
+
+    if valid_areas[parent_component].nil?
+      raise ArgumentError, "Invalid parent_component: '#{parent_component}'"
+    elsif !valid_areas[parent_component].include?(area)
+      raise ArgumentError, "Invalid area: '#{area}' for parent_component '#{parent_component}'. Allowed values are: #{valid_areas[parent_component].join(', ')}"
+    end
+
+    payload = {
+      'element' => element,
+      'parent_id' => parent_id,
+      'parent_component' => parent_component,
+      'area' => area
+    }
+
+    send_post_request("elements/add", payload)
+  end
+
+  def self.get_distinct_elements
+    send_get_request('elements/distinct')
+  end
+
   def self.pluralize(word)
     word.end_with?('s') ? word : "#{word}s"
   end
