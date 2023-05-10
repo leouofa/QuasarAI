@@ -349,6 +349,23 @@ module StoryPro
     send_post_request("elements/add", payload)
   end
 
+  def self.update_element(id, element:, **options)
+    raise ArgumentError, "id is required" unless id
+    raise ArgumentError, "element is required" unless element
+
+    payload = {element => {}}
+    options.each do |key, value|
+      payload[element][key.to_s] = value
+    end
+
+    send_request(:put, "elements/#{id}", payload: payload)
+  end
+
+  def self.delete_element(id)
+    raise ArgumentError, "id is required" unless id
+    send_request(:delete, "elements/#{id}")
+  end
+
   def self.get_distinct_elements
     send_get_request('elements/distinct')
   end
