@@ -1,7 +1,7 @@
 class AssembleJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(*_args)
     # Get New Feeds
     Feeds::CreateFeedsFromSubtopicsJob.perform_now
 
@@ -19,6 +19,9 @@ class AssembleJob < ApplicationJob
 
     # Images from processed stories
     Images::CreateImageIdeasFromStoriesJob.perform_now
+
+    # Create Imaginations from Image Ideas
+    Images::ImagineImagesJob.perform_now
 
   end
 end

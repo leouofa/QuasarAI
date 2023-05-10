@@ -9,6 +9,7 @@
 #  payload      :jsonb            not null
 #  status       :integer          default("pending"), not null
 #  message_uuid :uuid             not null
+#  image_id     :bigint
 #
 class Imagination < ApplicationRecord
   belongs_to :image
@@ -25,6 +26,6 @@ class Imagination < ApplicationRecord
 
   ## Portrait
   # Resolution 1456 x 2560
-  # AR 1.76:1 – almost 9:16
+  # AR 0.57:1 – almost 9:16
   enum aspect_ratio: { card: 0, landscape: 1, portrait: 2 }
 end
