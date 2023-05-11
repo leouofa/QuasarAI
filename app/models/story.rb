@@ -22,6 +22,7 @@ class Story < ApplicationRecord
   has_one :tag, through: :story_tag
 
   has_many :images, dependent: :destroy
+  has_many :imaginations, through: :images
 
   belongs_to :sub_topic
 end

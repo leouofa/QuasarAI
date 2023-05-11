@@ -13,6 +13,7 @@ gem "bootsnap", require: false
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'config'
 gem 'deep_cloneable', '~> 3.2.0'
+gem 'uploadcare-rails'
 gem 'friendly_id'
 gem 'httparty'
 gem 'maruku'
