@@ -10,6 +10,9 @@
 #  status       :integer          default("pending"), not null
 #  message_uuid :uuid             not null
 #  image_id     :bigint
+#  uploaded     :boolean          default(FALSE), not null
+#  upload_error :boolean
+#  uploadcare   :jsonb
 #
 class Imagination < ApplicationRecord
   belongs_to :image

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_142749) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_161809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_142749) do
     t.integer "status", default: 0, null: false
     t.uuid "message_uuid", default: -> { "gen_random_uuid()" }, null: false
     t.bigint "image_id"
+    t.boolean "uploaded", default: false, null: false
+    t.boolean "upload_error"
+    t.jsonb "uploadcare"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -106,6 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_142749) do
     t.datetime "updated_at", null: false
     t.string "stream_id"
     t.integer "min_tags_for_story"
+    t.integer "storypro_category_id"
+    t.integer "storypro_user_id"
     t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
   end
 
