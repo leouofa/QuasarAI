@@ -102,14 +102,5 @@ class Publisher
         raise ArgumentError, "Invalid element_name: '#{element_name}'. Allowed values are: #{display_element_names}"
       end
     end
-
-    # def add(element_name, options = {})
-    #   # this allows us to pass both `elements_heading` and `heading` as element_name
-    #   compiled_element_name = element_name.gsub('elements_', '')
-    #   compiled_element_name = "elements_#{compiled_element_name}"
-    #
-    #
-    #   @publisher.add_element_to_area(@area_name, compiled_element_name, options)
-    # end
   end
 end
