@@ -31,6 +31,7 @@ class Publisher
 
     element_id = element['id']
     StoryPro.update_element(element_id, element: element_name, **options) unless options.empty?
+    sleep(2)
   end
 
   def create_entry
@@ -49,7 +50,50 @@ class Publisher
   end
 
   def publish
-    Rails.logger.debug entry
+    case kind
+    when :discussion
+      StoryPro.update_discussion(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+    when :article
+      StoryPro.update_article(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+    when :video
+      StoryPro.update_video(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+    when :promotion
+      StoryPro.update_promotion(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+    else
+      raise ArgumentError, "Invalid kind: '#{kind}'"
+    end
+  end
+
+  def update(**options)
+    case kind
+    when :discussion
+      StoryPro.update_discussion(@entry['id'], **options)
+    when :article
+      StoryPro.update_article(@entry['id'], **options)
+    when :video
+      StoryPro.update_video(@entry['id'], **options)
+    when :promotion
+      StoryPro.update_promotion(@entry['id'], **options)
+    else
+      raise ArgumentError, "Invalid kind: '#{kind}'"
+    end
+  end
+
+  def delete
+    case kind
+    when :discussion
+      StoryPro.delete_discussion(@entry['id'])
+    when :article
+      StoryPro.delete_article(@entry['id'])
+    when :video
+      StoryPro.delete_video(@entry['id'])
+    when :promotion
+      StoryPro.delete_promotion(@entry['id'])
+    else
+      raise ArgumentError, "Invalid kind: '#{kind}'"
+    end
+
+    Rails.logger.debug "Deleted entry: #{@entry}"
   end
 
   class AreaElementBuilder
