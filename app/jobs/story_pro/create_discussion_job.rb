@@ -29,28 +29,3 @@ module StoryPro
     end
   end
 end
-
-# elements_heading
-# elements_divider
-# elements_richtext
-# elements_embed
-# elements_image
-# elements_oversizedembed
-# elements_oversizedimage
-# elements_video
-# elements_blockquote
-# elements_oversizedquote
-# elements_reference
-# elements_solidheader
-# elements_imageheader
-# elements_embededheader
-# elements_videoheader
-# elements_colorblock
-# elements_featuredcontent
-# elements_discussion
-# elements_pagecss
-# elements_fullscreencss
-# elements_regularcss
-# elements_featuredcss
-# elements_spacer
-# elements_wall
