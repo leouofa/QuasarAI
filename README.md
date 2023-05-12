@@ -1,7 +1,5 @@
-# Enterprise 🖖
-
-----
-“Logic is the beginning of wisdom, not the end.”
+<h1 align="center">Enterprise 🖖 </h1> 
+<p align="center">“Logic is the beginning of wisdom, not the end.”</p>
 
 ----
 
