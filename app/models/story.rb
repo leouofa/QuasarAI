@@ -37,6 +37,9 @@ class Story < ApplicationRecord
 
   belongs_to :sub_topic
 
+  scope :unprocessed, -> { where(processed: false ) }
+  scope :processed, -> { where(processed: true) }
+
   scope :with_stem_and_valid_processed_images, lambda {
     joins(:images)
       .where(processed: true, invalid_json: false)

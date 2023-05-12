@@ -7,36 +7,44 @@ topics:
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        prompts: 'default'
 
       - name: Adventure
         stream_id: feed/https://feedly.com/f/alert/627b968a-3473-4d4f-ade7-321976996695
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        prompts: 'default'
 
       - name: Puzzle
         stream_id: feed/https://feedly.com/f/alert/55b44c1b-b0a7-47b0-8100-67c0cd9a914e
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        prompts: 'default'
 
       - name: Role Playing
         stream_id: feed/https://feedly.com/f/alert/45bf01b0-96ad-4d26-a17a-9866aa0fb92d
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        prompts: 'default'
 
       - name: Simulation
         stream_id: feed/https://feedly.com/f/alert/05785e57-c996-4d63-b6e9-158ebaf106fd
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        prompts: 'default'
 
       - name: Strategy
         stream_id: feed/https://feedly.com/f/alert/575682bc-bd36-46ab-bd33-90a40357e93c
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online gaming publication. DONT MAKE ANYTHING UP.
 
   - name: Team Sports
     maximum_topics: 6
@@ -46,39 +54,60 @@ topics:
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online sports publication. DONT MAKE ANYTHING UP.
 
       - name: Soccer
         stream_id: feed/https://feedly.com/f/alert/f38eef1e-1feb-4899-b164-e401a1ee463a
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online sports publication. DONT MAKE ANYTHING UP.
 
       - name: Basketball
         stream_id: feed/https://feedly.com/f/alert/aa390cd3-71d3-4793-8265-3971122b802b
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online sports publication. DONT MAKE ANYTHING UP.
 
       - name: Baseball
         stream_id: feed/https://feedly.com/f/alert/d6c2b0d8-67cd-4a7c-910a-dcde54a4ebe7
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online sports publication. DONT MAKE ANYTHING UP.
 
       - name: Cricket
         stream_id: feed/https://feedly.com/f/alert/383f7f0a-c212-4d39-9381-09d4712114e3
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online sports publication. DONT MAKE ANYTHING UP.
 
       - name: Rugby
         stream_id: feed/https://feedly.com/f/alert/80849568-f621-4c53-ad75-02b1215a284e
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online sports publication. DONT MAKE ANYTHING UP.
 
       - name: Volleyball
         stream_id: feed/https://feedly.com/f/alert/df0497a0-23e9-45a8-869a-951ef3ec8022
         min_tags_for_story: 2
         storypro_category_id: 1
         storypro_user_id: 1
+        stem:
+          - system_role:
+              You are a senior reporter working for an online sports publication. DONT MAKE ANYTHING UP.
