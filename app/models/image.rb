@@ -25,6 +25,9 @@ class Image < ApplicationRecord
   belongs_to :story
   has_many :imaginations, dependent: :destroy
 
+  scope :processed_and_valid, -> { where(processed: true, invalid_prompt: false) }
+
+
   def card_imagination
     imaginations.where(aspect_ratio: :card).last
   end
