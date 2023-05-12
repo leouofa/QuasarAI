@@ -5,14 +5,6 @@ require 'rails_helper'
 RSpec.describe FeedItems::CreateFeedItemsJob, type: :job do
   include ActiveJob::TestHelper
 
-  before do
-    Tagging.delete_all
-    Tag.delete_all
-    FeedItem.delete_all
-    Feed.delete_all
-    SubTopic.delete_all
-  end
-
   let(:sub_topic) { create(:sub_topic) }
   let!(:unprocessed_feed) { create(:feed, sub_topic: sub_topic, processed: false) }
 

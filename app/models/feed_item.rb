@@ -40,4 +40,7 @@ class FeedItem < ApplicationRecord
                  author: :string,
                  crawled: :datetime,
                  published: :datetime
+
+  scope :processed, -> { where(processed: true) }
+
 end

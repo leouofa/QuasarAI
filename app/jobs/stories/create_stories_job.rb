@@ -39,10 +39,7 @@ module Stories
                                             tags: { name: story_tag_name },
                                             feed_items: { processed: false })
 
-      story = Story.new
-      story.tag = tag
-      story.sub_topic = sub_topic
-      story.save
+      story = Story.create(tag: tag, sub_topic: sub_topic)
 
       available_feed_items.sample(sub_topic.min_tags_for_story).each do |available_feed_item|
         story.feed_items << available_feed_item
