@@ -1,12 +1,9 @@
-<center>
-
 # Enterprise 🖖
+
+----
 “Logic is the beginning of wisdom, not the end.”
 
 ----
-
-</center>
-
 
 Welcome to Enterprise, the open-source project that boldly takes your newsroom where no newsroom has gone before! Inspired by the spirit of exploration and innovation from Star Trek, Enterprise is a cutting-edge AI-driven platform designed to revolutionize the way we create, curate, and distribute news content.
 
