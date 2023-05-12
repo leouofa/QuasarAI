@@ -1,11 +1,16 @@
 module Stories
   class MakeStemJob < ApplicationJob
     queue_as :default
+    include SettingsHelper
 
     def perform(story:)
       return if story.processed
 
       @client = OpenAI::Client.new
+
+      prompts = story.sub_topic.prompts
+
+
 
       feed_items = []
       story.feed_items.each do |feed_item|
@@ -30,7 +35,7 @@ module Stories
       BRIEF
 
       system_role = <<~SYSTEM_ROLE
-        You are a senior reporter working for the New York times. DONT MAKE ANYTHING UP.
+        #{ s("prompts.#{prompts}.stem.system_role")}
       SYSTEM_ROLE
 
       question = <<~QUESTION

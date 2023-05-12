@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_12_190609) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_12_233301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_190609) do
     t.integer "min_tags_for_story"
     t.integer "storypro_category_id"
     t.integer "storypro_user_id"
+    t.string "prompts"
     t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
   end
 
