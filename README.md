@@ -2,11 +2,14 @@
 <p align="center">“Logic is the beginning of wisdom, not the end.”</p>
 
 ----
+<p align="center">
+    <img alt="ruby version: 3.2.2" src="https://img.shields.io/badge/Ruby-3.2.2-brightgreen" />
+    <img alt="rails version: 7.0.4" src="https://img.shields.io/badge/Rails-7.0.4-brightgreen" />
+    <img alt="tailwind version: 3.3.0" src="https://img.shields.io/badge/Tailwind-3.3.0-blue" />
+    <img alt="fomantic version: 2.9.2" src="https://img.shields.io/badge/Fomantic-2.9.2-blue" />
+</p>
 
-![Ruby](https://img.shields.io/badge/Ruby-3.2.2-brightgreen) 
-![Rails](https://img.shields.io/badge/Rails-7.0.4-brightgreen)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.3.0-blue)
-![Fomantic](https://img.shields.io/badge/Fomantic-2.9.0-blue)
+----
 
 Welcome to Enterprise, the open-source project that boldly takes your newsroom where no newsroom has gone before! Inspired by the spirit of exploration and innovation from Star Trek, Enterprise is a cutting-edge AI-driven platform designed to revolutionize the way we create, curate, and distribute news content.
 
