@@ -1,7 +1,12 @@
-<h1 align="center">Enterprise 🖖 </h1> 
+<h1 align="center">Enterprise 🛸 </h1> 
 <p align="center">“Logic is the beginning of wisdom, not the end.”</p>
 
 ----
+
+![Ruby](https://img.shields.io/badge/Ruby-3.2.2-brightgreen) 
+![Rails](https://img.shields.io/badge/Rails-7.0.4-brightgreen)
+![Tailwind](https://img.shields.io/badge/Tailwind-3.3.0-blue)
+![Fomantic](https://img.shields.io/badge/Fomantic-2.9.0-blue)
 
 Welcome to Enterprise, the open-source project that boldly takes your newsroom where no newsroom has gone before! Inspired by the spirit of exploration and innovation from Star Trek, Enterprise is a cutting-edge AI-driven platform designed to revolutionize the way we create, curate, and distribute news content.
 
