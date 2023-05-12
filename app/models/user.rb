@@ -24,7 +24,8 @@
 #  updated_at             :datetime         not null
 #  has_access             :boolean          default(FALSE)
 #  admin                  :boolean          default(FALSE)
-#
+
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

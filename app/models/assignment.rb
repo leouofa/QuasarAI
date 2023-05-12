@@ -7,7 +7,12 @@
 #  feed_item_id :bigint           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#
+
+
+################ LOGIC #################
+# - Joins the `stories` and `feed_items` tables.
+########################################
+
 class Assignment < ApplicationRecord
   belongs_to :story, optional: false
   belongs_to :feed_item, optional: false

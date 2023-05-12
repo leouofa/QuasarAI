@@ -6,7 +6,6 @@ module Stories
       Story.all.where(processed: false).each do |story|
         Stories::MakeStemJob.perform_now(story:)
       end
-      # Do something later
     end
   end
 end
