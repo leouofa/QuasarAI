@@ -11,7 +11,7 @@ class AssembleJob < ApplicationJob
     # [x] Convert HTML to Markdown
     FeedItems::ConvertHtmlToMarkdownJob.perform_now
 
-    # [ ] Creates stories based on subtopics
+    # [x] Creates stories based on subtopics
     Stories::CreateStoriesFromSubtopicsJob.perform_now
 
     # Create Stemmed Stories
