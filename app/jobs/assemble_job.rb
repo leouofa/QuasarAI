@@ -5,7 +5,7 @@ class AssembleJob < ApplicationJob
     # [x] Get New Feeds
     Feeds::CreateFeedsFromSubtopicsJob.perform_now
 
-    # [ ] Create Feed Items From Feeds
+    # [x] Create Feed Items From Feeds
     FeedItems::CreateFeedItemsJob.perform_now
 
     # Convert HTML to Markdown
