@@ -10,9 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_30_204140) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_12_133050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "story_id", null: false
+    t.bigint "feed_item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_item_id"], name: "index_assignments_on_feed_item_id"
+    t.index ["story_id"], name: "index_assignments_on_story_id"
+  end
+
+  create_table "feed_items", force: :cascade do |t|
+    t.bigint "feed_id", null: false
+    t.jsonb "payload"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "uuid"
+    t.text "markdown_content"
+    t.boolean "processed", default: false
+    t.index ["feed_id"], name: "index_feed_items_on_feed_id"
+    t.index ["uuid"], name: "index_feed_items_on_uuid", unique: true
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.bigint "sub_topic_id", null: false
+    t.jsonb "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "processed", default: false
+    t.index ["sub_topic_id"], name: "index_feeds_on_sub_topic_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -23,6 +54,84 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_204140) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "story_id", null: false
+    t.text "idea"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "invalid_prompt", default: false
+    t.boolean "processed", default: false, null: false
+    t.index ["story_id"], name: "index_images_on_story_id"
+  end
+
+  create_table "imaginations", force: :cascade do |t|
+    t.integer "aspect_ratio", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "payload", default: {}, null: false
+    t.integer "status", default: 0, null: false
+    t.uuid "message_uuid", default: -> { "gen_random_uuid()" }, null: false
+    t.bigint "image_id"
+    t.boolean "uploaded", default: false, null: false
+    t.jsonb "uploadcare"
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string "prefix"
+    t.jsonb "payload"
+    t.boolean "complete"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sub_topic_id", null: false
+    t.text "stem"
+    t.boolean "processed", default: false
+    t.boolean "invalid_json", default: false
+    t.boolean "invalid_images", default: false
+    t.index ["sub_topic_id"], name: "index_stories_on_sub_topic_id"
+  end
+
+  create_table "story_tags", force: :cascade do |t|
+    t.bigint "story_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_story_tags_on_story_id"
+    t.index ["tag_id"], name: "index_story_tags_on_tag_id"
+  end
+
+  create_table "sub_topics", force: :cascade do |t|
+    t.string "name"
+    t.bigint "topic_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "stream_id"
+    t.integer "min_tags_for_story"
+    t.integer "storypro_category_id"
+    t.integer "storypro_user_id"
+    t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "feed_item_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_item_id"], name: "index_taggings_on_feed_item_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +160,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_204140) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assignments", "feed_items"
+  add_foreign_key "assignments", "stories"
+  add_foreign_key "feed_items", "feeds"
+  add_foreign_key "feeds", "sub_topics"
+  add_foreign_key "images", "stories"
+  add_foreign_key "stories", "sub_topics"
+  add_foreign_key "story_tags", "stories"
+  add_foreign_key "story_tags", "tags"
+  add_foreign_key "sub_topics", "topics"
+  add_foreign_key "taggings", "feed_items"
+  add_foreign_key "taggings", "tags"
 end

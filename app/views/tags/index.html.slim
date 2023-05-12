@@ -1,0 +1,27 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        =r ux.text class: 'text-center', text: '🔒 This page is protected by devise. You can only see it if you are logged in & authorized. 🔒'
+
+      =r ux.divider
+
+      =r ux.h2 'center aligned !font-mono'
+        | Tags
+        =r ux.label text: @total_tags, class: 'circular !bg-purple-700 !text-white'
+
+      =r ux.div 'text-center'
+        = paginate @tags
+
+      =r ux.div 'flex justify-center mt-10'
+        =r ux.table class: 'celled max-w-xl', ui: true
+          =r ux.thead
+            =r ux.tr
+              =r ux.th text: 'Tag'
+              =r ux.th text: 'Count'
+          - @tags.each do |tag_name, tag_count|
+            =r ux.tr
+              =r ux.td
+                = tag_name
+              =r ux.td
+                = tag_count

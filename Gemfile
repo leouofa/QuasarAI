@@ -13,9 +13,11 @@ gem "bootsnap", require: false
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'config'
 gem 'deep_cloneable', '~> 3.2.0'
+gem 'uploadcare-rails'
 gem 'friendly_id'
 gem 'httparty'
 gem 'maruku'
+gem 'reverse_markdown'
 gem 'invisible_captcha'
 gem 'jsonb_accessor'
 gem "jbuilder"
@@ -23,6 +25,7 @@ gem 'rack-canonical-host'
 gem 'simple_scheduler'
 gem 'sitemap_generator'
 gem 'slack-notifier'
+gem 'ruby-openai'
 
 # Database
 gem 'hiredis'
@@ -47,6 +50,7 @@ gem "stimulus-rails"
 gem 'turbo-rails'
 gem 'view_component'
 gem 'vite_rails'
+gem 'redcarpet'
 
 # Errors
 gem 'appsignal'
@@ -61,6 +65,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'tty-prompt'
+  gem 'webmock'
 end
 
 group :development do
@@ -77,6 +82,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec_tap', require: false
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
 end
 

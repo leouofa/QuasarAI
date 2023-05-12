@@ -114,3 +114,27 @@ Style/SymbolArray:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 127
+
+
+Rails/FilePath:
+  Exclude:
+    - 'config/initializers/apipie.rb'
+    -
+Metrics/ParameterLists:
+  Exclude:
+    - 'app/mailers/admin_mailer.rb'
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/devise_helper.rb'
+    - 'app/helpers/application_helper.rb'
+
+Rails/UniqueValidationWithoutIndex:
+  Exclude:
+    - 'app/models/assignment.rb'
+    - 'app/models/story_tag.rb'
+    - 'app/models/tagging.rb'
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'lib/tasks/stories.rake'

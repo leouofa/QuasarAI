@@ -1,0 +1,39 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        =r ux.text class: 'text-center', text: '🔒 This page is protected by devise. You can only see it if you are logged in & authorized. 🔒'
+
+      =r ux.divider
+
+      =r ux.h2 'center aligned !font-mono'
+        | Feeds
+        =r ux.label text: @total_feeds, class: 'circular !bg-orange-700 !text-white'
+
+      =r ux.div 'text-center'
+        = paginate @feeds
+
+      - @feeds.each do |feed|
+        =r ux.segment '!mt-10 !mb-20 !bg-zinc-200 !border-4 !border-zinc-300 !shadow-xl !px-10 !py-10'
+          =r ux.code '!text-xs'
+            =r ux.strong text: "Feed ID: #{feed.id}", class: ''
+            br
+            -if feed.feed_items.count > 0
+              =r ux.div text: "Feed Items: #{ feed.feed_items.count }", class: ''
+              =r ux.divider '!h-1 bg-zinc-700'
+              - feed.feed_items.each do |feed_item|
+                =r ux.div 'mt-10 p-5 bg-zinc-100 rounded-md border-solid border-4 border-zinc-300 overflow-x-hidden'
+                  =r ux.div class: 'mt-10 text-green-700', text: feed_item.created_at.strftime("Ingested on %m/%d/%Y")
+                  =r ux.div text: "Title: #{feed_item.title}"
+                  =r ux.div text: "URL: #{feed_item.url}"
+                  =r ux.div text: "Author: #{feed_item.author}"
+                  =r ux.div text: "Published: #{feed_item.published}"
+                  =r ux.span 'text-black !mb-20'
+                    = "Tags: #{feed_item.tags.map { |tag| "#{tag.name}" }.join(', ')}"
+                  =r ux.div 'mt-10 p-5 bg-zinc-200 !rounded-2xl overflow-x-hidden'
+                    = markdown(feed_item.markdown_content)
+
+            - else
+              =r ux.div text: "Feed Items: 0", class: ''
+
+

@@ -26,7 +26,7 @@ body {
   overflow-x: hidden;
   min-width: 320px;
   background: #fff;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 17px;
   line-height: 1.4285em;
   color: #000000;
@@ -42,7 +42,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.28571429em;
   margin: calc(2rem - 0.1428571428571429em) 0 1rem;
   font-weight: bold;

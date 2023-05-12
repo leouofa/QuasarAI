@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/kaminari/kaminari.git
-  revision: ff07a285215cfb8a5f70515e86decf4a16ff643c
+  revision: 68fdf60cd6fa6552ac59f26dba3f71ff3c20ba52
   branch: master
   specs:
     kaminari (1.2.2)
@@ -118,7 +118,7 @@ GEM
     apipie-rails (1.0.0)
       actionpack (>= 5.0)
       activesupport (>= 5.0)
-    appsignal (3.4.1)
+    appsignal (3.4.2)
       rack
     ast (2.4.2)
     awesome_print (1.9.2)
@@ -138,10 +138,12 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
-    config (4.1.0)
+    config (4.2.0)
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
     connection_pool (2.4.0)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     date (3.3.3)
     deep_cloneable (3.2.0)
@@ -154,6 +156,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -168,6 +172,10 @@ GEM
     dry-inflector (1.0.0)
     dry-initializer (3.1.1)
     dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-monads (1.6.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
@@ -199,11 +207,31 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
+    faraday (2.7.4)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.0.2)
+    ffi (1.15.5)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
+    hashie (5.0.0)
     hiredis (0.6.3)
+    http (5.1.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.4.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -219,7 +247,10 @@ GEM
       activerecord (>= 5.0)
       activesupport (>= 5.0)
       pg (>= 0.18.1)
-    loofah (2.20.0)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
+    loofah (2.21.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.1)
@@ -233,10 +264,14 @@ GEM
     meta-tags (2.18.0)
       actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
+    mimemagic (0.4.3)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.0)
     multi_xml (0.6.0)
+    multipart-post (2.3.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -307,6 +342,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    redcarpet (3.6.0)
     redis (5.0.6)
       redis-client (>= 0.9.0)
     redis-client (0.14.1)
@@ -315,6 +351,9 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    retries (0.0.5)
+    reverse_markdown (2.1.1)
+      nokogiri
     rexml (3.2.5)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
@@ -324,14 +363,14 @@ GEM
     rspec-mocks (3.12.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (6.0.1)
+    rspec-rails (6.0.2)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       railties (>= 6.1)
-      rspec-core (~> 3.11)
-      rspec-expectations (~> 3.11)
-      rspec-mocks (~> 3.11)
-      rspec-support (~> 3.11)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
     rspec-support (3.12.0)
     rspec_tap (0.2.0)
     rubocop (1.50.2)
@@ -344,23 +383,29 @@ GEM
       rubocop-ast (>= 1.28.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.28.0)
+    rubocop-ast (1.28.1)
       parser (>= 3.2.1.0)
     rubocop-rails (2.19.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
+    ruby-openai (4.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    selenium-webdriver (4.9.0)
+    selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (7.0.9)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
+    sidekiq (7.1.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
-      redis-client (>= 0.11.0)
+      redis-client (>= 0.14.0)
     simple_form (5.2.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -406,7 +451,24 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
+    uploadcare-api_struct (1.1.0)
+      dry-configurable (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-monads (~> 1.6)
+      hashie (~> 5.0)
+      http (~> 5.1)
+    uploadcare-rails (3.3.4)
+      rails (>= 6)
+      uploadcare-ruby (>= 4.3)
+    uploadcare-ruby (4.3.3)
+      mimemagic (~> 0.4)
+      parallel (~> 1.22)
+      retries (~> 0.0)
+      uploadcare-api_struct (>= 1.1, < 2)
     view_component (3.0.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
@@ -414,7 +476,7 @@ GEM
     vite_rails (3.0.14)
       railties (>= 5.1, < 8)
       vite_ruby (~> 3.0, >= 3.2.2)
-    vite_ruby (3.3.1)
+    vite_ruby (3.3.2)
       dry-cli (>= 0.7, < 2)
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
@@ -429,6 +491,10 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
+    webmock (3.18.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -475,12 +541,16 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-controller-testing
   rapid_ui!
+  redcarpet
   redis
+  reverse_markdown
   rspec-rails
   rspec_tap
   rubocop
   rubocop-rails
+  ruby-openai
   selenium-webdriver
+  shoulda-matchers (~> 5.0)
   sidekiq
   simple_form
   simple_scheduler
@@ -491,10 +561,12 @@ DEPENDENCIES
   stimulus-rails
   tty-prompt
   turbo-rails
+  uploadcare-rails
   view_component
   vite_rails
   web-console
   webdrivers
+  webmock
 
 RUBY VERSION
    ruby 3.2.2p53

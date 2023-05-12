@@ -61,6 +61,16 @@ ui:
     tag: table
     css_class: table
 
+  thead:
+    tag: thead
+    css_class: ''
+    ui: false
+
+  th:
+    tag: th
+    css_class: ''
+    ui: false
+
   tr:
     tag: tr
     css_class: ''
@@ -159,7 +169,7 @@ ui:
     css_class: 'component'
     ui: false
 
-  tagging:
+  label:
     tag: div
     css_class: 'label'
 
@@ -178,4 +188,26 @@ ui:
 
   br:
     tag: br
+    ui: false
+
+
+  p:
+    tag: p
+    ui: false
+
+  code:
+    tag: code
+    ui: false
+
+  pre:
+    tag: pre
+    ui: false
+
+  strong:
+    tag: strong
+    ui: false
+
+
+  span:
+    tag: span
     ui: false

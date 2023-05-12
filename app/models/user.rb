@@ -23,14 +23,14 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  has_access             :boolean          default(FALSE)
-#  is_admin               :boolean          default(FALSE)
-#
+#  admin                  :boolean          default(FALSE)
+
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :lockable, :trackable, :confirmable
-
 
   def make_admin
     update(admin: true)
@@ -47,5 +47,4 @@ class User < ApplicationRecord
   def remove_access
     update(has_access: false)
   end
-
 end

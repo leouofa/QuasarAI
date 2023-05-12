@@ -42,3 +42,5 @@ node_modules
 .irb_history
 
 /.vite/
+
+.byebug_history

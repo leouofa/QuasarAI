@@ -2,6 +2,7 @@
 
 require 'capybara/rspec'
 require 'rack_session_access/capybara'
+require 'webmock/rspec'
 require 'byebug'
 
 RSpec.configure do |config|
