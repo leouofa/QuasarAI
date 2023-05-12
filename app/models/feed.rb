@@ -8,6 +8,8 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  processed    :boolean          default(FALSE)
+#  error        :boolean          default(FALSE)
+#
 
 ################ LOGIC #################
 # - The `processed` value is set to true once the feed has been parsed and the feed items have been created.
@@ -23,6 +25,10 @@ class Feed < ApplicationRecord
   belongs_to :sub_topic
 
   has_many :feed_items, dependent: :destroy
+  validates :sub_topic_id, presence: true
+
+  scope :unprocessed, -> { where(processed: false).where.not(error: true) }
+
 
   paginates_per 5
 end

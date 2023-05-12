@@ -2,10 +2,10 @@ class AssembleJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    # Get New Feeds
+    # [x] Get New Feeds
     Feeds::CreateFeedsFromSubtopicsJob.perform_now
 
-    # Create Feed Items From Feeds
+    # [ ] Create Feed Items From Feeds
     FeedItems::CreateFeedItemsJob.perform_now
 
     # Convert HTML to Markdown
