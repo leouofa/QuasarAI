@@ -17,7 +17,11 @@
           =r ux.h3 text: 'Rendered Images'
           - @images.each do |image|
             - if image.card_imagination.present? && image.card_imagination.payload["imageUrl"].present?
-              = image_tag image.card_imagination.payload["imageUrl"], class: 'w-full'
+              = image_tag image.card_imagination.payload["imageUrl"], class: 'w-1/2'
+            - if image.portrait_imagination.present? && image.portrait_imagination.payload["imageUrl"].present?
+              = image_tag image.portrait_imagination.payload["imageUrl"], class: 'w-1/2'
+            - if image.landscape_imagination.present? && image.landscape_imagination.payload["imageUrl"].present?
+              = image_tag image.landscape_imagination.payload["imageUrl"], class: 'w-1/2'
 
 
           -@parsed_story['content'].each do |section|

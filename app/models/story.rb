@@ -10,7 +10,6 @@
 #  processed      :boolean          default(FALSE)
 #  invalid_json   :boolean          default(FALSE)
 #  invalid_images :boolean          default(FALSE)
-#  payload        :jsonb
 #
 
 ################ LOGIC #################
@@ -35,6 +34,8 @@ class Story < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :imaginations, through: :images
 
+  has_one :discussion, dependent: :destroy
+
   belongs_to :sub_topic
 
   scope :viewable, lambda {
@@ -58,4 +59,11 @@ class Story < ApplicationRecord
       .group('stories.id')
       .having('count(images.id) = 3')
   }
+
+  scope :with_stem_and_valid_processed_images_no_discussions, lambda {
+    with_stem_and_valid_processed_images
+      .left_joins(:discussion)
+      .where(discussions: { id: nil })
+  }
+
 end

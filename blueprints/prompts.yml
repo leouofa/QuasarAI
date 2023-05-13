@@ -7,6 +7,10 @@ prompts:
       style: Make images in sci-fi, cyberpunk, synthwave or fantasy styles.
     midjourney:
       prompt_extra: ''
+    discussions:
+      stem:
+        system_role: You are a senior blogger, experienced in SEO, working for a major online news publication. DONT MAKE ANYTHING UP.
+        keywords: ''
 
   gaming:
     stem:
@@ -16,6 +20,10 @@ prompts:
       style: Make images in 90s, nostalgic, 8-bit, 16-bit and 32-bit styles.
     midjourney:
       prompt_extra: ''
+    discussions:
+      stem:
+        system_role: You are a senior blogger, experienced in SEO, working for a major online news publication. DONT MAKE ANYTHING UP.
+        keywords: 'games, gaming, video games, esports, esports news, esports journalism, esports reporting'
 
   sports:
     stem:
@@ -25,3 +33,7 @@ prompts:
       style: Make hyper-realistic images in comic-book, coloring page, knolling styles.
     midjourney:
       prompt_extra: 'hyper-realistic'
+    discussions:
+      stem:
+        system_role: You are a junior blogger, experienced in SEO, working for a major online news publication. DONT MAKE ANYTHING UP.
+        keywords: 'sports, sports news, sports journalism, sports reporting, sports betting, sports betting news, sports betting journalism, sports betting reporting'

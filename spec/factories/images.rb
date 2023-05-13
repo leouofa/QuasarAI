@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: images
+#
+#  id             :bigint           not null, primary key
+#  story_id       :bigint           not null
+#  idea           :text
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  invalid_prompt :boolean          default(FALSE)
+#  processed      :boolean          default(FALSE), not null
+#
 # spec/factories/images.rb
 
 FactoryBot.define do

@@ -32,19 +32,32 @@ html lang="en"
           =r ux.grid
             =r ux.row 'menu'
               =r ux.column size: 16
-                =r ux.menu ui: :on, class: 'inverted black internal !bg-zinc-900 !font-mono'
-                  =r ux.item url: root_path, class: 'logo-item'
-                    =r ux.header text: '{Enterprise}', class: 'inverted logo !font-mono'
-                  = link_to "Dashboard", root_path, class: "item"
-                  = link_to "Feeds", feeds_path, class: "item"
-                  = link_to "Stories", stories_path, class: "item"
-                  = link_to "Imaginations", imaginations_path, class: "item"
-                  = link_to "Tags", tags_path, class: "item"
+                =r ux.menu ui: :on, class: 'inverted small black internal !bg-zinc-900 !font-mono'
+                  =r ux.item url: root_path, class: "logo-item #{menu_active?(root_path)}}"
+                    =r ux.header text: '{e}', class: 'inverted logo !font-mono'
+                  = link_to stories_path, class: "item #{menu_active?(stories_path)}"
+                    =r ux.icon 'leaf'
+                    | Stories
+
+                  = link_to discussions_path, class: "item #{menu_active?(discussions_path)}"
+                    =r ux.icon 'comments'
+                    | Discussions
+
+                  = link_to imaginations_path, class: "item #{menu_active?(imaginations_path)}"
+                    =r ux.icon 'image'
+                    | Imaginations
+                  =r ux.div 'item'
                   =r ux.menu class: 'right', only: :mobile
                     =r ux.item class: 'hamburger', action: 'click->sidenav#toggle'
                       =r ux.icon 'large sidebar'
 
                   =r ux.menu class: 'right inverted', only: :desktop, controller: 'dropdown'
+                    = link_to feeds_path, class: "item"
+                      =r ux.icon 'rss'
+                      | Feeds
+                    = link_to tags_path, class: "item"
+                      =r ux.icon 'tags'
+                      | Tags
                     =r ux.item class: 'top right pointing dropdown', ui: :on
                       = current_user.email
                       =r ux.icon 'dropdown'
