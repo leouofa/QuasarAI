@@ -15,6 +15,12 @@ module Images
         #{s("prompts.#{prompts}.image_idea.system_role")}
       SYSTEM_ROLE
 
+      brief = <<~BRIEF
+        You have received the following story in JSON format:
+
+        #{story.stem}
+      BRIEF
+
       question = <<~QUESTION
         - The story is about `#{story.sub_topic.name}` and `#{story.tag.name}`.
         - It is your job to come up with 3 ai image ideas that support the story.
@@ -31,12 +37,6 @@ module Images
         }
         ```
       QUESTION
-
-      brief = <<~BRIEF
-        You have received the following story in JSON format:
-
-        #{story.stem}
-      BRIEF
 
       messages = [
         { role: "system", content: system_role },

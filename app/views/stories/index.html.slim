@@ -8,13 +8,13 @@
 
       =r ux.h2 'center aligned !font-mono'
         | Stories
-        =r ux.label text: @total_stories, class: 'circular !bg-blue-700 !text-white'
+        =r ux.label text: @total_stories, class: 'circular !bg-black !text-white'
 
       =r ux.div 'text-center'
         = paginate @stories
 
       - @stories.each do |story|
-        =r ux.segment '!mt-10 !mb-20 !bg-zinc-200 !border-4 !border-zinc-300 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+        =r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
           =r ux.code
             =r ux.div 'text-right'
               = link_to 'Show Story', story_path(story)
@@ -24,11 +24,9 @@
             br
             =r ux.strong "#{story.processed ? ' text-green-800' : 'text-red-800'} !mb-80"
               = "Processed: #{story.processed}"
-            - if story.images.count.positive?
+            - if story.images.first&.card_imagination.present? && story.images.first.card_imagination.payload["imageUrl"].present?
               =r ux.div
                 = "Images: #{story.images.count}"
-
-            - if story.images.first&.card_imagination.present? && story.images.first.card_imagination.payload["imageUrl"].present?
               =r ux.div
                 = image_tag story.images.first.card_imagination.payload["imageUrl"], class: 'w-1/2'
 
@@ -47,7 +45,7 @@
             =r ux.div 'mt-0'
               =r ux.pre
                 =r ux.strong text: "Title: #{feed_item.title}"
-                =r ux.div text: "URL: #{feed_item.url}"
+                =r ux.div text: "URL: #{feed_item.url&.slice(0, 80)}.."
                 =r ux.div text: "Author: #{feed_item.author}"
                 =r ux.div text: "Published: #{feed_item.published}"
                 =r ux.div text: "Topic: #{story.sub_topic.topic.name}"

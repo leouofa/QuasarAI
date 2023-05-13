@@ -1,0 +1,58 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        =r ux.text class: 'text-center', text: '🔒 This page is protected by devise. You can only see it if you are logged in & authorized. 🔒'
+
+      =r ux.divider
+
+      =r ux.h2 'center aligned !font-mono'
+        | Stories
+        =r ux.label text: @total_discussions, class: 'circular !bg-blue-700 !text-white'
+
+      =r ux.div 'text-center'
+        = paginate @discussions
+
+      - @discussions.each do |discussion|
+        =r ux.segment '!mt-10 !mb-20 !bg-zinc-200 !border-4 !border-zinc-300 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+          =r ux.code
+            =r ux.div 'text-right'
+              = link_to 'Show Story', story_path(discussion.story)
+
+            =r ux.strong 'text-blue-800 !mb-80'
+              = "Tag: #{discussion.story.tag.name}"
+            br
+            =r ux.strong "#{discussion.story.processed ? ' text-green-800' : 'text-red-800'} !mb-80"
+              = "Processed: #{discussion.story.processed}"
+            - if discussion.story.images.count.positive?
+              =r ux.div
+                = "Images: #{discussion.story.images.count}"
+
+            - if discussion.story.images.first&.card_imagination.present? && discussion.story.images.first.card_imagination.payload["imageUrl"].present?
+              =r ux.div
+                = image_tag discussion.story.images.first.card_imagination.payload["imageUrl"], class: 'w-1/2'
+
+            =r ux.div 'mt-5 mb-5'
+              - if discussion.story.invalid_json
+                =r ux.label text: "Invalid JSON", class: 'red'
+
+              - if discussion.story.invalid_images
+                =r ux.label text: "Invalid Images", class: 'purple'
+
+
+
+            =r ux.divider
+            =r ux.div text: 'Feed Items: ', class: 'mb-4 text-blue-600'
+          - discussion.story.feed_items.each do |feed_item|
+            =r ux.div 'mt-0'
+              =r ux.pre
+                =r ux.strong text: "Title: #{feed_item.title}"
+                =r ux.div text: "URL: #{feed_item.url}"
+                =r ux.div text: "Author: #{feed_item.author}"
+                =r ux.div text: "Published: #{feed_item.published}"
+                =r ux.div text: "Topic: #{discussion.story.sub_topic.topic.name}"
+                =r ux.div text: "Sub Topic: #{discussion.story.sub_topic.name}"
+              =r ux.divider
+
+      =r ux.div 'text-center'
+        = paginate @discussions
