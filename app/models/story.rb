@@ -24,8 +24,6 @@
 #   * It is set to true in create_image_idea_job.rb
 ########################################
 
-#TODO: we may be able to remove `payload`
-
 class Story < ApplicationRecord
   has_many :assignments, dependent: :destroy
   has_many :feed_items, through: :assignments
