@@ -3,7 +3,6 @@
 # Table name: stories
 #
 #  id             :bigint           not null, primary key
-#  payload        :jsonb
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  sub_topic_id   :bigint           not null
@@ -24,6 +23,8 @@
 # - The `invalid_images` tag is set to true if the AI fails to create images ideas for ANY of the images.
 #   * It is set to true in create_image_idea_job.rb
 ########################################
+
+#TODO: we may be able to remove `payload`
 
 class Story < ApplicationRecord
   has_many :assignments, dependent: :destroy
