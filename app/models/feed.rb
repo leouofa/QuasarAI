@@ -27,6 +27,7 @@ class Feed < ApplicationRecord
   has_many :feed_items, dependent: :destroy
   validates :sub_topic_id, presence: true
 
+  scope :viewable, -> { where(processed: true).where.not(error: true) }
   scope :unprocessed, -> { where(processed: false).where.not(error: true) }
 
 

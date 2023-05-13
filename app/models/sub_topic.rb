@@ -11,6 +11,8 @@
 #  min_tags_for_story   :integer
 #  storypro_category_id :integer
 #  storypro_user_id     :integer
+#  prompts              :string
+#
 
 #TODO:
 #   have stream_id, min_tags_for_story, storypro_category_id,

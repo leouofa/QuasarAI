@@ -25,6 +25,7 @@ class Image < ApplicationRecord
   belongs_to :story
   has_many :imaginations, dependent: :destroy
 
+  scope :to_process, -> { where(invalid_prompt: false).where.not(processed: true) }
   scope :processed_and_valid, -> { where(processed: true, invalid_prompt: false) }
 
 

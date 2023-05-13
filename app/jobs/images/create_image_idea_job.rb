@@ -1,22 +1,25 @@
 module Images
   class CreateImageIdeaJob < ApplicationJob
     queue_as :default
+    include SettingsHelper
 
     def perform(story:)
-      @client = OpenAI::Client.new
-
       return if story.invalid_images
       return if story.images.count.positive?
 
+      @client = OpenAI::Client.new
+
+      prompts = story.sub_topic.prompts
+
       system_role = <<~SYSTEM_ROLE
-        You are a senior graphics illustrator working for the New York times.
+        #{s("prompts.#{prompts}.image_idea.system_role")}
       SYSTEM_ROLE
 
       question = <<~QUESTION
         - The story is about `#{story.sub_topic.name}` and `#{story.tag.name}`.
         - It is your job to come up with 3 ai image ideas that support the story.
         - The each image idea should be 4-5 sentences that support the story.
-        - Make images in sci-fi, cyberpunk, synthwave or fantasy styles.
+        - #{s("prompts.#{prompts}.image_idea.style")}
 
          Return the answer as a JSON object with the following structure:
 

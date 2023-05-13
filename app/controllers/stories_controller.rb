@@ -1,8 +1,8 @@
 class StoriesController < ApplicationController
   include RestrictedAccess
   def index
-    @stories = Story.all.order(id: :desc).page params[:page]
-    @total_stories = Story.all.count
+    @stories = Story.viewable.order(id: :desc).page params[:page]
+    @total_stories = Story.viewable.count
   end
 
   def show

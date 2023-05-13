@@ -37,8 +37,19 @@ class Story < ApplicationRecord
 
   belongs_to :sub_topic
 
-  scope :unprocessed, -> { where(processed: false ) }
+  scope :viewable, lambda {
+                     where(processed: true,
+                           invalid_json: false,
+                           invalid_images: false)
+                   }
+  scope :unprocessed, -> { where(processed: false) }
   scope :processed, -> { where(processed: true) }
+
+  scope :without_images, lambda {
+    joins("LEFT JOIN images ON images.story_id = stories.id")
+      .where("images.id IS NULL")
+      .where(invalid_images: false, invalid_json: false)
+  }
 
   scope :with_stem_and_valid_processed_images, lambda {
     joins(:images)

@@ -11,10 +11,12 @@
 #  min_tags_for_story   :integer
 #  storypro_category_id :integer
 #  storypro_user_id     :integer
+#  prompts              :string
 #
 FactoryBot.define do
   factory :sub_topic do
     name { Faker::Lorem.word }
+    prompts { 'default' }
     topic
   end
 end

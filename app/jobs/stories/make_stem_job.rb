@@ -10,8 +10,6 @@ module Stories
 
       prompts = story.sub_topic.prompts
 
-
-
       feed_items = []
       story.feed_items.each do |feed_item|
         feed_items << <<~FEED_ITEM

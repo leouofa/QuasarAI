@@ -14,10 +14,10 @@ class AssembleJob < ApplicationJob
     # [x] Creates stories based on subtopics
     Stories::CreateStoriesFromSubtopicsJob.perform_now
 
-    # [ ] Create Stemmed Stories
+    # [x] Create Stemmed Stories
     Stories::ProcessStoryStemsJob.perform_now
 
-    # Images from processed stories
+    # [ ] Images from processed stories
     Images::CreateImageIdeasFromStoriesJob.perform_now
 
     # Create Imaginations from Image Ideas
