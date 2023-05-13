@@ -52,7 +52,7 @@ jobs:
 
       - name: Setup test database
         run: |
-          until psql -h localhost -U rails -c '\q'; do
+          until psql -h localhost -U rails_test -c '\q'; do
             echo "Postgres is still unavailable - sleeping"
             sleep 1
           done
