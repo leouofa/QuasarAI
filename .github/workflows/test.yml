@@ -11,21 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      db:
-        image: postgres:15
+      postgres:
+        image: postgres:11-alpine
+        ports:
+          - "5432:5432"
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test_db
-        ports: ["5432:5432"]
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
 
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      API_KEY: ${{ secrets.API_KEY }}
+      FEEDLY_TOKEN: ${{ secrets.FEEDLY_TOKEN }}
+      FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+      NEXT_LEG_TOKEN: ${{ secrets.NEXT_LEG_TOKEN }}
+      OPENAI_ACCESS_TOKEN: ${{ secrets.OPENAI_ACCESS_TOKEN }}
+      OPENAI_ORGANIZATION_ID: ${{ secrets.OPENAI_ORGANIZATION_ID }}
+      ORGANIZATION: ${{ secrets.ORGANIZATION }}
+      STORYPRO_API_KEY: ${{ secrets.STORYPRO_API_KEY }}
+      STORYPRO_API_URL: ${{ secrets.STORYPRO_API_URL }}
+      UPLOADCARE_PUBLIC_KEY: ${{ secrets.UPLOADCARE_PUBLIC_KEY }}
+      UPLOADCARE_SECRET_KEY: ${{ secrets.UPLOADCARE_SECRET_KEY }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -39,43 +49,14 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Setup test database
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db
-          PGPASSWORD: postgres
-          API_KEY: ${{ secrets.API_KEY }}
-          FEEDLY_TOKEN: ${{ secrets.FEEDLY_TOKEN }}
-          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
-          NEXT_LEG_TOKEN: ${{ secrets.NEXT_LEG_TOKEN }}
-          OPENAI_ACCESS_TOKEN: ${{ secrets.OPENAI_ACCESS_TOKEN }}
-          OPENAI_ORGANIZATION_ID: ${{ secrets.OPENAI_ORGANIZATION_ID }}
-          ORGANIZATION: ${{ secrets.ORGANIZATION }}
-          STORYPRO_API_KEY: ${{ secrets.STORYPRO_API_KEY }}
-          STORYPRO_API_URL: ${{ secrets.STORYPRO_API_URL }}
-          UPLOADCARE_PUBLIC_KEY: ${{ secrets.UPLOADCARE_PUBLIC_KEY }}
-          UPLOADCARE_SECRET_KEY: ${{ secrets.UPLOADCARE_SECRET_KEY }}
         run: |
           until psql -h localhost -U postgres -c '\q'; do
             echo "Postgres is still unavailable - sleeping"
             sleep 1
           done
-          psql -c 'create extension if not exists pgcrypto;' -U postgres -d test_db
+          psql -c 'create extension if not exists pgcrypto;' -U rails -d rails_test
           bin/rails db:create
           bin/rails db:schema:load
 
       - name: Run tests
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db
-          API_KEY: ${{ secrets.API_KEY }}
-          FEEDLY_TOKEN: ${{ secrets.FEEDLY_TOKEN }}
-          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
-          NEXT_LEG_TOKEN: ${{ secrets.NEXT_LEG_TOKEN }}
-          OPENAI_ACCESS_TOKEN: ${{ secrets.OPENAI_ACCESS_TOKEN }}
-          OPENAI_ORGANIZATION_ID: ${{ secrets.OPENAI_ORGANIZATION_ID }}
-          ORGANIZATION: ${{ secrets.ORGANIZATION }}
-          STORYPRO_API_KEY: ${{ secrets.STORYPRO_API_KEY }}
-          STORYPRO_API_URL: ${{ secrets.STORYPRO_API_URL }}
-          UPLOADCARE_PUBLIC_KEY: ${{ secrets.UPLOADCARE_PUBLIC_KEY }}
-          UPLOADCARE_SECRET_KEY: ${{ secrets.UPLOADCARE_SECRET_KEY }}
         run: bundle exec rspec
