@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_12_133050) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_13_012753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_133050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "processed", default: false
+    t.boolean "error", default: false
     t.index ["sub_topic_id"], name: "index_feeds_on_sub_topic_id"
   end
 
@@ -79,9 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_133050) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.string "prefix"
-    t.jsonb "payload"
-    t.boolean "complete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sub_topic_id", null: false
@@ -110,6 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_133050) do
     t.integer "min_tags_for_story"
     t.integer "storypro_category_id"
     t.integer "storypro_user_id"
+    t.string "prompts"
     t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
   end
 

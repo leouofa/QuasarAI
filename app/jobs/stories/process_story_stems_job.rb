@@ -3,7 +3,7 @@ module Stories
     queue_as :default
 
     def perform(*_args)
-      Story.all.where(processed: false).each do |story|
+      Story.unprocessed.each do |story|
         Stories::MakeStemJob.perform_now(story:)
       end
     end

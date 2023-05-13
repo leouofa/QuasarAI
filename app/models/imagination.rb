@@ -47,4 +47,6 @@ class Imagination < ApplicationRecord
 
   enum status: { pending: 0, upscaling: 1, success: 2, failure: 3 }
   enum aspect_ratio: { card: 0, landscape: 1, portrait: 2 }
+
+  scope :successful_unuploaded, -> { where(status: :success, uploaded: false) }
 end

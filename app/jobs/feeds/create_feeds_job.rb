@@ -20,7 +20,7 @@ module Feeds
 
     def ingest_feed
       feed = Feedly.get_contents(@sub_topic.stream_id)
-      Feed.create(sub_topic: @sub_topic, payload: feed)
+      Feed.create(sub_topic: @sub_topic, payload: feed, processed: false)
     end
   end
 end

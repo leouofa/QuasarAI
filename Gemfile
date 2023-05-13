@@ -75,6 +75,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'faker'
   gem 'factory_bot_rails'
   gem 'rack_session_access'

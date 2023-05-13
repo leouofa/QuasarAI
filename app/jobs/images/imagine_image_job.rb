@@ -1,52 +1,31 @@
 module Images
   class ImagineImageJob < ApplicationJob
     queue_as :default
+    include SettingsHelper
 
     def perform(image:)
-      # check if the card imagination exists
-      if image.card_imagination.blank?
-        imagination = Imagination.create(image:, aspect_ratio: :card, status: :pending, message_uuid: SecureRandom.uuid)
-        prompt = "#{image.idea} --ar 2:1"
+      prompts = image.story.sub_topic.prompts
+      prompt_extra = s("prompts.#{prompts}.midjourney.prompt_extra")
 
-        begin
-          payload = NextLeg.imagine(prompt:, ref: imagination.message_uuid)
-          imagination.update(payload:)
-        rescue StandardError => _e
-          image.update(invalid_prompt: true)
-        end
-
-        throttle_requests
-      end
-
-      if image.landscape_imagination.blank?
-        imagination = Imagination.create(image:, aspect_ratio: :landscape, status: :pending, message_uuid: SecureRandom.uuid)
-        prompt = "#{image.idea} --ar 176:100"
-
-        begin
-          payload = NextLeg.imagine(prompt:, ref: imagination.message_uuid)
-          imagination.update(payload:)
-        rescue StandardError => _e
-          image.update(invalid_prompt: true)
-        end
-
-        throttle_requests
-      end
-
-      if image.portrait_imagination.blank?
-        imagination = Imagination.create(image:, aspect_ratio: :portrait, status: :pending, message_uuid: SecureRandom.uuid)
-        prompt = "#{image.idea} --ar 57:100"
-
-        begin
-          payload = NextLeg.imagine(prompt:, ref: imagination.message_uuid)
-          imagination.update(payload:)
-        rescue StandardError => _e
-          image.update(invalid_prompt: true)
-        end
-
-        throttle_requests
-      end
+      create_imagination(image, prompt_extra, :card, "2:1") if image.card_imagination.blank?
+      create_imagination(image, prompt_extra, :landscape, "176:100") if image.landscape_imagination.blank?
+      create_imagination(image, prompt_extra, :portrait, "57:100") if image.portrait_imagination.blank?
 
       image.update(processed: true)
+    end
+
+    def create_imagination(image, prompt_extra, aspect_ratio, ratio_value)
+      imagination = Imagination.create(image: image, aspect_ratio: aspect_ratio, status: :pending, message_uuid: SecureRandom.uuid)
+      prompt = "#{image.idea} #{prompt_extra} --ar #{ratio_value}"
+
+      begin
+        payload = NextLeg.imagine(prompt: prompt, ref: imagination.message_uuid)
+        imagination.update(payload: payload)
+      rescue StandardError => _e
+        image.update(invalid_prompt: true)
+      end
+
+      throttle_requests
     end
 
     def throttle_requests

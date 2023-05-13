@@ -14,7 +14,8 @@ namespace :blueprints do
         current_sub_topic_topic.update!(stream_id: sub_topic["stream_id"],
                                         min_tags_for_story: sub_topic["min_tags_for_story"],
                                         storypro_category_id: sub_topic["storypro_category_id"],
-                                        storypro_user_id: sub_topic["storypro_user_id"])
+                                        storypro_user_id: sub_topic["storypro_user_id"],
+                                        prompts: sub_topic["prompts"])
       end
     end
   end

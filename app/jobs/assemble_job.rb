@@ -2,28 +2,28 @@ class AssembleJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    # Get New Feeds
+    # [x] Get New Feeds
     Feeds::CreateFeedsFromSubtopicsJob.perform_now
 
-    # Create Feed Items From Feeds
+    # [x] Create Feed Items From Feeds
     FeedItems::CreateFeedItemsJob.perform_now
 
-    # Convert HTML to Markdown
+    # [x] Convert HTML to Markdown
     FeedItems::ConvertHtmlToMarkdownJob.perform_now
 
-    # Process SubTopics into Stories
+    # [x] Creates stories based on subtopics
     Stories::CreateStoriesFromSubtopicsJob.perform_now
 
-    # Create Stemmed Stories
+    # [x] Create Stemmed Stories
     Stories::ProcessStoryStemsJob.perform_now
 
-    # Images from processed stories
+    # [x] Images from processed stories
     Images::CreateImageIdeasFromStoriesJob.perform_now
 
-    # Create Imaginations from Image Ideas
+    # [x] Create Imaginations from Image Ideas
     Images::ImagineImagesJob.perform_now
 
-    # Upload Imaginations to Uploadcare
+    # [ ] Upload Imaginations to Uploadcare
     Images::UploadImaginationsJob.perform_now
   end
 end
