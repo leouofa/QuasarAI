@@ -17,10 +17,10 @@ class AssembleJob < ApplicationJob
     # [x] Create Stemmed Stories
     Stories::ProcessStoryStemsJob.perform_now
 
-    # [ ] Images from processed stories
+    # [x] Images from processed stories
     Images::CreateImageIdeasFromStoriesJob.perform_now
 
-    # Create Imaginations from Image Ideas
+    # [ ] Create Imaginations from Image Ideas
     Images::ImagineImagesJob.perform_now
 
     # Upload Imaginations to Uploadcare
