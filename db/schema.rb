@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_13_145332) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_13_161747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_145332) do
     t.datetime "updated_at", null: false
     t.index ["feed_item_id"], name: "index_assignments_on_feed_item_id"
     t.index ["story_id"], name: "index_assignments_on_story_id"
+  end
+
+  create_table "discussions", force: :cascade do |t|
+    t.text "stem"
+    t.boolean "processed", default: false
+    t.boolean "invalid_json", default: false
+    t.boolean "uploaded", default: false
+    t.bigint "story_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_discussions_on_story_id"
   end
 
   create_table "feed_items", force: :cascade do |t|
@@ -162,6 +173,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_145332) do
 
   add_foreign_key "assignments", "feed_items"
   add_foreign_key "assignments", "stories"
+  add_foreign_key "discussions", "stories"
   add_foreign_key "feed_items", "feeds"
   add_foreign_key "feeds", "sub_topics"
   add_foreign_key "images", "stories"

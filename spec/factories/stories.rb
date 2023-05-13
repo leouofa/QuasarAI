@@ -10,7 +10,6 @@
 #  processed      :boolean          default(FALSE)
 #  invalid_json   :boolean          default(FALSE)
 #  invalid_images :boolean          default(FALSE)
-#  payload        :jsonb
 #
 FactoryBot.define do
   factory :story do
