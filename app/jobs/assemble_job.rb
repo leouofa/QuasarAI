@@ -20,10 +20,10 @@ class AssembleJob < ApplicationJob
     # [x] Images from processed stories
     Images::CreateImageIdeasFromStoriesJob.perform_now
 
-    # [ ] Create Imaginations from Image Ideas
+    # [x] Create Imaginations from Image Ideas
     Images::ImagineImagesJob.perform_now
 
-    # Upload Imaginations to Uploadcare
+    # [ ] Upload Imaginations to Uploadcare
     Images::UploadImaginationsJob.perform_now
   end
 end
