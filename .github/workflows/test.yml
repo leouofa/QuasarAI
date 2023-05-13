@@ -54,6 +54,7 @@ jobs:
           UPLOADCARE_PUBLIC_KEY: ${{ secrets.UPLOADCARE_PUBLIC_KEY }}
           UPLOADCARE_SECRET_KEY: ${{ secrets.UPLOADCARE_SECRET_KEY }}
         run: |
+          psql -c 'create extension if not exists pgcrypto;' -U postgres -d test_db
           bin/rails db:create
           bin/rails db:schema:load
 
