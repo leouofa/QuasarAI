@@ -54,6 +54,10 @@ jobs:
           UPLOADCARE_PUBLIC_KEY: ${{ secrets.UPLOADCARE_PUBLIC_KEY }}
           UPLOADCARE_SECRET_KEY: ${{ secrets.UPLOADCARE_SECRET_KEY }}
         run: |
+          until psql -h localhost -U postgres -c '\q'; do
+            echo "Postgres is still unavailable - sleeping"
+            sleep 1
+          done
           psql -c 'create extension if not exists pgcrypto;' -U postgres -d test_db
           bin/rails db:create
           bin/rails db:schema:load
