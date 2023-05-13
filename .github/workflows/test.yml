@@ -42,6 +42,7 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db
+          PGPASSWORD: postgres
           API_KEY: ${{ secrets.API_KEY }}
           FEEDLY_TOKEN: ${{ secrets.FEEDLY_TOKEN }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
