@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :feeds, only: %i[index]
   resources :stories, only: %i[index show]
   resources :tags, only: %i[index]
+  resources :imaginations, only: %i[index]
 
   resources :unauthorized, only: %i[index]
 
