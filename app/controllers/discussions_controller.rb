@@ -12,6 +12,6 @@ class DiscussionsController < ApplicationController
     rescue JSON::ParserError
       false
     end
-    @images = Image.where(discussion: @discussion, invalid_prompt: false)
+    @images = Image.where(story: @discussion.story, invalid_prompt: false)
   end
 end

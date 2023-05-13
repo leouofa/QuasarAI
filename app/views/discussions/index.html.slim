@@ -7,17 +7,17 @@
       =r ux.divider
 
       =r ux.h2 'center aligned !font-mono'
-        | Stories
-        =r ux.label text: @total_discussions, class: 'circular !bg-blue-700 !text-white'
+        | Discussions
+        =r ux.label text: @total_discussions, class: 'circular !bg-black !text-white'
 
       =r ux.div 'text-center'
         = paginate @discussions
 
       - @discussions.each do |discussion|
-        =r ux.segment '!mt-10 !mb-20 !bg-zinc-200 !border-4 !border-zinc-300 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+        =r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
           =r ux.code
             =r ux.div 'text-right'
-              = link_to 'Show Story', story_path(discussion.story)
+              = link_to 'Show Discussion', discussion_path(discussion)
 
             =r ux.strong 'text-blue-800 !mb-80'
               = "Tag: #{discussion.story.tag.name}"
