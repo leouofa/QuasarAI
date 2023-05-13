@@ -45,27 +45,5 @@ jobs:
           bundler-cache: true
       - name: Set up database schema
         run: bin/rails db:schema:load
-
-#      - name: Set up Ruby
-#        uses: ruby/setup-ruby@v1
-#        with:
-#          ruby-version: 3.2.2
-
-#      - name: Install dependencies
-#        run: |
-#          sudo apt-get -yqq install libpq-dev
-#          gem install bundler
-#          bundle install --jobs 4 --retry 3
-
-#      - name: Setup test database
-#        run: |
-#          until psql -h localhost -U rails -d rails_test -c '\q'; do
-#            echo "Postgres is still unavailable - sleeping"
-#            sleep 1
-#          done
-#          psql -c 'create extension if not exists pgcrypto;' -U rails -d rails_test
-#          bin/rails db:create
-#          bin/rails db:schema:load
-
       - name: Run tests
         run: bundle exec rspec
