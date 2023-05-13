@@ -44,9 +44,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Set up database schema
-        run: |
-          psql -c 'create extension if not exists pgcrypto;' -U rails -d rails_test 
-          bin/rails db:schema:load
+        run: bin/rails db:schema:load
 
 #      - name: Set up Ruby
 #        uses: ruby/setup-ruby@v1
