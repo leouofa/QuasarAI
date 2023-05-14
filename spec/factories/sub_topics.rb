@@ -12,6 +12,7 @@
 #  storypro_category_id :integer
 #  storypro_user_id     :integer
 #  prompts              :string
+#  max_stories_per_day  :integer
 #
 FactoryBot.define do
   factory :sub_topic do

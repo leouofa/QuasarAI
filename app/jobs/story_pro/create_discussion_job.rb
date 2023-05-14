@@ -3,11 +3,12 @@ module StoryPro
     queue_as :default
 
 
-    def perform(story:)
-      # Do something later
+    def perform(discussion:)
+      story = discussion.story
+
       user_id = story.sub_topic.storypro_user_id
       category_id =  story.sub_topic.storypro_category_id
-      stem = JSON.parse(story.stem)
+      stem = JSON.parse(discussion.stem)
 
       images =  Image.where(story:)
 
@@ -18,14 +19,13 @@ module StoryPro
 
       header_landscape_image_url, header_vertical_image_url, card_image_url = extract_image_urls(header_image)
 
-
-      discussion = Publisher.new(kind: :discussion, name:, user_id:, category_id:)
-      discussion.update(description:, social_image: card_image_url)
+      new_discussion = Publisher.new(kind: :discussion, name:, user_id:, category_id:)
+      new_discussion.update(description:, social_image: card_image_url)
 
       dropcap_shown = false
 
       begin
-        discussion.areas do |area|
+        new_discussion.areas do |area|
           area.populate_area 'header' do |element|
             element.add 'image-header',
                         'landscape_image': header_landscape_image_url,
@@ -63,11 +63,13 @@ module StoryPro
           end
 
 
-          publish_rsp = discussion.publish
+          publish_rsp = new_discussion.publish
 
           if publish_rsp.is_a?(Hash) && publish_rsp['errors'].present?
             raise "Error publishing discussion: #{publish_rsp['errors']}"
           end
+
+          discussion.update(uploaded: true, published_at: Time.now.utc, story_pro_id: publish_rsp['id'])
         end
 
       rescue => e

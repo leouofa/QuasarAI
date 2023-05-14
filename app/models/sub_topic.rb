@@ -12,11 +12,8 @@
 #  storypro_category_id :integer
 #  storypro_user_id     :integer
 #  prompts              :string
+#  max_stories_per_day  :integer
 #
-
-#TODO:
-#   have stream_id, min_tags_for_story, storypro_category_id,
-#   storypro_user_id be pulled form YML file directly
 
 class SubTopic < ApplicationRecord
   belongs_to :topic

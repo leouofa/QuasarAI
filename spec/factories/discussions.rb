@@ -11,6 +11,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  published_at :datetime
+#  story_pro_id :integer
 #
 FactoryBot.define do
   factory :discussion do
