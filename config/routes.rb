@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+
+  # mount Sidekiq::Web in your Rails app
+  mount Sidekiq::Web => "/sidekiq"
+
   devise_for :users
   apipie
 

@@ -21,7 +21,7 @@ class AssembleJob < ApplicationJob
     Images::CreateImageIdeasFromStoriesJob.perform_now
 
     # [x] Create Imaginations from Image Ideas
-    Images::ImagineImagesJob.perform_now
+    # Images::ImagineImagesJob.perform_now
 
     # [x] Upload Imaginations to Uploadcare
     Images::UploadImaginationsJob.perform_now
