@@ -9,6 +9,8 @@
 #  updated_at     :datetime         not null
 #  invalid_prompt :boolean          default(FALSE)
 #  processed      :boolean          default(FALSE), not null
+#  uploaded       :boolean          default(FALSE)
+#
 
 
 ################ LOGIC #################
@@ -18,6 +20,8 @@
 #   * If creating the imaginations fails, the `invalid_prompt` column is set to true.
 #   * The logic for setting `processed` and `invalid_prompt` is imagine_image_job.rb
 #   * The imagine_images_job.rb uses those variables to determine if it should create imaginations for the image.
+#
+# - The `uploaded` is marked true by the mark_image_uploaded_job.rb once all 3 imaginations have been uploaded.
 ########################################
 
 
@@ -28,6 +32,19 @@ class Image < ApplicationRecord
   scope :to_process, -> { where(invalid_prompt: false).where.not(processed: true) }
   scope :processed_and_valid, -> { where(processed: true, invalid_prompt: false) }
 
+  scope :with_three_uploaded_imaginations, lambda {
+    joins(:imaginations)
+      .group('images.id')
+      .having('count(imaginations.id) = 3 AND bool_and(imaginations.uploaded) = ?', true)
+  }
+
+  scope :uploaded_with_three_uploaded_imaginations, lambda {
+    with_three_uploaded_imaginations.where(uploaded: true)
+  }
+
+  scope :unuploaded_with_three_uploaded_imaginations, lambda {
+    with_three_uploaded_imaginations.where(uploaded: false)
+  }
 
   def card_imagination
     imaginations.where(aspect_ratio: :card).last
@@ -40,4 +57,5 @@ class Image < ApplicationRecord
   def portrait_imagination
     imaginations.where(aspect_ratio: :portrait).last
   end
+
 end
