@@ -73,10 +73,10 @@ RSpec.describe Story, type: :model do
     describe '.with_stem_and_valid_processed_images' do
       it 'returns stories with a stem, valid, and processed images' do
         story_with_valid_images = create(:story, processed: true, invalid_json: false)
-        create_list(:image, 3, story: story_with_valid_images, processed: true, invalid_prompt: false)
+        create_list(:image, 3, story: story_with_valid_images, processed: true, invalid_prompt: false, uploaded: true)
 
         story_with_invalid_images = create(:story, processed: true, invalid_json: false)
-        create_list(:image, 3, story: story_with_invalid_images, processed: false, invalid_prompt: true)
+        create_list(:image, 3, story: story_with_invalid_images, processed: false, invalid_prompt: true, uploaded: false)
 
         expect(Story.with_stem_and_valid_processed_images).to include(story_with_valid_images)
         expect(Story.with_stem_and_valid_processed_images).not_to include(story_with_invalid_images)
@@ -86,10 +86,12 @@ RSpec.describe Story, type: :model do
     describe '.with_stem_and_valid_processed_images_no_discussions' do
       it 'returns stories with a stem, valid, and processed images, and no discussions' do
         story_with_valid_images_and_no_discussion = create(:story, processed: true, invalid_json: false)
-        create_list(:image, 3, story: story_with_valid_images_and_no_discussion, processed: true, invalid_prompt: false)
+        create_list(:image, 3, story: story_with_valid_images_and_no_discussion, processed: true, invalid_prompt: false, 
+                               uploaded: true)
 
         story_with_valid_images_and_discussion = create(:story, processed: true, invalid_json: false)
-        create_list(:image, 3, story: story_with_valid_images_and_discussion, processed: true, invalid_prompt: false)
+        create_list(:image, 3, story: story_with_valid_images_and_discussion, processed: true, invalid_prompt: false, 
+                               uploaded: true)
         create(:discussion, story: story_with_valid_images_and_discussion)
 
         expect(Story.with_stem_and_valid_processed_images_no_discussions).to include(story_with_valid_images_and_no_discussion)

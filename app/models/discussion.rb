@@ -14,4 +14,6 @@
 #
 class Discussion < ApplicationRecord
   belongs_to :story
+
+  scope :ready_to_upload, -> { where(processed: true, invalid_json: false, uploaded: false) }
 end

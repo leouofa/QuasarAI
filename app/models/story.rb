@@ -55,7 +55,7 @@ class Story < ApplicationRecord
   scope :with_stem_and_valid_processed_images, lambda {
     joins(:images)
       .where(processed: true, invalid_json: false)
-      .where(images: { processed: true, invalid_prompt: false })
+      .where(images: { processed: true, invalid_prompt: false, uploaded: true })
       .group('stories.id')
       .having('count(images.id) = 3')
   }

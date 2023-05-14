@@ -3,11 +3,12 @@ module StoryPro
     queue_as :default
 
 
-    def perform(story:)
-      # Do something later
+    def perform(discussion:)
+      story = discussion.story
+
       user_id = story.sub_topic.storypro_user_id
       category_id =  story.sub_topic.storypro_category_id
-      stem = JSON.parse(story.stem)
+      stem = JSON.parse(discussion.stem)
 
       images =  Image.where(story:)
 
@@ -17,7 +18,6 @@ module StoryPro
       description = stem['summary'].truncate(150)
 
       header_landscape_image_url, header_vertical_image_url, card_image_url = extract_image_urls(header_image)
-
 
       discussion = Publisher.new(kind: :discussion, name:, user_id:, category_id:)
       discussion.update(description:, social_image: card_image_url)
