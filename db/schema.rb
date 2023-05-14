@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_13_161747) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_14_133635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_161747) do
     t.bigint "story_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "published_at"
     t.index ["story_id"], name: "index_discussions_on_story_id"
   end
 
@@ -76,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_161747) do
     t.datetime "updated_at", null: false
     t.boolean "invalid_prompt", default: false
     t.boolean "processed", default: false, null: false
+    t.boolean "uploaded", default: false
     t.index ["story_id"], name: "index_images_on_story_id"
   end
 

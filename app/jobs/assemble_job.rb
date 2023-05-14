@@ -26,7 +26,10 @@ class AssembleJob < ApplicationJob
     # [x] Upload Imaginations to Uploadcare
     Images::UploadImaginationsJob.perform_now
 
-    # [ ] Create Discussions from Stories
+    # [x] Mark Images with uploaded Imaginations as uploaded
+    Images::MarkUploadedImagesJob.perform_now
+
+    # [x] Create Discussions from Stories
     Discussions::ProcessDiscussionStemsJob.perform_now
 
   end
