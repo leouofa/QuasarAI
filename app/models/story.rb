@@ -65,5 +65,4 @@ class Story < ApplicationRecord
       .left_joins(:discussion)
       .where(discussions: { id: nil })
   }
-
 end

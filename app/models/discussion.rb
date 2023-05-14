@@ -11,9 +11,18 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  published_at :datetime
+#  story_pro_id :integer
 #
 class Discussion < ApplicationRecord
   belongs_to :story
 
-  scope :ready_to_upload, -> { where(processed: true, invalid_json: false, uploaded: false) }
+  scope :ready_to_upload, lambda {
+                            joins(story: :sub_topic)
+                              .where(processed: true, invalid_json: false, uploaded: false)
+                          }
+  scope :published_today_and_uploaded, lambda {
+                                         joins(story: :sub_topic)
+                                           .where(uploaded: true,
+                                                  published_at: Time.now.utc.beginning_of_day..Time.now.utc.end_of_day)
+                                       }
 end
