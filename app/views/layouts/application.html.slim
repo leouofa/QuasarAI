@@ -43,6 +43,10 @@ html lang="en"
                     =r ux.icon 'comments'
                     | Discussions
 
+                  = link_to tweets_path, class: "item #{menu_active?(tweets_path)}"
+                    =r ux.icon 'twitter'
+                    | Tweets
+
                   = link_to imaginations_path, class: "item #{menu_active?(imaginations_path)}"
                     =r ux.icon 'image'
                     | Imaginations
