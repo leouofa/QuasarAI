@@ -3,12 +3,6 @@
     =r ux.h2 "font-hairline mb-6 text-center"
       | Log In
     = devise_simple_error_messages!
-    - if flash.present?
-      =r ux.div "bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4"
-        =r ux.p "font-bold"
-          | Oops!
-        - flash.each do |name, msg|
-          = content_tag :p, msg.humanize, id: "flash_#{name}" if msg.is_a?(String)
     =r ux.div "mb-4"
       = f.label :email, class: "block text-gray-700 text-sm font-bold mb-2"
       = f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight foucs:outline-none focus:shadow-outline"

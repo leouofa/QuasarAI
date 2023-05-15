@@ -20,9 +20,6 @@ class AssembleJob < ApplicationJob
     # [x] Images from processed stories
     Images::CreateImageIdeasFromStoriesJob.perform_now
 
-    # [x] Create Imaginations from Image Ideas
-    # Images::ImagineImagesJob.perform_now
-
     # [x] Upload Imaginations to Uploadcare
     Images::UploadImaginationsJob.perform_now
 
@@ -32,5 +29,7 @@ class AssembleJob < ApplicationJob
     # [x] Create Discussions from Stories
     Discussions::ProcessDiscussionStemsJob.perform_now
 
+    # [ ] Create Tweets from Discussions
+    Tweets::ProcessTwitterStemsJob.perform_now
   end
 end
