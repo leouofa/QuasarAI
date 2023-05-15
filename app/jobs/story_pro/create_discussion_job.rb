@@ -113,6 +113,18 @@ module StoryPro
             end
           end
 
+          area.populate_area 'reference' do |element|
+            story.feed_items.each do |feed_item|
+              element.add 'reference',
+                          title: feed_item.title.present? ? feed_item.title : feed_item.url,
+                          link: feed_item.url,
+                          author: feed_item.author.present? ? feed_item.author : feed_item.url,
+                          source: feed_item.author.present? ? feed_item.author : feed_item.url,
+                          date: feed_item.published.strftime('%B %d, %Y')
+            end
+
+          end
+
 
           publish_rsp = new_discussion.publish
 
