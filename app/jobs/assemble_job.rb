@@ -29,7 +29,7 @@ class AssembleJob < ApplicationJob
     # [x] Create Discussions from Stories
     Discussions::ProcessDiscussionStemsJob.perform_now
 
-    # [ ] Create Tweets from Discussions
+    # [x] Create Tweets from Discussions
     Tweets::ProcessTwitterStemsJob.perform_now
   end
 end

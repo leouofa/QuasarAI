@@ -7,7 +7,7 @@
       =r ux.divider
 
       =r ux.h2 'center aligned !font-mono'
-        | Discussions
+        | Tweets
         =r ux.label text: @total_tweets, class: 'circular !bg-black !text-white'
 
       =r ux.div 'text-center'
@@ -29,7 +29,8 @@
             =r ux.divider
             =r ux.div 'mt-0'
               =r ux.code
-                = tweet.stem
+                - unless tweet.invalid_json
+                  = highlight_hashtags(JSON.parse(tweet.stem)['tweet'])
 
       =r ux.div 'text-center'
         = paginate @tweets

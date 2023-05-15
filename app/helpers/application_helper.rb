@@ -13,4 +13,10 @@ module ApplicationHelper
 
     ''
   end
+
+  def highlight_hashtags(tweet)
+    tweet.gsub(/#\w+/) do |hashtag|
+      "<strong class='text-blue-800'>#{hashtag}</strong>"
+    end.html_safe
+  end
 end
