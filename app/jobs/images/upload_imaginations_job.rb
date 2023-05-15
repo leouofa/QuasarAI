@@ -4,7 +4,7 @@ class Images::UploadImaginationsJob < ApplicationJob
   def perform(*args)
     Imagination.successful_unuploaded.each do |imagination|
       image_url = imagination.payload['imageUrl']
-      uploadcare_rsp = Uploadcare::UploadApi.upload_file(image_url)
+      uploadcare_rsp = Uploadcare::UploadApi.upload_file(image_url, store: true)
       imagination.update!(uploadcare: uploadcare_rsp, uploaded: true)
     end
 
