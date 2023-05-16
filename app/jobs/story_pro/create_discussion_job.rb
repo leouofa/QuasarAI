@@ -5,41 +5,15 @@ module StoryPro
 
     def perform(discussion:)
       story = discussion.story
-
-      user_id = story.sub_topic.storypro_user_id
-      category_id =  story.sub_topic.storypro_category_id
       stem = JSON.parse(discussion.stem)
-
       images =  Image.where(story:)
 
+      user_id, category_id = extract_user_and_category_ids(story.sub_topic)
       header_image, content_images = extract_header_and_content_images(images)
-
-      name =  stem["title"]
-      description = stem['summary'].truncate(150)
-
-      tag = story.tag.name
-      story_pro_tags = StoryPro.get_tags
-
-      if story_pro_tags.empty?
-        tag_rsp = StoryPro.create_tag(name: tag)
-        tag = tag_rsp["id"]
-      else
-        find_tag = story_pro_tags.find { |t| t["name"] == tag }
-
-        if find_tag
-          tag = find_tag["id"]
-        else
-          tag_rsp = StoryPro.create_tag(name: tag)
-          tag = tag_rsp["id"]
-        end
-      end
-
-      story_pro_categories = StoryPro.get_categories
-      found_story_pro_category = story_pro_categories.find { |c| c["id"] == category_id }
-
-      colors = StoryPro.get_colors
-      found_color = colors['colors'].find { |c| c["id"] == found_story_pro_category["id"] }
-
+      name, description = extract_name_and_description(stem)
+      tag = find_or_create_story_pro_tag(story)
+      found_category = get_story_pro_category(story)
+      found_color = get_story_pro_color(found_category)
       header_landscape_image_url, header_vertical_image_url, card_image_url = extract_image_urls(header_image)
 
       regular_css_elements = StoryPro.get_elements(type: 'elements_regularcss')
@@ -75,7 +49,7 @@ module StoryPro
           area.populate_area 'content' do |element|
             stem['content'].each_with_index do |content, index|
 
-              if index == 4
+              if index == 4 || index == 7
                 element.add 'colorblock', title: content['header'],
                             color: found_color['name'],
                             title_alignment: weighted_sample(fullscreen_header_alignment),
@@ -155,6 +129,18 @@ module StoryPro
       [header_image, content_images]
     end
 
+    def extract_user_and_category_ids(sub_topic)
+      user_id = sub_topic.storypro_user_id
+      category_id = sub_topic.storypro_category_id
+      [user_id, category_id]
+    end
+
+    def extract_name_and_description(stem)
+      name = stem["title"]
+      description = stem['summary'].truncate(150)
+      [name, description]
+    end
+
     def extract_image_urls(image)
       landscape_uuid = image.landscape_imagination.uploadcare.last['uuid']
       landscape_url = "https://ucarecdn.com/#{landscape_uuid}/"
@@ -168,17 +154,34 @@ module StoryPro
       [landscape_url, vertical_url, card_url]
     end
 
-    def delete_and_log_error(discussion, error)
-      Rails.logger.debug error
-      Rails.logger.debug discussion.inspect
-      attempts = 0
-
-      begin
-        discussion.delete
-      rescue => e
-        attempts += 1
-        retry if attempts < 3
+    def find_or_create_story_pro_tag(story)
+      tag = story.tag.name
+      story_pro_tags = StoryPro.get_tags
+      if story_pro_tags.empty?
+        tag_rsp = StoryPro.create_tag(name: tag)
+        tag = tag_rsp["id"]
+      else
+        find_tag = story_pro_tags.find { |t| t["name"] == tag }
+        if find_tag
+          tag = find_tag["id"]
+        else
+          tag_rsp = StoryPro.create_tag(name: tag)
+          tag = tag_rsp["id"]
+        end
       end
+      tag
+    end
+
+    def get_story_pro_category(story)
+      story_pro_categories = StoryPro.get_categories
+      found_story_pro_category = story_pro_categories.find { |c| c["id"] == story.sub_topic.storypro_category_id }
+      found_story_pro_category
+    end
+
+    def get_story_pro_color(found_story_pro_category)
+      colors = StoryPro.get_colors
+      found_color = colors['colors'].find { |c| c["id"] == found_story_pro_category["id"] }
+      found_color
     end
 
     def search_elements_by_name(elements, search_term, percentage = nil)
@@ -311,6 +314,19 @@ module StoryPro
         ['normal', 1],
         ['fixed', 1]
       ]
+    end
+
+    def delete_and_log_error(discussion, error)
+      Rails.logger.debug error
+      Rails.logger.debug discussion.inspect
+      attempts = 0
+
+      begin
+        discussion.delete
+      rescue => e
+        attempts += 1
+        retry if attempts < 3
+      end
     end
   end
 end
