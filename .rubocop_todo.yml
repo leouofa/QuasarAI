@@ -53,11 +53,21 @@ Metrics/AbcSize:
 # AllowedMethods: refine
 Metrics/BlockLength:
   Max: 53
+  Exclude:
+    - 'spec/models/*'
+    - 'spec/jobs/*'
+    - 'spec/jobs/stories/*'
+    - 'spec/jobs/images/*'
+    - 'spec/jobs/tweets/*'
+    - 'spec/jobs/discussions/*'
+    - 'app/lib/publisher.rb'
 
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
 Metrics/MethodLength:
   Max: 18
+  Exclude:
+    - 'app/lib/publisher.rb'
 
 # Offense count: 8
 # Configuration parameters: AllowedConstants.
@@ -114,6 +124,10 @@ Style/SymbolArray:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 127
+  Exclude:
+    - 'spec/jobs/tweets/*'
+    - 'spec/jobs/images/*'
+    - 'spec/models/*'
 
 
 Rails/FilePath:
@@ -138,3 +152,8 @@ Rails/UniqueValidationWithoutIndex:
 Rails/SkipsModelValidations:
   Exclude:
     - 'lib/tasks/stories.rake'
+
+
+Naming/VariableNumber:
+  Exclude:
+    - 'spec/models/*'

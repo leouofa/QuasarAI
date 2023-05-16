@@ -20,7 +20,6 @@
 #   * It is populated via an API Call performed by the create_feeds_job.rb job.
 ########################################
 
-
 class Feed < ApplicationRecord
   belongs_to :sub_topic
 
@@ -29,7 +28,6 @@ class Feed < ApplicationRecord
 
   scope :viewable, -> { where(processed: true).where.not(error: true) }
   scope :unprocessed, -> { where(processed: false).where.not(error: true) }
-
 
   paginates_per 5
 end

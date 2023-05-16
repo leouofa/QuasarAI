@@ -14,7 +14,7 @@ FactoryBot.define do
   factory :feed do
     sub_topic
     payload { { some_key: Faker::Lorem.word, another_key: Faker::Lorem.sentence } }
-    created_at { Faker::Time.between(from: 30.days.ago, to: Date.today) }
+    created_at { Faker::Time.between(from: 30.days.ago, to: Time.zone.today) }
     updated_at { created_at }
     processed { false }
     error { false }

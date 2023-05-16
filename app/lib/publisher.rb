@@ -52,13 +52,13 @@ class Publisher
   def publish
     case kind
     when :discussion
-      StoryPro.update_discussion(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+      StoryPro.update_discussion(@entry['id'], published_date: Time.zone.today.strftime("%B %d, %Y"))
     when :article
-      StoryPro.update_article(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+      StoryPro.update_article(@entry['id'], published_date: Time.zone.today.strftime("%B %d, %Y"))
     when :video
-      StoryPro.update_video(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+      StoryPro.update_video(@entry['id'], published_date: Time.zone.today.strftime("%B %d, %Y"))
     when :promotion
-      StoryPro.update_promotion(@entry['id'], published_date: Date.today.strftime("%B %d, %Y"))
+      StoryPro.update_promotion(@entry['id'], published_date: Time.zone.today.strftime("%B %d, %Y"))
     else
       raise ArgumentError, "Invalid kind: '#{kind}'"
     end

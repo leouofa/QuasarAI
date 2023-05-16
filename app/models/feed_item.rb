@@ -12,7 +12,6 @@
 #  markdown_content :text
 #  processed        :boolean          default(FALSE)
 
-
 ################ LOGIC #################
 # - The `uuid` value is from feedly and prevents duplicate feed items from being created.
 #
@@ -23,7 +22,6 @@
 # - The `markdown_content` column is populated by the convert_html_to_markdown_job.rb job.
 #   * It is performed on all the feed items that have a nil value for the markdown_content column.
 ########################################
-
 
 class FeedItem < ApplicationRecord
   belongs_to :feed
@@ -42,5 +40,4 @@ class FeedItem < ApplicationRecord
                  published: :datetime
 
   scope :processed, -> { where(processed: true) }
-
 end

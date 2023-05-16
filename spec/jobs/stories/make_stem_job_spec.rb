@@ -5,7 +5,7 @@ RSpec.describe Stories::MakeStemJob, type: :job do
     let(:story) { create(:story, processed: false) }
     let(:sub_topic) { create(:sub_topic) }
     let(:tag) { create(:tag) }
-    let(:feed_items) { create_list(:feed_item, 5, feed: create(:feed, sub_topic: sub_topic)) }
+    let(:feed_items) { create_list(:feed_item, 5, feed: create(:feed, sub_topic:)) }
 
     before do
       allow(OpenAI::Client).to receive(:new).and_return(double)
@@ -19,7 +19,7 @@ RSpec.describe Stories::MakeStemJob, type: :job do
       it 'does not process the story' do
         story.update!(processed: true)
         expect_any_instance_of(OpenAI::Client).not_to receive(:chat)
-        described_class.perform_now(story: story)
+        described_class.perform_now(story:)
       end
     end
 
@@ -30,7 +30,7 @@ RSpec.describe Stories::MakeStemJob, type: :job do
           "choices" => [
             {
               "message" => {
-                "content" => '{"title": "title", "summary": "summary", "content": []}',
+                "content" => '{"title": "title", "summary": "summary", "content": []}'
               }
             }
           ]
@@ -43,7 +43,7 @@ RSpec.describe Stories::MakeStemJob, type: :job do
       end
 
       it 'processes the story' do
-        described_class.perform_now(story: story)
+        described_class.perform_now(story:)
         expect(story.reload.processed).to be(true)
         expect(story.stem).to eq(response["choices"][0]["message"]["content"])
       end
@@ -54,7 +54,7 @@ RSpec.describe Stories::MakeStemJob, type: :job do
             "choices" => [
               {
                 "message" => {
-                  "content" => 'invalid json',
+                  "content" => 'invalid json'
                 }
               }
             ]
@@ -62,7 +62,7 @@ RSpec.describe Stories::MakeStemJob, type: :job do
         end
 
         it 'marks the story as invalid_json' do
-          described_class.perform_now(story: story)
+          described_class.perform_now(story:)
           expect(story.reload.invalid_json).to be(true)
         end
       end
@@ -72,7 +72,7 @@ RSpec.describe Stories::MakeStemJob, type: :job do
 
         it 'marks the story as invalid_json' do
           allow(client).to receive(:chat).and_return(response)
-          described_class.perform_now(story: story)
+          described_class.perform_now(story:)
           expect(story.reload.invalid_json).to be(true)
         end
       end
