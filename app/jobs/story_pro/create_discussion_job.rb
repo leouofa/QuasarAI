@@ -119,9 +119,6 @@ module StoryPro
                               geometry: weighted_sample(fullscreen_header_geometry),
                               filter: weighted_sample(fullscreen_header_filter)
               end
-
-              # element.add 'spacer', size: 'large' unless index == stem['content'].length - 1
-              # element.add 'divider' unless index == stem['content'].length - 1
             end
           end
 
@@ -183,14 +180,6 @@ module StoryPro
         retry if attempts < 3
       end
     end
-
-    # def search_elements_by_name(elements, search_term)
-    #   elements.find do |element_hash|
-    #     fields = element_hash['element']['fields']
-    #     name = fields['name']
-    #     name && name.include?(search_term)
-    #   end
-    # end
 
     def search_elements_by_name(elements, search_term, percentage = nil)
       element_hashes = elements.select do |e|
@@ -323,8 +312,5 @@ module StoryPro
         ['fixed', 1]
       ]
     end
-
-
-
   end
 end
