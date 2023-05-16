@@ -19,7 +19,7 @@ FactoryBot.define do
       { url: Faker::Internet.url, author: Faker::Name.name, crawled: Faker::Time.backward, published: Faker::Time.backward }
     end
     content { Faker::Lorem.paragraph }
-    created_at { Faker::Time.between(from: 30.days.ago, to: Date.today) }
+    created_at { Faker::Time.between(from: 30.days.ago, to: Time.zone.today) }
     updated_at { created_at }
     uuid { Faker::Internet.uuid }
     markdown_content { Faker::Markdown.emphasis }
