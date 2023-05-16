@@ -8,7 +8,6 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 
-
 ################ LOGIC #################
 # - Joins the `stories` and `feed_items` tables.
 ########################################

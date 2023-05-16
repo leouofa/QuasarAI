@@ -19,7 +19,7 @@ RSpec.describe Discussions::MakeStemJob, type: :job do
 
     allow(client).to receive(:chat).and_return({
                                                  'choices' => [
-                                                   {'message' => {'content' => '{}' }}
+                                                   { 'message' => { 'content' => '{}' } }
                                                  ]
                                                })
   end
@@ -33,27 +33,27 @@ RSpec.describe Discussions::MakeStemJob, type: :job do
       }
     )
 
-    described_class.perform_now(story: story)
+    described_class.perform_now(story:)
   end
 
   context 'when the response is valid JSON' do
     before do
       allow(client).to receive(:chat).and_return({
                                                    'choices' => [
-                                                     {'message' => {'content' => '{}' }}
+                                                     { 'message' => { 'content' => '{}' } }
                                                    ]
                                                  })
     end
 
     it 'creates a discussion with the response content' do
       expect(discussion_class).to receive(:create).with(
-        story: story,
+        story:,
         stem: '{}',
         processed: true,
         invalid_json: false
       )
 
-      described_class.perform_now(story: story)
+      described_class.perform_now(story:)
     end
   end
 
@@ -61,20 +61,20 @@ RSpec.describe Discussions::MakeStemJob, type: :job do
     before do
       allow(client).to receive(:chat).and_return({
                                                    'choices' => [
-                                                     {'message' => {'content' => 'not valid json' }}
+                                                     { 'message' => { 'content' => 'not valid json' } }
                                                    ]
                                                  })
     end
 
     it 'creates a discussion with invalid_json set to true' do
       expect(discussion_class).to receive(:create).with(
-        story: story,
+        story:,
         stem: 'not valid json',
         processed: true,
         invalid_json: true
       )
 
-      described_class.perform_now(story: story)
+      described_class.perform_now(story:)
     end
   end
 
@@ -87,12 +87,12 @@ RSpec.describe Discussions::MakeStemJob, type: :job do
 
     it 'creates a discussion with invalid_json set to true' do
       expect(discussion_class).to receive(:create).with(
-        story: story,
+        story:,
         processed: true,
         invalid_json: true
       )
 
-      described_class.perform_now(story: story)
+      described_class.perform_now(story:)
     end
   end
 end

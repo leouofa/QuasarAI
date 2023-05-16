@@ -12,7 +12,6 @@
 #  uploaded       :boolean          default(FALSE)
 #
 
-
 ################ LOGIC #################
 # - Each image contains an `idea` column that is populated by the AI in create_image_idea_job.rb.
 #
@@ -23,7 +22,6 @@
 #
 # - The `uploaded` is marked true by the mark_image_uploaded_job.rb once all 3 imaginations have been uploaded.
 ########################################
-
 
 class Image < ApplicationRecord
   belongs_to :story
@@ -57,5 +55,4 @@ class Image < ApplicationRecord
   def portrait_imagination
     imaginations.where(aspect_ratio: :portrait).last
   end
-
 end

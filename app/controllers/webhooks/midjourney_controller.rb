@@ -29,7 +29,7 @@ module Webhooks
       button_message_id = params["buttonMessageId"]
       NextLeg.press_button(button: "U#{rand(1..4)}",
                            ref: @imagination.message_uuid,
-                           button_message_id: button_message_id)
+                           button_message_id:)
 
       @imagination.update(payload: params['midjourney'], status: :upscaling)
       head :ok

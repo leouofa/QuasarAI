@@ -17,7 +17,6 @@ class Discussion < ApplicationRecord
   belongs_to :story
   has_one :tweet, dependent: :destroy
 
-
   scope :ready_to_upload, lambda {
                             joins(story: :sub_topic)
                               .where(processed: true, invalid_json: false, uploaded: false)

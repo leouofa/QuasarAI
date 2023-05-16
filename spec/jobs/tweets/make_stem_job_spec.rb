@@ -13,14 +13,14 @@ RSpec.describe Tweets::MakeStemJob, type: :job do
   describe '#perform_later' do
     it 'enqueues the job' do
       ActiveJob::Base.queue_adapter = :test
-      expect {
-        Tweets::MakeStemJob.perform_later(discussion: discussion)
-      }.to have_enqueued_job
+      expect do
+        Tweets::MakeStemJob.perform_later(discussion:)
+      end.to have_enqueued_job
     end
   end
 
   describe '#perform' do
-    subject(:job) { described_class.new.perform(discussion: discussion) }
+    subject(:job) { described_class.new.perform(discussion:) }
 
     context 'when the discussion does not have a tweet' do
       before do
@@ -35,7 +35,7 @@ RSpec.describe Tweets::MakeStemJob, type: :job do
       context 'when the JSON is valid' do
         before do
           allow_any_instance_of(Tweets::MakeStemJob).to receive(:valid_json?).and_return(true)
-          allow_any_instance_of(Tweets::MakeStemJob).to receive(:chat).and_return({"choices" => [{"message" => {"content" => "{}"}}]})
+          allow_any_instance_of(Tweets::MakeStemJob).to receive(:chat).and_return({ "choices" => [{ "message" => { "content" => "{}" } }] })
         end
 
         it 'creates a tweet with a valid stem' do
@@ -47,7 +47,7 @@ RSpec.describe Tweets::MakeStemJob, type: :job do
       context 'when the JSON is invalid' do
         before do
           allow_any_instance_of(Tweets::MakeStemJob).to receive(:valid_json?).and_return(false)
-          allow_any_instance_of(Tweets::MakeStemJob).to receive(:chat).and_return({"error" => "invalid"})
+          allow_any_instance_of(Tweets::MakeStemJob).to receive(:chat).and_return({ "error" => "invalid" })
         end
 
         it 'creates a tweet with invalid_json set to true' do

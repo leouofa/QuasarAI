@@ -16,19 +16,19 @@ RSpec.describe Images::ImagineImageJob, type: :job do
 
   describe '#perform' do
     it 'creates imaginations for card, landscape, and portrait aspect ratios if they are blank' do
-      expect {
-        described_class.perform_now(image: image)
-      }.to change { Imagination.count }.by(3)
+      expect do
+        described_class.perform_now(image:)
+      end.to change { Imagination.count }.by(3)
 
-      expect(Imagination.where(image: image, aspect_ratio: :card).count).to eq(1)
-      expect(Imagination.where(image: image, aspect_ratio: :landscape).count).to eq(1)
-      expect(Imagination.where(image: image, aspect_ratio: :portrait).count).to eq(1)
+      expect(Imagination.where(image:, aspect_ratio: :card).count).to eq(1)
+      expect(Imagination.where(image:, aspect_ratio: :landscape).count).to eq(1)
+      expect(Imagination.where(image:, aspect_ratio: :portrait).count).to eq(1)
     end
 
     it 'updates the image as processed' do
-      expect {
-        described_class.perform_now(image: image)
-      }.to change { image.reload.processed }.from(false).to(true)
+      expect do
+        described_class.perform_now(image:)
+      end.to change { image.reload.processed }.from(false).to(true)
     end
   end
 
@@ -42,9 +42,9 @@ RSpec.describe Images::ImagineImageJob, type: :job do
     end
 
     it 'creates an imagination with the correct attributes and calls NextLeg.imagine' do
-      expect {
+      expect do
         subject.create_imagination(image, prompt_extra, aspect_ratio, ratio_value)
-      }.to change { Imagination.count }.by(1)
+      end.to change { Imagination.count }.by(1)
 
       imagination = Imagination.last
       expect(imagination.image).to eq(image)
@@ -53,7 +53,7 @@ RSpec.describe Images::ImagineImageJob, type: :job do
       expect(imagination.message_uuid).to eq(message_uuid)
 
       prompt = "#{image.idea} #{prompt_extra} --ar #{ratio_value}"
-      expect(NextLeg).to have_received(:imagine).with(prompt: prompt, ref: message_uuid)
+      expect(NextLeg).to have_received(:imagine).with(prompt:, ref: message_uuid)
     end
   end
 end

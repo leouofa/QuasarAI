@@ -6,7 +6,7 @@ RSpec.describe FeedItems::CreateFeedItemsJob, type: :job do
   include ActiveJob::TestHelper
 
   let(:sub_topic) { create(:sub_topic) }
-  let!(:unprocessed_feed) { create(:feed, sub_topic: sub_topic, processed: false) }
+  let!(:unprocessed_feed) { create(:feed, sub_topic:, processed: false) }
 
   describe '#perform_later' do
     it 'enqueues the job' do
@@ -27,9 +27,9 @@ RSpec.describe FeedItems::CreateFeedItemsJob, type: :job do
           'canonicalUrl' => 'https://example.com/test-url',
           'commonTopics' => [
             { 'label' => 'Topic 1' },
-            { 'label' => 'Topic 2' },
-          ],
-        },
+            { 'label' => 'Topic 2' }
+          ]
+        }
       ]
     end
 

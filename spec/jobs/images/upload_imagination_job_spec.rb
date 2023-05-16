@@ -6,7 +6,7 @@ RSpec.describe Images::UploadImaginationsJob, type: :job do
 
     before do
       allow(Imagination).to receive(:successful_unuploaded).and_return([successful_unuploaded_imagination])
-      allow(successful_unuploaded_imagination).to receive(:payload).and_return({'imageUrl' => 'http://example.com/image.jpg'})
+      allow(successful_unuploaded_imagination).to receive(:payload).and_return({ 'imageUrl' => 'http://example.com/image.jpg' })
       allow(successful_unuploaded_imagination).to receive(:update!)
     end
 
@@ -16,8 +16,9 @@ RSpec.describe Images::UploadImaginationsJob, type: :job do
 
       described_class.perform_now
 
-      expect(Uploadcare::UploadApi).to have_received(:upload_file).with('http://example.com/image.jpg', {:store=>true})
-      expect(successful_unuploaded_imagination).to have_received(:update!).with(uploadcare: uploadcare_response, uploaded: true)
+      expect(Uploadcare::UploadApi).to have_received(:upload_file).with('http://example.com/image.jpg', { store: true })
+      expect(successful_unuploaded_imagination).to have_received(:update!).with(uploadcare: uploadcare_response,
+                                                                                uploaded: true)
     end
   end
 end

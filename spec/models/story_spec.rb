@@ -46,7 +46,6 @@ RSpec.describe Story, type: :model do
       end
     end
 
-
     describe '.processed' do
       it 'returns only processed stories' do
         processed_story = create(:story, processed: true)
@@ -86,11 +85,11 @@ RSpec.describe Story, type: :model do
     describe '.with_stem_and_valid_processed_images_no_discussions' do
       it 'returns stories with a stem, valid, and processed images, and no discussions' do
         story_with_valid_images_and_no_discussion = create(:story, processed: true, invalid_json: false)
-        create_list(:image, 3, story: story_with_valid_images_and_no_discussion, processed: true, invalid_prompt: false, 
+        create_list(:image, 3, story: story_with_valid_images_and_no_discussion, processed: true, invalid_prompt: false,
                                uploaded: true)
 
         story_with_valid_images_and_discussion = create(:story, processed: true, invalid_json: false)
-        create_list(:image, 3, story: story_with_valid_images_and_discussion, processed: true, invalid_prompt: false, 
+        create_list(:image, 3, story: story_with_valid_images_and_discussion, processed: true, invalid_prompt: false,
                                uploaded: true)
         create(:discussion, story: story_with_valid_images_and_discussion)
 
@@ -98,6 +97,5 @@ RSpec.describe Story, type: :model do
         expect(Story.with_stem_and_valid_processed_images_no_discussions).not_to include(story_with_valid_images_and_discussion)
       end
     end
-
   end
 end
