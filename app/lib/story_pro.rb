@@ -337,8 +337,11 @@ module StoryPro
     send_request(:delete, "categories/#{id}")
   end
 
-  def self.get_elements
-    send_get_request('elements')
+  def self.get_elements(type: nil)
+    query_params = {}
+    query_params['type'] = type if type
+
+    send_get_request('elements', query_params)
   end
 
   def self.add_element(element:, parent_id:, parent_component:, area:)
