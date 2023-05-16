@@ -42,6 +42,9 @@ module StoryPro
 
       header_landscape_image_url, header_vertical_image_url, card_image_url = extract_image_urls(header_image)
 
+      regular_css_elements = StoryPro.get_elements(type: 'elements_regularcss')
+      fullscreen_css_elements = StoryPro.get_elements(type: 'elements_fullscreencss')
+
       new_discussion = Publisher.new(kind: :discussion, name:, user_id:, category_id:)
 
       # - The `tag` update is not working right now.
@@ -63,15 +66,14 @@ module StoryPro
                         header_animation: weighted_sample(fullscreen_header_animation),
                         text_animation: weighted_sample(fullscreen_header_text_animation),
                         geometry: weighted_sample(fullscreen_header_geometry),
-                        filter: weighted_sample(fullscreen_header_filter)
+                        filter: weighted_sample(fullscreen_header_filter),
+                        elements_fullscreencss_id: search_elements_by_name(fullscreen_css_elements,
+                                                                           'IMAGEHEADER')
 
           end
 
           area.populate_area 'content' do |element|
             stem['content'].each_with_index do |content, index|
-              element.add 'heading', header: content['header'],
-                          size: "#{index == 0 ? 'h1' : 'h2'}",
-                          transition: rand < 0.3 ? 'opacity-1' : ''
 
               if index == 4
                 element.add 'colorblock', title: content['header'],
@@ -81,6 +83,13 @@ module StoryPro
                             text_animation: weighted_sample(fullscreen_header_text_animation),
                             geometry: weighted_sample(fullscreen_header_geometry),
                             filter: weighted_sample(fullscreen_header_filter)
+              else
+                element.add 'heading', header: content['header'],
+                            size: "#{index == 0 ? 'h1' : 'h2'}",
+                            transition: rand < 0.3 ? 'opacity-1' : '',
+                            elements_regularcss_id: search_elements_by_name(regular_css_elements,
+                                                                            'HEADING', 50)
+
               end
 
 
@@ -88,12 +97,15 @@ module StoryPro
                 element.add 'richtext', rich: "<p>#{paragraph}</p>",
                             dropcap: !dropcap_shown ? 'show' : 'hide',
                             dropcap_background_color: !dropcap_shown ?  found_color['name'] : '',
-                            transition: weighted_sample(richtext_transitions)
+                            transition: weighted_sample(richtext_transitions),
+                            elements_regularcss_id: search_elements_by_name(regular_css_elements,
+                                                                            'RICHTEXT')
                 dropcap_shown = true
 
                 if paragraph_index == 2 and content['paragraphs'].count > 3 and (index == 2 || index == 3 ||index == 4 || index == 7)
                   element.add 'spacer', size: 'large'
-                  element.add 'divider'
+                  element.add 'divider', elements_regularcss_id: search_elements_by_name(regular_css_elements,
+                                                                              'DIVIDER')
                 end
               end
 
@@ -107,9 +119,6 @@ module StoryPro
                               geometry: weighted_sample(fullscreen_header_geometry),
                               filter: weighted_sample(fullscreen_header_filter)
               end
-
-              # element.add 'spacer', size: 'large' unless index == stem['content'].length - 1
-              # element.add 'divider' unless index == stem['content'].length - 1
             end
           end
 
@@ -169,6 +178,29 @@ module StoryPro
       rescue => e
         attempts += 1
         retry if attempts < 3
+      end
+    end
+
+    def search_elements_by_name(elements, search_term, percentage = nil)
+      element_hashes = elements.select do |e|
+        fields = e['element']['fields']
+        name = fields['name']
+        name && name.include?(search_term)
+      end
+
+      if element_hashes.empty?
+        return ''
+      end
+
+      chosen_element_hash = element_hashes.sample
+      id = chosen_element_hash['element']['id']
+
+      if percentage
+        # rand(100) returns a number between 0 and 99. Adding 1 to get a number between 1 and 100.
+        rand_val = rand(100) + 1
+        return rand_val <= percentage ? id : ''
+      else
+        return id
       end
     end
 
@@ -280,8 +312,5 @@ module StoryPro
         ['fixed', 1]
       ]
     end
-
-
-
   end
 end
