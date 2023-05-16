@@ -16,7 +16,7 @@ RSpec.describe Images::UploadImaginationsJob, type: :job do
 
       described_class.perform_now
 
-      expect(Uploadcare::UploadApi).to have_received(:upload_file).with('http://example.com/image.jpg')
+      expect(Uploadcare::UploadApi).to have_received(:upload_file).with('http://example.com/image.jpg', {:store=>true})
       expect(successful_unuploaded_imagination).to have_received(:update!).with(uploadcare: uploadcare_response, uploaded: true)
     end
   end
