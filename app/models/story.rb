@@ -12,16 +12,16 @@
 #  invalid_images :boolean          default(FALSE)
 #
 
-################ LOGIC #################
-# - The `processed` tag is used to determine if the stem has been created by the AI.
-#  * It is set to true in make_stem_job.rb
-#  * If it checked against in the process_stories_job.rb
+################ logic #################
+# - the `processed` tag is used to determine if the stem has been created by the ai.
+#  * it is set to true in stories/make_stem_job.rb
+#  * if it checked against in the process_story_stems_job.rb
 #
-# - The `invalid_json` tag is set to true if the AI fails to create a stem for the story.
-#  * It is set to true in make_stem_job.rb
+# - the `invalid_json` tag is set to true if the ai fails to create a stem for the story.
+#  * it is set to true in stories/make_stem_job.rb
 #
-# - The `invalid_images` tag is set to true if the AI fails to create images ideas for ANY of the images.
-#   * It is set to true in create_image_idea_job.rb
+# - the `invalid_images` tag is set to true if the ai fails to create images ideas for any of the images.
+#   * it is set to true in create_image_idea_job.rb
 ########################################
 
 class Story < ApplicationRecord
