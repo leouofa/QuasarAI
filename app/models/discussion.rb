@@ -13,7 +13,6 @@
 #  published_at :datetime
 #  story_pro_id :integer
 
-
 ################ logic #################
 # - the `processed` tag is used to determine if the stem has been created by the ai.
 #   * it is set to true in discussions/make_stem_job.rb
@@ -31,7 +30,6 @@
 # - the `story_pro_id` is the id of the discussion in StoryPRO
 #   * it is set to true in create_discussion_job.rb
 ########################################
-
 
 class Discussion < ApplicationRecord
   belongs_to :story

@@ -22,9 +22,9 @@ module Ayrshare
   def self.post_message(post:, platforms:, media_urls: [])
     url = "https://app.ayrshare.com/api/post"
     headers = { 'Authorization' => "Bearer #{configuration.api_key}" }
-    body = { post: post, platforms: platforms, mediaUrls: [media_urls] }
+    body = { post:, platforms:, mediaUrls: [media_urls] }
 
-    response = HTTParty.post(url, headers: headers, body: body)
+    response = HTTParty.post(url, headers:, body:)
 
     raise "Error: #{response.code} - #{response.body}" unless response.code == 200
 
