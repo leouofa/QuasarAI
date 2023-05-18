@@ -53,7 +53,41 @@ rails db:create
 rails db:schema:load
 ```
 
+### Step 9: Install Foreman
+If you don't have Foreman installed, you can install it using the following command: `gem install foreman`.
 
+### Step 10: Ensure Redis is Installed and Running
+Ensure that Redis is installed and running on your machine. If using Homebrew you can install it with the following command: `brew install redis`. To start Redis, use the command: `brew services start redis`.
+
+### Step 11: Start the Application
+Finally, you can start the application by running the following command: `foreman start -f Procfile.dev`.
+
+### Step 12: Create an Account
+Head over to `https://localhost:3000` and create a user account. 
+
+### Step 13: Give account access privileges
+Head over to the console and pull up the account you've just created, then give it access privileges by running the following commands:
+```ruby
+# pulls up the newly user
+user = User.last
+
+# gives access to the application
+user.give_access
+
+# gives access to sidekiq web ui. This is optional, but useful for debugging
+user.make_admin
+````
+
+### Step 14: Setup Proxy
+NextLeg uses webhooks to communicate with Enterprise about the status of the images it generates. To enable this communication, you need to setup a proxy on your local machine. In this example we are using a paid service called ngrok, but you can use any proxy service you like.
+
+```bash
+ ngrok http 3000 --subdomain=custom_subdomain
+```
+
+### Step 15: Setup NexLeg
+Log into your NextLeg account, navigate to your account settings, and update the webhook URL to point to the proxy URL you've just created.
+`https://custom_subdomain.ngrok.io/webhooks/midjourney`
 
 
 ## Running It
