@@ -25,28 +25,28 @@ Our goal is to empower journalists, publishers, and content creators with the mo
 By harnessing the power of AI and these innovative integrations, Enterprise not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
 
 # Step-by-Step Setup Instructions
-## Step 1: Clone the repository
+### Step 1: Clone the repository
 Start by cloning the repository to your local machine. You can do this by using the `git clone` command followed by the URL of the repository. Once cloned, navigate into the repository by using the `cd` command.
 
-## Step 2: Create a new .env file
+### Step 2: Create a new .env file
 In the repository, you will find a file named `.env.example`. Make a copy of this file and rename it to `.env`. You can do this by running the following command: `cp .env.example .env`.
 
-## Step 3: Populate the .env file
+### Step 3: Populate the .env file
 Open the newly created `.env` file and fill it with the necessary keys and values. You may need to sign up for certain services to obtain these keys. The `.env.example` file includes comments with instructions on how to obtain each key.
 
-## Step 4: Generate blueprints
+### Step 4: Generate blueprints
 Run the `rails generate blueprints` command. This will copy the blueprint files into the `blueprints` directory.
 
-## Step 5: Modify the blueprint files
+### Step 5: Modify the blueprint files
 Change the `topics.yml` and `prompts.yml` files in the blueprints directory to reflect the feeds and prompts you want to use.
 
-## Step 6: Fine-Tune story generation
+### Step 6: Fine-Tune story generation
 In the future, you can fine-tune story generation by excluding unwanted tags in the `tunings.yml` file.
 
-## Step 7: Update the blueprints
+### Step 7: Update the blueprints
 Once you've made your changes, execute the `rake blueprints:update` command. This will load your changes into the database.
 
-## Step 8: Set Up the Database
+### Step 8: Set Up the Database
 After updating the blueprints, it's time to set up your database. Run the following commands to create the database and load the schema:
 ```bash
 rails db:create
