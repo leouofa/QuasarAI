@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    bin/rails generate blueprints
+
+    This will copy:
+       blueprints to the blueprints folder in your project
