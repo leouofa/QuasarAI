@@ -20,20 +20,74 @@ Our goal is to empower journalists, publishers, and content creators with the mo
 2. Let AI write the next great story: With the OpenAI integration, Enterprise is capable of automatically generating well-structured and engaging content, letting you focus on the editorial aspect and enhancing the quality of your stories.
 3. Illustrate your stories with the art of tomorrow: Our integration with Midjourney and the NexLeg API enables Enterprise to generate visually stunning and contextually relevant images, bringing your content to life and captivating your audience.
 4. Publish your news at warp speed: With the StoryPro integration, publishing your content becomes a seamless and automated process, ensuring your newsroom stays ahead of the competition and your readers are always informed.
- 
+5. Distribute your news across the social cosmos: With our integration with Ayrshare, Enterprise enables you to automatically share your news content across multiple social media platforms. This ensures your stories reach a wider audience and increases your newsroom's digital footprint.
+
 By harnessing the power of AI and these innovative integrations, Enterprise not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
 
-## Setup Instructions
-1. Clone the repository and `cd` into it.
-2. Copy the `.env.example` file and create a new `.env` file: `cp .env.example .env`
-3. Open the newly created `.env` file and populate it with the relevant keys and values. Note that you may need to sign up for some services to obtain these keys. Instructions for obtaining each key are included as comments in the `.env.example` file.
-4. Run the `rails generate blueprints` command to copy over the blueprint files to the `blueprints` directory.
-5. Modify the blueprint files to reflect the feeds and prompts you want to use by changing `topics.yml` and `prompts.yml`.
-6. Fine tune topic generation by excluding unwanted tags in `tunings.yml`.
-7. When finished, execute `rake blueprints:update` to load the changes into the database.
+# Step-by-Step Setup Instructions
+### Step 1: Clone the repository
+Start by cloning the repository to your local machine. You can do this by using the `git clone` command followed by the URL of the repository. Once cloned, navigate into the repository by using the `cd` command.
 
+### Step 2: Create a new .env file
+In the repository, you will find a file named `.env.example`. Make a copy of this file and rename it to `.env`. You can do this by running the following command: `cp .env.example .env`.
 
+### Step 3: Populate the .env file
+Open the newly created `.env` file and fill it with the necessary keys and values. You may need to sign up for certain services to obtain these keys. The `.env.example` file includes comments with instructions on how to obtain each key.
 
+### Step 4: Generate blueprints
+Run the `rails generate blueprints` command. This will copy the blueprint files into the `blueprints` directory.
+
+### Step 5: Modify the blueprint files
+Change the `topics.yml` and `prompts.yml` files in the blueprints directory to reflect the feeds and prompts you want to use.
+
+### Step 6: Fine-Tune story generation
+In the future, you can fine-tune story generation by excluding unwanted tags in the `tunings.yml` file.
+
+### Step 7: Update the blueprints
+Once you've made your changes, execute the `rake blueprints:update` command. This will load your changes into the database.
+
+### Step 8: Set Up the Database
+After updating the blueprints, it's time to set up your database. Run the following commands to create the database and load the schema:
+```bash
+rails db:create
+rails db:schema:load
+```
+
+### Step 9: Install Foreman
+If you don't have Foreman installed, you can install it using the following command: `gem install foreman`.
+
+### Step 10: Ensure Redis is Installed and Running
+Ensure that Redis is installed and running on your machine. If using Homebrew you can install it with the following command: `brew install redis`. To start Redis, use the command: `brew services start redis`.
+
+### Step 11: Start the Application
+Finally, you can start the application by running the following command: `foreman start -f Procfile.dev`.
+
+### Step 12: Create an Account
+Head over to `https://localhost:3000` and create a user account. 
+
+### Step 13: Give account access privileges
+Head over to the console and pull up the account you've just created, then give it access privileges by running the following commands:
+```ruby
+# pulls up the newly user
+user = User.last
+
+# gives access to the application
+user.give_access
+
+# gives access to sidekiq web ui. This is optional, but useful for debugging
+user.make_admin
+````
+
+### Step 14: Setup Proxy
+NextLeg uses webhooks to communicate with Enterprise about the status of the images it generates. To enable this communication, you need to setup a proxy on your local machine. In this example we are using a paid service called ngrok, but you can use any proxy service you like.
+
+```bash
+ ngrok http 3000 --subdomain=custom_subdomain
+```
+
+### Step 15: Setup NexLeg
+Log into your NextLeg account, navigate to your account settings, and update the webhook URL to point to the proxy URL you've just created.
+`https://custom_subdomain.ngrok.io/webhooks/midjourney`
 
 
 ## Running It
