@@ -1,5 +1,5 @@
 Description:
-    Explain the generator
+    Copies the blueprints template file to the blueprints folder in your project.
 
 Example:
     bin/rails generate blueprints
