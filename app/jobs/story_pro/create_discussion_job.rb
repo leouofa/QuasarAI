@@ -20,10 +20,6 @@ module StoryPro
       fullscreen_css_elements = StoryPro.get_elements(type: 'elements_fullscreencss')
 
       new_discussion = Publisher.new(kind: :discussion, name:, user_id:, category_id:)
-
-      # - The `tag` update is not working right now.
-      # - The will need be re-implemented to call the `tagging` endpoint.
-      # - The `tagging` endpoint needs to first be created on the platform.
       new_discussion.update(description:, social_image: card_image_url, tags: [tag])
 
       dropcap_shown = false

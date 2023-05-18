@@ -140,7 +140,11 @@ module StoryPro
 
     payload = { 'discussion' => {} }
     options.each do |key, value|
-      payload['discussion'][key.to_s] = value
+      if key.to_s == 'tags'
+        payload[key.to_s] = value
+      else
+        payload['discussion'][key.to_s] = value
+      end
     end
 
     send_request(:put, "discussions/#{id}", payload:)
@@ -171,7 +175,11 @@ module StoryPro
 
     payload = { 'article' => {} }
     options.each do |key, value|
-      payload['article'][key.to_s] = value
+      if key.to_s == 'tags'
+        payload[key.to_s] = value
+      else
+        payload['article'][key.to_s] = value
+      end
     end
 
     send_request(:put, "articles/#{id}", payload:)
@@ -202,7 +210,11 @@ module StoryPro
 
     payload = { 'video' => {} }
     options.each do |key, value|
-      payload['video'][key.to_s] = value
+      if key.to_s == 'tags'
+        payload[key.to_s] = value
+      else
+        payload['video'][key.to_s] = value
+      end
     end
 
     send_request(:put, "videos/#{id}", payload:)
@@ -233,7 +245,11 @@ module StoryPro
 
     payload = { 'promotion' => {} }
     options.each do |key, value|
-      payload['promotion'][key.to_s] = value
+      if key.to_s == 'tags'
+        payload[key.to_s] = value
+      else
+        payload['promotion'][key.to_s] = value
+      end
     end
 
     send_request(:put, "promotions/#{id}", payload:)
