@@ -91,47 +91,52 @@ Log into your NextLeg account, navigate to your account settings, and update the
 
 
 # Running It
-There are three main jobs that need to be run in order to generate stories. They can be scheduled via cron or run manually by executing the 
-```rake simple_scheduler```. 
-
-The jobs can also be executed manually, which is useful for setup and troubleshooting.
+Enterprise uses a series of jobs to automate the process of generating and publishing stories. These jobs can be scheduled to run automatically using a cron job or manually executed for setup and troubleshooting.
 
 ### Assembling Job
-The job is responsible for:
-- Getting new feeds items from Feedly.
-- Turning feeds into stories and tweets with OpenAI.
+The Assembling Job is responsible for:
+- Fetching new feed items from Feedly.
+- Converting these feeds into stories and tweets with the help of OpenAI.
 - Uploading new images to UploadCare.
  
-It can be executed from the console by running the following command:
+To manually execute the Assembling Job, open your console and run the following command:
 
 ```ruby
 AssembleJob.perform_now
 ```
 
-### ImageProcessing Job
-The job is responsible for cuing up the image ideas to Midjourney via NextLeg. 
-__Ensure that the proxy is setup correctly before running this job__.
+This command will immediately start the Assembling Job, allowing you to monitor its progress and troubleshoot any issues.
 
-It can be executed from the console by running the following command:
+### Image Processing Job
+The Image Processing Job is responsible for queuing up image ideas to Midjourney via NextLeg. __Before running this job, ensure that your proxy is set up correctly.__
+
+To manually execute the Image Processing Job, open your console and run the following command:
 ```ruby
 Images::ImagineImagesJob.perform_now
 ```
 
+This command will immediately start the Image Processing Job, allowing you to monitor its progress and troubleshoot any issues.
+
 ### Publishing Job
 
-The job is responsible for:
-- Publishing discussions to StoryPro.
-- Scheduling tweets via Ayrshare.
-- 
-  It can be executed from the console by running the following command:
+The Publishing Job is responsible for:
+_ Publishing discussions to StoryPro.
+_ Scheduling tweets via Ayrshare.
+
+To manually execute the Publishing Job, open your console and run the following command:
 ```ruby
 Images::PublishJob.perform_now
 ```
 
-# Additional Setup
+This command will immediately start the Publishing Job, allowing you to monitor its progress and troubleshoot any issues.
 
-### Mailcatcher
-Is the best way to test emails in development. It catches all emails sent by your application and displays them in a web interface. You can also use it to test HTML emails during development.
+## Scheduling Jobs
+If you want to automate these jobs, you can schedule them to run at specific intervals using a cron job. To do this, you'll need to use the `rake simple_scheduler` command.
+This command will start the Simple Scheduler, which will automatically execute the jobs according to the schedule defined in `config/simple_scheduler.yml` file.
+
+
+## Mailcatcher
+Mailcatcher is a useful tool for testing emails in development. It catches all emails sent by your application and displays them in a web interface. You can also use it to test HTML emails during development.
 
 Install mailcatcher gem on OSX
 ```bash
@@ -143,4 +148,4 @@ Run mailcatcher
 mailcatcher
 ```
 
-The emails can be viewed at http://localhost:1080
+You can then view the emails sent by your application by navigating to [http://localhost:1080](http://localhost:1080) in your web browser.
