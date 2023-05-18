@@ -42,7 +42,7 @@ node_modules
 .irb_history
 
 /.vite/
-/blueprints/
+/blueprints/*.yml
 
 .byebug_history
 dump.rdb
