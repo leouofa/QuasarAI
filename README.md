@@ -90,23 +90,47 @@ Log into your NextLeg account, navigate to your account settings, and update the
 `https://custom_subdomain.ngrok.io/webhooks/midjourney`
 
 
-## Running It
+# Running It
+There are three main jobs that need to be run in order to generate stories. They can be scheduled via cron or run manually by executing the 
+```rake simple_scheduler```. 
 
-### Assembling
+The jobs can also be executed manually, which is useful for setup and troubleshooting.
+
+### Assembling Job
+The job is responsible for:
+- Getting new feeds items from Feedly.
+- Turning feeds into stories and tweets with OpenAI.
+- Uploading new images to UploadCare.
+ 
+It can be executed from the console by running the following command:
 
 ```ruby
 AssembleJob.perform_now
 ```
 
-### Dispensing
+### ImageProcessing Job
+The job is responsible for cuing up the image ideas to Midjourney via NextLeg. 
+__Ensure that the proxy is setup correctly before running this job__.
+
+It can be executed from the console by running the following command:
 ```ruby
-DispenseJob.perform_now
+Images::ImagineImagesJob.perform_now
 ```
 
+### Publishing Job
 
-## Local Setup
+The job is responsible for:
+- Publishing discussions to StoryPro.
+- Scheduling tweets via Ayrshare.
+- 
+  It can be executed from the console by running the following command:
+```ruby
+Images::PublishJob.perform_now
+```
 
-#### Mailcatcher
+# Additional Setup
+
+### Mailcatcher
 Is the best way to test emails in development. It catches all emails sent by your application and displays them in a web interface. You can also use it to test HTML emails during development.
 
 Install mailcatcher gem on OSX
