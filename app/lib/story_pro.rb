@@ -147,7 +147,7 @@ module StoryPro
       end
     end
 
-    send_request(:put, "discussions/#{id}", payload: payload)
+    send_request(:put, "discussions/#{id}", payload:)
   end
 
   def self.delete_discussion(id)
@@ -182,7 +182,7 @@ module StoryPro
       end
     end
 
-    send_request(:put, "articles/#{id}", payload: payload)
+    send_request(:put, "articles/#{id}", payload:)
   end
 
   def self.delete_article(id)
@@ -217,7 +217,7 @@ module StoryPro
       end
     end
 
-    send_request(:put, "videos/#{id}", payload: payload)
+    send_request(:put, "videos/#{id}", payload:)
   end
 
   def self.delete_video(id)
@@ -252,7 +252,7 @@ module StoryPro
       end
     end
 
-    send_request(:put, "promotions/#{id}", payload: payload)
+    send_request(:put, "promotions/#{id}", payload:)
   end
 
   def self.delete_promotion(id)
