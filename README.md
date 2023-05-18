@@ -24,11 +24,15 @@ Our goal is to empower journalists, publishers, and content creators with the mo
 By harnessing the power of AI and these innovative integrations, Enterprise not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
 
 ## Setup Instructions
-0. Clone the repository and `cd` into it.
-1. Run the `rails generate blueprints` command to copy over the blueprint files to the `blueprints` directory.
-2. Modify the blueprint files to reflect the feeds and prompts you want to use by changing `topics.yml` and `prompts.yml`.
-3. Fine tune topic generation by excluding unwanted tags in `tunings.yml`.
-4. When finished, execute `rake blueprints:update` to load the changes into the database.
+1. Clone the repository and `cd` into it.
+2. Copy the `.env.example` file and create a new `.env` file: `cp .env.example .env`
+3. Open the newly created `.env` file and populate it with the relevant keys and values. Note that you may need to sign up for some services to obtain these keys. Instructions for obtaining each key are included as comments in the `.env.example` file.
+4. Run the `rails generate blueprints` command to copy over the blueprint files to the `blueprints` directory.
+5. Modify the blueprint files to reflect the feeds and prompts you want to use by changing `topics.yml` and `prompts.yml`.
+6. Fine tune topic generation by excluding unwanted tags in `tunings.yml`.
+7. When finished, execute `rake blueprints:update` to load the changes into the database.
+
+
 
 
 
