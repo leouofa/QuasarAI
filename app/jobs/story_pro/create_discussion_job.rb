@@ -191,7 +191,14 @@ module StoryPro
         return ''
       end
 
-      chosen_element_hash = element_hashes.sample
+      # Extract weight from the element name and create a weighted array
+      weighted_elements = element_hashes.flat_map do |e|
+        name = e['element']['fields']['name']
+        _, weight = name.split(':')
+        weight ? [e] * weight.to_i : [e]
+      end
+
+      chosen_element_hash = weighted_elements.sample
       id = chosen_element_hash['element']['id']
 
       if percentage
