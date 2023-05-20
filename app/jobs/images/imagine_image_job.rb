@@ -31,12 +31,20 @@ module Images
     def throttle_requests
       pending_imaginations = Imagination.where(status: :pending).count
 
-      if pending_imaginations > 3
-        sleep(300)
-      elsif pending_imaginations > 2
-        sleep(180)
+      if ENV('DYNAMIC_THROTTLE')
+        if pending_imaginations > 3
+          puts "Sleeping for 300 seconds"
+          sleep(300)
+        elsif pending_imaginations > 2
+          puts "Sleeping for 180 seconds"
+          sleep(180)
+        else
+          puts "Sleeping for 120 seconds"
+          sleep(120)
+        end
       else
-        sleep(120)
+        puts "Sleeping for 60 seconds"
+        sleep(60)
       end
     end
   end

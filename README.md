@@ -1,4 +1,15 @@
-<h1 align="center">Enterprise 🛸 </h1> 
+[//]: # (<h1 align="center">Enterprise 🛸 </h1> )
+<pre align="center">
+ _______  _       _________ _______  _______  _______  _______ _________ _______  _______ 
+(  ____ \( (    /|\__   __/(  ____ \(  ____ )(  ____ )(  ____ )\__   __/(  ____ \(  ____ \
+| (    \/|  \  ( |   ) (   | (    \/| (    )|| (    )|| (    )|   ) (   | (    \/| (    \/
+| (__    |   \ | |   | |   | (__    | (____)|| (____)|| (____)|   | |   | (_____ | (__    
+|  __)   | (\ \) |   | |   |  __)   |     __)|  _____)|     __)   | |   (_____  )|  __)   
+| (      | | \   |   | |   | (      | (\ (   | (      | (\ (      | |         ) || (      
+| (____/\| )  \  |   | |   | (____/\| ) \ \__| )      | ) \ \_____) (___/\____) || (____/\
+(_______/|/    )_)   )_(   (_______/|/   \__/|/       |/   \__/\_______/\_______)(_______/
+</pre>
+
 <p align="center">“Logic is the beginning of wisdom, not the end.”</p>
 
 ----
@@ -25,9 +36,35 @@ Our goal is to empower journalists, publishers, and content creators with the mo
 By harnessing the power of AI and these innovative integrations, Enterprise not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
 
 # Step-by-Step Setup Instructions
+### Step 0: Prerequisites
+
+Ensure that you have the following installed on your machine:
+#### System Requirements
+- Node 18.15.0
+- Ruby 3.2.2
+- Postgres SQL
+- Redis
+
+You will need to have the following services for Enterprise to function:
+
+#### Services Needed
+- [Feedly](https://feedly.com/i/welcome) – RSS Feeds + AI Intelligence ($12/month for Pro+ Plan)
+- [OpenAI](https://beta.openai.com/) – AI Content Generation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
+- [NexLeg](https://nexleg.com/) – Midjourney API ($40/month for API Acccess + $30/month from Midjourney)
+- [StoryPro](https://storypro.io/) – The Publishing Platform ($99/month for Basic Plan)
+- [Ayrshare](https://www.ayrshare.com/) – Social Media Publishing ($99/month for Premium Plan
+ 
+__TOTAL COST:__ $280/month + OpenAI Costs
+
+
+
 ### Step 1: Fork the repository
 Start by cloning the repository to your local machine. You can do this by using the `git clone` command followed by the URL of the repository. 
-Once cloned, navigate into the repository by using the `cd` command, and install the necessary dependencies by running the `bundle install` command.
+Once cloned, navigate into the repository by using the `cd` command, and install the necessary dependencies by running the following commands:
+```bash
+bundle install
+yarn install
+```
 
 ### Step 2: Create a customization branch
 Establish a customization branch  through the command `git checkout -b customizations`. This particular branch will serve as the base for your modifications to the Enterprise.
