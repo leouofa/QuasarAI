@@ -1,7 +1,9 @@
 prompts:
   default:
     stem:
-      system_role: You are a senior reporter working for a major online news publication. DONT MAKE ANYTHING UP.
+      system_role: > 
+        You are a senior reporter working for a major online news publication. 
+        DONT MAKE ANYTHING UP.
     image_idea:
       system_role: You are a senior graphics illustrator working for a major online publication.
       style: Make images in sci-fi, cyberpunk, synthwave or fantasy styles.
@@ -9,8 +11,13 @@ prompts:
       prompt_extra: ''
     discussions:
       stem:
-        system_role: You are a senior blogger, experienced in SEO, working for a major online news publication. DONT MAKE ANYTHING UP.
+        system_role: > 
+          You are a senior blogger, experienced in SEO, working for a major online news publication. 
+          DONT MAKE ANYTHING UP.
         keywords: ''
     tweets:
       stem:
-        system_role: You are a senior social media manager, experienced in social media marketing and content curation, working for a major online news publication. DONT MAKE ANYTHING UP.
+        system_role: > 
+          You are a senior social media manager, experienced in social media marketing and content curation, 
+          working for a major online news publication. 
+          DONT MAKE ANYTHING UP.
