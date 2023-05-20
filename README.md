@@ -157,12 +157,25 @@ mailcatcher
 You can then view the emails sent by your application by navigating to [http://localhost:1080](http://localhost:1080) in your web browser.
 
 # Deploying to Heroku
-Step 1. Create a new Heroku app
+### Step 1. Create a new Heroku app
 ```bash
 heroku create
 ```
 
-Step 2. Deploy the customizations branch
+### Step 2: Add buildpacks
+Add `heroku/ruby` and `heroku/nodejs` buildpacks to your Heroku app.
+```bash
+heroku buildpacks:add heroku/ruby
+heroku buildpacks:add heroku/nodejs
+```
+
+### Step 3: Configure the environment variables
+Configure the environment variables using the `heroku config:set` command. 
+You can find the necessary keys and values in the `.env` file.
+
+
+### Step 4. Deploy the customizations branch
+You can deploy the customizations branch to Heroku using the following command:
 ```bash
 git push heroku customizations:main
 ```
