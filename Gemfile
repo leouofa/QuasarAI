@@ -26,6 +26,7 @@ gem 'simple_scheduler'
 gem 'sitemap_generator'
 gem 'slack-notifier'
 gem 'ruby-openai'
+gem 'rexml'
 
 # Database
 gem 'hiredis'

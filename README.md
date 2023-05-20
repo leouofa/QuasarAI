@@ -25,8 +25,14 @@ Our goal is to empower journalists, publishers, and content creators with the mo
 By harnessing the power of AI and these innovative integrations, Enterprise not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
 
 # Step-by-Step Setup Instructions
-### Step 1: Clone the repository
-Start by cloning the repository to your local machine. You can do this by using the `git clone` command followed by the URL of the repository. Once cloned, navigate into the repository by using the `cd` command.
+### Step 1: Fork the repository
+Start by cloning the repository to your local machine. You can do this by using the `git clone` command followed by the URL of the repository. 
+Once cloned, navigate into the repository by using the `cd` command, and install the necessary dependencies by running the `bundle install` command.
+
+### Step 2: Create a customization branch
+Establish a customization branch  through the command `git checkout -b customizations`. This particular branch will serve as the base for your modifications to the Enterprise.
+Future synchronizations of any alterations made to this repository can be achieved using [fork syncing](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork), 
+and subsequently, these changes can be integrated into your personalization branch.
 
 ### Step 2: Create a new .env file
 In the repository, you will find a file named `.env.example`. Make a copy of this file and rename it to `.env`. You can do this by running the following command: `cp .env.example .env`.
@@ -149,3 +155,16 @@ mailcatcher
 ```
 
 You can then view the emails sent by your application by navigating to [http://localhost:1080](http://localhost:1080) in your web browser.
+
+# Deploying to Heroku
+Step 1. Create a new Heroku app
+```bash
+heroku create
+```
+
+Step 2. Deploy the customizations branch
+```bash
+git push heroku customizations:main
+```
+
+Step 3. Configure the environment variables
