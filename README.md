@@ -155,3 +155,16 @@ mailcatcher
 ```
 
 You can then view the emails sent by your application by navigating to [http://localhost:1080](http://localhost:1080) in your web browser.
+
+# Deploying to Heroku
+Step 1. Create a new Heroku app
+```bash
+heroku create
+```
+
+Step 2. Deploy the customizations branch
+```bash
+git push heroku customizations:main
+```
+
+Step 3. Configure the environment variables

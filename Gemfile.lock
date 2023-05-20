@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/kaminari/kaminari.git
-  revision: 68fdf60cd6fa6552ac59f26dba3f71ff3c20ba52
+  revision: 2d45daca71bb96ae489427204e30e330c3bde1f7
   branch: master
   specs:
     kaminari (1.2.2)
@@ -141,7 +141,7 @@ GEM
     config (4.2.0)
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
-    connection_pool (2.4.0)
+    connection_pool (2.4.1)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -275,7 +275,7 @@ GEM
       rake
     mini_mime (1.1.2)
     minitest (5.18.0)
-    msgpack (1.7.0)
+    msgpack (1.7.1)
     multi_xml (0.6.0)
     multipart-post (2.3.0)
     net-imap (0.3.4)
@@ -288,9 +288,9 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.0-arm64-darwin)
+    nokogiri (1.15.1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.0-x86_64-linux)
+    nokogiri (1.15.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.23.0)
@@ -554,6 +554,7 @@ DEPENDENCIES
   redcarpet
   redis
   reverse_markdown
+  rexml
   rspec-rails
   rspec_tap
   rubocop
