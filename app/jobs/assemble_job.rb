@@ -20,6 +20,9 @@ class AssembleJob < ApplicationJob
     # [x] Images from processed stories
     Images::CreateImageIdeasFromStoriesJob.perform_now
 
+    # [x] Cleanup broken imaginations
+    Images::CleanupImaginationsJob.perform_now
+
     # [x] Upload Imaginations to Uploadcare
     Images::UploadImaginationsJob.perform_now
 
