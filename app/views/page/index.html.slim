@@ -10,9 +10,9 @@
         | Topics
         =r ux.label text: @topics.count, class: 'circular !bg-black !text-white'
 
-      =r ux.div 'flex'
+      =r ux.div 'flex flex-wrap'
         - @topics.each do |topic|
-          =r ux.div '!mb-20 !bg-black-100 !border-2 !border-blue-100 !px-10 !py-10 !w-1/2'
+          =r ux.div '!mb-10 !bg-black-100 !border-2 !border-blue-100 !px-10 !py-10 !w-1/2'
             =r ux.h3 'center aligned'
               = topic.name
               =r ux.label text: topic.sub_topics.count, class: 'circular black'
