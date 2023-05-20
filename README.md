@@ -180,4 +180,20 @@ You can deploy the customizations branch to Heroku using the following command:
 git push heroku customizations:main
 ```
 
-Step 3. Configure the environment variables
+### Step 4. Configure the domain
+Configure the domain using the `heroku domains:add` command. 
+Don't forget to update the DNS records for your domain. 
+You will need to point the CNAME record to the Heroku app.
+```bash
+heroku domains:add www.yourcustomdomain.com
+```
+
+### Step 5. Configure the SSL certificate
+Configure the SSL certificate using the `heroku certs:auto:enable` command.
+
+### Step 6. Configure addons
+Add the database and redis addons using the following commands:
+```bash
+heroku addons:create heroku-redis:mini
+heroku addons:create heroku-postgresql:basic
+```
