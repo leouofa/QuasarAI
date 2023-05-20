@@ -197,3 +197,22 @@ Add the database and redis addons using the following commands:
 heroku addons:create heroku-redis:mini
 heroku addons:create heroku-postgresql:basic
 ```
+
+### Step 7. Enable background worker
+Enable the background worker with the following command `heroku ps:scale worker=1`
+
+### Step 8. Create an account & give it access
+Head over to `https://www.yourcustomdomain.com` and create a user account. 
+Afterwards log into the Heroku console and pull up the account you've just created. 
+
+```bash
+heroku run rails c
+```
+
+Now that you logged into the console, you can give the account access privileges by running the following commands:
+
+```ruby
+user = User.last
+user.give_access
+user.make_admin
+```
