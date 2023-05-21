@@ -36,6 +36,12 @@ class Image < ApplicationRecord
       .having('count(imaginations.id) = 3 AND bool_and(imaginations.uploaded) = ?', true)
   }
 
+  scope :without_three_uploaded_imaginations, lambda {
+    joins(:imaginations)
+      .group('images.id')
+      .having('count(imaginations.id) < 3 AND bool_and(imaginations.uploaded) = ?', true)
+  }
+
   scope :uploaded_with_three_uploaded_imaginations, lambda {
     with_three_uploaded_imaginations.where(uploaded: true)
   }
