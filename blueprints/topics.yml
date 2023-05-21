@@ -7,28 +7,28 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/b627cb81-586f-49b9-83f5-afd78e827f3f
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 12
         storypro_user_id: 2
         prompts: 'politics'
       - name: Donald Trump
         stream_id: feed/https://feedly.com/f/alert/6de0f70a-cb41-4ec1-9dc3-d6c1fe32edfd
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 12
         storypro_user_id: 2
         prompts: 'politics'
       - name: Alexandria Ocasio-Cortez
         stream_id: feed/https://feedly.com/f/alert/3b3ea89e-9246-44ea-8537-5f0535182f89
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 12
         storypro_user_id: 2
         prompts: 'politics'
       - name: Marjorie Taylor Greene
         stream_id: feed/https://feedly.com/f/alert/08df42a5-13b2-4ac4-a058-779329cbcff9
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 12
         storypro_user_id: 2
         prompts: 'politics'
 
@@ -39,21 +39,21 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/0a806083-d7a1-432d-a77e-ebab1f1a169c
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 83
         storypro_user_id: 2
         prompts: 'sports_two'
       - name: American Football
         stream_id: feed/https://feedly.com/f/alert/c84be72f-892f-48d0-9ec6-a9ced03f6065
         min_tags_for_story: 2
         max_stories_per_day: 1
-        storypro_category_id: 2
+        storypro_category_id: 83
         storypro_user_id: 2
         prompts: 'sports_two'
       - name: Basketball
         stream_id: feed/https://feedly.com/f/alert/aa390cd3-71d3-4793-8265-3971122b802b
         min_tags_for_story: 2
         max_stories_per_day: 1
-        storypro_category_id: 2
+        storypro_category_id: 83
         storypro_user_id: 2
         prompts: 'sports_two'
 
@@ -64,7 +64,7 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/203ac1ee-a61b-4a11-b953-2a503f1fec0d
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 17
         storypro_user_id: 2
         prompts: 'entertainment'
 
@@ -72,7 +72,7 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/1096dbbf-9ea3-41fe-b521-d923200fe0fa
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 15
         storypro_user_id: 2
         prompts: 'entertainment'
 
@@ -80,7 +80,7 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/13c50453-b861-4a7d-9831-d71d078a677f
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 7
         storypro_user_id: 2
         prompts: 'entertainment'
 
@@ -91,7 +91,7 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/a0b1ffe6-f548-4c34-9986-5974cc3409c7
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 9
         storypro_user_id: 2
         prompts: 'business'
 
@@ -99,7 +99,7 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/0d7b1209-2c51-4487-81fd-35a92d05ab71
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 9
         storypro_user_id: 2
         prompts: 'business'
 
@@ -107,6 +107,6 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/b9ef3b81-09ab-42af-ad7c-ea76a991fdde
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 2
+        storypro_category_id: 9
         storypro_user_id: 2
         prompts: 'business'
