@@ -4,5 +4,10 @@ class Images::CleanupImaginationsJob < ApplicationJob
   def perform(*args)
     failed_imaginations = Imagination.where("payload ->> 'content' = 'FAILED_TO_PROCESS_YOUR_COMMAND'")
     failed_imaginations.destroy_all
+
+    incomplete_image_ids  = Image.without_three_uploaded_imaginations
+                                 .where(processed: true).pluck(:id)
+    incomplete_images = Image.where(id: incomplete_image_ids)
+    incomplete_images.update_all(processed: false)
   end
 end
