@@ -176,7 +176,7 @@ module StoryPro
 
     def get_story_pro_color(found_story_pro_category)
       colors = StoryPro.get_colors
-      found_color = colors['colors'].find { |c| c["id"] == found_story_pro_category["id"] }
+      found_color = colors['colors'].find { |c| c["id"] == found_story_pro_category["color_id"] }
       found_color
     end
 
