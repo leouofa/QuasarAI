@@ -45,21 +45,27 @@ module StoryPro
           area.populate_area 'content' do |element|
             stem['content'].each_with_index do |content, index|
 
-              if index == 4 || index == 7
+              if index == 3 || index == 5
                 element.add 'colorblock', title: content['header'],
-                            color: found_color['name'],
+                            color: get_random_story_pro_color,
                             title_alignment: weighted_sample(fullscreen_header_alignment),
                             header_animation: weighted_sample(fullscreen_header_animation),
                             text_animation: weighted_sample(fullscreen_header_text_animation),
                             geometry: weighted_sample(fullscreen_header_geometry),
                             filter: weighted_sample(fullscreen_header_filter)
               else
+                if index != 0
+                  element.add 'spacer', size: 'medium'
+                end
                 element.add 'heading', header: content['header'],
                             size: "#{index == 0 ? 'h1' : 'h2'}",
                             transition: rand < 0.3 ? 'opacity-1' : '',
                             elements_regularcss_id: search_elements_by_name(regular_css_elements,
                                                                             'HEADING', 50)
 
+                if index != 0
+                  element.add 'spacer', size: 'small'
+                end
               end
 
 
@@ -72,10 +78,11 @@ module StoryPro
                                                                             'RICHTEXT')
                 dropcap_shown = true
 
-                if paragraph_index == 2 and content['paragraphs'].count > 3 and (index == 2 || index == 3 ||index == 4 || index == 7)
+                if paragraph_index == 2 and content['paragraphs'].count > 3 and (index == 2 || index == 4 || index == 6)
                   element.add 'spacer', size: 'large'
                   element.add 'divider', elements_regularcss_id: search_elements_by_name(regular_css_elements,
-                                                                              'DIVIDER')
+                                                                                         'DIVIDER')
+                  element.add 'spacer', size: 'large'
                 end
               end
 
@@ -83,11 +90,11 @@ module StoryPro
                 landscape_image_url, vertical_image_url, _card_image_url = extract_image_urls(content_images[index])
 
                 element.add 'oversized-image',
-                              landscape_image: landscape_image_url,
-                              vertical_image: vertical_image_url,
-                              overlay_background: weighted_sample(fullscreen_header_overlay_background),
-                              geometry: weighted_sample(fullscreen_header_geometry),
-                              filter: weighted_sample(fullscreen_header_filter)
+                            landscape_image: landscape_image_url,
+                            vertical_image: vertical_image_url,
+                            overlay_background: weighted_sample(fullscreen_header_overlay_background),
+                            geometry: weighted_sample(fullscreen_header_geometry),
+                            filter: weighted_sample(fullscreen_header_filter)
               end
             end
           end
@@ -97,8 +104,8 @@ module StoryPro
               element.add 'reference',
                           title: feed_item.title.present? ? feed_item.title : feed_item.url,
                           link: feed_item.url,
-                          author: feed_item.author.present? ? feed_item.author : feed_item.url,
-                          source: feed_item.author.present? ? feed_item.author : feed_item.url,
+                          author: feed_item.author.present? ? feed_item.author : get_domain(feed_item.url),
+                          source: get_domain(feed_item.url),
                           date: feed_item.published.strftime('%B %d, %Y')
             end
 
@@ -180,6 +187,12 @@ module StoryPro
       found_color
     end
 
+    def get_random_story_pro_color
+      colors = StoryPro.get_colors
+      random_color = colors['colors'].sample
+      random_color["name"]
+    end
+
     def search_elements_by_name(elements, search_term, percentage = nil)
       element_hashes = elements.select do |e|
         fields = e['element']['fields']
@@ -213,6 +226,10 @@ module StoryPro
     def weighted_sample(transitions)
       weighted_transitions = transitions.flat_map { |transition, weight| [transition] * weight }
       weighted_transitions.sample
+    end
+
+    def get_domain(url)
+      URI.parse(url).host
     end
 
     def richtext_transitions
