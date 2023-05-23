@@ -27,6 +27,14 @@ module StoryPro
       begin
         new_discussion.areas do |area|
           area.populate_area 'header' do |element|
+
+            # We don't want both the snippet and the geometry, because the snippet may have a geometry.
+            image_header_snippet = search_elements_by_name(fullscreen_css_elements,
+                                                           'IMAGEHEADER',
+                                                           60)
+            image_header_geometry = image_header_snippet.blank? ? weighted_sample(fullscreen_header_geometry) : 'none'
+
+
             element.add 'image-header',
                         'landscape_image': header_landscape_image_url,
                         'vertical_image': header_vertical_image_url,
@@ -35,10 +43,9 @@ module StoryPro
                         title_alignment: weighted_sample(fullscreen_header_alignment),
                         header_animation: weighted_sample(fullscreen_header_animation),
                         text_animation: weighted_sample(fullscreen_header_text_animation),
-                        geometry: weighted_sample(fullscreen_header_geometry),
+                        geometry: image_header_geometry,
                         filter: weighted_sample(fullscreen_header_filter),
-                        elements_fullscreencss_id: search_elements_by_name(fullscreen_css_elements,
-                                                                           'IMAGEHEADER')
+                        elements_fullscreencss_id: image_header_snippet
 
           end
 
@@ -89,12 +96,20 @@ module StoryPro
               if content_images[index]
                 landscape_image_url, vertical_image_url, _card_image_url = extract_image_urls(content_images[index])
 
+                # We don't want both the snippet and the geometry, because the snippet may have a geometry.
+                oversized_image_header_snippet = search_elements_by_name(fullscreen_css_elements,
+                                                                         'IMAGEHEADER',
+                                                                         70)
+
+                oversized_image_header_geometry = oversized_image_header_snippet.blank? ? weighted_sample(fullscreen_header_geometry_rare) : 'none'
+
                 element.add 'oversized-image',
                             landscape_image: landscape_image_url,
                             vertical_image: vertical_image_url,
                             overlay_background: weighted_sample(fullscreen_header_overlay_background),
-                            geometry: weighted_sample(fullscreen_header_geometry),
-                            filter: weighted_sample(fullscreen_header_filter)
+                            geometry: weighted_sample(fullscreen_header_geometry_rare),
+                            filter: weighted_sample(fullscreen_header_filter),
+                            elements_fullscreencss_id: oversized_image_header_geometry
               end
             end
           end
@@ -122,7 +137,7 @@ module StoryPro
         end
 
       rescue => e
-        delete_and_log_error(discussion, e)
+        delete_and_log_error(new_discussion, e)
       end
     end
 
@@ -229,6 +244,8 @@ module StoryPro
     end
 
     def get_domain(url)
+      return '' if url.blank?
+
       URI.parse(url).host
     end
 
@@ -284,30 +301,48 @@ module StoryPro
       ]
     end
 
+    def fullscreen_header_geometry_rare
+      [
+        ['none', 9],
+        ['bevel', 1],
+        ['circle', 1],
+        ['hexagon', 1],
+        ['left arrow', 1],
+        ['parallelogram left', 1],
+        ['parallelogram right', 1],
+        ['pentagon', 1],
+        ['rabbet', 1],
+        ['rectangle', 1],
+        ['right arrow', 1],
+        ['triangle bottom', 1],
+        ['triangle top', 1]
+      ]
+    end
+
     def fullscreen_header_filter
       [
         ['none', 1],
         ['blur', 1],
-        ['brightness', 1],
-        ['brightness-2', 1],
-        ['contrast', 1],
-        ['contrast-2', 1],
-        ['desaturate', 1],
-        ['desaturate-saturate', 1],
+        ['brightness', 2],
+        ['brightness-2', 2],
+        ['contrast', 2],
+        ['contrast-2', 2],
+        ['desaturate', 2],
+        ['desaturate-saturate', 2],
         ['grayscale', 1],
-        ['hue', 1],
+        ['hue', 2],
         ['hue-blur', 1],
         ['hue-blur-desaturate', 1],
         ['hue-blur-desaturate-saturate', 1],
         ['hue-blur-saturate', 1],
-        ['hue-desaturate', 1],
-        ['hue-desaturate-saturate', 1],
-        ['hue-desaturate-saturate-2', 1],
-        ['hue-desaturate-saturate-3', 1],
-        ['hue-saturate', 1],
+        ['hue-desaturate', 2],
+        ['hue-desaturate-saturate', 2],
+        ['hue-desaturate-saturate-2', 2],
+        ['hue-desaturate-saturate-3', 2],
+        ['hue-saturate', 2],
         ['invert', 1],
-        ['saturate', 1],
-        ['sepia', 1]
+        ['saturate', 2],
+        ['sepia', 2]
       ]
     end
 
