@@ -9,7 +9,7 @@ prompts:
       system_role: You are a senior graphics illustrator working for a major online news publication.
       style: Make images in sci-fi, cyberpunk or synthwave.
     midjourney:
-      prompt_extra: ''
+      prompt_extra: --v 5
     discussions:
       stem:
         system_role: >
@@ -42,7 +42,7 @@ prompts:
         You love comic books, superheroes, magic and sci-fi.
       style: Make images in comic book, heroic, magical an sci-fi styles.
     midjourney:
-      prompt_extra: Comic book drawing, illustration, highly detailed and intricate.
+      prompt_extra: Comic book drawing, illustration, highly detailed and intricate. --v 5
     discussions:
       stem:
         system_role: >
@@ -72,7 +72,7 @@ prompts:
         You love magic and fantasy.
       style: Make images in magical and fantasy styles.
     midjourney:
-      prompt_extra: Comic book drawing, illustration, highly detailed and intricate.
+      prompt_extra: Comic book drawing, illustration, highly detailed and intricate. --v 5
     discussions:
       stem:
         system_role: >
@@ -102,7 +102,7 @@ prompts:
     midjourney:
       prompt_extra: >
         cinematic composition, Jaime Jasso, 
-        Craig Mullins, wide angle, in the style of hayao miyazaki + brian froud + kim jung gi, studio ghibli, beautiful high detail enhanced 8k render
+        Craig Mullins, wide angle, in the style of hayao miyazaki + brian froud + kim jung gi, studio ghibli, beautiful high detail enhanced 8k render --v 5
     discussions:
       stem:
         system_role: >
@@ -128,7 +128,7 @@ prompts:
       system_role: Imagine yourself as a comic book artist illustrating the triumphs of business superheroes.
       style: Emulate the iconic comic book art of Marvel, with bold lines, vibrant colors, and dynamic compositions.
     midjourney:
-      prompt_extra: Create images with comic book-style speech bubbles and action-packed scenes that capture the essence of business success.
+      prompt_extra: Create images with comic book-style speech bubbles and action-packed scenes that capture the essence of business success. --v 5
     discussions:
       stem:
         system_role: >
@@ -148,7 +148,7 @@ prompts:
         Picture yourself as a comic book artist capturing the glitz and glamour of Hollywood.
       style: Embrace the larger-than-life comic book art style, using vivid colors, expressive characters, and captivating visuals.
     midjourney:
-      prompt_extra: Create images with cinematic compositions, capturing the excitement and energy of Hollywood blockbusters.
+      prompt_extra: Create images with cinematic compositions, capturing the excitement and energy of Hollywood blockbusters. --v 5
     discussions:
       stem:
         system_role: >
@@ -168,7 +168,7 @@ prompts:
         Imagine yourself as a comic book artist illustrating the clashes of political titans.
       style: Emulate the iconic comic book art style, with bold lines, dramatic expressions, and impactful compositions.
     midjourney:
-      prompt_extra: Create images that depict politicians as superheroes or supervillains, symbolizing their ideologies and actions.
+      prompt_extra: Create images that depict politicians as superheroes or supervillains, symbolizing their ideologies and actions. --v 5
     discussions:
       stem:
         system_role: >
@@ -187,6 +187,8 @@ prompts:
       system_role: >
         Picture yourself as a comic book artist illustrating the epic moments and rivalries of the sports world.
       style: Embrace the dynamic comic book
+    midjourney:
+      prompt_extra: --v 5
     discussions:
       stem:
         system_role: >
