@@ -1,16 +1,14 @@
-[//]: # (<h1 align="center">Enterprise 🛸 </h1> )
-<pre align="center">
- _______  _       _________ _______  _______  _______  _______ _________ _______  _______ 
-(  ____ \( (    /|\__   __/(  ____ \(  ____ )(  ____ )(  ____ )\__   __/(  ____ \(  ____ \
-| (    \/|  \  ( |   ) (   | (    \/| (    )|| (    )|| (    )|   ) (   | (    \/| (    \/
-| (__    |   \ | |   | |   | (__    | (____)|| (____)|| (____)|   | |   | (_____ | (__    
-|  __)   | (\ \) |   | |   |  __)   |     __)|  _____)|     __)   | |   (_____  )|  __)   
-| (      | | \   |   | |   | (      | (\ (   | (      | (\ (      | |         ) || (      
-| (____/\| )  \  |   | |   | (____/\| ) \ \__| )      | ) \ \_____) (___/\____) || (____/\
-(_______/|/    )_)   )_(   (_______/|/   \__/|/       |/   \__/\_______/\_______)(_______/
+<pre align="center" style="background-color: black;">
+   ____                                    _____ 
+  / __ \                             /\   |_   _|
+ | |  | |_   _  __ _ ___  __ _ _ __ /  \    | |  
+ | |  | | | | |/ _` / __|/ _` | '__/ /\ \   | |  
+ | |__| | |_| | (_| \__ \ (_| | | / ____ \ _| |_ 
+  \___\_\\__,_|\__,_|___/\__,_|_|/_/    \_\_____|
+                                                                                                      
 </pre>
 
-<p align="center">“Logic is the beginning of wisdom, not the end.”</p>
+<p align="center">“Exploring new worlds and civilizations, one story at a time.”</p>
 
 ----
 <p align="center">
@@ -23,51 +21,51 @@
 
 ----
 
-Welcome to Enterprise, the open-source project that boldly takes your newsroom where no newsroom has gone before! Inspired by the spirit of exploration and innovation from Star Trek, Enterprise is a cutting-edge AI-driven platform designed to revolutionize the way we create, curate, and distribute news content.
+Welcome to QuasarAI, the open-source project that is revolutionizing newsrooms across the galaxies! Inspired by the imaginative worlds of Star Wars and Star Trek, QuasarAI is an advanced AI-driven platform designed to transform the way we create, curate, and distribute news content.
 
-Our goal is to empower journalists, publishers, and content creators with the most advanced AI tools, streamlining the entire newsroom workflow. With Enterprise, you can:
+Our mission is to empower journalists, publishers, and content creators with superior AI tools, streamlining the entire newsroom workflow. With QuasarAI, you can:
 
-1. Consume news from across the cosmos: Enterprise's Feedly integration automatically collects and curates news feeds from around the world, ensuring your newsroom always has access to the latest and most relevant content.
-2. Let AI write the next great story: With the OpenAI integration, Enterprise is capable of automatically generating well-structured and engaging content, letting you focus on the editorial aspect and enhancing the quality of your stories.
-3. Illustrate your stories with the art of tomorrow: Our integration with Midjourney and the NexLeg API enables Enterprise to generate visually stunning and contextually relevant images, bringing your content to life and captivating your audience.
-4. Publish your news at warp speed: With the StoryPro integration, publishing your content becomes a seamless and automated process, ensuring your newsroom stays ahead of the competition and your readers are always informed.
-5. Distribute your news across the social cosmos: With our integration with Ayrshare, Enterprise enables you to automatically share your news content across multiple social media platforms. This ensures your stories reach a wider audience and increases your newsroom's digital footprint.
+1. __Stellar News Aggregation__: QuasarAI's Feedly integration automatically collects and curates news feeds from across the universe, ensuring your newsroom always has access to the latest and most relevant content.
+2. __Cosmic Content Creation__: Our integration with OpenAI allows QuasarAI to autonomously generate well-structured and engaging content. This gives you the freedom to concentrate on the editorial aspect and enhancing the quality of your stories.
+3. __Futuristic Visual Storytelling__: Our integration with Midjourney and the NexLeg API enables QuasarAI to generate visually stunning and contextually relevant images, bringing your content to life and captivating your audience.
+4. __Light-Speed Publishing__: With the StoryPro integration, publishing your content becomes a seamless and automated process, ensuring your readers are always informed.
+5. __Galactic Distribution__: With our integration with Ayrshare, QuasarAI enables you to automatically share your news content across multiple social media platforms, ensuring your stories reach a wider audience and amplify your newsroom's digital footprint.
 
-By harnessing the power of AI and these innovative integrations, Enterprise not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
+By harnessing the power of AI and these innovative integrations, QuasarAI not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
 
 ## Generative AI Disclaimer
-Enterprise utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models, to generate content. Users of Enterprise bear full responsibility for any content generated by these AI models, and Enterprise and its contributors are not liable for such content.
+Enterprise utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models, to generate content. Users of QuasarAI bear full responsibility for any content generated by these AI models, and QuasarAI and its contributors are not liable for such content.
 
-Compliance with applicable laws, regulations, and ethical standards is essential when using generative AI and its produced content. Users must exercise caution and ensure that the content generated by Enterprise and its AI integrations complies with all legal requirements.
+Compliance with applicable laws, regulations, and ethical standards is essential when using generative AI and its produced content. Users must exercise caution and ensure that the content generated by QuasarAI and its AI integrations complies with all legal requirements.
 
 Responsible and ethical use of AI-generated content is imperative to avoid harmful consequences, such as spreading misinformation, creating offensive material, or infringing upon others' rights. Users are solely responsible for preventing these negative outcomes.
 
-By using Enterprise, you agree to the following terms and conditions:
-1. Acknowledge that Enterprise utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models.
-2. Assume full responsibility and legal liability for any content, including text and images, generated by the AI models integrated within Enterprise.
-3. Understand that Enterprise and its contributors are not liable for any consequences arising from the content generated by the AI models, including accuracy, legality, or ethical implications.
+By using QuasarAI, you agree to the following terms and conditions:
+1. Acknowledge that QuasarAI utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models.
+2. Assume full responsibility and legal liability for any content, including text and images, generated by the AI models integrated within QuasarAI.
+3. Understand that QuasarAI and its contributors are not liable for any consequences arising from the content generated by the AI models, including accuracy, legality, or ethical implications.
 4. Agree to comply with all applicable laws, regulations, and ethical standards in your jurisdiction when using generative AI and its content. Ensure the generated content does not infringe upon rights, violate laws, or contravene regulations.
-5. Recognize the potential harm caused by misuse of AI-generated content and take responsibility for preventing misinformation dissemination, creation of offensive material, and infringement upon others' rights when using content generated by Enterprise's AI integrations.
+5. Recognize the potential harm caused by misuse of AI-generated content and take responsibility for preventing misinformation dissemination, creation of offensive material, and infringement upon others' rights when using content generated by QuasarAI's AI integrations.
 
-By using Enterprise or any content generated by its AI integrations, including text and images generated by Midjourney's AI models, you are bound by these terms and conditions. If you do not agree, please refrain from using Enterprise or any associated content.
+By using QuasarAI or any content generated by its AI integrations, including text and images generated by Midjourney's AI models, you are bound by these terms and conditions. If you do not agree, please refrain from using QuasarAI or any associated content.
 
 For the specific terms and conditions governing the usage of Midjourney's image generation models, please refer to [Midjourney's Terms of Service](https://docs.midjourney.com/docs/terms-of-service).
 
 For the specific terms and conditions governing the usage of OpenAI's GPT-3.5-turbo model (ChatGPT), please refer to [OpenAI's Terms of Service](https://openai.com/policies/terms-of-use).
 
-This comprehensive and legally sound disclaimer aims to mitigate potential legal risks and promote responsible and ethical use of Enterprise and its AI integrations. Review and understand these terms and conditions, along with the respective Terms of Service, before using Enterprise or any content generated by its AI models.
+This comprehensive and legally sound disclaimer aims to mitigate potential legal risks and promote responsible and ethical use of QuasarAI and its AI integrations. Review and understand these terms and conditions, along with the respective Terms of Service, before using QuasarAI or any content generated by its AI models.
 
 ## Third Party Services
 ### Required
-- [Feedly](https://feedly.com/i/welcome) – RSS Feeds + AI Intelligence ($12/month for Pro+ Plan)
-- [OpenAI](https://beta.openai.com/) – AI Content Generation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
-- [NexLeg](https://nexleg.com/) – Midjourney API ($40/month for API Acccess + $30/month from Midjourney)
+- [Feedly](https://feedly.com/i/welcome) – Stellar News Aggregation ($12/month for Pro+ Plan)
+- [OpenAI](https://beta.openai.com/) – Cosmic Content Creation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
+- [NexLeg](https://nexleg.com/) – Futuristic Visual Storytelling ($40/month for API Acccess + $30/month from Midjourney)
 
 __Total:__ $82/month + OpenAI Costs
 
 ### Optional
-- [StoryPro](https://storypro.io/) – The Online Publishing Platform ($99/month for Basic Plan)
-- [Ayrshare](https://www.ayrshare.com/) – Social Media Publishing Platform ($99/month for Premium Plan)
+- [StoryPro](https://storypro.io/) – Light-Speed Publishing ($99/month for Basic Plan)
+- [Ayrshare](https://www.ayrshare.com/) – Galactic Distribution ($99/month for Premium Plan)
 
 __Total:__ $198/month
 
@@ -79,7 +77,7 @@ __Total:__ $198/month
 ## License
 MIT License
 
-Copyright (c) 2023 Enterprise
+Copyright (c) 2023 QuasarAI
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
