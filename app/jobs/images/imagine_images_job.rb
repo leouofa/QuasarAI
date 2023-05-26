@@ -17,6 +17,14 @@ module Images
       begin
         Image.to_process.each do |image|
           Images::ImagineImageJob.perform_now(image:)
+
+          # We want to stop image processing if the que is full
+          # The processing will be restarted next time the job runs
+          que_lock = Lock.find_or_create_by(name: 'QueueFull')
+          if que_lock.locked?
+            que_lock.update(locked: false)
+            break
+          end
         end
       ensure
         # Unlock the job when finished
