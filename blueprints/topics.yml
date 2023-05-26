@@ -8,7 +8,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 12
-        storypro_user_id: 2
+        storypro_user_id: 7
         prompts: 'politics'
 
       - name: Donald Trump
@@ -16,7 +16,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 12
-        storypro_user_id: 2
+        storypro_user_id: 7
         prompts: 'politics'
 
       - name: Alexandria Ocasio-Cortez
@@ -24,7 +24,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 12
-        storypro_user_id: 2
+        storypro_user_id: 7
         prompts: 'politics'
 
       - name: Marjorie Taylor Greene
@@ -32,7 +32,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 12
-        storypro_user_id: 2
+        storypro_user_id: 7
         prompts: 'politics'
 
       - name: Ron DeSantis
@@ -40,7 +40,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 12
-        storypro_user_id: 2
+        storypro_user_id: 7
         prompts: 'politics'
 
   - name: Sports
@@ -51,7 +51,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 83
-        storypro_user_id: 2
+        storypro_user_id: 4
         prompts: 'sports_two'
 
       - name: American Football
@@ -59,7 +59,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 1
         storypro_category_id: 83
-        storypro_user_id: 2
+        storypro_user_id: 4
         prompts: 'sports_two'
 
       - name: Basketball
@@ -67,7 +67,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 1
         storypro_category_id: 83
-        storypro_user_id: 2
+        storypro_user_id: 4
         prompts: 'sports_two'
 
   - name: Entertainment
@@ -78,7 +78,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 17
-        storypro_user_id: 2
+        storypro_user_id: 12
         prompts: 'entertainment'
 
       - name: Hollywood
@@ -86,7 +86,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 17
-        storypro_user_id: 2
+        storypro_user_id: 12
         prompts: 'entertainment'
 
       - name: Los Angeles
@@ -94,7 +94,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 17
-        storypro_user_id: 2
+        storypro_user_id: 12
         prompts: 'entertainment'
 
       - name: Music
@@ -102,7 +102,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 15
-        storypro_user_id: 2
+        storypro_user_id: 12
         prompts: 'entertainment'
 
       - name: Sex
@@ -110,7 +110,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 7
-        storypro_user_id: 2
+        storypro_user_id: 12
         prompts: 'entertainment'
 
   - name: Business
@@ -121,7 +121,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 9
-        storypro_user_id: 2
+        storypro_user_id: 5
         prompts: 'business'
 
       - name: Tech Entrepreneurship
@@ -129,7 +129,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 9
-        storypro_user_id: 2
+        storypro_user_id: 5
         prompts: 'business'
 
       - name: Finance
@@ -137,7 +137,7 @@ topics:
         min_tags_for_story: 2
         max_stories_per_day: 2
         storypro_category_id: 9
-        storypro_user_id: 2
+        storypro_user_id: 5
         prompts: 'business'
 
   - name: Science
@@ -147,30 +147,30 @@ topics:
         stream_id: feed/https://feedly.com/f/alert/c6ffe709-f34f-40cc-ab24-0538d3c55a69
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 9
-        storypro_user_id: 2
+        storypro_category_id: 82
+        storypro_user_id: 11
         prompts: 'magical'
 
       - name: Marine
         stream_id: feed/https://feedly.com/f/alert/7e3ac1d8-7a2c-4d00-a109-289c79b225e5
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 9
-        storypro_user_id: 2
+        storypro_category_id: 82
+        storypro_user_id: 11
         prompts: 'magical'
 
       - name: Entheogens
         stream_id: feed/https://feedly.com/f/alert/bd041aa6-410b-4f08-beea-537fabeb57d3
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 9
-        storypro_user_id: 2
+        storypro_category_id: 82
+        storypro_user_id: 11
         prompts: 'magical'
 
       - name: Health
         stream_id: feed/https://feedly.com/f/alert/714f5614-a0d1-4e8d-a33a-51e8fdef329b
         min_tags_for_story: 2
         max_stories_per_day: 2
-        storypro_category_id: 9
-        storypro_user_id: 2
+        storypro_category_id: 7
+        storypro_user_id: 11
         prompts: 'magical'
