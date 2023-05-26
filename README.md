@@ -71,6 +71,10 @@ __Total:__ $82/month + OpenAI Costs
 
 __Total:__ $198/month
 
+## Next Steps
+1. [Setup-by-Step Setup Instructions](https://github.com/realstorypro/enterprise/wiki/Local-Setup)
+2. [Deployment to Heroku](https://github.com/realstorypro/enterprise/wiki/Deployment-to-Heroku)
+
 
 ## License
 MIT License
