@@ -1,16 +1,14 @@
-[//]: # (<h1 align="center">Enterprise 🛸 </h1> )
-<pre align="center">
- _______  _       _________ _______  _______  _______  _______ _________ _______  _______ 
-(  ____ \( (    /|\__   __/(  ____ \(  ____ )(  ____ )(  ____ )\__   __/(  ____ \(  ____ \
-| (    \/|  \  ( |   ) (   | (    \/| (    )|| (    )|| (    )|   ) (   | (    \/| (    \/
-| (__    |   \ | |   | |   | (__    | (____)|| (____)|| (____)|   | |   | (_____ | (__    
-|  __)   | (\ \) |   | |   |  __)   |     __)|  _____)|     __)   | |   (_____  )|  __)   
-| (      | | \   |   | |   | (      | (\ (   | (      | (\ (      | |         ) || (      
-| (____/\| )  \  |   | |   | (____/\| ) \ \__| )      | ) \ \_____) (___/\____) || (____/\
-(_______/|/    )_)   )_(   (_______/|/   \__/|/       |/   \__/\_______/\_______)(_______/
+<pre align="center" style="background-color: black;">
+   ____                                    _____ 
+  / __ \                             /\   |_   _|
+ | |  | |_   _  __ _ ___  __ _ _ __ /  \    | |  
+ | |  | | | | |/ _` / __|/ _` | '__/ /\ \   | |  
+ | |__| | |_| | (_| \__ \ (_| | | / ____ \ _| |_ 
+  \___\_\\__,_|\__,_|___/\__,_|_|/_/    \_\_____|
+                                                                                                      
 </pre>
 
-<p align="center">“Logic is the beginning of wisdom, not the end.”</p>
+<p align="center">“Exploring new worlds and civilizations, one story at a time.”</p>
 
 ----
 <p align="center">
@@ -23,263 +21,69 @@
 
 ----
 
-Welcome to Enterprise, the open-source project that boldly takes your newsroom where no newsroom has gone before! Inspired by the spirit of exploration and innovation from Star Trek, Enterprise is a cutting-edge AI-driven platform designed to revolutionize the way we create, curate, and distribute news content.
+Welcome to QuasarAI, the open-source project that is revolutionizing newsrooms across the galaxies! Inspired by the imaginative worlds of Star Wars and Star Trek, QuasarAI is an advanced AI-driven platform designed to transform the way we create, curate, and distribute news content. 
 
-Our goal is to empower journalists, publishers, and content creators with the most advanced AI tools, streamlining the entire newsroom workflow. With Enterprise, you can:
+This platform is built on the principles of Collaborative Artificial Super Intelligence (CASI), a novel approach that seeks to transform the landscape of complex business problems. For more information on CASI, please refer to our [whitepaper](https://www.storypro.io/whitepaper).
 
-1. Consume news from across the cosmos: Enterprise's Feedly integration automatically collects and curates news feeds from around the world, ensuring your newsroom always has access to the latest and most relevant content.
-2. Let AI write the next great story: With the OpenAI integration, Enterprise is capable of automatically generating well-structured and engaging content, letting you focus on the editorial aspect and enhancing the quality of your stories.
-3. Illustrate your stories with the art of tomorrow: Our integration with Midjourney and the NexLeg API enables Enterprise to generate visually stunning and contextually relevant images, bringing your content to life and captivating your audience.
-4. Publish your news at warp speed: With the StoryPro integration, publishing your content becomes a seamless and automated process, ensuring your newsroom stays ahead of the competition and your readers are always informed.
-5. Distribute your news across the social cosmos: With our integration with Ayrshare, Enterprise enables you to automatically share your news content across multiple social media platforms. This ensures your stories reach a wider audience and increases your newsroom's digital footprint.
+Our mission is to empower journalists, publishers, and content creators with superior AI tools, streamlining the entire newsroom workflow. With QuasarAI, you can:
 
-By harnessing the power of AI and these innovative integrations, Enterprise not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
+1. __Stellar News Aggregation__: QuasarAI's Feedly integration automatically collects and curates news feeds from across the universe, ensuring your newsroom always has access to the latest and most relevant content.
+2. __Cosmic Content Creation__: Our integration with OpenAI allows QuasarAI to autonomously generate well-structured and engaging content. This gives you the freedom to concentrate on the editorial aspect and enhancing the quality of your stories.
+3. __Futuristic Visual Storytelling__: Our integration with Midjourney and the NexLeg API enables QuasarAI to generate visually stunning and contextually relevant images, bringing your content to life and captivating your audience.
+4. __Light-Speed Publishing__: With the StoryPro integration, publishing your content becomes a seamless and automated process, ensuring your readers are always informed.
+5. __Galactic Distribution__: With our integration with Ayrshare, QuasarAI enables you to automatically share your news content across multiple social media platforms, ensuring your stories reach a wider audience and amplify your newsroom's digital footprint.
 
-# Generative AI Disclaimer
-Enterprise utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models, to generate content. Users of Enterprise bear full responsibility for any content generated by these AI models, and Enterprise and its contributors are not liable for such content.
+By harnessing the power of AI and these innovative integrations, QuasarAI not only enhances the efficiency of your newsroom but also elevates the quality and impact of your content. Join us on this exciting journey as we redefine the future of journalism together!
 
-Compliance with applicable laws, regulations, and ethical standards is essential when using generative AI and its produced content. Users must exercise caution and ensure that the content generated by Enterprise and its AI integrations complies with all legal requirements.
+## Generative AI Disclaimer
+Enterprise utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models, to generate content. Users of QuasarAI bear full responsibility for any content generated by these AI models, and QuasarAI and its contributors are not liable for such content.
+
+Compliance with applicable laws, regulations, and ethical standards is essential when using generative AI and its produced content. Users must exercise caution and ensure that the content generated by QuasarAI and its AI integrations complies with all legal requirements.
 
 Responsible and ethical use of AI-generated content is imperative to avoid harmful consequences, such as spreading misinformation, creating offensive material, or infringing upon others' rights. Users are solely responsible for preventing these negative outcomes.
 
-By using Enterprise, you agree to the following terms and conditions:
-1. Acknowledge that Enterprise utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models.
-2. Assume full responsibility and legal liability for any content, including text and images, generated by the AI models integrated within Enterprise.
-3. Understand that Enterprise and its contributors are not liable for any consequences arising from the content generated by the AI models, including accuracy, legality, or ethical implications.
+By using QuasarAI, you agree to the following terms and conditions:
+1. Acknowledge that QuasarAI utilizes generative AI technology, including OpenAI's GPT-3.5-turbo model and Midjourney's image generation models.
+2. Assume full responsibility and legal liability for any content, including text and images, generated by the AI models integrated within QuasarAI.
+3. Understand that QuasarAI and its contributors are not liable for any consequences arising from the content generated by the AI models, including accuracy, legality, or ethical implications.
 4. Agree to comply with all applicable laws, regulations, and ethical standards in your jurisdiction when using generative AI and its content. Ensure the generated content does not infringe upon rights, violate laws, or contravene regulations.
-5. Recognize the potential harm caused by misuse of AI-generated content and take responsibility for preventing misinformation dissemination, creation of offensive material, and infringement upon others' rights when using content generated by Enterprise's AI integrations.
+5. Recognize the potential harm caused by misuse of AI-generated content and take responsibility for preventing misinformation dissemination, creation of offensive material, and infringement upon others' rights when using content generated by QuasarAI's AI integrations.
 
-By using Enterprise or any content generated by its AI integrations, including text and images generated by Midjourney's AI models, you are bound by these terms and conditions. If you do not agree, please refrain from using Enterprise or any associated content.
+By using QuasarAI or any content generated by its AI integrations, including text and images generated by Midjourney's AI models, you are bound by these terms and conditions. If you do not agree, please refrain from using QuasarAI or any associated content.
 
 For the specific terms and conditions governing the usage of Midjourney's image generation models, please refer to [Midjourney's Terms of Service](https://docs.midjourney.com/docs/terms-of-service).
 
 For the specific terms and conditions governing the usage of OpenAI's GPT-3.5-turbo model (ChatGPT), please refer to [OpenAI's Terms of Service](https://openai.com/policies/terms-of-use).
 
-This comprehensive and legally sound disclaimer aims to mitigate potential legal risks and promote responsible and ethical use of Enterprise and its AI integrations. Review and understand these terms and conditions, along with the respective Terms of Service, before using Enterprise or any content generated by its AI models.
+This comprehensive and legally sound disclaimer aims to mitigate potential legal risks and promote responsible and ethical use of QuasarAI and its AI integrations. Review and understand these terms and conditions, along with the respective Terms of Service, before using QuasarAI or any content generated by its AI models.
 
-# Step-by-Step Setup Instructions
-### Step 0: Prerequisites
+QuasarAI is a practical embodiment of the principles of CASI, implementing these innovative concepts to automate the operation of a newsroom. As an open-source project, QuasarAI leverages an advanced AI-driven platform to redefine how news content is created, curated, and distributed. For more information on how QuasarAI utilizes CASI principles, please refer to our [whitepaper](https://www.storypro.io/whitepaper).
 
-Ensure that you have the following installed on your machine:
-#### System Requirements
-- Node 18.15.0
-- Ruby 3.2.2
-- Postgres SQL
-- Redis
+Join us on this exciting journey as we redefine the future of journalism together with QuasarAI and CASI!
 
-You will need to have the following services for Enterprise to function:
+## Third Party Services
+### Required
+- [Feedly](https://feedly.com/i/welcome) – Stellar News Aggregation ($12/month for Pro+ Plan)
+- [OpenAI](https://beta.openai.com/) – Cosmic Content Creation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
+- [NexLeg](https://nexleg.com/) – Futuristic Visual Storytelling ($40/month for API Acccess + $30/month from Midjourney)
 
-#### Services Needed
-- [Feedly](https://feedly.com/i/welcome) – RSS Feeds + AI Intelligence ($12/month for Pro+ Plan)
-- [OpenAI](https://beta.openai.com/) – AI Content Generation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
-- [NexLeg](https://nexleg.com/) – Midjourney API ($40/month for API Acccess + $30/month from Midjourney)
-- [StoryPro](https://storypro.io/) – The Publishing Platform ($99/month for Basic Plan)
-- [Ayrshare](https://www.ayrshare.com/) – Social Media Publishing ($99/month for Premium Plan
- 
-__TOTAL COST:__ $280/month + OpenAI Costs
+__Total:__ $82/month + OpenAI Costs
 
+### Optional
+- [StoryPro](https://storypro.io/) – Light-Speed Publishing ($99/month for Basic Plan)
+- [Ayrshare](https://www.ayrshare.com/) – Galactic Distribution ($99/month for Premium Plan)
 
+__Total:__ $198/month
 
-### Step 1: Fork the repository
-Start by cloning the repository to your local machine. You can do this by using the `git clone` command followed by the URL of the repository. 
-Once cloned, navigate into the repository by using the `cd` command, and install the necessary dependencies by running the following commands:
-```bash
-bundle install
-yarn install
-```
-
-### Step 2: Create a customization branch
-Establish a customization branch  through the command `git checkout -b customizations`. This particular branch will serve as the base for your modifications to the Enterprise.
-Future synchronizations of any alterations made to this repository can be achieved using [fork syncing](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork), 
-and subsequently, these changes can be integrated into your personalization branch.
-
-### Step 2: Create a new .env file
-In the repository, you will find a file named `.env.example`. Make a copy of this file and rename it to `.env`. You can do this by running the following command: `cp .env.example .env`.
-
-### Step 3: Populate the .env file
-Open the newly created `.env` file and fill it with the necessary keys and values. You may need to sign up for certain services to obtain these keys. The `.env.example` file includes comments with instructions on how to obtain each key.
-
-### Step 4: Generate blueprints
-Run the `rails generate blueprints` command. This will copy the blueprint files into the `blueprints` directory.
-
-### Step 5: Modify the blueprint files
-Change the `topics.yml` and `prompts.yml` files in the blueprints directory to reflect the feeds and prompts you want to use.
-
-### Step 6: Fine-Tune story generation
-In the future, you can fine-tune story generation by excluding unwanted tags in the `tunings.yml` file.
-
-### Step 7: Update the blueprints
-Once you've made your changes, execute the `rake blueprints:update` command. This will load your changes into the database.
-
-### Step 8: Set Up the Database
-After updating the blueprints, it's time to set up your database. Run the following commands to create the database and load the schema:
-```bash
-rails db:create
-rails db:schema:load
-```
-
-### Step 9: Install Foreman
-If you don't have Foreman installed, you can install it using the following command: `gem install foreman`.
-
-### Step 10: Ensure Redis is Installed and Running
-Ensure that Redis is installed and running on your machine. If using Homebrew you can install it with the following command: `brew install redis`. To start Redis, use the command: `brew services start redis`.
-
-### Step 11: Start the Application
-Finally, you can start the application by running the following command: `foreman start -f Procfile.dev`.
-
-### Step 12: Create an Account
-Head over to `https://localhost:3000` and create a user account. 
-
-### Step 13: Give account access privileges
-Head over to the console and pull up the account you've just created, then give it access privileges by running the following commands:
-```ruby
-# pulls up the newly user
-user = User.last
-
-# gives access to the application
-user.give_access
-
-# gives access to sidekiq web ui. This is optional, but useful for debugging
-user.make_admin
-````
-
-### Step 14: Setup Proxy
-NextLeg uses webhooks to communicate with Enterprise about the status of the images it generates. To enable this communication, you need to setup a proxy on your local machine. In this example we are using a paid service called ngrok, but you can use any proxy service you like.
-
-```bash
- ngrok http 3000 --subdomain=custom_subdomain
-```
-
-### Step 15: Setup NexLeg
-Log into your NextLeg account, navigate to your account settings, and update the webhook URL to point to the proxy URL you've just created.
-`https://custom_subdomain.ngrok.io/webhooks/midjourney`
+## Next Steps
+1. [Setup-by-Step Setup Instructions](https://github.com/realstorypro/enterprise/wiki/Local-Setup)
+2. [Deployment to Heroku](https://github.com/realstorypro/enterprise/wiki/Deployment-to-Heroku)
 
 
-# Running It
-Enterprise uses a series of jobs to automate the process of generating and publishing stories. These jobs can be scheduled to run automatically using a cron job or manually executed for setup and troubleshooting.
-
-### Assembling Job
-The Assembling Job is responsible for:
-- Fetching new feed items from Feedly.
-- Converting these feeds into stories and tweets with the help of OpenAI.
-- Uploading new images to UploadCare.
- 
-To manually execute the Assembling Job, open your console and run the following command:
-
-```ruby
-AssembleJob.perform_now
-```
-
-This command will immediately start the Assembling Job, allowing you to monitor its progress and troubleshoot any issues.
-
-### Image Processing Job
-The Image Processing Job is responsible for queuing up image ideas to Midjourney via NextLeg. __Before running this job, ensure that your proxy is set up correctly.__
-
-To manually execute the Image Processing Job, open your console and run the following command:
-```ruby
-Images::ImagineImagesJob.perform_now
-```
-
-This command will immediately start the Image Processing Job, allowing you to monitor its progress and troubleshoot any issues.
-
-### Publishing Job
-
-The Publishing Job is responsible for:
-_ Publishing discussions to StoryPro.
-_ Scheduling tweets via Ayrshare.
-
-To manually execute the Publishing Job, open your console and run the following command:
-```ruby
-Images::PublishJob.perform_now
-```
-
-This command will immediately start the Publishing Job, allowing you to monitor its progress and troubleshoot any issues.
-
-## Scheduling Jobs
-If you want to automate these jobs, you can schedule them to run at specific intervals using a cron job. To do this, you'll need to use the `rake simple_scheduler` command.
-This command will start the Simple Scheduler, which will automatically execute the jobs according to the schedule defined in `config/simple_scheduler.yml` file.
-
-
-## Mailcatcher
-Mailcatcher is a useful tool for testing emails in development. It catches all emails sent by your application and displays them in a web interface. You can also use it to test HTML emails during development.
-
-Install mailcatcher gem on OSX
-```bash
-gem install mailcatcher --pre
-```
-
-Run mailcatcher
-```bash
-mailcatcher
-```
-
-You can then view the emails sent by your application by navigating to [http://localhost:1080](http://localhost:1080) in your web browser.
-
-# Deploying to Heroku
-### Step 1. Create a new Heroku app
-```bash
-heroku create
-```
-
-### Step 2: Add buildpacks
-Add `heroku/ruby` and `heroku/nodejs` buildpacks to your Heroku app.
-```bash
-heroku buildpacks:add heroku/ruby
-heroku buildpacks:add heroku/nodejs
-```
-
-### Step 3: Configure the environment variables
-Configure the environment variables using the `heroku config:set` command. 
-You can find the necessary keys and values in the `.env` file.
-
-
-### Step 4. Deploy the customizations branch
-You can deploy the customizations branch to Heroku using the following command:
-```bash
-git push heroku customizations:main
-```
-
-### Step 4. Configure the domain
-Configure the domain using the `heroku domains:add` command. 
-Don't forget to update the DNS records for your domain. 
-You will need to point the CNAME record to the Heroku app.
-```bash
-heroku domains:add www.yourcustomdomain.com
-```
-
-### Step 5. Configure the SSL certificate
-Configure the SSL certificate using the `heroku certs:auto:enable` command.
-
-### Step 6. Configure addons
-Add the database and redis addons using the following commands:
-```bash
-heroku addons:create heroku-redis:mini
-heroku addons:create heroku-postgresql:basic
-```
-
-### Step 7. Enable background worker
-Enable the background worker with the following command `heroku ps:scale worker=1`
-
-### Step 8. Create an account & give it access
-Head over to `https://www.yourcustomdomain.com` and create a user account. 
-Afterwards log into the Heroku console and pull up the account you've just created. 
-
-```bash
-heroku run rails c
-```
-
-Now that you logged into the console, you can give the account access privileges by running the following commands:
-
-```ruby
-user = User.last
-user.give_access
-user.make_admin
-```
-
-# License
+## License
 MIT License
 
-Copyright (c) 2023 Enterprise
+Copyright (c) 2023 QuasarAI
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

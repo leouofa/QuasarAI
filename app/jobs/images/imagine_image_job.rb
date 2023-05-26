@@ -33,8 +33,8 @@ module Images
 
       if ENV['DYNAMIC_THROTTLE']
         if pending_imaginations > 3
-          puts "Sleeping for 300 seconds"
-          sleep(300)
+          puts "Sleeping for 200 seconds"
+          sleep(200)
         elsif pending_imaginations > 2
           puts "Sleeping for 180 seconds"
           sleep(180)
