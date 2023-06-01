@@ -3,10 +3,10 @@ queue_ahead: 360 # Number of minutes to queue jobs into the future
 queue_name: "default" # The Sidekiq queue name used by SimpleScheduler::FutureJob
 tz: "America/Chicago" # The application time zone will be used by default if not set
 
-publishing_task:
-  class: 'PublishJob'
-  every: '30.minutes'
-  at: "*:00"
+#publishing_task:
+#  class: 'PublishJob'
+#  every: '30.minutes'
+#  at: "*:00"
 
 #assembly_task:
 #  class: 'AssembleJob'
