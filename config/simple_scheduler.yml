@@ -5,12 +5,12 @@ tz: "America/Chicago" # The application time zone will be used by default if not
 
 publishing_task:
   class: 'Discussions::PublishJob'
-  every: '1.hour'
+  every: '1.hours'
   at: "*:00"
 
 tweet_task:
   class: 'Tweets::PublishJob'
-  every: '1.hour'
+  every: '1.hours'
   at: "*:15"
 
 #assembly_task:
