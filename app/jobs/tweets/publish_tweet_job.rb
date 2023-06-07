@@ -19,7 +19,7 @@ class Tweets::PublishTweetJob < ApplicationJob
     truncated_tweet_text = tweet_text.truncate(MAX_CHARACTERS - 23, omission: '...')
 
     card_image =  tweet.discussion.story.imaginations.where(aspect_ratio: :card).sample(1)
-    card_image_url = "https://ucarecdn.com/#{card_image.last.uploadcare.last['uuid']}/"
+    card_image_url = "https://ucarecdn.com/#{card_image.last.uploadcare.last['uuid']}/-/format/auto/-/quality/smart/-/preview/"
 
     story_pro_discussion = StoryPro.get_discussion(discussion.story_pro_id)
     discussion_slug = story_pro_discussion["entry"]["slug"]
