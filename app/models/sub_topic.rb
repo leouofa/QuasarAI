@@ -13,6 +13,8 @@
 #  storypro_user_id     :integer
 #  prompts              :string
 #  max_stories_per_day  :integer
+#  ai_disclaimer        :boolean          default(FALSE)
+#  active               :boolean          default(TRUE)
 #
 
 class SubTopic < ApplicationRecord
