@@ -8,6 +8,11 @@ namespace :blueprints do
 
     topics.each do |topic|
       current_topic = Topic.find_or_create_by name: topic["name"]
+      sub_topic_names = topic["sub_topics"].map { |sub_topic| sub_topic["name"] }
+
+      # Set sub_topics not present in the topics.yml to inactive
+      current_topic.sub_topics.where.not(name: sub_topic_names).update_all(active: false)
+
       topic["sub_topics"].each do |sub_topic|
         current_sub_topic_topic = SubTopic.find_or_create_by! name: sub_topic["name"],
                                                               topic_id: current_topic.id
@@ -17,7 +22,9 @@ namespace :blueprints do
                                         storypro_category_id: sub_topic["storypro_category_id"],
                                         storypro_user_id: sub_topic["storypro_user_id"],
                                         ai_disclaimer: sub_topic["ai_disclaimer"],
-                                        prompts: sub_topic["prompts"])
+                                        prompts: sub_topic["prompts"],
+                                        active: true
+                                       )
       end
     end
   end

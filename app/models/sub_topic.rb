@@ -21,4 +21,6 @@ class SubTopic < ApplicationRecord
   belongs_to :topic
   has_many :feeds, dependent: :destroy
   has_many :stories, dependent: :destroy
+
+  scope :active, -> { where(active: true) }
 end
