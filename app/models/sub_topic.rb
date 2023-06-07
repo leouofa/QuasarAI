@@ -13,10 +13,14 @@
 #  storypro_user_id     :integer
 #  prompts              :string
 #  max_stories_per_day  :integer
+#  ai_disclaimer        :boolean          default(FALSE)
+#  active               :boolean          default(TRUE)
 #
 
 class SubTopic < ApplicationRecord
   belongs_to :topic
   has_many :feeds, dependent: :destroy
   has_many :stories, dependent: :destroy
+
+  scope :active, -> { where(active: true) }
 end
