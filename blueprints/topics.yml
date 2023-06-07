@@ -9,6 +9,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 12
         storypro_user_id: 7
+        ai_disclaimer: true
         prompts: 'politics'
 
       - name: Donald Trump
@@ -17,23 +18,24 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 12
         storypro_user_id: 7
+        ai_disclaimer: true
         prompts: 'politics'
 
-      - name: Alexandria Ocasio-Cortez
-        stream_id: feed/https://feedly.com/f/alert/3b3ea89e-9246-44ea-8537-5f0535182f89
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 12
-        storypro_user_id: 7
-        prompts: 'politics'
-
-      - name: Marjorie Taylor Greene
-        stream_id: feed/https://feedly.com/f/alert/08df42a5-13b2-4ac4-a058-779329cbcff9
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 12
-        storypro_user_id: 7
-        prompts: 'politics'
+#      - name: Alexandria Ocasio-Cortez
+#        stream_id: feed/https://feedly.com/f/alert/3b3ea89e-9246-44ea-8537-5f0535182f89
+#        min_tags_for_story: 2
+#        max_stories_per_day: 2
+#        storypro_category_id: 12
+#        storypro_user_id: 7
+#        prompts: 'politics'
+#
+#      - name: Marjorie Taylor Greene
+#        stream_id: feed/https://feedly.com/f/alert/08df42a5-13b2-4ac4-a058-779329cbcff9
+#        min_tags_for_story: 2
+#        max_stories_per_day: 2
+#        storypro_category_id: 12
+#        storypro_user_id: 7
+#        prompts: 'politics'
 
       - name: Ron DeSantis
         stream_id: feed/https://feedly.com/f/alert/629b4c92-92ba-4d3b-b416-1dc17e42a66e
@@ -41,6 +43,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 12
         storypro_user_id: 7
+        ai_disclaimer: true
         prompts: 'politics'
 
   - name: Sports
@@ -52,6 +55,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 83
         storypro_user_id: 4
+        ai_disclaimer: false
         prompts: 'sports_two'
 
       - name: American Football
@@ -60,6 +64,7 @@ topics:
         max_stories_per_day: 1
         storypro_category_id: 83
         storypro_user_id: 4
+        ai_disclaimer: false
         prompts: 'sports_two'
 
       - name: Basketball
@@ -68,6 +73,7 @@ topics:
         max_stories_per_day: 1
         storypro_category_id: 83
         storypro_user_id: 4
+        ai_disclaimer: false
         prompts: 'sports_two'
 
   - name: Entertainment
@@ -79,6 +85,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 17
         storypro_user_id: 12
+        ai_disclaimer: false
         prompts: 'entertainment'
 
       - name: Hollywood
@@ -87,6 +94,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 17
         storypro_user_id: 12
+        ai_disclaimer: false
         prompts: 'entertainment'
 
       - name: Los Angeles
@@ -95,6 +103,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 17
         storypro_user_id: 12
+        ai_disclaimer: false
         prompts: 'entertainment'
 
       - name: Music
@@ -103,6 +112,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 15
         storypro_user_id: 12
+        ai_disclaimer: false
         prompts: 'entertainment'
 
       - name: Sex
@@ -111,6 +121,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 7
         storypro_user_id: 12
+        ai_disclaimer: false
         prompts: 'entertainment'
 
   - name: Business
@@ -122,6 +133,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 9
         storypro_user_id: 5
+        ai_disclaimer: false
         prompts: 'business'
 
       - name: Tech Entrepreneurship
@@ -130,6 +142,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 9
         storypro_user_id: 5
+        ai_disclaimer: false
         prompts: 'business'
 
       - name: Finance
@@ -138,6 +151,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 9
         storypro_user_id: 5
+        ai_disclaimer: false
         prompts: 'business'
 
   - name: Science
@@ -149,6 +163,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 82
         storypro_user_id: 11
+        ai_disclaimer: false
         prompts: 'magical'
 
       - name: Marine
@@ -157,6 +172,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 82
         storypro_user_id: 11
+        ai_disclaimer: false
         prompts: 'magical'
 
       - name: Entheogens
@@ -165,6 +181,7 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 82
         storypro_user_id: 11
+        ai_disclaimer: false
         prompts: 'magical'
 
       - name: Health
@@ -173,4 +190,5 @@ topics:
         max_stories_per_day: 2
         storypro_category_id: 7
         storypro_user_id: 11
+        ai_disclaimer: false
         prompts: 'magical'
