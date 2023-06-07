@@ -8,4 +8,5 @@ topics:
         max_stories_per_day: 3
         storypro_category_id: 2
         storypro_user_id: 2
+        ai_disclaimer: true
         prompts: 'default'
