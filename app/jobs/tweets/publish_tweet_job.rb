@@ -1,6 +1,5 @@
 class Tweets::PublishTweetJob < ApplicationJob
   queue_as :default
-  MAX_CHARACTERS = 280
 
   def perform(discussion:)
     return if discussion.tweet.uploaded
@@ -8,15 +7,29 @@ class Tweets::PublishTweetJob < ApplicationJob
     story = discussion.story
     tweet = discussion.tweet
 
+    platforms = []
+    platforms.push 'twitter' if ENV['TWITTER_ENABLED']
+    platforms.push 'linkedin' if ENV['LINKEDIN_ENABLED']
+
     tweet_text = JSON.parse(tweet.stem)['tweet']
 
     if story.sub_topic.ai_disclaimer
       tweet_text = "📟 AI Perspective: #{tweet_text}"
     end
 
+    # Removes hashtags and shortens the max characters to accommodate for hashtags.
+    if ENV['AUTOMATIC_HASHTAGS'] == 'true'
+      tweet_text = tweet_text.gsub(/#\w+/, '')
+      max_characters = 220
+      auto_hashtag = true
+    else
+      max_characters = 280
+      auto_hashtag = false
+    end
+
     # Truncate tweet_text to fit within the MAX_CHARACTERS limit
-    # 23 characters are reserved for URL and a space
-    truncated_tweet_text = tweet_text.truncate(MAX_CHARACTERS - 23, omission: '...')
+    # 28 characters are reserved for URL and a space
+    truncated_tweet_text = tweet_text.truncate(max_characters - 28, omission: '...')
 
     card_image =  tweet.discussion.story.imaginations.where(aspect_ratio: :card).sample(1)
     card_image_url = "https://ucarecdn.com/#{card_image.last.uploadcare.last['uuid']}/-/format/auto/-/quality/smart/-/preview/"
@@ -29,8 +42,9 @@ class Tweets::PublishTweetJob < ApplicationJob
 
     full_tweet =  "#{truncated_tweet_text} #{discussion_url}"
 
-    Ayrshare.post_message(post: full_tweet, platforms: ['twitter'], media_urls: [card_image_url])
+    return if platforms.blank?
 
+    Ayrshare.post_message(post: full_tweet, platforms: , media_urls: [card_image_url], auto_hashtag:)
     tweet.update(uploaded: true)
   end
 
