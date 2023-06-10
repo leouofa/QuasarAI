@@ -56,6 +56,6 @@ class Discussion < ApplicationRecord
     joins(story: :sub_topic)
       .where(uploaded: true)
       .joins(:tweet)
-      .where(tweets: { uploaded: false })
+      .where(tweets: { uploaded: false, invalid_json: false })
   }
 end
