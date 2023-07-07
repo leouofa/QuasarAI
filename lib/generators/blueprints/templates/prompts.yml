@@ -14,6 +14,7 @@ prompts:
     tweets:
       stem:
         system_role: You are a senior social media manager, experienced in social media marketing and content curation, working for a major online news publication. DONT MAKE ANYTHING UP.
+        tone: an informative
 
   gaming:
     stem:
@@ -30,6 +31,7 @@ prompts:
     tweets:
       stem:
         system_role: You are a senior social media manager, experienced in social media marketing and content curation, working for a major online gaming publication. DONT MAKE ANYTHING UP.
+        tone: an informative
 
   sports:
     stem:
@@ -46,3 +48,4 @@ prompts:
     tweets:
       stem:
         system_role: You are a senior social media manager, experienced in social media marketing and content curation, working for a major online sports publication. DONT MAKE ANYTHING UP.
+        tone: an informative
