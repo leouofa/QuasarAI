@@ -18,9 +18,8 @@ class Tweets::PublishTweetJob < ApplicationJob
       tweet_text = "📟 AI Perspective: #{tweet_text}"
     end
 
-    # Removes hashtags and shortens the max characters to accommodate for hashtags.
+    # shortens the max characters to accommodate for hashtags.
     if ENV['AUTOMATIC_HASHTAGS'] == 'true'
-      tweet_text = tweet_text.gsub(/#\w+/, '')
       max_characters = 220
       auto_hashtag = true
     else
@@ -30,7 +29,7 @@ class Tweets::PublishTweetJob < ApplicationJob
 
     # Truncate tweet_text to fit within the MAX_CHARACTERS limit
     # 28 characters are reserved for URL and a space
-    truncated_tweet_text = tweet_text.truncate(max_characters - 28, omission: '...')
+    truncated_tweet_text = tweet_text.truncate(max_characters - 31, omission: '...')
 
     card_image =  tweet.discussion.story.imaginations.where(aspect_ratio: :card).sample(1)
     card_image_url = "https://ucarecdn.com/#{card_image.last.uploadcare.last['uuid']}/-/format/auto/-/quality/smart/-/preview/"
