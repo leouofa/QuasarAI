@@ -1,0 +1,25 @@
+- frame_id = dom_id(tweet, "text_turbo_frame")
+=r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+  =r ux.code
+    =r ux.div 'text-right'
+      = link_to 'Show Discussion', discussion_path(tweet.discussion)
+
+    =r ux.strong 'text-blue-800 !mb-80'
+      = "Tag: #{tweet.discussion.story.tag.name}"
+    =r ux.div 'mt-5 mb-5'
+
+    =r ux.divider
+    =r ux.div 'mt-0'
+      = turbo_frame_tag frame_id
+        =r ux.code
+          - unless tweet.invalid_json
+            = highlight_hashtags(JSON.parse(tweet.stem)['tweet'])
+          - else
+            .text-red-700
+              | We could not generate the tweet automatically. Please click `edit` to manually create it.
+
+        div.mt-10.flex.justify-between
+          = link_to 'Edit Tweet', edit_tweet_path(tweet)
+          div
+            = link_to '👍 Approve Tweet', approve_tweet_path(tweet), class: "mr-5 no-underline hover:text-green-700 #{tweet.approved? ? 'font-bold text-green-700' : ''}"
+            = link_to '👎 Disapprove Tweet', disapprove_tweet_path(tweet), class: "no-underline hover:text-red-700 #{tweet.approved == false ? 'font-bold text-red-700' : '' }"

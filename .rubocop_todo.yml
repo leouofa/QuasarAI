@@ -128,6 +128,7 @@ Layout/LineLength:
     - 'spec/jobs/tweets/*'
     - 'spec/jobs/images/*'
     - 'spec/models/*'
+    - 'app/controllers/webhooks/midjourney_controller.rb'
 
 
 Rails/FilePath:
@@ -152,6 +153,7 @@ Rails/UniqueValidationWithoutIndex:
 Rails/SkipsModelValidations:
   Exclude:
     - 'lib/tasks/stories.rake'
+    - 'lib/tasks/blueprints.rake'
 
 
 Naming/VariableNumber:

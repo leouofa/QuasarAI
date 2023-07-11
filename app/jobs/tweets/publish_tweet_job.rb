@@ -18,14 +18,8 @@ class Tweets::PublishTweetJob < ApplicationJob
       tweet_text = "📟 AI Perspective: #{tweet_text}"
     end
 
-    # shortens the max characters to accommodate for hashtags.
-    if ENV['AUTOMATIC_HASHTAGS'] == 'true'
-      max_characters = 220
-      auto_hashtag = true
-    else
-      max_characters = 280
-      auto_hashtag = false
-    end
+    max_characters = 280
+    auto_hashtag = false
 
     # Truncate tweet_text to fit within the MAX_CHARACTERS limit
     # 28 characters are reserved for URL and a space

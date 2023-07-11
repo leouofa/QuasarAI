@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   resources :feeds, only: %i[index]
   resources :stories, only: %i[index show]
   resources :discussions, only: %i[index show]
-  resources :tweets, only: %i[index]
+  resources :tweets, only: %i[index edit show update] do
+    member do
+      get 'approve'
+      get 'disapprove'
+    end
+  end
   resources :imaginations, only: %i[index]
   resources :tags, only: %i[index]
 

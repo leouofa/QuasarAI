@@ -82,7 +82,7 @@ module Images
     def chat(messages:)
       @client.chat(
         parameters: {
-          model: "gpt-3.5-turbo", # Required.
+          model: ENV['OPENAI_GPT_MODEL'], # Required.
           messages:,
           temperature: 0.7
         }

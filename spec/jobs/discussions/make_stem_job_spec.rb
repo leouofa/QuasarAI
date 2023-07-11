@@ -27,7 +27,7 @@ RSpec.describe Discussions::MakeStemJob, type: :job do
   it 'calls the OpenAI client with the correct parameters' do
     expect(client).to receive(:chat).with(
       parameters: {
-        model: "gpt-3.5-turbo",
+        model: ENV['OPENAI_GPT_MODEL'],
         messages: anything,
         temperature: 0.7
       }
