@@ -7,9 +7,6 @@
     =r ux.strong 'text-blue-800 !mb-80'
       = "Tag: #{tweet.discussion.story.tag.name}"
     =r ux.div 'mt-5 mb-5'
-      - if tweet.invalid_json
-        =r ux.label text: "Invalid JSON", class: 'red'
-
 
     =r ux.divider
     =r ux.div 'mt-0'
@@ -17,6 +14,9 @@
         =r ux.code
           - unless tweet.invalid_json
             = highlight_hashtags(JSON.parse(tweet.stem)['tweet'])
-        br
-        br
-        = link_to 'Edit Tweet', edit_tweet_path(tweet)
+          - else
+            .text-red-700
+              | We could not generate the tweet automatically. Please click `edit` to manually create it.
+
+        div.mt-10
+          = link_to 'Edit Tweet', edit_tweet_path(tweet)

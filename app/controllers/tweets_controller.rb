@@ -25,6 +25,9 @@ class TweetsController < ApplicationController
     # Convert the JSON object back to a string and save it to the tweet's stem attribute
     @tweet.stem = stem_json.to_json
 
+    # Turn off invalid JSON since its now valid
+    @tweet.invalid_json = false
+
     # Save the tweet
     if @tweet.save
       redirect_to tweet_path(@tweet), notice: 'Tweet was successfully updated.'

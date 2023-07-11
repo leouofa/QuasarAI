@@ -1,33 +1,14 @@
 - frame_id = dom_id(@tweet, "text_turbo_frame")
-/ = turbo_frame_tag frame_id
-/   = form_with(model: @tweet, url: tweet_path(@tweet), method: :patch, local: true, class: 'space-y-4') do |form|
-/     - if @tweet.errors.any?
-/       div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-/         h2 class="font-bold"
-/           = pluralize(@tweet.errors.count, "error")
-/           | prohibited this tweet from being saved:
-/         ul class="list-disc list-inside"
-/           - @tweet.errors.full_messages.each do |message|
-/             li class="text-sm" = message
-/
-/     .field class="flex flex-col"
-/       = form.label :tweet_text, class: 'mb-2 font-bold text-lg'
-/       = form.text_area :tweet_text, class: 'form-input mt-1 block w-full rounded-md bg-gray-100 border-gray-300', rows: 3, value: @tweet_text
-/
-/     .actions class="flex justify-between"
-/       = form.submit class: 'py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
-/       = link_to "cancel", @tweet, class: 'py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75'
-
 = turbo_frame_tag frame_id
   = form_with(model: @tweet, url: tweet_path(@tweet), method: :patch, local: true) do |form|
     - if @tweet.errors.any?
-      div id="error_explanation"
+      div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
         h2
           = pluralize(@tweet.errors.count, "error")
           | prohibited this tweet from being saved:
-        ul
+        ul class="list-disc list-inside"
           - @tweet.errors.full_messages.each do |message|
-            li = message
+            li class="text-sm"= message
 
     .field.flex.flex-col.mb-5
       = form.text_area :stem, value: @tweet_text, class: 'form-input mt-1 block w-full rounded-md bg-gray-50 p-2 border-gray-300', rows: 4, value: @tweet_text
