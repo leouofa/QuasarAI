@@ -1,0 +1,22 @@
+- frame_id = dom_id(tweet, "text_turbo_frame")
+=r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+  =r ux.code
+    =r ux.div 'text-right'
+      = link_to 'Show Discussion', discussion_path(tweet.discussion)
+
+    =r ux.strong 'text-blue-800 !mb-80'
+      = "Tag: #{tweet.discussion.story.tag.name}"
+    =r ux.div 'mt-5 mb-5'
+      - if tweet.invalid_json
+        =r ux.label text: "Invalid JSON", class: 'red'
+
+
+    =r ux.divider
+    =r ux.div 'mt-0'
+      = turbo_frame_tag frame_id
+        =r ux.code
+          - unless tweet.invalid_json
+            = highlight_hashtags(JSON.parse(tweet.stem)['tweet'])
+        br
+        br
+        = link_to 'Edit Tweet', edit_tweet_path(tweet)
