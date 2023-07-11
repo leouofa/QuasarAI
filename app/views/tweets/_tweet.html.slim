@@ -18,5 +18,11 @@
             .text-red-700
               | We could not generate the tweet automatically. Please click `edit` to manually create it.
 
-        div.mt-10
+        div.mt-10.flex.justify-between
           = link_to 'Edit Tweet', edit_tweet_path(tweet)
+          div
+            / - if tweet.approved?
+            = link_to '👍 Approve Tweet', approve_tweet_path(tweet), class: "mr-5 no-underline hover:text-green-700 #{tweet.approved? ? 'font-bold text-green-700' : ''}"
+
+            = link_to '👎 Disapprove Tweet', disapprove_tweet_path(tweet), class: "no-underline hover:text-red-700 #{tweet.approved == false ? 'font-bold text-red-700' : '' }"
+            / - else

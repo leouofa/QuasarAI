@@ -35,4 +35,16 @@ class TweetsController < ApplicationController
       render :edit
     end
   end
+
+  def approve
+    @tweet = Tweet.find(params[:id])
+    @tweet.update(approved: true)
+    redirect_to tweet_path(@tweet)
+  end
+
+  def disapprove
+    @tweet = Tweet.find(params[:id])
+    @tweet.update(approved: false)
+    redirect_to tweet_path(@tweet)
+  end
 end
