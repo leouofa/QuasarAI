@@ -19,7 +19,7 @@ module Ayrshare
     yield(configuration)
   end
 
-  def self.post_message(post:, platforms:, media_urls: [], auto_hashtag:)
+  def self.post_message(post:, platforms:, auto_hashtag:, media_urls: [])
     url = "https://app.ayrshare.com/api/post"
     headers = { 'Authorization' => "Bearer #{configuration.api_key}" }
     body = { post:, platforms:, mediaUrls: [media_urls], autoHashtag: auto_hashtag }
