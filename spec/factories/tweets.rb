@@ -11,6 +11,7 @@
 #  published_at  :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  approved      :boolean
 #
 FactoryBot.define do
   factory :tweet do
