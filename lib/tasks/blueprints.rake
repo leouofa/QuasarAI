@@ -23,8 +23,7 @@ namespace :blueprints do
                                         storypro_user_id: sub_topic["storypro_user_id"],
                                         ai_disclaimer: sub_topic["ai_disclaimer"],
                                         prompts: sub_topic["prompts"],
-                                        active: true
-                                       )
+                                        active: true)
       end
     end
   end
