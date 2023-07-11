@@ -11,6 +11,7 @@
 #  published_at  :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  approved      :boolean
 #
 class Tweet < ApplicationRecord
   belongs_to :discussion
