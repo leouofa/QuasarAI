@@ -17,7 +17,7 @@ module Webhooks
     end
 
     def process_imagination
-      if params['midjourney'] && ( params['midjourney']['content'] == 'QUEUE_FULL' ||
+      if params['midjourney'] && (params['midjourney']['content'] == 'QUEUE_FULL' ||
         params['midjourney']['description'] == "You have reached the maximum allowed number of concurrent jobs. Don't worry, this job will start as soon as another one finishes!")
         lock = Lock.find_or_create_by(name: 'QueueFull')
         lock.update(locked: true)
