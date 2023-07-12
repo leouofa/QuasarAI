@@ -1,186 +1,254 @@
 topics:
-  - name: Politics
+  - name: Business
     maximum_topics: 6
     sub_topics:
-      - name: Joe Biden
-        stream_id: feed/https://feedly.com/f/alert/b627cb81-586f-49b9-83f5-afd78e827f3f
-        min_tags_for_story: 2
-        max_stories_per_day: 3
-        storypro_category_id: 12
-        storypro_user_id: 7
-        ai_disclaimer: true
-        prompts: 'heroic'
-
-      - name: Donald Trump
-        stream_id: feed/https://feedly.com/f/alert/6de0f70a-cb41-4ec1-9dc3-d6c1fe32edfd
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 12
-        storypro_user_id: 7
-        ai_disclaimer: true
-        prompts: 'heroic'
-
-      - name: Ron DeSantis
-        stream_id: feed/https://feedly.com/f/alert/629b4c92-92ba-4d3b-b416-1dc17e42a66e
-        min_tags_for_story: 3
-        max_stories_per_day: 2
-        storypro_category_id: 12
-        storypro_user_id: 7
-        ai_disclaimer: true
-        prompts: 'heroic'
-
-      - name: Robert Kennedy
-        stream_id: feed/https://feedly.com/f/alert/8d8fc20b-ffa6-435a-993c-b44b31cee7a9
+      - name: Creator Economy
+        stream_id: feed/https://feedly.com/f/alert/7a1c2fdc-f0d0-4339-9ceb-27ff45891a5e
         min_tags_for_story: 1
-        max_stories_per_day: 3
-        storypro_category_id: 12
+        max_stories_per_day: 1
+        storypro_category_id: 9
+        storypro_user_id: 5
+        ai_disclaimer: false
+        prompts: 'business'
+
+  # Utilizing the same user as for Entertainment
+  - name: Creative
+    maximum_topics: 6
+    sub_topics:
+      - name: Creativity
+        stream_id: feed/https://feedly.com/f/alert/a91692e1-e2e7-4043-8a50-14564ed776d0
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 17
+        storypro_user_id: 12
+        ai_disclaimer: false
+        prompts: 'entertainment'
+
+      - name: Midjourney
+        stream_id: feed/https://feedly.com/f/alert/df77b082-e190-4c4f-8de0-bbf396e9f4a2
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 17
+        storypro_user_id: 12
+        ai_disclaimer: false
+        prompts: 'entertainment'
+
+      - name: Photography
+        stream_id: feed/https://feedly.com/f/alert/1e3690d3-48f7-45c1-ac6b-7ad0e47deb09
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 17
+        storypro_user_id: 12
+        ai_disclaimer: false
+        prompts: 'entertainment'
+
+  - name: Entertainment
+    maximum_topics: 6
+    sub_topics:
+      - name: Global Culture
+        stream_id: feed/https://feedly.com/f/alert/6cdad215-8675-4d6d-817a-5f232bd8fbf8
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 17
+        storypro_user_id: 12
+        ai_disclaimer: false
+        prompts: 'entertainment'
+
+      - name: Music
+        stream_id: feed/https://feedly.com/f/alert/b9539fba-4a66-4166-85ee-3acda83ea396
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 15
+        storypro_user_id: 12
+        ai_disclaimer: false
+        prompts: 'entertainment'
+
+      - name: Sex
+        stream_id: feed/https://feedly.com/f/alert/b21e5c89-8c9b-485a-b7c1-00381d0a339b
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 7
+        storypro_user_id: 12
+        ai_disclaimer: false
+        prompts: 'entertainment'
+
+  # Utilizing the same user as for Science
+  - name: Health
+    maximum_topics: 6
+    sub_topics:
+      - name: Health
+        stream_id: feed/https://feedly.com/f/alert/7b6cf192-cfcc-4a02-9af3-5b7d1783eaf7
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 7
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: Mental Health
+        stream_id: feed/https://feedly.com/f/alert/888b876b-c117-4393-9c89-e23e618723f8
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 7
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+  # Utilizing the same user as for Politics (Zeus)
+  - name: History
+    maximum_topics: 6
+    sub_topics:
+      - name: 17th Century
+        stream_id: feed/https://feedly.com/f/alert/e5f30cd2-c035-4cc5-9561-bb7c593f15ee
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 49
         storypro_user_id: 7
-        ai_disclaimer: true
+        ai_disclaimer: false
         prompts: 'heroic'
+
+      - name: 18th Century
+        stream_id: feed/https://feedly.com/f/alert/6a3eb5db-0719-410c-afd1-46de4138273b
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 49
+        storypro_user_id: 7
+        ai_disclaimer: false
+        prompts: 'heroic'
+
+      - name: 20th Century
+        stream_id: feed/https://feedly.com/f/alert/b5097ea9-6453-47b1-9c89-1f2f6207c92c
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 49
+        storypro_user_id: 7
+        ai_disclaimer: false
+        prompts: 'heroic'
+
+  - name: Science
+    maximum_topics: 6
+    sub_topics:
+      - name: Archaeology
+        stream_id: feed/https://feedly.com/f/alert/e9cd004d-7b01-4bdb-a2e4-d52600ddedff
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 82
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: Entheogens
+        stream_id: feed/https://feedly.com/f/alert/a083ae5c-40dd-4075-bf81-8588d87050bd
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 82
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: Environment
+        stream_id: feed/https://feedly.com/f/alert/9e7d95b2-52e9-4b12-9ef8-4430523b9644
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 82
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: Marine
+        stream_id: feed/https://feedly.com/f/alert/7e3ac1d8-7a2c-4d00-a109-289c79b225e5
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 82
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: Robotics
+        stream_id: feed/https://feedly.com/f/alert/ddf3d580-5cc9-47dd-b5e2-4e51568b6992
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 82
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: Space
+        stream_id: feed/https://feedly.com/f/alert/c6ffe709-f34f-40cc-ab24-0538d3c55a69
+        min_tags_for_story: 2
+        max_stories_per_day: 1
+        storypro_category_id: 82
+        storypro_user_id: 11
+        ai_disclaimer: true
+        prompts: 'magical'
+
 
   - name: Sports
     maximum_topics: 6
     sub_topics:
+      - name: American Football
+        stream_id: feed/https://feedly.com/f/alert/240dd4d0-f4dd-479d-95ce-942c17e5195a
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 83
+        storypro_user_id: 4
+        ai_disclaimer: false
+        prompts: 'sports'
+
       - name: MMA
-        stream_id: feed/https://feedly.com/f/alert/0a806083-d7a1-432d-a77e-ebab1f1a169c
-        min_tags_for_story: 2
+        stream_id: feed/https://feedly.com/f/alert/16416545-1fd4-4599-9359-cd5b5ae89973
+        min_tags_for_story: 1
         max_stories_per_day: 1
         storypro_category_id: 83
         storypro_user_id: 4
         ai_disclaimer: true
         prompts: 'sports'
 
-      - name: American Football
-        stream_id: feed/https://feedly.com/f/alert/c84be72f-892f-48d0-9ec6-a9ced03f6065
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 83
-        storypro_user_id: 4
-        ai_disclaimer: true
-        prompts: 'sports'
-
-      - name: Basketball
-        stream_id: feed/https://feedly.com/f/alert/aa390cd3-71d3-4793-8265-3971122b802b
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 83
-        storypro_user_id: 4
-        ai_disclaimer: true
-        prompts: 'sports'
-
-  - name: Entertainment
+  # Utilizing same user as Science and a category of Business
+  - name: Tech
     maximum_topics: 6
     sub_topics:
-      - name: Global Culture
-        stream_id: feed/https://feedly.com/f/alert/c2c4233e-683a-4eca-ad6f-9bcc8075fdc7
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 17
-        storypro_user_id: 12
-        ai_disclaimer: true
-        prompts: 'entertainment'
-
-      - name: Hollywood
-        stream_id: feed/https://feedly.com/f/alert/203ac1ee-a61b-4a11-b953-2a503f1fec0d
-        min_tags_for_story: 2
-        max_stories_per_day: 3
-        storypro_category_id: 17
-        storypro_user_id: 12
-        ai_disclaimer: true
-        prompts: 'entertainment'
-
-      - name: Los Angeles
-        stream_id: feed/https://feedly.com/f/alert/5322c3c1-e293-43f4-9a6a-4283f36feadd
-        min_tags_for_story: 2
-        max_stories_per_day: 3
-        storypro_category_id: 17
-        storypro_user_id: 12
-        ai_disclaimer: true
-        prompts: 'entertainment'
-
-      - name: Music
-        stream_id: feed/https://feedly.com/f/alert/1096dbbf-9ea3-41fe-b521-d923200fe0fa
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 15
-        storypro_user_id: 12
-        ai_disclaimer: true
-        prompts: 'entertainment'
-
-      - name: Sex
-        stream_id: feed/https://feedly.com/f/alert/13c50453-b861-4a7d-9831-d71d078a677f
-        min_tags_for_story: 2
-        max_stories_per_day: 3
-        storypro_category_id: 7
-        storypro_user_id: 12
-        ai_disclaimer: true
-        prompts: 'entertainment'
-
-  - name: Business
-    maximum_topics: 6
-    sub_topics:
-      - name: Web3
-        stream_id: feed/https://feedly.com/f/alert/a0b1ffe6-f548-4c34-9986-5974cc3409c7
-        min_tags_for_story: 2
-        max_stories_per_day: 2
+      - name: AI Learning
+        stream_id: feed/https://feedly.com/f/alert/19596a20-20a5-4c63-a12c-2a9e6352f9ae
+        min_tags_for_story: 1
+        max_stories_per_day: 1
         storypro_category_id: 9
-        storypro_user_id: 5
-        ai_disclaimer: true
-        prompts: 'business'
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: Augmented Reality
+        stream_id: feed/https://feedly.com/f/alert/c3f77ca0-98af-4aaa-8cd3-80a99eaa72d0
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 9
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
+
+      - name: ChatGPT
+        stream_id: feed/https://feedly.com/f/alert/bf42a5db-bc4b-4c23-87ab-7084f7262e87
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 9
+        storypro_user_id: 11
+        ai_disclaimer: false
+        prompts: 'magical'
 
       - name: Tech Entrepreneurship
-        stream_id: feed/https://feedly.com/f/alert/0d7b1209-2c51-4487-81fd-35a92d05ab71
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 9
-        storypro_user_id: 5
-        ai_disclaimer: true
-        prompts: 'business'
-
-      - name: Finance
-        stream_id: feed/https://feedly.com/f/alert/b9ef3b81-09ab-42af-ad7c-ea76a991fdde
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 9
-        storypro_user_id: 5
-        ai_disclaimer: true
-        prompts: 'business'
-
-  - name: Science
-    maximum_topics: 6
-    sub_topics:
-      - name: Space
-        stream_id: feed/https://feedly.com/f/alert/c6ffe709-f34f-40cc-ab24-0538d3c55a69
-        min_tags_for_story: 2
-        max_stories_per_day: 3
-        storypro_category_id: 82
-        storypro_user_id: 11
-        ai_disclaimer: true
-        prompts: 'magical'
-
-      - name: Marine
-        stream_id: feed/https://feedly.com/f/alert/7e3ac1d8-7a2c-4d00-a109-289c79b225e5
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 82
-        storypro_user_id: 11
-        ai_disclaimer: true
-        prompts: 'magical'
-
-      - name: Entheogens
-        stream_id: feed/https://feedly.com/f/alert/bd041aa6-410b-4f08-beea-537fabeb57d3
+        stream_id: feed/https://feedly.com/f/alert/96338150-779c-4465-96b3-6f340ca79572
         min_tags_for_story: 1
-        max_stories_per_day: 3
-        storypro_category_id: 82
+        max_stories_per_day: 1
+        storypro_category_id: 9
         storypro_user_id: 11
-        ai_disclaimer: true
+        ai_disclaimer: false
         prompts: 'magical'
 
-      - name: Health
-        stream_id: feed/https://feedly.com/f/alert/714f5614-a0d1-4e8d-a33a-51e8fdef329b
-        min_tags_for_story: 2
-        max_stories_per_day: 2
-        storypro_category_id: 7
+      - name: Web3
+        stream_id: feed/https://feedly.com/f/alert/5c16d0d7-b460-45c8-8c2d-0856da5fcca1
+        min_tags_for_story: 1
+        max_stories_per_day: 1
+        storypro_category_id: 9
         storypro_user_id: 11
-        ai_disclaimer: true
+        ai_disclaimer: false
         prompts: 'magical'
