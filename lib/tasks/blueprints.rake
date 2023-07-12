@@ -6,6 +6,14 @@ namespace :blueprints do
     topics_file = Rails.root.join('blueprints/topics.yml')
     topics = YAML.load(File.read(topics_file))["topics"]
 
+    topic_names = topics.map { |sub_topic| sub_topic["name"] }
+    dead_topics = Topic.where.not(name: topic_names)
+
+    # set subtopics for dead topics to inactive
+    dead_topics.each do |dead_topic|
+      puts dead_topic.sub_topics.update_all(active: false)
+    end
+
     topics.each do |topic|
       current_topic = Topic.find_or_create_by name: topic["name"]
       sub_topic_names = topic["sub_topics"].map { |sub_topic| sub_topic["name"] }

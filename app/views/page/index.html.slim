@@ -15,9 +15,9 @@
           =r ux.div '!mb-10 !bg-black-100 !border-2 !border-blue-100 !px-10 !py-10 !w-1/2'
             =r ux.h3 'center aligned'
               = topic.name
-              =r ux.label text: topic.sub_topics.count, class: 'circular black'
+              =r ux.label text: topic.active_subtopics.count, class: 'circular black'
             =r ux.divider
-            - topic.sub_topics.each do |sub_topic|
+            - topic.active_subtopics.each do |sub_topic|
               =r ux.div 'flex justify-end'
                 =r ux.h5 text: sub_topic.name, class: '!text-right !text-shadow-sm !mt-0 !mt-[-4px] !mr-2 !mb-2'
                 - if sub_topic.feeds.last.present?
