@@ -76,22 +76,21 @@ Join us on this exciting journey as we redefine the future of journalism togethe
 
 ## Third Party Services
 ### Required
-- [Feedly](https://feedly.com/i/welcome) – Stellar News Aggregation ($12/month for Pro+ Plan)
-- [OpenAI](https://beta.openai.com/) – Cosmic Content Creation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
-- [NexLeg](https://nexleg.com/) – Futuristic Visual Storytelling ($40/month for API Access + $30/month from Midjourney)
+- [Feedly](https://feedly.com/i/welcome) – Seamless Content Aggregation ($12/month for Pro+ Plan)
+- [OpenAI](https://beta.openai.com/) – Content Creation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
+- [NextLeg](https://thenextleg.io) – Visual Storytelling ($40/month for API Access + $30/month from Midjourney)
 
 __Total:__ $82/month + OpenAI Costs
 
 ### Optional
-- [StoryPro](https://storypro.io/) – Light-Speed Publishing ($99/month for Basic Plan)
-- [Ayrshare](https://www.ayrshare.com/) – Galactic Distribution ($99/month for Premium Plan)
+- [StoryPro](https://storypro.io/) – Next-Gen Publishing ($99/month for Basic Plan)
+- [Ayrshare](https://www.ayrshare.com/) – Multi-Channel Distribution ($99/month for Premium Plan)
 
 __Total:__ $198/month
 
 ## Next Steps
 1. [Setup-by-Step Setup Instructions](https://github.com/realstorypro/enterprise/wiki/Local-Setup)
 2. [Deployment to Heroku](https://github.com/realstorypro/enterprise/wiki/Deployment-to-Heroku)
-
 
 ## License
 MIT License
