@@ -11,7 +11,7 @@ namespace :blueprints do
 
     # set subtopics for dead topics to inactive
     dead_topics.each do |dead_topic|
-      puts dead_topic.sub_topics.update_all(active: false)
+      dead_topic.sub_topics.update_all(active: false)
     end
 
     topics.each do |topic|
@@ -34,5 +34,9 @@ namespace :blueprints do
                                         active: true)
       end
     end
+
+    # delete unprocessed stories with inactive subtopics
+    dead_stories = Story.unprocessed.joins(:sub_topic).where(sub_topics: { active: false })
+    dead_stories.destroy_all
   end
 end
