@@ -14,6 +14,12 @@ module ApplicationHelper
     ''
   end
 
+  def dropdown_active?(test_path)
+    return 'active-dropdown' if request.path == test_path
+
+    ''
+  end
+
   def highlight_hashtags(tweet)
     return "<p class='text-red-700'>The tweet is empty. Please click `edit` to create it.</p>".html_safe if tweet.blank?
 

@@ -32,12 +32,23 @@ html lang="en"
           =r ux.grid
             =r ux.row 'menu'
               =r ux.column size: 16
-                =r ux.menu ui: :on, class: 'inverted small black internal !bg-zinc-900 !font-mono'
+                =r ux.menu ui: :on, class: 'inverted tiny black internal !bg-zinc-900 !font-mono', controller: 'dropdown'
                   =r ux.item url: root_path, class: "logo-item #{menu_active?(root_path)}}"
                     =r ux.header text: '{e}', class: 'inverted logo !font-mono'
-                  = link_to stories_path, class: "item #{menu_active?(stories_path)}"
+
+                  =r ux.item class: "top right pointing dropdown #{dropdown_active?(stories_path)}", ui: :on
                     =r ux.icon 'leaf'
                     | Stories
+                    =r ux.icon 'dropdown'
+                    =r ux.menu
+                      = link_to stories_path(scope: :unpublished), class: "item"
+                        | Unpublished
+                      =r ux.divider
+                      = link_to stories_path(scope: :published), class: "item"
+                        | Published Stories
+                      =r ux.divider
+                      = link_to stories_path, class: "item"
+                        | All Stories
 
                   = link_to discussions_path, class: "item #{menu_active?(discussions_path)}"
                     =r ux.icon 'comments'
