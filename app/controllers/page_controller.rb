@@ -1,6 +1,6 @@
 class PageController < ApplicationController
   include RestrictedAccess
   def index
-    @topics = Topic.all.order(:name)
+    @topics = Topic.with_active_subtopic.order(:name)
   end
 end
