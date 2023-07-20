@@ -45,10 +45,10 @@ html lang="en"
                         | Unpublished
                       =r ux.divider
                       = link_to stories_path(scope: :published), class: "item"
-                        | Published Stories
+                        | Published
                       =r ux.divider
                       = link_to stories_path, class: "item"
-                        | All Stories
+                        | All
 
                   = link_to discussions_path, class: "item #{menu_active?(discussions_path)}"
                     =r ux.icon 'comments'
