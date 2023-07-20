@@ -68,7 +68,7 @@ class Story < ApplicationRecord
 
   scope :unpublished_stories, lambda {
     joins(:discussion)
-      .where(discussions: { uploaded: false, processed: false, invalid_json: false })
+      .where(discussions: { uploaded: false, processed: true, invalid_json: false })
   }
 
   scope :published_stories, lambda {
