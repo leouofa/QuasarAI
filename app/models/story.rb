@@ -65,4 +65,15 @@ class Story < ApplicationRecord
       .left_joins(:discussion)
       .where(discussions: { id: nil })
   }
+
+  scope :unpublished_stories, lambda {
+    joins(:discussion)
+      .where(discussions: { uploaded: false, processed: false, invalid_json: false })
+  }
+
+  scope :published_stories, lambda {
+    joins(:discussion)
+      .where(discussions: { uploaded: true })
+  }
+
 end

@@ -1,8 +1,10 @@
 class StoriesController < ApplicationController
   include RestrictedAccess
   def index
-    @stories = Story.viewable.order(id: :desc).page params[:page]
-    @total_stories = Story.viewable.count
+    scope = set_scope
+
+    @stories = Story.send(scope).order(id: :desc).page params[:page]
+    @total_stories = Story.send(scope).count
   end
 
   def show
@@ -13,5 +15,15 @@ class StoriesController < ApplicationController
       false
     end
     @images = Image.where(story: @story, invalid_prompt: false)
+  end
+
+  def set_scope
+    if params[:scope] && params[:scope] == 'unpublished'
+      return 'unpublished_stories'
+    elsif params[:scope] && params[:scope] == 'published'
+      return 'published_stories'
+    end
+
+    'viewable'
   end
 end
