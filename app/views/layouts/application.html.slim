@@ -50,9 +50,24 @@ html lang="en"
                       = link_to stories_path, class: "item"
                         | All
 
-                  = link_to discussions_path, class: "item #{menu_active?(discussions_path)}"
+                  =r ux.item class: "top right pointing dropdown #{dropdown_active?(discussions_path)}", ui: :on
                     =r ux.icon 'comments'
                     | Discussions
+                    =r ux.icon 'dropdown'
+                    =r ux.menu
+                      = link_to discussions_path(scope: :unpublished), class: "item"
+                        | Unpublished
+                      =r ux.divider
+                      = link_to discussions_path(scope: :published), class: "item"
+                        | Published
+                      =r ux.divider
+                      = link_to discussions_path, class: "item"
+                        | All
+
+
+                  / = link_to discussions_path, class: "item #{menu_active?(discussions_path)}"
+                  /   =r ux.icon 'comments'
+                  /   | Discussions
 
                   = link_to tweets_path, class: "item #{menu_active?(tweets_path)}"
                     =r ux.icon 'twitter'
