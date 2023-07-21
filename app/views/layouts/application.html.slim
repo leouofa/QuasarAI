@@ -69,8 +69,14 @@ html lang="en"
                     | Tweets
                     =r ux.icon 'dropdown'
                     =r ux.menu
-                      = link_to tweets_path(scope: :unpublished), class: "item"
-                        | Unpublished
+                      = link_to tweets_path(scope: :pending), class: "item"
+                        | Pending
+                      =r ux.divider
+                      = link_to tweets_path(scope: :approved), class: "item"
+                        | Approved
+                      =r ux.divider
+                      = link_to tweets_path(scope: :denied), class: "item"
+                        | Denied
                       =r ux.divider
                       = link_to tweets_path(scope: :published), class: "item"
                         | Published
