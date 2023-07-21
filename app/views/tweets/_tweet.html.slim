@@ -13,7 +13,8 @@
       = turbo_frame_tag frame_id
         =r ux.code
           - unless tweet.invalid_json
-            = highlight_hashtags(JSON.parse(tweet.stem)['tweet'])
+            = link_to edit_tweet_path(tweet), class: 'no-underline'
+              = highlight_hashtags(JSON.parse(tweet.stem)['tweet'])
           - else
             .text-red-700
               | We could not generate the tweet automatically. Please click `edit` to manually create it.

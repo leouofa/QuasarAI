@@ -1,8 +1,10 @@
 class TweetsController < ApplicationController
   include RestrictedAccess
   def index
-    @tweets = Tweet.all.order(id: :desc).page params[:page]
-    @total_tweets = Tweet.all.count
+    scope = set_scope
+
+    @tweets = Tweet.send(scope).order(id: :desc).page params[:page]
+    @total_tweets = Tweet.send(scope).count
   end
 
   def show
@@ -46,5 +48,21 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     @tweet.update(approved: false)
     redirect_to tweet_path(@tweet)
+  end
+
+  private
+
+  def set_scope
+    if params[:scope] && params[:scope] == 'pending'
+      return 'needs_approval'
+    elsif params[:scope] && params[:scope] == 'approved'
+      return 'approved_tweets'
+    elsif params[:scope] && params[:scope] == 'denied'
+      return 'denied'
+    elsif params[:scope] && params[:scope] == 'published'
+      return 'published'
+    end
+
+    'all'
   end
 end
