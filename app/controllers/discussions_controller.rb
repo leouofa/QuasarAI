@@ -1,8 +1,10 @@
 class DiscussionsController < ApplicationController
   include RestrictedAccess
   def index
-    @discussions = Discussion.all.order(id: :desc).page params[:page]
-    @total_discussions = Discussion.all.count
+    scope = set_scope
+
+    @discussions = Discussion.send(scope).order(id: :desc).page params[:page]
+    @total_discussions = Discussion.send(scope).count
   end
 
   def show
@@ -13,5 +15,17 @@ class DiscussionsController < ApplicationController
       false
     end
     @images = Image.where(story: @discussion.story, invalid_prompt: false)
+  end
+
+  private
+
+  def set_scope
+    if params[:scope] && params[:scope] == 'unpublished'
+      return 'unpublished'
+    elsif params[:scope] && params[:scope] == 'published'
+      return 'published'
+    end
+
+    'all'
   end
 end
