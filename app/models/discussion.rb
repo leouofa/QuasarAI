@@ -60,5 +60,5 @@ class Discussion < ApplicationRecord
   }
 
   scope :published, -> { where(uploaded: true) }
-  scope :unpublished, -> { where(uploaded: false, invalid_json: false, processed: true) }
+  scope :unpublished, -> { ready_to_upload }
 end
