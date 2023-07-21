@@ -17,6 +17,8 @@ class StoriesController < ApplicationController
     @images = Image.where(story: @story, invalid_prompt: false)
   end
 
+  private
+
   def set_scope
     if params[:scope] && params[:scope] == 'unpublished'
       return 'unpublished_stories'

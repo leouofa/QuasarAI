@@ -58,4 +58,7 @@ class Discussion < ApplicationRecord
       .joins(:tweet)
       .where(tweets: { uploaded: false, invalid_json: false, approved: true })
   }
+
+  scope :published, -> { where(uploaded: true) }
+  scope :unpublished, -> { where(uploaded: false, invalid_json: false, processed: true) }
 end
