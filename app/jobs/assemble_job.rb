@@ -26,6 +26,9 @@ class AssembleJob < ApplicationJob
       # [x] Create Stemmed Stories
       Stories::ProcessStoryStemsJob.perform_now
 
+      # [x] Kill Spammy Stories
+      Stories::KillSpammyStoriesJob.perform_now
+
       # [x] Images from processed stories
       Images::CreateImageIdeasFromStoriesJob.perform_now
 
