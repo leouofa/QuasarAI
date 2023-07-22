@@ -94,12 +94,37 @@ html lang="en"
                       =r ux.icon 'large sidebar'
 
                   =r ux.menu class: 'right inverted', only: :desktop, controller: 'dropdown'
-                    = link_to feeds_path, class: "item"
-                      =r ux.icon 'rss'
-                      | Feeds
-                    = link_to tags_path, class: "item"
-                      =r ux.icon 'tags'
-                      | Tags
+                    =r ux.item class: 'dropdown', ui: :on
+                      =r ux.icon 'signal'
+                      | Stats
+                      =r ux.icon 'dropdown'
+                      =r ux.menu
+                        = link_to feeds_path, class: "item"
+                          =r ux.icon 'rss'
+                          | Feeds
+                        =r ux.divider
+                        = link_to tags_path, class: "item"
+                          =r ux.icon 'tags'
+                          | Tags
+
+                    =r ux.item class: 'dropdown', ui: :on
+                      =r ux.icon 'wrench'
+                      | Config
+                      =r ux.icon 'dropdown'
+                      =r ux.menu
+                        = link_to edit_user_registration_path, class: "item"
+                          =r ux.icon 'book open'
+                          | Topics
+                        =r ux.divider
+                        = link_to edit_user_registration_path, class: "item"
+                          =r ux.icon 'robot'
+                          | Prompts
+                        =r ux.divider
+                        = link_to edit_user_registration_path, class: "item"
+                          =r ux.icon 'guitar'
+                          | Fine Tuning
+
+
                     =r ux.item class: 'dropdown', ui: :on
                       = current_user.email
                       =r ux.icon 'dropdown'
