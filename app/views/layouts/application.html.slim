@@ -1,7 +1,7 @@
 doctype html
 html lang="en"
   head
-    = display_meta_tags site: "Enterprise", description: "The News Vessel", separator: "&mdash;".html_safe
+    = display_meta_tags site: "QuasarAI", description: "The News Vessel", separator: "&mdash;".html_safe
     meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
 
     = vite_stylesheet_tag 'admin.sass', 'data-turbo-track': 'reload'
@@ -34,7 +34,7 @@ html lang="en"
               =r ux.column size: 16
                 =r ux.menu ui: :on, class: 'inverted mini black internal !bg-zinc-900 !font-mono', controller: 'dropdown'
                   =r ux.item url: root_path, class: "logo-item #{menu_active?(root_path)}}"
-                    =r ux.header text: '{e}', class: 'inverted logo !font-mono'
+                    =r ux.header text: 'QuasarAI', class: 'inverted logo !font-mono'
 
                   =r ux.item class: "dropdown #{dropdown_active?(stories_path)}", ui: :on
                     =r ux.icon 'leaf'
@@ -100,29 +100,14 @@ html lang="en"
                       =r ux.icon 'dropdown'
                       =r ux.menu
                         = link_to feeds_path, class: "item"
-                          =r ux.icon 'rss'
                           | Feeds
                         =r ux.divider
                         = link_to tags_path, class: "item"
-                          =r ux.icon 'tags'
                           | Tags
 
-                    =r ux.item class: 'dropdown', ui: :on
+                    = link_to settings_path, class: "item #{menu_active?(settings_path)}"
                       =r ux.icon 'wrench'
-                      | Config
-                      =r ux.icon 'dropdown'
-                      =r ux.menu
-                        = link_to edit_user_registration_path, class: "item"
-                          =r ux.icon 'book open'
-                          | Topics
-                        =r ux.divider
-                        = link_to edit_user_registration_path, class: "item"
-                          =r ux.icon 'robot'
-                          | Prompts
-                        =r ux.divider
-                        = link_to edit_user_registration_path, class: "item"
-                          =r ux.icon 'guitar'
-                          | Fine Tuning
+                      | Settings
 
 
                     =r ux.item class: 'dropdown', ui: :on

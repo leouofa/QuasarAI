@@ -1,0 +1,22 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.h2 'center aligned !font-mono'
+        | Settings
+
+      =r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+        = turbo_frame_tag 'settings_frame'
+          =r ux.code
+            =r ux.h4 class: 'text-right', text: 'Topics'
+            pre
+              = @settings.topics
+            =r ux.h4 class: 'text-right', text: 'Prompts'
+            pre
+              = @settings.prompts
+            =r ux.h4 class: 'text-right', text: 'Tunings'
+            pre
+              = @settings.tunings
+
+            - if current_user.admin?
+              div.mt-10.flex.justify-between
+                = link_to 'Edit Settings', edit_setting_path(@settings)
