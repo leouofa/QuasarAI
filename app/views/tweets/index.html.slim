@@ -9,7 +9,6 @@
         = paginate @tweets
 
       - @tweets.each do |tweet|
-        - frame_id = dom_id(tweet, "text_turbo_frame")
         = render 'tweet', tweet: tweet
 
       =r ux.div 'text-center'

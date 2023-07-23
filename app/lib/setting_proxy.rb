@@ -28,6 +28,9 @@ class SettingProxy
   # @option params [Symbol] :fatal_exception raises fatal exception if set to true
   def fetch_settings(path, options = {})
     settings ||= SettingInterface.new(Settings)
+
+    settings.reload_settings
+
     settings.fetch_setting(path, options)
   end
 end
