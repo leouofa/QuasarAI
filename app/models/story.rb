@@ -78,6 +78,4 @@ class Story < ApplicationRecord
 
   # seems like the stems with less then 1200 characters are spammy
   scope :spammy_stems, -> { where("LENGTH(stem) < ? AND invalid_json = ?", 1200, false) }
-
-
 end
