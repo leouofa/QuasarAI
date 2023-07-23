@@ -10,7 +10,9 @@ class SettingInterface
 
   def reload_settings
     db_settings = Setting.instance
+    @settings.add_source!(YAML.load(db_settings.topics))
     @settings.add_source!(YAML.load(db_settings.prompts))
+    @settings.add_source!(YAML.load(db_settings.tunings))
     @settings.reload!
   end
 
