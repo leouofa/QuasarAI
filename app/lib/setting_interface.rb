@@ -10,9 +10,9 @@ class SettingInterface
 
   def reload_settings
     db_settings = Setting.instance
-    @settings.add_source!(YAML.load(db_settings.topics))
-    @settings.add_source!(YAML.load(db_settings.prompts))
-    @settings.add_source!(YAML.load(db_settings.tunings))
+    @settings.add_source!(YAML.load(db_settings.topics)) if db_settings.topics.present?
+    @settings.add_source!(YAML.load(db_settings.prompts)) if db_settings.prompts.present?
+    @settings.add_source!(YAML.load(db_settings.tunings)) if db_settings.tunings.present?
     @settings.reload!
   end
 

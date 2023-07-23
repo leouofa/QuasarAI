@@ -21,7 +21,7 @@ module Stories
       sorted_unprocessed_tag_frequency = unprocessed_tag_frequency.sort { |a, b| b.last <=> a.last }
 
       # Removing excluded tags
-      excluded_tags = applicationcontroller.helpers.s('excluded_tags')
+      excluded_tags = ApplicationController.helpers.s('excluded_tags')
       if excluded_tags.present?
         sorted_unprocessed_tag_frequency.delete_if { |entry| excluded_tags.include?(entry[0]) }
       end
