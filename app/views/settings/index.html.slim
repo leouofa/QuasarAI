@@ -7,14 +7,14 @@
       =r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
         = turbo_frame_tag 'settings_frame'
           =r ux.code
-            =r ux.h4 class: 'text-right', text: 'Topics'
-            pre
+            =r ux.h3 class: 'text-center', text: 'Topics'
+            pre.text-sm
               = @settings.topics
-            =r ux.h4 class: 'text-right', text: 'Prompts'
-            pre
+            =r ux.h3 class: 'text-center', text: 'Prompts'
+            pre.text-sm
               = @settings.prompts
-            =r ux.h4 class: 'text-right', text: 'Tunings'
-            pre
+            =r ux.h4 class: 'text-center', text: 'Tunings'
+            pre.text-sm
               = @settings.tunings
 
             - if current_user.admin?
