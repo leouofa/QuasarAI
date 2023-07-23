@@ -19,6 +19,18 @@ module Ayrshare
     yield(configuration)
   end
 
+  def self.post_plain_message(post:, platforms:, auto_hashtag:)
+    url = "https://app.ayrshare.com/api/post"
+    headers = { 'Authorization' => "Bearer #{configuration.api_key}" }
+    body = { post:, platforms:, autoHashtag: auto_hashtag }
+
+    response = HTTParty.post(url, headers:, body:)
+
+    raise "Error: #{response.code} - #{response.body}" unless response.code == 200
+
+    JSON.parse(response.body)
+  end
+
   def self.post_message(post:, platforms:, auto_hashtag:, media_urls: [])
     url = "https://app.ayrshare.com/api/post"
     headers = { 'Authorization' => "Bearer #{configuration.api_key}" }
