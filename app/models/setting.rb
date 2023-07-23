@@ -10,6 +10,10 @@
 #  updated_at :datetime         not null
 #
 class Setting < ApplicationRecord
+  serialize :topics
+  serialize :prompts
+  serialize :tunings
+
   def self.instance
     first_or_create!
   end

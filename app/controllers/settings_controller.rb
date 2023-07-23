@@ -12,6 +12,8 @@ class SettingsController < ApplicationController
 
     @settings = Setting.instance
     if @settings.update(settings_params)
+      UpdateSettingsJob.perform_now
+
       redirect_to settings_path, notice: 'Settings were successfully updated.'
     else
       render :edit
