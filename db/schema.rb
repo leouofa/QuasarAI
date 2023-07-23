@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_07_201613) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_164141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -100,6 +100,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_07_201613) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_locks_on_name", unique: true
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.text "topics"
+    t.text "prompts"
+    t.text "tunings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stories", force: :cascade do |t|

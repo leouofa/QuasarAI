@@ -17,14 +17,4 @@ module SettingsHelper
   def s(path)
     SettingProxy.instance.s(path)
   end
-
-  # # returns the name of the setting node
-  # def node_name(node)
-  #   node[0].to_s
-  # end
-  #
-  # # returns the value of the setting node
-  # def node_value(node)
-  #   node[1]
-  # end
 end

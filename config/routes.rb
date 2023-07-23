@@ -23,6 +23,9 @@ Rails.application.routes.draw do
 
   resources :unauthorized, only: %i[index]
 
+  resources :settings, only: [:index, :edit]
+  resource :settings, only: [:update]
+
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       resource :test, only: %i[index]

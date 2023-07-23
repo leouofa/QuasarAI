@@ -8,10 +8,18 @@ class SettingInterface
     @settings = settings
   end
 
+  def reload_settings
+    db_settings = Setting.instance
+    @settings.add_source!(YAML.load(db_settings.topics)) if db_settings.topics.present?
+    @settings.add_source!(YAML.load(db_settings.prompts)) if db_settings.prompts.present?
+    @settings.add_source!(YAML.load(db_settings.tunings)) if db_settings.tunings.present?
+    @settings.reload!
+  end
+
   # Returns the setting value based on the passed path.
   # @param path [String] the setting path separated by '.' notation.
   # @param options [Hash] options for the fetch operation.
-  # @return [Object] the retreived settings value
+  # @return [Object] the retrieved settings value
   # @note if _options.fatal_exception_ is set to true then error will be thrown if the fragment is missing.
 
   def fetch_setting(path, options = {})
