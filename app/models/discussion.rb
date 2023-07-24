@@ -61,4 +61,10 @@ class Discussion < ApplicationRecord
 
   scope :published, -> { where(uploaded: true) }
   scope :unpublished, -> { ready_to_upload }
+
+  def parsed_stem
+    return false if invalid_json
+
+    JSON.parse(stem)
+  end
 end

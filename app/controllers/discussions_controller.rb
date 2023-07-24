@@ -2,8 +2,9 @@ class DiscussionsController < ApplicationController
   include RestrictedAccess
   def index
     scope = set_scope
+    sort_order = set_sortorder
 
-    @discussions = Discussion.send(scope).order(id: :desc).page params[:page]
+    @discussions = Discussion.send(scope).order(sort_order).page params[:page]
     @total_discussions = Discussion.send(scope).count
   end
 
@@ -27,5 +28,15 @@ class DiscussionsController < ApplicationController
     end
 
     'all'
+  end
+
+  def set_sortorder
+    if params[:scope] && params[:scope] == 'unpublished'
+      'id desc'
+    elsif params[:scope] && params[:scope] == 'published'
+      'published_at desc'
+    end
+
+    'id desc'
   end
 end
