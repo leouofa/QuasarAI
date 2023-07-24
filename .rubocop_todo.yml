@@ -159,3 +159,12 @@ Rails/SkipsModelValidations:
 Naming/VariableNumber:
   Exclude:
     - 'spec/models/*'
+
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/controllers/tweets_controller.rb'
+    -
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/controllers/tweets_controller.rb'

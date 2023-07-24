@@ -27,7 +27,7 @@ class DiscussionsController < ApplicationController
       return 'published'
     end
 
-    'all'
+    'valid_discussions'
   end
 
   def set_sortorder

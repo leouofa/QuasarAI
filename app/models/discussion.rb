@@ -59,7 +59,8 @@ class Discussion < ApplicationRecord
       .where(tweets: { uploaded: false, invalid_json: false, approved: true })
   }
 
-  scope :published, -> { where(uploaded: true) }
+  scope :valid_discussions, -> { where(invalid_json: false) }
+  scope :published, -> { where(uploaded: true, invalid_json: false) }
   scope :unpublished, -> { ready_to_upload }
 
   def parsed_stem

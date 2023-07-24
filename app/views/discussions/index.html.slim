@@ -9,7 +9,7 @@
         = paginate @discussions
 
       - @discussions.each do |discussion|
-        =r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+        =r ux.segment '!mt-10 !mb-20 !bg-slate-200 !border-4 !border-slate-400 !shadow-md !px-10 !py-10 overflow-x-hidden'
           =r ux.code
             =r ux.div 'text-right'
               = link_to 'Show Full Discussion', discussion_path(discussion)
@@ -22,12 +22,12 @@
             =r ux.text text: discussion.parsed_stem["summary"], class: 'mb-8'
 
             - if discussion.story.images.count.positive?
-              =r ux.div 'mb-2 bg-green-100 px-2 py-2'
+              =r ux.div 'mb-2 bg-green-100 px-2 py-2 border-solid border-2 border-green-500'
                 = "#{pluralize(discussion.story.images.count, 'Image')} Generated"
 
             - if discussion.story.images.first&.card_imagination.present? && discussion.story.images.first.card_imagination.payload["imageUrl"].present?
               =r ux.div
-                = image_tag discussion.story.images.first.card_imagination.payload["imageUrl"], class: 'w-1/2'
+                = image_tag discussion.story.images.first.card_imagination.payload["imageUrl"], class: 'w-1/2 border-solid border-2 border-slate-400/50'
 
             =r ux.div 'mt-5 mb-5'
               - if discussion.story.invalid_json
