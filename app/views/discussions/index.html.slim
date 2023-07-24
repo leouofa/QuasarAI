@@ -9,18 +9,17 @@
         = paginate @discussions
 
       - @discussions.each do |discussion|
-        - parsed_stem = JSON.parse(discussion.story.stem)
         =r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-xl !px-10 !py-10 overflow-x-hidden'
           =r ux.code
             =r ux.div 'text-right'
               = link_to 'Show Full Discussion', discussion_path(discussion)
 
-            =r ux.h4 text: parsed_stem["title"], class: '!mb-0'
+            =r ux.h4 text: discussion.parsed_stem["title"], class: '!mb-0'
 
             =r ux.div 'text-blue-800 font-bold mb-4'
               = "Tag: #{discussion.story.tag.name}"
 
-            =r ux.text text: parsed_stem["summary"], class: 'mb-8'
+            =r ux.text text: discussion.parsed_stem["summary"], class: 'mb-8'
 
             - if discussion.story.images.count.positive?
               =r ux.div 'mb-2 bg-green-100 px-2 py-2'
