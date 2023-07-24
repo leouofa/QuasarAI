@@ -157,6 +157,15 @@ ui:
     tag: div
     css_class: 'input'
 
+  statistics:
+    tag: div
+    css_class: 'statistics'
+
+  statistic:
+    tag: div
+    css_class: 'statistic'
+    ui: false
+
   # non semantic ui components
 
   fragment:
@@ -172,6 +181,11 @@ ui:
   label:
     tag: div
     css_class: 'label'
+
+  value:
+    tag: div
+    css_class: 'value'
+    ui: false
 
   div:
     tag: div
@@ -206,7 +220,6 @@ ui:
   strong:
     tag: strong
     ui: false
-
 
   span:
     tag: span

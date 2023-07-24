@@ -1,16 +1,28 @@
 =r ux.container
   =r ux.row
     =r ux.column width: 16
-      =r ux.h2 'center aligned !font-mono !mb-8'
-        | Topics
-        =r ux.label text: @topics.count, class: 'circular !bg-black !text-white'
+
+      =r ux.segment '!bg-gray-700 inverted mb-0 py-0 !rounded'
+        =r ux.h3 'center aligned !font-mono !mb-0'
+          | Statistics
+
+      =r ux.statistics 'horizontal'
+        =r ux.statistic
+          =r ux.value text: '1,234', ui: false
+          =r ux.label text: 'Stories', ui: false
+
+
+      =r ux.segment '!bg-gray-700 inverted mb-0 py-0 !rounded'
+        =r ux.h3 'center aligned !font-mono !mb-0'
+          | Topics
+          =r ux.label text: @topics.count, class: 'circular purple violet !text-white'
 
       =r ux.div 'flex flex-wrap'
         - @topics.each do |topic|
           =r ux.div '!mb-10 !bg-black-100 !border-2 !border-blue-100 !px-10 !py-10 !w-1/2'
-            =r ux.h3 'center aligned'
+            =r ux.h5 'center aligned'
               = topic.name
-              =r ux.label text: topic.active_subtopics.count, class: 'circular black'
+              =r ux.label text: topic.active_subtopics.count, class: 'circular violet mini'
             =r ux.divider
             - topic.active_subtopics.each do |sub_topic|
               =r ux.div 'flex justify-end'
