@@ -85,9 +85,6 @@ html lang="en"
                         | All
 
 
-                  = link_to imaginations_path, class: "item #{menu_active?(imaginations_path)}"
-                    =r ux.icon 'image'
-                    | Imaginations
                   =r ux.div 'item'
                   =r ux.menu class: 'right', only: :mobile
                     =r ux.item class: 'hamburger', action: 'click->sidenav#toggle'
@@ -95,10 +92,13 @@ html lang="en"
 
                   =r ux.menu class: 'right inverted', only: :desktop, controller: 'dropdown'
                     =r ux.item class: 'dropdown', ui: :on
-                      =r ux.icon 'signal'
-                      | Stats
+                      =r ux.icon 'water'
+                      | Flow
                       =r ux.icon 'dropdown'
                       =r ux.menu
+                        = link_to imaginations_path, class: "item"
+                          | Imaginations
+                        =r ux.divider
                         = link_to feeds_path, class: "item"
                           | Feeds
                         =r ux.divider
@@ -106,7 +106,7 @@ html lang="en"
                           | Tags
 
                     = link_to settings_path, class: "item #{menu_active?(settings_path)}"
-                      =r ux.icon 'wrench'
+                      =r ux.icon 'tools'
                       | Settings
 
 
