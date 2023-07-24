@@ -2,38 +2,58 @@
   =r ux.row
     =r ux.column width: 16
 
-      =r ux.segment '!bg-gray-700 inverted mb-0 py-0 !rounded'
+      =r ux.segment '!bg-gray-900 inverted !mb-16 !py-3 !rounded'
         =r ux.h3 'center aligned !font-mono !mb-0'
           | Statistics
 
-      =r ux.statistics 'horizontal'
+      =r ux.statistics 'small !mb-16 justify-center'
         =r ux.statistic
-          =r ux.value text: '1,234', ui: false
-          =r ux.label text: 'Stories', ui: false
+          =r ux.value text: number_with_delimiter(@feeds_count, :delimiter => ','), ui: false
+          =r ux.label text: 'Feeds', ui: false, class: '!font-mono'
+
+        =r ux.statistic
+          =r ux.value text: number_with_delimiter(@feed_items_count, :delimiter => ','), ui: false
+          =r ux.label text: 'Feed Items', ui: false, class: '!font-mono'
+
+        =r ux.statistic
+          =r ux.value text: number_with_delimiter(@stories_count, :delimiter => ','), ui: false
+          =r ux.label text: 'Stories', ui: false, class: '!font-mono'
+
+        =r ux.statistic
+          =r ux.value text: number_with_delimiter(@discussions_count, :delimiter => ','), ui: false
+          =r ux.label text: 'Discussions', ui: false, class: '!font-mono'
+
+        =r ux.statistic
+          =r ux.value text: number_with_delimiter(@imaginations_count, :delimiter => ','), ui: false
+          =r ux.label text: 'Imaginations', ui: false, class: '!font-mono'
+
+        =r ux.statistic
+          =r ux.value text: number_with_delimiter(@tweets_count, :delimiter => ','), ui: false
+          =r ux.label text: 'Tweets', ui: false, class: '!font-mono'
 
 
-      =r ux.segment '!bg-gray-700 inverted mb-0 py-0 !rounded'
+      =r ux.segment '!bg-gray-900 inverted mb-0 !py-3 !rounded'
         =r ux.h3 'center aligned !font-mono !mb-0'
           | Topics
-          =r ux.label text: @topics.count, class: 'circular purple violet !text-white'
+          =r ux.label text: @topics.count, class: 'circular purple !bg-gray-100 !text-gray-900'
 
       =r ux.div 'flex flex-wrap'
         - @topics.each do |topic|
           =r ux.div '!mb-10 !bg-black-100 !border-2 !border-blue-100 !px-10 !py-10 !w-1/2'
             =r ux.h5 'center aligned'
               = topic.name
-              =r ux.label text: topic.active_subtopics.count, class: 'circular violet mini'
+              =r ux.label text: topic.active_subtopics.count, class: 'circular !bg-gray-700 !text-white mini'
             =r ux.divider
             - topic.active_subtopics.each do |sub_topic|
               =r ux.div 'flex justify-end'
                 =r ux.h5 text: sub_topic.name, class: '!text-right !text-shadow-sm !mt-0 !mt-[-4px] !mr-2 !mb-2'
                 - if sub_topic.feeds.last.present?
                   -if sub_topic.feeds.last.created_at.strftime("%m/%d/%Y") == Time.now.utc.to_date.strftime("%m/%d/%Y")
-                    =r ux.div 'w-3 h-3 bg-green-700 rounded-full'
+                    =r ux.div 'w-3 h-3 bg-green-500 rounded-full'
                   - else
-                    =r ux.div 'w-3 h-3 bg-red-700 rounded-full'
+                    =r ux.div 'w-3 h-3 bg-red-300 rounded-full'
                 - else
-                  =r ux.div 'w-3 h-3 bg-red-700 rounded-full'
+                  =r ux.div 'w-3 h-3 bg-red-300 rounded-full'
 
               =r ux.div '!bg-zinc-100 !border-1 border-dashed !border-zinc-400 !shadow-sm !mb-12 p-4'
                 =r ux.pre 'overflow-hidden !max-h-80 !text-xs '
