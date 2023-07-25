@@ -2,26 +2,40 @@
   = form_with(model: @settings, url: settings_path, method: :patch, local: true) do |form|
     - if @settings.errors.any?
       div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-        h2
-          = pluralize(@settings.errors.count, "error")
-          | prohibited this tweet from being saved:
+        =r ux.h4
+          = "#{pluralize(@settings.errors.count, "error")} prohibited this from being saved:"
         ul class="list-disc list-inside"
           - @settings.errors.full_messages.each do |message|
             li class="text-sm"= message
 
+    =r ux.h3 text: 'Publishing Window'
+
+    =r ux.divider
+
+    .field.flex.flex-col.mb-10
+      = form.label :publish_start_time, 'Start Time (in UTC)', class: 'mb-2 text-gray-800 text-lg font-bold'
+      = form.text_field :publish_start_time, class: 'form-input mt-1 rounded-md p-2 border-gray-300',
+              rows: 10, value: @settings.publish_start_time.strftime('%H:%M')
+    .field.flex.flex-col.mb-10
+      = form.label :publish_end_time, 'End Time (in UTC)', class: 'mb-2 text-gray-800 text-lg font-bold'
+      = form.text_field :publish_end_time, class: 'mt-1 rounded-md p-2 border-gray-300',
+              rows: 10, value: @settings.publish_end_time.strftime('%H:%M')
+
+    =r ux.divider '!mb-10'
+
     .field.flex.flex-col.mb-12
       = form.label :topics, 'Topics', class: 'mb-6 text-gray-800 text-lg font-bold'
-      = form.text_area :topics, class: 'form-input mt-1 block w-full rounded-md !bg-gray-600 p-2 border-gray-300',
+      = form.text_area :topics, class: 'form-input mt-1 block w-full rounded-md p-2 border-gray-300',
               rows: 10, value: @settings.topics, data: { controller: 'code' }
 
     .field.flex.flex-col.mb-12
       = form.label :prompts, 'Prompts', class: 'mb-6 text-gray-700 mt-4 font-bold'
-      = form.text_area :prompts, class: 'form-input mt-1 block w-full rounded-md bg-gray-50 p-2 border-gray-300',
+      = form.text_area :prompts, class: 'form-input mt-1 block w-full rounded-md p-2 border-gray-300',
               rows: 10, value: @settings.prompts, data: { controller: 'code' }
       
     .field.flex.flex-col.mb-12
       = form.label :tunings, 'Tunings', class: 'mb-6 text-gray-700 mt-4 font-bold'
-      = form.text_area :tunings, class: 'form-input mt-1 block w-full rounded-md bg-gray-50 p-2 border-gray-300',
+      = form.text_area :tunings, class: 'form-input mt-1 block w-full rounded-md p-2 border-gray-300',
               rows: 10, value: @settings.tunings, data: { controller: 'code' }
 
     .actions.flex.justify-between
