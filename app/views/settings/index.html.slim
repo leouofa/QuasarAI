@@ -7,19 +7,22 @@
             div.mt-2.mb-8.text-right
               = link_to 'Edit Settings', edit_setting_path(@settings),
                       class: 'py-2 px-4 bg-blue-500 text-sm text-white rounded-sm hover:bg-blue-600 hover:text-white border-solid border-2 border-gray-700 no-underline'
+
+
           =r ux.code
-            =r ux.h3 class: 'text-center mb-2', text: 'Topics'
-            =r ux.divider '!mb-8'
-            pre.text-sm
+            =r ux.h4 class: '!mb-8 dividing', text: 'Publishing Window'
+            = "#{@settings.publish_start_time.utc.strftime('%H:%M')} UTC – #{@settings.publish_end_time.utc.strftime('%H:%M')} UTC"
+
+
+            =r ux.h4 class: '!mb-8 dividing', text: 'Topics'
+            pre.text-xs.mb-20
               = @settings.topics
 
-            =r ux.h3 class: 'text-center mb-2', text: 'Prompts'
-            =r ux.divider '!mb-8'
-            pre.text-sm
+            =r ux.h4 class: '!mb-8 dividing', text: 'Prompts'
+            pre.text-xs.mb-20
               = @settings.prompts
 
-            =r ux.h3 class: 'text-center mb-2', text: 'Tunings'
-            =r ux.divider '!mb-8'
-            pre.text-sm
+            =r ux.h4 class: '!mb-8 dividing', text: 'Tunings'
+            pre.text-xs
               = @settings.tunings
 
