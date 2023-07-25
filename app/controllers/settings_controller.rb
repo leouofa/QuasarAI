@@ -12,6 +12,9 @@ class SettingsController < ApplicationController
 
     @settings = Setting.instance
 
+    # We are doing this here instead of doing this in the model to avoid
+    # dealing with the fact that rails stores this value as time, meaning it will add
+    # the full date which makes format validation way harder.
     start_time = settings_params[:publish_start_time]
     end_time = settings_params[:publish_end_time]
 
