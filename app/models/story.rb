@@ -50,12 +50,12 @@ class Story < ApplicationRecord
   scope :without_images, lambda {
     joins("LEFT JOIN images ON images.story_id = stories.id")
       .where("images.id IS NULL")
-      .where(invalid_images: false, invalid_json: false)
+      .where(approved: true, invalid_images: false, invalid_json: false)
   }
 
   scope :with_stem_and_valid_processed_images, lambda {
     joins(:images)
-      .where(processed: true, invalid_json: false)
+      .where(approved: true, processed: true, invalid_json: false)
       .where(images: { processed: true, invalid_prompt: false, uploaded: true })
       .group('stories.id')
       .having('count(images.id) = 3')
