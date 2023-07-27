@@ -29,7 +29,10 @@ class AssembleJob < ApplicationJob
       # [x] Kill Spammy Stories
       Stories::KillSpammyStoriesJob.perform_now
 
-      # [x] Images from processed stories
+      # [x] Automatically Moderate Stories
+      Stories::ModerateStoriesJob.perform_now
+
+      # [x] Images from processed & approved stories
       Images::CreateImageIdeasFromStoriesJob.perform_now
 
       # [x] Cleanup broken imaginations
