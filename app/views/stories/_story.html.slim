@@ -1,0 +1,51 @@
+=r ux.segment '!mt-10 !mb-20 !bg-slate-200 !border-4 !border-slate-400 !shadow-md !px-10 !py-10 overflow-x-hidden'
+  =r ux.code
+    =r ux.div 'text-right'
+      = link_to 'Show Full Story', story_path(story)
+
+    =r ux.strong 'text-blue-800 !mb-80'
+      = "Tag: #{story.tag.name}"
+    br
+    =r ux.strong "#{story.processed ? ' text-green-800' : 'text-red-800'} !mb-80"
+      = "Processed: #{story.processed}"
+
+
+    - unless story.invalid_json
+      - parsed_story = JSON.parse(story.stem) if story.stem
+      =r ux.h2 text: parsed_story['title']
+      =r ux.text text: parsed_story['summary']
+
+    - if story.images.first&.card_imagination.present? && story.images.first.card_imagination.payload["imageUrl"].present?
+      =r ux.div
+        = "Images: #{story.images.count}"
+      =r ux.div
+        = image_tag story.images.first.card_imagination.payload["imageUrl"], class: 'w-1/2'
+
+    =r ux.div 'mt-5 mb-5'
+      - if story.invalid_json
+        =r ux.label text: "Invalid JSON", class: 'red'
+
+      - if story.invalid_images
+        =r ux.label text: "Invalid Images", class: 'purple'
+
+
+
+    =r ux.divider
+    =r ux.h5 text: 'Feed Items: ', class: 'mb-4 !text-slate-600 text-sm'
+  - story.feed_items.each do |feed_item|
+    =r ux.div 'mt-0 text-xs'
+      =r ux.pre
+        =r ux.strong text: "Title: #{feed_item.title}"
+        =r ux.div text: "URL: #{feed_item.url&.slice(0, 80)}.."
+        =r ux.div text: "Author: #{feed_item.author}"
+        =r ux.div text: "Published: #{feed_item.published}"
+        =r ux.div text: "Topic: #{story.sub_topic.topic.name}"
+        =r ux.div text: "Sub Topic: #{story.sub_topic.name}"
+      =r ux.divider
+  - frame_id = dom_id(story, "approval_turbo_frame")
+  = turbo_frame_tag frame_id
+    div.mt-10.flex.justify-between
+      div
+      div
+        = link_to '👍 Approve Story', approve_story_path(story), class: "mr-5 no-underline hover:text-green-700 #{story.approved? ? 'font-bold text-green-700' : ''}"
+        = link_to '👎 Disapprove Story', disapprove_story_path(story), class: "no-underline hover:text-red-600 #{story.approved == false ? 'font-bold text-red-700' : '' }"

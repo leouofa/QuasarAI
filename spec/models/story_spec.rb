@@ -10,6 +10,7 @@
 #  processed      :boolean          default(FALSE)
 #  invalid_json   :boolean          default(FALSE)
 #  invalid_images :boolean          default(FALSE)
+#  approved       :boolean
 #
 require 'rails_helper'
 
@@ -58,10 +59,10 @@ RSpec.describe Story, type: :model do
 
     describe '.without_images' do
       it 'returns stories with no images and valid json' do
-        story_without_images = create(:story, invalid_images: false, invalid_json: false)
+        story_without_images = create(:story, invalid_images: false, invalid_json: false, approved: true)
         create(:image, story: story_without_images) # This story should now have images
 
-        story_with_no_images = create(:story, invalid_images: false, invalid_json: false)
+        story_with_no_images = create(:story, invalid_images: false, invalid_json: false, approved: true)
         # Don't add any images to this story
 
         expect(Story.without_images).to include(story_with_no_images)
@@ -71,7 +72,7 @@ RSpec.describe Story, type: :model do
 
     describe '.with_stem_and_valid_processed_images' do
       it 'returns stories with a stem, valid, and processed images' do
-        story_with_valid_images = create(:story, processed: true, invalid_json: false)
+        story_with_valid_images = create(:story, processed: true, invalid_json: false, approved: true)
         create_list(:image, 3, story: story_with_valid_images, processed: true, invalid_prompt: false, uploaded: true)
 
         story_with_invalid_images = create(:story, processed: true, invalid_json: false)
@@ -84,7 +85,7 @@ RSpec.describe Story, type: :model do
 
     describe '.with_stem_and_valid_processed_images_no_discussions' do
       it 'returns stories with a stem, valid, and processed images, and no discussions' do
-        story_with_valid_images_and_no_discussion = create(:story, processed: true, invalid_json: false)
+        story_with_valid_images_and_no_discussion = create(:story, processed: true, invalid_json: false, approved: true)
         create_list(:image, 3, story: story_with_valid_images_and_no_discussion, processed: true, invalid_prompt: false,
                                uploaded: true)
 

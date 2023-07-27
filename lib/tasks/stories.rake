@@ -11,4 +11,10 @@ namespace :stories do
     FeedItem.delete_all
     Tag.delete_all
   end
+
+  # We need this to approve stories that were created prior to the approval process being implemented
+  desc 'Approve stories that already have discussions'
+  task approve_stories_with_discussions: :environment do
+    Story.joins(:discussion).update_all(approved: true)
+  end
 end

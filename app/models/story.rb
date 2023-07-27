@@ -10,6 +10,7 @@
 #  processed      :boolean          default(FALSE)
 #  invalid_json   :boolean          default(FALSE)
 #  invalid_images :boolean          default(FALSE)
+#  approved       :boolean
 #
 
 ################ logic #################
@@ -49,12 +50,12 @@ class Story < ApplicationRecord
   scope :without_images, lambda {
     joins("LEFT JOIN images ON images.story_id = stories.id")
       .where("images.id IS NULL")
-      .where(invalid_images: false, invalid_json: false)
+      .where(approved: true, invalid_images: false, invalid_json: false)
   }
 
   scope :with_stem_and_valid_processed_images, lambda {
     joins(:images)
-      .where(processed: true, invalid_json: false)
+      .where(approved: true, processed: true, invalid_json: false)
       .where(images: { processed: true, invalid_prompt: false, uploaded: true })
       .group('stories.id')
       .having('count(images.id) = 3')
@@ -66,14 +67,22 @@ class Story < ApplicationRecord
       .where(discussions: { id: nil })
   }
 
-  scope :unpublished_stories, lambda {
-    joins(:discussion)
-      .where(discussions: { uploaded: false, processed: true, invalid_json: false })
+  scope :needs_approval, lambda {
+    where(approved: nil, invalid_json: false)
+  }
+
+  scope :denied_stories, lambda {
+    where(approved: false, invalid_json: false)
+  }
+
+  scope :approved_stories, lambda {
+    where(approved: true, invalid_json: false)
   }
 
   scope :published_stories, lambda {
     joins(:discussion)
-      .where(discussions: { uploaded: true })
+      .where(invalid_json: false,
+             discussions: { uploaded: true })
   }
 
   # seems like the stems with less then 1200 characters are spammy

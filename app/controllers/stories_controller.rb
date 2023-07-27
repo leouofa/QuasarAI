@@ -17,11 +17,27 @@ class StoriesController < ApplicationController
     @images = Image.where(story: @story, invalid_prompt: false)
   end
 
+  def approve
+    @story = Story.find(params[:id])
+    @story.update(approved: true)
+    redirect_to story_path(@story)
+  end
+
+  def disapprove
+    @story = Story.find(params[:id])
+    @story.update(approved: false)
+    redirect_to story_path(@story)
+  end
+
   private
 
   def set_scope
-    if params[:scope] && params[:scope] == 'unpublished'
-      return 'unpublished_stories'
+    if params[:scope] && params[:scope] == 'pending'
+      return 'needs_approval'
+    elsif params[:scope] && params[:scope] == 'approved'
+      return 'approved_stories'
+    elsif params[:scope] && params[:scope] == 'denied'
+      return 'denied_stories'
     elsif params[:scope] && params[:scope] == 'published'
       return 'published_stories'
     end
