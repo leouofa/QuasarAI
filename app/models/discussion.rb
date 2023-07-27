@@ -16,7 +16,6 @@
 ################ logic #################
 # - the `processed` tag is used to determine if the stem has been created by the ai.
 #   * it is set to true in discussions/make_stem_job.rb
-#   * if it checked against in the process_discussion_stems_job.rb
 #
 # - the `invalid_json` tag is set to true if the ai fails to create a stem for the discussion.
 #   * it is set to true in discussions/make_stem_job.rb
