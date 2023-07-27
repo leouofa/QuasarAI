@@ -29,5 +29,13 @@
             =r ux.small text: section['generative_image_idea']
             - section['paragraphs'].each do |paragraph|
               p= paragraph
+          =r ux.divider
+          - frame_id = dom_id(@story, "approval_turbo_frame")
+          = turbo_frame_tag frame_id
+            div.mt-10.flex.justify-between
+              div
+              div
+                = link_to '👍 Approve Story', approve_story_path(@story), class: "mr-5 no-underline hover:text-green-700 #{@story.approved? ? 'font-bold text-green-700' : ''}"
+                = link_to '👎 Disapprove Story', disapprove_story_path(@story), class: "no-underline hover:text-red-700 #{@story.approved == false ? 'font-bold text-red-700' : '' }"
         - else
           =r ux.h2 text: 'The story stem is not present.', class: 'text-center'

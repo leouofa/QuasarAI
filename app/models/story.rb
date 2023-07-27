@@ -10,6 +10,7 @@
 #  processed      :boolean          default(FALSE)
 #  invalid_json   :boolean          default(FALSE)
 #  invalid_images :boolean          default(FALSE)
+#  approved       :boolean
 #
 
 ################ logic #################
@@ -66,9 +67,16 @@ class Story < ApplicationRecord
       .where(discussions: { id: nil })
   }
 
-  scope :unpublished_stories, lambda {
-    joins(:discussion)
-      .where(discussions: { uploaded: false, processed: true, invalid_json: false })
+  scope :needs_approval, lambda {
+    where(approved: nil, invalid_json: false)
+  }
+
+  scope :denied_stories, lambda {
+    where(approved: false)
+  }
+
+  scope :approved_stories, lambda {
+    where(approved: true)
   }
 
   scope :published_stories, lambda {

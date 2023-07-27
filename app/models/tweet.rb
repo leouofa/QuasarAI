@@ -13,22 +13,6 @@
 #  updated_at    :datetime         not null
 #  approved      :boolean
 #
-################ logic #################
-# - the `processed` tag is used to determine if the stem has been created by the ai.
-#   * it is set to true in tweets/make_stem_job.rb
-#
-# - the `invalid_json` tag is set to true if the ai fails to create a stem for the discussion.
-#   * it is set to true in tweets/make_stem_job.rb
-#
-# - the `uploaded` tag is used to determine if the discussion has been uploaded to Ayrshare
-#   * it is set to true in tweets/publish_tweet_job.rb
-#
-# - the `published_at` tag is the date when the item was published to Ayrshare
-#   * it is set to true in tweets/publish_tweet_job.rb
-#
-# - the `approved` tag is set in the tweet controller and is used as a part of the scope to
-#   determine tweets that need publishing.
-########################################
 
 class Tweet < ApplicationRecord
   belongs_to :discussion

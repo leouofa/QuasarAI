@@ -41,8 +41,14 @@ html lang="en"
                     | Stories
                     =r ux.icon 'dropdown'
                     =r ux.menu
-                      = link_to stories_path(scope: :unpublished), class: "item"
-                        | Unpublished
+                      = link_to stories_path(scope: :pending), class: "item"
+                        | Pending
+                      =r ux.divider
+                      = link_to stories_path(scope: :approved), class: "item"
+                        | Approved
+                      =r ux.divider
+                      = link_to stories_path(scope: :denied), class: "item"
+                        | Denied
                       =r ux.divider
                       = link_to stories_path(scope: :published), class: "item"
                         | Published
