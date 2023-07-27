@@ -2,7 +2,74 @@
   =r ux.row
     =r ux.column width: 16
 
-      =r ux.segment '!bg-slate-500 inverted !mb-6 !py-2 !rounded-sm'
+      =r ux.segment '!bg-slate-900 inverted !mb-8 !py-2 !rounded-sm'
+        =r ux.h3 'center aligned !font-mono !mb-0 flex items-center !text-sm !font-normal'
+          div.mx-auto
+            =r ux.icon 'bullhorn !text-sm !mb-1 !mr-2'
+            | Networks
+
+      =r ux.statistics 'tiny !mb-8 justify-center'
+
+        =r ux.statistic
+          =r ux.value ui: false,
+                  class: '!text-slate-800'
+          - if ENV['FACEBOOK_ENABLED']
+            =r ux.div 'mx-auto mb-2 w-3 h-3 bg-green-500 rounded-full'
+          - else
+            =r ux.div 'mx-auto mb-2 w-3 h-3 bg-gray-300 rounded-full'
+
+          =r ux.label text: 'Facebook', ui: false,
+                  class: '!font-mono !text-slate-700 !font-normal'
+
+        =r ux.statistic
+          =r ux.value ui: false,
+                  class: '!text-slate-800'
+            - if ENV['TWITTER_ENABLED']
+              =r ux.div 'mx-auto mb-2 w-3 h-3 bg-green-500 rounded-full'
+            - else
+              =r ux.div 'mx-auto mb-2 w-3 h-3 bg-gray-300 rounded-full'
+
+          =r ux.label text: 'Twitter', ui: false,
+                  class: '!font-mono !text-slate-700 !font-normal'
+
+        =r ux.statistic
+          =r ux.value ui: false,
+                  class: '!text-slate-800'
+            - if ENV['LINKEDIN_ENABLED']
+              =r ux.div 'mx-auto mb-2 w-3 h-3 bg-green-500 rounded-full'
+            - else
+              =r ux.div 'mx-auto mb-2 w-3 h-3 bg-gray-300 rounded-full'
+
+          =r ux.label text: 'LinkedIn', ui: false,
+                  class: '!font-mono !text-slate-700 !font-normal'
+
+        =r ux.statistic
+          =r ux.value ui: false,
+                  class: '!text-slate-800'
+          - if ENV['INSTAGRAM_ENABLED']
+            =r ux.div 'mx-auto mb-2 w-3 h-3 bg-green-500 rounded-full'
+          - else
+            =r ux.div 'mx-auto mb-2 w-3 h-3 bg-gray-300 rounded-full'
+
+          =r ux.label text: 'Instagram', ui: false,
+                  class: '!font-mono !text-slate-700 !font-normal'
+
+
+        =r ux.statistic
+          =r ux.value ui: false,
+                  class: '!text-slate-800'
+          - if ENV['PINTEREST_ENABLED']
+            =r ux.div 'mx-auto mb-2 w-3 h-3 bg-green-500 rounded-full'
+          - else
+            =r ux.div 'mx-auto mb-2 w-3 h-3 bg-gray-300 rounded-full'
+
+          =r ux.label text: 'Pinterest', ui: false,
+                  class: '!font-mono !text-slate-700 !font-normal'
+
+
+
+
+      =r ux.segment '!bg-slate-700 inverted !mb-6 !py-2 !rounded-sm w-11/12 !mx-auto'
         =r ux.h3 'center aligned !font-mono !mb-0 flex items-center !text-sm !font-normal'
           div.mx-auto
             =r ux.icon 'hourglass end !text-sm !mb-1 !mr-2'
@@ -27,27 +94,27 @@
           =r ux.label text: 'Tweets', ui: false,
                   class: '!font-mono !text-slate-700 !font-normal'
 
-      =r ux.segment '!bg-slate-600 inverted !mb-8 !py-2 !rounded-sm'
+      =r ux.segment '!bg-slate-600 inverted !mb-6 !py-2 !rounded-sm w-10/12 !mx-auto'
         =r ux.h3 'center aligned !font-mono !mb-0 flex items-center !text-sm !font-normal'
           div.mx-auto
-            =r ux.icon 'thumbs down end !text-sm !mb-1 !mr-2'
-            | Disapproved
+            =r ux.icon 'thumbs down !text-sm !mb-1 !mr-2'
+            | Denied
 
-      =r ux.statistics 'tiny !mb-8 justify-center'
+      =r ux.statistics 'tiny !mb-4 justify-center'
         =r ux.statistic
           =r ux.value text: number_with_delimiter(@denied_stories, :delimiter => ','), ui: false,
-                  class: '!text-slate-800'
+                  class: '!text-gray-700'
           =r ux.label text: 'Stories', ui: false,
-                  class: '!font-mono !text-slate-700 !font-normal'
+                  class: '!font-mono !text-gray-700 !font-normal'
 
         =r ux.statistic
           =r ux.value text: number_with_delimiter(@denied_tweets, :delimiter => ','), ui: false,
-                  class: '!text-slate-800'
+                  class: '!text-gray-700'
           =r ux.label text: 'Tweets', ui: false,
-                  class: '!font-mono !text-slate-700 !font-normal'
+                  class: '!font-mono !text-gray-700 !font-normal'
 
 
-      =r ux.segment '!bg-slate-700 inverted !mb-6 !py-2 !rounded-sm'
+      =r ux.segment '!bg-slate-800 inverted !mb-6 !py-2 !rounded-sm w-9/12 !mx-auto'
         =r ux.h3 'center aligned !font-mono !mb-0 flex items-center !text-sm !font-normal'
           div.mx-auto
             =r ux.icon 'glass cheers !text-sm !mb-1 !mr-2'
@@ -68,10 +135,10 @@
 
 
 
-      =r ux.segment '!bg-slate-800 inverted !mb-6 !py-2 !rounded-sm'
+      =r ux.segment '!bg-slate-900 inverted !mb-6 !py-2 !rounded-sm w-8/12 !mx-auto'
         =r ux.h3 'center aligned !font-mono !mb-0 flex items-center !text-sm !font-normal'
           div.mx-auto
-            =r ux.icon 'newspaper end !text-sm !mb-1 !mr-2'
+            =r ux.icon 'newspaper !text-sm !mb-1 !mr-2'
             | Published
 
       =r ux.statistics 'tiny !mb-4 justify-center'
@@ -88,10 +155,10 @@
                   class: '!font-mono !text-slate-700 !font-normal'
 
 
-      =r ux.segment '!bg-slate-900 inverted !mb-8 !py-2 !rounded-sm'
+      =r ux.segment '!bg-slate-800 inverted !mb-8 !py-2 !rounded-sm w-10/12 !mx-auto'
         =r ux.h3 'center aligned !font-mono !mb-0 flex items-center !text-sm !font-normal'
           div.mx-auto
-            =r ux.icon 'calculator end !text-sm !mb-1 !mr-2'
+            =r ux.icon 'calculator !text-sm !mb-1 !mr-2'
             | Totals
 
       =r ux.statistics 'tiny !mb-4 justify-center'
@@ -122,7 +189,7 @@
           =r ux.value text: number_with_delimiter(@tweets_count, :delimiter => ','), ui: false
           =r ux.label text: 'Tweets', ui: false, class: '!font-mono !text-slate-700 !font-normal'
 
-      =r ux.segment '!bg-slate-900 inverted mb-0 !py-2 !rounded-sm'
+      =r ux.segment '!bg-slate-700 inverted mb-0 !py-2 !rounded-sm w-11/12 !mx-auto'
         =r ux.h3 'center aligned !font-mono !mb-0 flex items-center !text-sm !font-normal'
           div.mx-auto
             =r ux.icon 'book reader !text-sm !mb-1 !mr-2'
