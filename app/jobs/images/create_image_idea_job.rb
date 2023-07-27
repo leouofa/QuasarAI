@@ -21,10 +21,13 @@ module Images
         #{story.stem}
       BRIEF
 
+      banned_words = %w[blood crash phobia wound kill massacre suicide pleasure seduction nazi fascist prophet jail arrested handcuffs drugs cocaine heroin meth crack]
+
       question = <<~QUESTION
         - The story is about `#{story.sub_topic.name}` and `#{story.tag.name}`.
         - It is your job to come up with 3 ai image ideas that support the story.
         - The each image idea should be 4-5 sentences that support the story.
+        - Do not use any of the following banned words or their permutations: "#{banned_words.join(', ')}."
         - #{s("prompts.#{prompts}.image_idea.style")}
 
          Return the answer as a JSON object with the following structure:
