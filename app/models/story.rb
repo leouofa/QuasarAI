@@ -72,16 +72,17 @@ class Story < ApplicationRecord
   }
 
   scope :denied_stories, lambda {
-    where(approved: false)
+    where(approved: false, invalid_json: false)
   }
 
   scope :approved_stories, lambda {
-    where(approved: true)
+    where(approved: true, invalid_json: false)
   }
 
   scope :published_stories, lambda {
     joins(:discussion)
-      .where(discussions: { uploaded: true })
+      .where(invalid_json: false,
+             discussions: { uploaded: true })
   }
 
   # seems like the stems with less then 1200 characters are spammy

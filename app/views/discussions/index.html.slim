@@ -14,15 +14,15 @@
             =r ux.div 'text-right'
               = link_to 'Show Full Discussion', discussion_path(discussion)
 
-            =r ux.h4 text: discussion.parsed_stem["title"], class: '!mb-0'
-
             =r ux.div 'text-blue-800 font-bold mb-4'
               = "Tag: #{discussion.story.tag.name}"
+
+            =r ux.h3 text: discussion.parsed_stem["title"], class: '!mb-2'
 
             =r ux.text text: discussion.parsed_stem["summary"], class: 'mb-8'
 
             - if discussion.story.images.count.positive?
-              =r ux.div 'mb-2 bg-green-100 px-2 py-2 border-solid border-2 border-green-500'
+              =r ux.div 'mb-2 bg-green-100 px-2 py-2 border-solid border-2 border-green-500 mb-8'
                 = "#{pluralize(discussion.story.images.count, 'Image')} Generated"
 
             - if discussion.story.images.first&.card_imagination.present? && discussion.story.images.first.card_imagination.payload["imageUrl"].present?
