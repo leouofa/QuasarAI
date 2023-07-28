@@ -11,6 +11,7 @@ class Tweets::PublishTweetJob < ApplicationJob
     platforms.push 'twitter' if ENV['TWITTER_ENABLED']
     platforms.push 'linkedin' if ENV['LINKEDIN_ENABLED']
     platforms.push 'pinterest' if ENV['PINTEREST_ENABLED']
+    platforms.push 'facebook' if ENV['FACEBOOK_ENABLED']
 
     tweet_text = JSON.parse(tweet.stem)['tweet']
 
