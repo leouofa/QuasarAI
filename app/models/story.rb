@@ -39,20 +39,26 @@ class Story < ApplicationRecord
 
   belongs_to :sub_topic
 
+  # used by the `stories_controller.rb` as a filter
   scope :viewable, lambda {
                      where(processed: true,
                            invalid_json: false,
                            invalid_images: false)
                    }
+
+  # used as a filter on `processed_story_stems_job` and `update_settings_job`
   scope :unprocessed, -> { where(processed: false) }
+
   scope :processed, -> { where(processed: true) }
 
+  # used by the `create_image_ideas_from_stories_job.rb` to generate image ideas
   scope :without_images, lambda {
     joins("LEFT JOIN images ON images.story_id = stories.id")
       .where("images.id IS NULL")
       .where(approved: true, invalid_images: false, invalid_json: false)
   }
 
+  # only used in this file to use as base for another filter
   scope :with_stem_and_valid_processed_images, lambda {
     joins(:images)
       .where(approved: true, processed: true, invalid_json: false)
@@ -61,24 +67,31 @@ class Story < ApplicationRecord
       .having('count(images.id) = 3')
   }
 
+  # used by the `process_discussion_stems_job.rb` to create discussions
+  # for stories with valid images.
   scope :with_stem_and_valid_processed_images_no_discussions, lambda {
     with_stem_and_valid_processed_images
       .left_joins(:discussion)
       .where(discussions: { id: nil })
   }
 
+  # used by the filtering stories_controller.rb, dashboard on page_controller.rb
+  # and  as a filter moderate_stories_job.rb
   scope :needs_approval, lambda {
     where(approved: nil, invalid_json: false)
   }
 
+  # used by the filtering `stories_controller.rb` and dashboard on `page_controller.rb`
   scope :denied_stories, lambda {
     where(approved: false, invalid_json: false)
   }
 
+  # used by the filtering `stories_controller.rb` and dashboard on `page_controller.rb`
   scope :approved_stories, lambda {
     where(approved: true, invalid_json: false)
   }
 
+  # used by the filtering `stories_controller.rb`
   scope :published_stories, lambda {
     joins(:discussion)
       .where(invalid_json: false,
@@ -86,5 +99,6 @@ class Story < ApplicationRecord
   }
 
   # seems like the stems with less then 1200 characters are spammy
+  # it is used by the kill_spammy_stories_jobs.rb to kill off spammy looking stories
   scope :spammy_stems, -> { where("LENGTH(stem) < ? AND invalid_json = ?", 1200, false) }
 end
