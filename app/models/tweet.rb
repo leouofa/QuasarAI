@@ -17,7 +17,7 @@
 class Tweet < ApplicationRecord
   belongs_to :discussion
 
-  scope :needs_approval, -> { where(approved: nil, uploaded: false, invalid_json: false) }
+  scope :needs_approval, -> { where(approved: nil, uploaded: false) }
 
   scope :approved_tweets, -> { where(approved: true) }
 
