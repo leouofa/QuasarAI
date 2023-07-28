@@ -34,16 +34,21 @@ class Discussion < ApplicationRecord
   belongs_to :story
   has_one :tweet, dependent: :destroy
 
+  # used by the `discussions/publish_job` to filter discussions ready to be published
   scope :ready_to_upload, lambda {
                             joins(story: :sub_topic)
                               .where(processed: true, invalid_json: false, uploaded: false)
+                              .joins(:tweet).where(tweets: { approved: true })
                           }
+
+  # used by the `discussions/publish_job` to filter discussions published today
   scope :published_today_and_uploaded, lambda {
                                          joins(story: :sub_topic)
                                            .where(uploaded: true,
                                                   published_at: Time.now.utc.beginning_of_day..Time.now.utc.end_of_day)
                                        }
 
+  # used by the `tweets/process_twitter_stems_job` to make stems for tweets
   scope :ready_to_make_tweets, lambda {
     joins(story: :sub_topic)
       .where(processed: true, invalid_json: false)
@@ -51,6 +56,7 @@ class Discussion < ApplicationRecord
       .where(tweets: { discussion_id: nil })
   }
 
+  # used by the `tweets/publish_job` to decide which tweets are ready to be published
   scope :ready_to_upload_tweets, lambda {
     joins(story: :sub_topic)
       .where(uploaded: true)
@@ -58,8 +64,13 @@ class Discussion < ApplicationRecord
       .where(tweets: { uploaded: false, invalid_json: false, approved: true })
   }
 
+  # used by `discussions_controller` for filtering
   scope :valid_discussions, -> { where(invalid_json: false) }
+
+  # used by `discussions_controller` for filtering and `page_controller` for dashboard logic
   scope :published, -> { where(uploaded: true, invalid_json: false) }
+
+  # used by `discussions_controller` for filtering and `page_controller` for dashboard logic
   scope :unpublished, -> { ready_to_upload }
 
   def parsed_stem
