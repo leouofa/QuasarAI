@@ -15,14 +15,17 @@
 
 ################ logic #################
 # - the `processed` tag is used to determine if the stem has been created by the ai.
-#  * it is set to true in stories/make_stem_job.rb
-#  * if it checked against in the process_story_stems_job.rb
+#  * it is set to true in stories/make_stem_job
+#  * if it checked against in the process_story_stems_job
 #
 # - the `invalid_json` tag is set to true if the ai fails to create a stem for the story.
-#  * it is set to true in stories/make_stem_job.rb
+#  * it is set to true in stories/make_stem_job
 #
 # - the `invalid_images` tag is set to true if the ai fails to create images ideas for any of the images.
-#   * it is set to true in create_image_idea_job.rb
+#   * it is set to true in create_image_idea_job
+#
+# - the `approved` is set if the tweet has been approved for publishing
+#   * it is set to true or false in stories/moderate_story_job
 ########################################
 
 class Story < ApplicationRecord
@@ -39,7 +42,7 @@ class Story < ApplicationRecord
 
   belongs_to :sub_topic
 
-  # used by the `stories_controller.rb` as a filter
+  # used by the `stories_controller` as a filter
   scope :viewable, lambda {
                      where(processed: true,
                            invalid_json: false,
@@ -51,7 +54,7 @@ class Story < ApplicationRecord
 
   scope :processed, -> { where(processed: true) }
 
-  # used by the `create_image_ideas_from_stories_job.rb` to generate image ideas
+  # used by the `create_image_ideas_from_stories_job` to generate image ideas
   scope :without_images, lambda {
     joins("LEFT JOIN images ON images.story_id = stories.id")
       .where("images.id IS NULL")
@@ -67,7 +70,7 @@ class Story < ApplicationRecord
       .having('count(images.id) = 3')
   }
 
-  # used by the `process_discussion_stems_job.rb` to create discussions
+  # used by the `process_discussion_stems_job` to create discussions
   # for stories with valid images.
   scope :with_stem_and_valid_processed_images_no_discussions, lambda {
     with_stem_and_valid_processed_images
@@ -75,23 +78,23 @@ class Story < ApplicationRecord
       .where(discussions: { id: nil })
   }
 
-  # used by the filtering stories_controller.rb, dashboard on page_controller.rb
-  # and  as a filter moderate_stories_job.rb
+  # used by the filtering `stories_controller`, dashboard on `page_controller`
+  # and  as a filter `moderate_stories_job`
   scope :needs_approval, lambda {
     where(approved: nil, invalid_json: false)
   }
 
-  # used by the filtering `stories_controller.rb` and dashboard on `page_controller.rb`
+  # used by the filtering `stories_controller` and dashboard on `page_controller`
   scope :denied_stories, lambda {
     where(approved: false, invalid_json: false)
   }
 
-  # used by the filtering `stories_controller.rb` and dashboard on `page_controller.rb`
+  # used by the filtering `stories_controller` and dashboard on `page_controller`
   scope :approved_stories, lambda {
     where(approved: true, invalid_json: false)
   }
 
-  # used by the filtering `stories_controller.rb`
+  # used by the filtering `stories_controller`
   scope :published_stories, lambda {
     joins(:discussion)
       .where(invalid_json: false,
