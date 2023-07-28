@@ -38,5 +38,8 @@ namespace :blueprints do
     # delete unprocessed stories with inactive subtopics
     dead_stories = Story.unprocessed.joins(:sub_topic).where(sub_topics: { active: false })
     dead_stories.destroy_all
+
+    # Retroactively disapprove of tweets with disabled subtopic
+    # Story.joins(:sub_topic).where(sub_topic: { active: false }).joins(discussion: :tweet).each { |s| s.discussion.tweet.update(approved: false) }
   end
 end
