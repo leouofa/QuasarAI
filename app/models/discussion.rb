@@ -33,6 +33,7 @@
 class Discussion < ApplicationRecord
   belongs_to :story
   has_one :tweet, dependent: :destroy
+  has_one :instapin, dependent: :destroy
 
   # used by the `discussions/publish_job` to filter discussions ready to be published
   scope :ready_to_upload, lambda {
@@ -62,6 +63,16 @@ class Discussion < ApplicationRecord
       .where(uploaded: true)
       .joins(:tweet)
       .where(tweets: { uploaded: false, invalid_json: false, approved: true })
+  }
+
+  # used by the `instapins/process_instapin_stems_job` to decide which instapins are ready to be created
+  scope :ready_to_create_instapins, lambda {
+    joins(story: :sub_topic)
+      .where(uploaded: true)
+      .joins(:tweet)
+      .where(tweets: { uploaded: true, invalid_json: false, approved: true })
+      .left_outer_joins(:instapin)
+      .where(instapins: { discussion_id: nil})
   }
 
   # used by `discussions_controller` for filtering
