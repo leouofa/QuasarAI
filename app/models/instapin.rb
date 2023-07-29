@@ -15,4 +15,16 @@
 #
 class Instapin < ApplicationRecord
   belongs_to :discussion
+
+  # used by `instapins_controller` for filtering and `page_controller` for dashboard logic
+  scope :needs_approval, -> { where(approved: nil, uploaded: false) }
+
+  # used by `instapins_controller` for filtering and `page_controller` for dashboard logic
+  scope :approved_instapins, -> { where(approved: true) }
+
+  # used by `instapins_controller` for filtering and `page_controller` for dashboard logic
+  scope :denied, -> { where(approved: false) }
+
+  # used by `instapins_controller` for filtering and `page_controller` for dashboard logic
+  scope :published, -> { where(uploaded: true) }
 end

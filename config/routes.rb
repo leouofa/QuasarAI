@@ -26,6 +26,14 @@ Rails.application.routes.draw do
       get 'disapprove'
     end
   end
+
+  resources :instapins, only: %i[index edit show update] do
+    member do
+      get 'approve'
+      get 'disapprove'
+    end
+  end
+
   resources :imaginations, only: %i[index]
   resources :tags, only: %i[index]
 

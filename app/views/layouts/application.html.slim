@@ -90,6 +90,26 @@ html lang="en"
                       = link_to tweets_path, class: "item"
                         | All
 
+                  =r ux.item class: "dropdown #{dropdown_active?(instapins_path)}", ui: :on
+                    =r ux.icon 'instagram'
+                    | InstaPins
+                    =r ux.icon 'dropdown'
+                    =r ux.menu
+                      = link_to instapins_path(scope: :pending), class: "item"
+                        | Pending
+                      =r ux.divider
+                      = link_to instapins_path(scope: :approved), class: "item"
+                        | Approved
+                      =r ux.divider
+                      = link_to instapins_path(scope: :denied), class: "item"
+                        | Denied
+                      =r ux.divider
+                      = link_to instapins_path(scope: :published), class: "item"
+                        | Published
+                      =r ux.divider
+                      = link_to instapins_path, class: "item"
+                        | All
+
 
                   =r ux.div 'item'
                   =r ux.menu class: 'right', only: :mobile
