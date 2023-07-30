@@ -75,6 +75,14 @@ class Discussion < ApplicationRecord
       .where(instapins: { discussion_id: nil})
   }
 
+  # used by the `instapins/publish_job` to decide which tweets are ready to be published
+  scope :ready_to_upload_instapins, lambda {
+    joins(story: :sub_topic)
+      .where(uploaded: true)
+      .joins(:instapin)
+      .where(instapins: { uploaded: false, invalid_json: false, approved: true })
+  }
+
   # used by `discussions_controller` for filtering
   scope :valid_discussions, -> { where(invalid_json: false) }
 
