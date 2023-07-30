@@ -68,7 +68,7 @@ class Discussion < ApplicationRecord
   # used by the `instapins/process_instapin_stems_job` to decide which instapins are ready to be created
   scope :ready_to_create_instapins, lambda {
     joins(story: :sub_topic)
-      .where(uploaded: true)
+      .where(uploaded: true, sub_topics: { active: true })
       .joins(:tweet)
       .where(tweets: { uploaded: true, invalid_json: false, approved: true })
       .left_outer_joins(:instapin)

@@ -15,6 +15,7 @@
 #  max_stories_per_day  :integer
 #  ai_disclaimer        :boolean          default(FALSE)
 #  active               :boolean          default(TRUE)
+#  pinterest_board      :bigint
 #
 FactoryBot.define do
   factory :sub_topic do
