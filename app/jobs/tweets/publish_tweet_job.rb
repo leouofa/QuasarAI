@@ -38,7 +38,6 @@ class Tweets::PublishTweetJob < ApplicationJob
 
     return if platforms.blank?
 
-    # Ayrshare.post_message(post: full_tweet, platforms: , media_urls: [card_image_url], auto_hashtag:)
     Ayrshare.post_plain_message(post: full_tweet, platforms:, auto_hashtag:)
     tweet.update(uploaded: true, published_at: Time.now.utc)
   end

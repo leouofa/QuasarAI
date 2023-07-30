@@ -24,10 +24,10 @@ class Instapins::PublishInstapinJob < ApplicationJob
     # 31 characters are reserved for URL and a space
     truncated_instapin_text = instapin_text.truncate(max_characters - 31, omission: '...')
 
-    card_images =  discussion.story.imaginations.where(aspect_ratio: :landscape).sample(3)
+    landscape_images =  discussion.story.imaginations.where(aspect_ratio: :landscape).sample(3)
 
-    card_image_urls = card_images.map do |card_image|
-      "https://ucarecdn.com/#{card_image.uploadcare.last['uuid']}/-/format/auto/-/quality/smart/-/resize/1440x/"
+    landscape_image_urls = landscape_images.map do |landscape_image|
+      "https://ucarecdn.com/#{landscape_image.uploadcare.last['uuid']}/-/format/auto/-/quality/smart/-/resize/1440x/"
     end
 
     story_pro_discussion = StoryPro.get_discussion(discussion.story_pro_id)
@@ -42,13 +42,13 @@ class Instapins::PublishInstapinJob < ApplicationJob
 
 
     if  platforms.include? 'instagram'
-      Ayrshare.post_message(post: full_instapin, platforms: ['instagram'] , media_urls: card_image_urls, auto_hashtag:)
+      Ayrshare.post_message(post: full_instapin, platforms: ['instagram'] , media_urls: landscape_image_urls, auto_hashtag:)
     end
 
     if  platforms.include? 'pinterest'
       Ayrshare.post_pinterest_message(post: truncated_instapin_text,
                                       platforms: ['pinterest'] ,
-                                      media_urls: card_image_urls.sample(1),
+                                      media_urls: landscape_image_urls.sample(1),
                                       pinterest_options: {
                                         title: discussion.parsed_stem["title"].truncate(100),
                                         link: discussion_url,
