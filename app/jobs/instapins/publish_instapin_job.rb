@@ -10,6 +10,7 @@ class Instapins::PublishInstapinJob < ApplicationJob
     platforms = []
     platforms.push 'pinterest' if ENV['PINTEREST_ENABLED']
     platforms.push 'instagram' if ENV['INSTAGRAM_ENABLED']
+    platforms.push 'facebook' if ENV['FACEBOOK_ENABLED']
 
     instapin_text = JSON.parse(instapin.stem)['post']
 
@@ -18,7 +19,6 @@ class Instapins::PublishInstapinJob < ApplicationJob
     end
 
     max_characters = 400
-    auto_hashtag = false
 
     # Truncate tweet_text to fit within the MAX_CHARACTERS limit
     # 31 characters are reserved for URL and a space
@@ -30,6 +30,7 @@ class Instapins::PublishInstapinJob < ApplicationJob
       "https://ucarecdn.com/#{landscape_image.uploadcare.last['uuid']}/-/format/auto/-/quality/smart/-/resize/1440x/"
     end
 
+
     story_pro_discussion = StoryPro.get_discussion(discussion.story_pro_id)
     discussion_slug = story_pro_discussion["entry"]["slug"]
     category_slug = get_story_pro_category_slug(story)
@@ -38,11 +39,19 @@ class Instapins::PublishInstapinJob < ApplicationJob
 
     full_instapin =  "#{truncated_instapin_text} \n\n Read full story at: #{discussion_url}"
 
+    carousel_items = landscape_image_urls.map do |landscape_url|
+      {
+        name: discussion.parsed_stem["title"].truncate(50),
+        link: discussion_url,
+        picture: landscape_url
+      }
+    end
+
     return if platforms.blank?
 
 
     if  platforms.include? 'instagram'
-      Ayrshare.post_message(post: full_instapin, platforms: ['instagram'] , media_urls: landscape_image_urls, auto_hashtag:)
+      Ayrshare.post_message(post: full_instapin, platforms: ['instagram'] , media_urls: landscape_image_urls)
     end
 
     if  platforms.include? 'pinterest'
@@ -55,6 +64,17 @@ class Instapins::PublishInstapinJob < ApplicationJob
                                         boardId: story.sub_topic.pinterest_board
                                       })
     end
+
+    # if  platforms.include? 'facebook'
+    #     Ayrshare.post_carousel(post: truncated_instapin_text,
+    #                                     facebook_options: {
+    #                                       carousel: {
+    #                                         link: discussion_url,
+    #                                         items: carousel_items
+    #                                       }
+    #                                     })
+    # end
+
 
     instapin.update(uploaded: true, published_at: Time.now.utc)
   end

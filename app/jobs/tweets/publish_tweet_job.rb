@@ -19,7 +19,6 @@ class Tweets::PublishTweetJob < ApplicationJob
     end
 
     max_characters = 280
-    auto_hashtag = false
 
     # Truncate tweet_text to fit within the MAX_CHARACTERS limit
     # 31 characters are reserved for URL and a space
@@ -38,7 +37,7 @@ class Tweets::PublishTweetJob < ApplicationJob
 
     return if platforms.blank?
 
-    Ayrshare.post_plain_message(post: full_tweet, platforms:, auto_hashtag:)
+    Ayrshare.post_plain_message(post: full_tweet, platforms:)
     tweet.update(uploaded: true, published_at: Time.now.utc)
   end
 
