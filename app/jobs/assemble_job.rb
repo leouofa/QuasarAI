@@ -50,7 +50,7 @@ class AssembleJob < ApplicationJob
       # [x] Create Tweets from Discussions
       Tweets::ProcessTwitterStemsJob.perform_now
 
-      # [ ] Create Instapins from Uploaded Discussions
+      # [x] Create Instapins from Uploaded Discussions
       Instapins::ProcessInstapinStemsJob.perform_now
     ensure
       # Unlock the job when finished
