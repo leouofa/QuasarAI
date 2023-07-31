@@ -13,6 +13,11 @@ tweet_task:
   every: '1.hours'
   at: "*:15"
 
+instapin_task:
+  class: 'Instapins::PublishJob'
+  every: '2.hours'
+  at: "*:15"
+
 assembly_task:
   class: 'AssembleJob'
   every: '30.minutes'

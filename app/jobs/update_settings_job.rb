@@ -28,6 +28,7 @@ class UpdateSettingsJob < ApplicationJob
                                         max_stories_per_day: sub_topic["max_stories_per_day"],
                                         storypro_category_id: sub_topic["storypro_category_id"],
                                         storypro_user_id: sub_topic["storypro_user_id"],
+                                        pinterest_board: sub_topic["pinterest_board"],
                                         ai_disclaimer: sub_topic["ai_disclaimer"],
                                         prompts: sub_topic["prompts"],
                                         active: true)

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_021629) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_172437) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
@@ -94,6 +94,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_021629) do
     t.jsonb "uploadcare"
   end
 
+  create_table "instapins", force: :cascade do |t|
+    t.bigint "discussion_id", null: false
+    t.text "stem"
+    t.boolean "processed", default: false
+    t.boolean "invalid_json", default: false
+    t.boolean "uploaded", default: false
+    t.boolean "approved"
+    t.datetime "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discussion_id"], name: "index_instapins_on_discussion_id"
+  end
+
   create_table "locks", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "locked", default: false
@@ -146,6 +159,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_021629) do
     t.integer "max_stories_per_day"
     t.boolean "ai_disclaimer", default: false
     t.boolean "active", default: true
+    t.bigint "pinterest_board"
     t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
   end
 
@@ -215,6 +229,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_021629) do
   add_foreign_key "feed_items", "feeds"
   add_foreign_key "feeds", "sub_topics"
   add_foreign_key "images", "stories"
+  add_foreign_key "instapins", "discussions"
   add_foreign_key "stories", "sub_topics"
   add_foreign_key "story_tags", "stories"
   add_foreign_key "story_tags", "tags"

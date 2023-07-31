@@ -1,0 +1,31 @@
+- frame_id = dom_id(instapin, "text_turbo_frame")
+=r ux.segment '!mt-10 !mb-20 !bg-zinc-100 !border-4 !border-zinc-200 !shadow-sm !px-10 !py-10 overflow-x-hidden'
+  =r ux.code
+    =r ux.div 'text-right'
+      = link_to 'Show Discussion', discussion_path(instapin.discussion)
+
+    =r ux.strong 'text-blue-800 !mb-80'
+      = "Tag: #{instapin.discussion.story.tag.name}"
+    =r ux.div 'mt-5 mb-5'
+
+    =r ux.divider
+    =r ux.div 'mt-0'
+      = turbo_frame_tag frame_id
+        =r ux.code
+          - unless instapin.invalid_json
+            - images = instapin.discussion.story.imaginations.where(aspect_ratio: :landscape)
+            .images.mb-5
+              - images.each do |image|
+                = image_tag "https://ucarecdn.com/#{image.uploadcare.last['uuid']}/-/format/auto/-/quality/smart/-/resize/300x/", class: 'mr-5'
+
+            = link_to edit_instapin_path(instapin), class: 'no-underline'
+              = highlight_hashtags(JSON.parse(instapin.stem)['post'])
+          - else
+            .text-red-700
+              | We could not generate the instapin automatically. Please click `edit` to manually create it.
+
+        div.mt-10.flex.justify-between
+          = link_to 'Edit InstaPin', edit_instapin_path(instapin)
+          div
+            = link_to '👍 Approve InstaPin', approve_instapin_path(instapin), class: "mr-5 no-underline hover:text-green-700 #{instapin.approved? ? 'font-bold text-green-700' : ''}"
+            = link_to '👎 Disapprove InstaPin', disapprove_instapin_path(instapin), class: "no-underline hover:text-red-700 #{instapin.approved == false ? 'font-bold text-red-700' : '' }"

@@ -10,7 +10,6 @@ class Tweets::PublishTweetJob < ApplicationJob
     platforms = []
     platforms.push 'twitter' if ENV['TWITTER_ENABLED']
     platforms.push 'linkedin' if ENV['LINKEDIN_ENABLED']
-    platforms.push 'pinterest' if ENV['PINTEREST_ENABLED']
     platforms.push 'facebook' if ENV['FACEBOOK_ENABLED']
 
     tweet_text = JSON.parse(tweet.stem)['tweet']
@@ -20,10 +19,9 @@ class Tweets::PublishTweetJob < ApplicationJob
     end
 
     max_characters = 280
-    auto_hashtag = false
 
-    # Truncate tweet_text to fit within the MAX_CHARACTERS limit
-    # 28 characters are reserved for URL and a space
+    # Truncate tweet_text to fit within the max_characters limit
+    # 31 characters are reserved for URL and a space
     truncated_tweet_text = tweet_text.truncate(max_characters - 31, omission: '...')
 
     card_image =  tweet.discussion.story.imaginations.where(aspect_ratio: :card).sample(1)
@@ -39,8 +37,7 @@ class Tweets::PublishTweetJob < ApplicationJob
 
     return if platforms.blank?
 
-    # Ayrshare.post_message(post: full_tweet, platforms: , media_urls: [card_image_url], auto_hashtag:)
-    Ayrshare.post_plain_message(post: full_tweet, platforms:, auto_hashtag:)
+    Ayrshare.post_plain_message(post: full_tweet, platforms:)
     tweet.update(uploaded: true, published_at: Time.now.utc)
   end
 

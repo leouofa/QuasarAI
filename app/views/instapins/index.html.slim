@@ -1,0 +1,15 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.h2 'center aligned !font-mono'
+        | InstaPins
+        =r ux.label text: @total_instapins, class: 'circular !bg-black !text-white'
+
+      =r ux.div 'text-center'
+        = paginate @instapins
+
+      - @instapins.each do |instapin|
+        = render 'instapin', instapin: instapin
+
+      =r ux.div 'text-center'
+        = paginate @instapins

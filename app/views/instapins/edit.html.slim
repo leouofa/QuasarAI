@@ -1,0 +1,23 @@
+- frame_id = dom_id(@instapin, "text_turbo_frame")
+= turbo_frame_tag frame_id
+  = form_with(model: @instapin, url: instapin_path(@instapin), method: :patch, local: true) do |form|
+    - if @instapin.errors.any?
+      div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+        h2
+          = pluralize(@instapin.errors.count, "error")
+          | prohibited this instapin from being saved:
+        ul class="list-disc list-inside"
+          - @instapin.errors.full_messages.each do |message|
+            li class="text-sm"= message
+
+    .field.flex.flex-col.mb-5 data-controller="character-counter" data-character-counter-countdown-value="true"
+      = form.text_area :stem, value: @instapin_text, class: 'form-input mt-1 block w-full rounded-md bg-gray-50 p-2 border-gray-300',
+              rows: 4, maxlength: 400, value: @instapin_text, data: {'character-counter-target': 'input'}
+
+      p
+        strong data-character-counter-target="counter"
+        span.ml-2 characters remaining in this InstaPin.
+
+    .actions.flex.justify-between
+      = form.submit class: 'py-2 px-4 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700 cursor-pointer', value: 'Update InstaPin'
+      = button_to "Cancel", @instapin, class: 'py-2 px-4 bg-red-500 text-white font-semibold rounded hover:bg-red-700 cursor-pointer'
