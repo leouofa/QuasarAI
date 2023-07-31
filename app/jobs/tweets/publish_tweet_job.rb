@@ -20,7 +20,7 @@ class Tweets::PublishTweetJob < ApplicationJob
 
     max_characters = 280
 
-    # Truncate tweet_text to fit within the MAX_CHARACTERS limit
+    # Truncate tweet_text to fit within the max_characters limit
     # 31 characters are reserved for URL and a space
     truncated_tweet_text = tweet_text.truncate(max_characters - 31, omission: '...')
 

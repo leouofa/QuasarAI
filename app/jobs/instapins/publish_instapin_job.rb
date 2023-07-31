@@ -20,7 +20,7 @@ class Instapins::PublishInstapinJob < ApplicationJob
 
     max_characters = 400
 
-    # Truncate tweet_text to fit within the MAX_CHARACTERS limit
+    # Truncate truncated_instapin_text to fit within the max_characters limit
     # 31 characters are reserved for URL and a space
     truncated_instapin_text = instapin_text.truncate(max_characters - 31, omission: '...')
 
