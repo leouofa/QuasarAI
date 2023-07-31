@@ -22,7 +22,7 @@ module Ayrshare
   def self.post_plain_message(post:, platforms:)
     url = "https://app.ayrshare.com/api/post"
     headers = { 'Authorization' => "Bearer #{configuration.api_key}" }
-    body = { post:, platforms:, autoHashtag: false }
+    body = { post:, platforms: }
 
     response = HTTParty.post(url, headers:, body:)
 
