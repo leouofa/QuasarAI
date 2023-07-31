@@ -75,7 +75,7 @@ class Discussion < ApplicationRecord
       .where(instapins: { discussion_id: nil})
   }
 
-  # used by the `instapins/publish_job` to decide which tweets are ready to be published
+  # used by the `instapins/publish_instapin_job` to decide which tweets are ready to be published
   scope :ready_to_upload_instapins, lambda {
     joins(story: :sub_topic)
       .where(uploaded: true)
