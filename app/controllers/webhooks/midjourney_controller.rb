@@ -2,6 +2,9 @@ module Webhooks
   class MidjourneyController < ApplicationController
     skip_forgery_protection
 
+    UPSCALING_MAX_DELAY = 10
+    UPSCALING_MIN_DELAY = 1
+
     before_action :load_imagination, only: :create
 
     def create
@@ -32,6 +35,8 @@ module Webhooks
     end
 
     def handle_pending
+      sleep(rand(UPSCALING_MIN_DELAY..UPSCALING_MAX_DELAY))
+
       button_message_id = params["buttonMessageId"]
       NextLeg.press_button(button: "U#{rand(1..4)}",
                            ref: @imagination.message_uuid,
