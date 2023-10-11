@@ -21,10 +21,10 @@ module NextLeg
 
   def self.send_request(endpoint, payload, method: :post, version: :v2)
     url = if version == :v2
-      "https://api.thenextleg.io/v2/#{endpoint}"
-    else
-      "https://api.thenextleg.io/#{endpoint}"
-    end
+            "https://api.thenextleg.io/v2/#{endpoint}"
+          else
+            "https://api.thenextleg.io/#{endpoint}"
+          end
 
     headers = {
       'Authorization' => "Bearer #{configuration.token}",
@@ -86,7 +86,7 @@ module NextLeg
 
   def self.upscale(button:, button_message_id: "")
     payload = {
-      button: button,
+      button:,
       buttonMessageId: button_message_id
     }
     send_request("upscale-img-url", payload, method: :get, version: :v1)

@@ -34,7 +34,7 @@ module Webhooks
 
       result = NextLeg.upscale(button: "U#{rand(1..4)}", button_message_id: params["buttonMessageId"])
       status = result["url"].present? ? :success : :failure
-      @imagination.update(payload: params['midjourney'], status: status, upscaled_image_url: result["url"])
+      @imagination.update(payload: params['midjourney'], status:, upscaled_image_url: result["url"])
       head :ok
     end
   end
