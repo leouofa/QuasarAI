@@ -26,28 +26,15 @@ module Webhooks
         lock.update(locked: true)
       end
 
-      case @imagination.status
-      when 'pending'
-        handle_pending
-      when 'upscaling'
-        handle_upscaling
-      end
+      handle_pending
     end
 
     def handle_pending
       sleep(rand(UPSCALING_MIN_DELAY..UPSCALING_MAX_DELAY))
 
-      button_message_id = params["buttonMessageId"]
-      NextLeg.press_button(button: "U#{rand(1..4)}",
-                           ref: @imagination.message_uuid,
-                           button_message_id:)
-
-      @imagination.update(payload: params['midjourney'], status: :upscaling)
-      head :ok
-    end
-
-    def handle_upscaling
-      @imagination.update(payload: params['midjourney'], status: :success)
+      result = NextLeg.upscale(button: "U#{rand(1..4)}", button_message_id: params["buttonMessageId"])
+      status = result["url"].present? ? :success : :failure
+      @imagination.update(payload: params['midjourney'], status: status, upscaled_image_url: result["url"])
       head :ok
     end
   end

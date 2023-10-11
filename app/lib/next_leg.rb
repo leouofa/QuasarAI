@@ -19,8 +19,12 @@ module NextLeg
     yield(configuration)
   end
 
-  def self.send_request(endpoint, payload)
-    url = "https://api.thenextleg.io/v2/#{endpoint}"
+  def self.send_request(endpoint, payload, method: :post, version: :v2)
+    url = if version == :v2
+      "https://api.thenextleg.io/v2/#{endpoint}"
+    else
+      "https://api.thenextleg.io/#{endpoint}"
+    end
 
     headers = {
       'Authorization' => "Bearer #{configuration.token}",
@@ -31,8 +35,13 @@ module NextLeg
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
 
-    request = Net::HTTP::Post.new(uri.request_uri, headers)
-    request.body = payload.to_json
+    if method == :post
+      request = Net::HTTP::Post.new(uri.request_uri, headers)
+      request.body = payload.to_json
+    elsif method == :get
+      uri.query = URI.encode_www_form(payload)
+      request = Net::HTTP::Get.new(uri.request_uri, headers)
+    end
 
     response = http.request(request)
 
@@ -73,5 +82,13 @@ module NextLeg
     }
 
     send_request("button", payload)
+  end
+
+  def self.upscale(button:, button_message_id: "")
+    payload = {
+      button: button,
+      buttonMessageId: button_message_id
+    }
+    send_request("upscale-img-url", payload, method: :get, version: :v1)
   end
 end
