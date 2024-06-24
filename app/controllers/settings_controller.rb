@@ -36,7 +36,7 @@ class SettingsController < ApplicationController
   private
 
   def settings_params
-    params.require(:setting).permit(:topics, :prompts, :tunings, :publish_start_time, :publish_end_time)
+    params.require(:setting).permit(:topics, :prompts, :tunings, :pillars, :publish_start_time, :publish_end_time)
   end
 
   def valid_time_format?(time)
