@@ -2,16 +2,17 @@
 #
 # Table name: imaginations
 #
-#  id           :bigint           not null, primary key
-#  aspect_ratio :integer          not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  payload      :jsonb            not null
-#  status       :integer          default("pending"), not null
-#  message_uuid :uuid             not null
-#  image_id     :bigint
-#  uploaded     :boolean          default(FALSE), not null
-#  uploadcare   :jsonb
+#  id                 :bigint           not null, primary key
+#  aspect_ratio       :integer          not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  payload            :jsonb            not null
+#  status             :integer          default("pending"), not null
+#  message_uuid       :uuid             not null
+#  image_id           :bigint
+#  uploaded           :boolean          default(FALSE), not null
+#  uploadcare         :jsonb
+#  upscaled_image_url :string
 #
 
 ################ LOGIC #################

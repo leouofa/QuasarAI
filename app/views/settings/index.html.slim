@@ -13,6 +13,9 @@
             =r ux.h4 class: '!mb-8 dividing', text: 'Publishing Window'
             = "#{@settings.publish_start_time.utc.strftime('%H:%M')} UTC – #{@settings.publish_end_time.utc.strftime('%H:%M')} UTC"
 
+            =r ux.h4 class: '!mb-8 dividing', text: 'Pillars'
+            pre.text-xs.mb-20
+              = @settings.pillars
 
             =r ux.h4 class: '!mb-8 dividing', text: 'Topics'
             pre.text-xs.mb-20

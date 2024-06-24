@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_121742) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_24_184745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -124,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_121742) do
     t.datetime "updated_at", null: false
     t.time "publish_start_time", default: "2000-01-01 08:00:00"
     t.time "publish_end_time", default: "2000-01-01 21:00:00"
+    t.text "pillars"
   end
 
   create_table "stories", force: :cascade do |t|
