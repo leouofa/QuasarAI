@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_24_184745) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_24_233046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -114,6 +114,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_24_184745) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_locks_on_name", unique: true
+  end
+
+  create_table "pillar_columns", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "pillar_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pillar_id"], name: "index_pillar_columns_on_pillar_id"
+  end
+
+  create_table "pillars", force: :cascade do |t|
+    t.string "title"
+    t.integer "columns"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settings", force: :cascade do |t|
@@ -232,6 +248,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_24_184745) do
   add_foreign_key "feeds", "sub_topics"
   add_foreign_key "images", "stories"
   add_foreign_key "instapins", "discussions"
+  add_foreign_key "pillar_columns", "pillars"
   add_foreign_key "stories", "sub_topics"
   add_foreign_key "story_tags", "stories"
   add_foreign_key "story_tags", "tags"
