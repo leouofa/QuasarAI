@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :imaginations, only: %i[index]
   resources :tags, only: %i[index]
+  resources :pillars, only: %i[index]
 
   resources :unauthorized, only: %i[index]
 

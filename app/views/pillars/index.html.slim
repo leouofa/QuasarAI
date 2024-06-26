@@ -1,0 +1,35 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.h2 'center aligned !font-mono'
+        | Pillars
+        =r ux.label text: @total_pillars, class: 'circular !bg-black !text-white'
+
+      =r ux.div 'text-center'
+        = paginate @pillars
+
+      - @pillars.each do |pillar|
+        =r ux.segment '!mt-10 !mb-20 !bg-zinc-200 !border-4 !border-zinc-300 !shadow-xl !px-10 !py-10 overflow-x-hidden'
+          =r ux.h3
+            = pillar.title
+          =r ux.code '!mt-10'
+            - if pillar.pillar_columns.present?
+              =r ux.table
+                thead
+                  =r ux.tr
+                    =r ux.th
+                      | Column Name
+                    =r ux.th
+                      | Description
+                - pillar.pillar_columns.each do |column|
+                  =r ux.tr
+                    =r ux.td
+                      = column.name
+                    =r ux.td
+                      = column.description
+            - else
+              =r ux.strong text: "Columns: #{pillar.pillar_columns.count}"
+
+
+      =r ux.div 'text-center'
+        = paginate @pillars
