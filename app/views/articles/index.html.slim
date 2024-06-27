@@ -1,0 +1,21 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.h2 'center aligned !font-mono'
+        | Articles
+        =r ux.label text: @total_articles, class: 'circular !bg-black !text-white'
+
+      =r ux.div 'text-center'
+        = paginate @articles
+
+      - @articles.each do |article|
+        =r ux.segment '!mt-10 !mb-20 !bg-slate-200 !border-4 !border-slate-400 !shadow-md !px-10 !py-10 overflow-x-hidden'
+          =r ux.code
+            =r ux.div 'text-right'
+              = link_to 'Show Full Article', article_path(article)
+
+            =r ux.h3 text: article.name, class: '!mb-2'
+            =r ux.text text: article.description, class: 'mb-8'
+
+      =r ux.div 'text-center'
+        = paginate @articles
