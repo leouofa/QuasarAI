@@ -1,0 +1,23 @@
+=r ux.container
+  =r ux.row
+    =r ux.column width: 16
+      =r ux.segment 'basic'
+        = link_to '< Back to all articles', articles_path
+
+        =r ux.segment "!mt-8 !mb-10 !bg-slate-200 !border-4 !border-slate-400 !shadow-md"
+          =r ux.small
+          = "Pillar: #{@article.pillar_column.pillar.title}"
+          br
+          = "Column: #{@article.pillar_column.name}"
+
+        =r ux.h1 text: @article.name
+        =r ux.text text: @article.description
+
+        =r ux.divider
+
+        =r ux.h2 text: "Original Text"
+        - @article.original_text.each do |section|
+          h4= section['header']
+          =r ux.small text: section['generative_image_idea']
+          - section['paragraphs'].each do |paragraph|
+            p= paragraph

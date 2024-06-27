@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root "page#index"
   resources :feeds, only: %i[index]
 
+  resources :articles, only: %i[index show]
+
   resources :stories, only: %i[index show] do
     member do
       get 'approve'

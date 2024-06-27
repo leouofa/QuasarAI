@@ -34,7 +34,16 @@ html lang="en"
               =r ux.column size: 16
                 =r ux.menu ui: :on, class: 'inverted mini black internal !bg-zinc-900 !font-mono', controller: 'dropdown'
                   =r ux.item url: root_path, class: "logo-item #{menu_active?(root_path)}}"
-                    =r ux.header text: 'QuasarAI', class: 'inverted logo !font-mono'
+                    =r ux.header text: 'Q', class: 'inverted logo !font-mono'
+
+                  =r ux.item class: "dropdown #{dropdown_active?(articles_path)}", ui: :on
+                    =r ux.icon 'book'
+                    | Articles
+                    =r ux.icon 'dropdown'
+                    =r ux.menu
+                      = link_to articles_path, class: "item"
+                        | All
+
 
                   =r ux.item class: "dropdown #{dropdown_active?(stories_path)}", ui: :on
                     =r ux.icon 'leaf'

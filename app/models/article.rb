@@ -15,6 +15,7 @@
 #
 class Article < ApplicationRecord
   belongs_to :pillar_column
+  serialize :original_text
 
   validates :name, :description, :original_text, presence: true
 end
