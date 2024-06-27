@@ -26,16 +26,6 @@ jobs:
         ports:
           - 5432:5432
 
-          #      postgres:
-#        image: postgres:15-alpine
-#        ports:
-#          - "5432:5432"
-#        env:
-#          POSTGRES_DB: rails_test
-#          POSTGRES_USER: rails
-#          POSTGRES_PASSWORD: password
-
-
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
