@@ -82,7 +82,7 @@ class Articles::CreateArticlesJob < ApplicationJob
                        description: parsed_response["summary"],
                        original_text: parsed_response["content"])
 
-        sleep(10)
+        sleep(20)
       end
     end
   end
