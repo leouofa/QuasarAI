@@ -15,6 +15,9 @@ jobs:
         image: pgvector/pgvector:pg16
         env:
           POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
