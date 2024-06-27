@@ -26,11 +26,11 @@ class Articles::CreateArticlesJob < ApplicationJob
         -- paragraph3
         ```
 
-        - The `header` should be no more then 80 characters long sentence and summarizes the section.
+        - The `header` should be no more than 80 characters long and summarizes the section.
         - The `paragraphs` should be 4-5 sentences that support the `header`.
 
-        - The article should have a `title` that is 65 character long and summarizes the entire article.
-        - The article should have a `summary` that is 120 character long and summarizes the entire article.
+        - The article should have a `title` that is 65 characters long and summarizes the entire article.
+        - The article should have a `summary` that is 120 characters long and summarizes the entire article.
         - The return result MUST be in JSON format in the following structure:
 
         ```
@@ -39,11 +39,11 @@ class Articles::CreateArticlesJob < ApplicationJob
          content: [
             {
               "header": "header text",
-              "paragraphs": ["paragraph1 text", "paragraph2 text", paragraph3 text"]
+              "paragraphs": ["paragraph1 text", "paragraph2 text", "paragraph3 text"]
             },
             {
               "header": "header text",
-              "paragraphs": ["paragraph1 text", "paragraph2 text", paragraph3 text"]
+              "paragraphs": ["paragraph1 text", "paragraph2 text", "paragraph3 text"]
             }
          ]
         ```
@@ -54,9 +54,11 @@ class Articles::CreateArticlesJob < ApplicationJob
       { role: "user", content: question }
     ]
 
+    # Get the existing article count for the given pillar_column
+    existing_article_count = pillar_column.articles.count
+    articles_to_create = [found_setting.articles - existing_article_count, 0].max
 
-    # number of articles to generate
-    found_setting.articles.times do |_iteration|
+    articles_to_create.times do |_iteration|
       invalid_json = true
       counter = 0
       response = nil
@@ -80,7 +82,7 @@ class Articles::CreateArticlesJob < ApplicationJob
                        description: parsed_response["summary"],
                        original_text: parsed_response["content"])
 
-        sleep(30)
+        sleep(10)
       end
     end
   end

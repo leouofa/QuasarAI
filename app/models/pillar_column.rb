@@ -11,6 +11,7 @@
 #
 class PillarColumn < ApplicationRecord
   belongs_to :pillar
+  has_many :articles
 
   validates_presence_of :name, :description
 end
