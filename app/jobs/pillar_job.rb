@@ -14,8 +14,11 @@ class PillarJob < ApplicationJob
       # [x] Populate Pillar from Settings
       Pillars::PopulatePillarsJob.perform_now
 
-      # [x] Add Columns for Each Pillar
+      # [x] Add Pillar Columns for Each Pillar
       Pillars::IterateThroughPillarsJob.perform_now
+
+      # [x] Adds Articles for each Pillar Columns
+      Articles::IterateThroughPillarColumnsJob.perform_now
     ensure
       # Unlock the job when finished
       lock.update(locked: false)
