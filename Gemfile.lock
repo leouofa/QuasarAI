@@ -258,6 +258,8 @@ GEM
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     multipart-post (2.4.1)
+    neighbor (0.4.0)
+      activerecord (>= 6.1)
     net-http (0.4.1)
       uri
     net-imap (0.4.14)
@@ -531,6 +533,7 @@ DEPENDENCIES
   kaminari!
   maruku
   meta-tags
+  neighbor
   pg (~> 1.1)
   puma (~> 5.0)
   rack-attack

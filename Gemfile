@@ -33,6 +33,7 @@ gem 'hiredis'
 gem "pg", "~> 1.1"
 gem 'redis'
 gem 'sidekiq'
+gem 'neighbor'
 
 # Authentication
 gem 'devise'
