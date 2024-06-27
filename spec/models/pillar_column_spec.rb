@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: pillar_columns
+#
+#  id          :bigint           not null, primary key
+#  name        :string
+#  description :text
+#  pillar_id   :bigint           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 # spec/models/pillar_column_spec.rb
 require 'rails_helper'
 

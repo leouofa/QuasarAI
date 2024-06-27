@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: pillars
+#
+#  id         :bigint           not null, primary key
+#  title      :string
+#  columns    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 # spec/models/pillar_spec.rb
 require 'rails_helper'
 

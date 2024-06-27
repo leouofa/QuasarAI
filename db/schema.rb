@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_24_233046) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_26_211214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "pillar_column_id", null: false
+    t.text "original_text"
+    t.text "rewritten_text"
+    t.datetime "published_at"
+    t.datetime "rewritten_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pillar_column_id"], name: "index_articles_on_pillar_column_id"
+  end
 
   create_table "assignments", force: :cascade do |t|
     t.bigint "story_id", null: false
@@ -241,6 +254,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_24_233046) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "pillar_columns"
   add_foreign_key "assignments", "feed_items"
   add_foreign_key "assignments", "stories"
   add_foreign_key "discussions", "stories"
