@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_27_193403) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_27_201413) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -136,6 +136,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_27_193403) do
     t.bigint "pillar_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "topics"
     t.index ["pillar_id"], name: "index_pillar_columns_on_pillar_id"
   end
 
