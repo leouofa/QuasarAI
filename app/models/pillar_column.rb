@@ -17,4 +17,7 @@ class PillarColumn < ApplicationRecord
   serialize :topics
 
   validates_presence_of :name, :description
+
+  scope :without_topics, -> { where(topics: nil) }
+  scope :with_topics, -> { where.not(topics: nil) }
 end
