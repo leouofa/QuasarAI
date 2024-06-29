@@ -17,8 +17,11 @@ class PillarJob < ApplicationJob
       # [x] Add Pillar Columns for Each Pillar
       Pillars::IterateThroughPillarsJob.perform_now
 
-      # [ ] Create Topics for each Pillar Column
+      # [x] Create Topics for each Pillar Column
       Pillars::IterateThroughPillarColumnsJob.perform_now
+
+      # [x] Creates Pillar Topics from Pillar Columns
+      Pillars::CreatePillarTopicsJob.perform_now
 
       # [x] Adds Articles for each Pillar Columns
       # Articles::IterateThroughPillarColumnsJob.perform_now
