@@ -20,4 +20,5 @@ class PillarTopic < ApplicationRecord
   validates :summary, uniqueness: { scope: :pillar_column_id }
 
   scope :processed, -> { where(processed: true) }
+  scope :unprocessed, -> { where(processed: false) }
 end

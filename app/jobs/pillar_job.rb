@@ -24,7 +24,7 @@ class PillarJob < ApplicationJob
       Pillars::CreatePillarTopicsJob.perform_now
 
       # [x] Adds Articles for each Pillar Columns
-      # Articles::IterateThroughPillarColumnsJob.perform_now
+      Articles::IterateThroughPillarColumnsJob.perform_now
     ensure
       # Unlock the job when finished
       lock.update(locked: false)

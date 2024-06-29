@@ -2,8 +2,10 @@ class Articles::CreateArticlesJob < ApplicationJob
   queue_as :default
   include SettingsHelper
 
-  def perform(pillar_column:)
+  def perform(pillar_topic:)
+    pillar_column = pillar_topic.pillar_column
     pillar = pillar_column.pillar
+
     pillar_settings = s('pillars')
     found_setting = pillar_settings.find { |pillar_setting| pillar_setting.name == pillar.title }
 
@@ -17,7 +19,7 @@ class Articles::CreateArticlesJob < ApplicationJob
     SYSTEM_ROLE
 
     question = <<~QUESTION
-        - You have received a request to create an article about `#{pillar_column.name}` and `#{pillar_column.description}`
+        - You have received a request to create an article about `#{pillar_topic.title}` and `#{pillar_topic.summary}`
         - It is your job to write an article consisting of 6 sections, each section has the following format:
         ```
         + header
@@ -54,37 +56,36 @@ class Articles::CreateArticlesJob < ApplicationJob
       { role: "user", content: question }
     ]
 
-    # Get the existing article count for the given pillar_column
-    existing_article_count = pillar_column.articles.count
-    articles_to_create = [found_setting.articles - existing_article_count, 0].max
+    invalid_json = true
+    counter = 0
+    response = nil
 
-    articles_to_create.times do |_iteration|
-      invalid_json = true
-      counter = 0
-      response = nil
+    while invalid_json && counter < 4
+      response = chat(messages:)
 
-      while invalid_json && counter < 4
-        response = chat(messages:)
+      counter += 1
 
-        counter += 1
+      break if response["error"].present?
 
-        break if response["error"].present?
+      invalid_json = false if valid_json?(response["choices"][0]["message"]["content"])
+      Rails.logger.debug "invalid_json: #{invalid_json} | counter: #{counter}"
 
-        invalid_json = false if valid_json?(response["choices"][0]["message"]["content"])
-        Rails.logger.debug "invalid_json: #{invalid_json} | counter: #{counter}"
-      end
-
-      unless response["error"].present?
-        parsed_response = JSON.parse(response["choices"][0]["message"]["content"])
-
-        Article.create(pillar_column:,
-                       name: parsed_response["title"],
-                       description: parsed_response["summary"],
-                       original_text: parsed_response["content"])
-
-        sleep(20)
-      end
+      sleep(10)
     end
+
+    unless response["error"].present? || invalid_json
+      parsed_response = JSON.parse(response["choices"][0]["message"]["content"])
+
+      Article.create(pillar_column:,
+                     name: parsed_response["title"],
+                     description: parsed_response["summary"],
+                     original_text: parsed_response["content"])
+
+      pillar_topic.update(processed: true)
+    end
+
+    pillar_topic.update(processed: true)
+    sleep(10)
   end
 
   def valid_json?(json_string)
