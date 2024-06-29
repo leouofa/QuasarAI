@@ -15,5 +15,9 @@ FactoryBot.define do
     sequence(:name) { |n| "Column Name #{n}" }
     description { "Sample description for the pillar column." }
     association :pillar
+
+    after(:create) do |pillar_column|
+      create_list(:pillar_topic, 3, pillar_column: pillar_column)
+    end
   end
 end
