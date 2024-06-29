@@ -2,8 +2,8 @@ class Articles::IterateThroughPillarColumnsJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    PillarColumn.all.each do |pillar_column|
-      Articles::CreateArticlesJob.perform_now(pillar_column:)
+    PillarTopic.unprocessed.each do |pillar_topic|
+      Articles::CreateArticlesJob.perform_now(pillar_topic:)
     end
   end
 end
