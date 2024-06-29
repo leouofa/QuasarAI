@@ -9,8 +9,8 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  topics      :text
+#  processed   :boolean          default(FALSE)
 #
-# spec/models/pillar_column_spec.rb
 
 require 'rails_helper'
 

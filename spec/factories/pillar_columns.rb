@@ -9,6 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  topics      :text
+#  processed   :boolean          default(FALSE)
 #
 FactoryBot.define do
   factory :pillar_column do
