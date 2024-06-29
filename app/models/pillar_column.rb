@@ -13,6 +13,7 @@
 class PillarColumn < ApplicationRecord
   belongs_to :pillar
   has_many :articles
+  has_many :pillar_topics
 
   serialize :topics
 
