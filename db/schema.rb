@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_29_230258) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_30_010230) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
   enable_extension "vector"
+
+  create_table "article_links", force: :cascade do |t|
+    t.bigint "article_id", null: false
+    t.string "linked_article_type", null: false
+    t.bigint "linked_article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_article_links_on_article_id"
+    t.index ["linked_article_type", "linked_article_id"], name: "index_article_links_on_linked_article"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -268,6 +278,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_29_230258) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "article_links", "articles"
   add_foreign_key "articles", "pillar_columns"
   add_foreign_key "assignments", "feed_items"
   add_foreign_key "assignments", "stories"

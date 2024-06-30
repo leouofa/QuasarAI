@@ -23,4 +23,17 @@ class Article < ApplicationRecord
   validates :name, :description, :original_text, presence: true
 
   scope :without_embedding, -> { where(embedding: nil) }
+
+  has_many :article_links
+  has_many :linked_articles, through: :article_links, source: :linked_article, source_type: 'Article'
+
+  validate :linked_articles_count_within_limit
+
+  private
+
+  def linked_articles_count_within_limit
+    if linked_articles.size > 3
+      errors.add(:linked_articles, "cannot exceed 3")
+    end
+  end
 end
