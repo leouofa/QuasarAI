@@ -13,7 +13,14 @@
         =r ux.h1 text: @article.name
         =r ux.text text: @article.description
 
-        =r ux.divider
+        - if @article.article_links.present?
+          = r ux.segment 'small !mt-8 !mb-12'
+            - @article.article_links.each do |link|
+              =r ux.h5
+                = link.linked_article.name
+              = link.linked_article.description
+        - else
+          =r ux.divider
 
         =r ux.h2 text: "Original Text"
         - @article.original_text.each do |section|
