@@ -20,7 +20,19 @@ class Article < ApplicationRecord
 
   has_neighbors :embedding
 
+  has_many :article_links
+  has_many :linked_articles, through: :article_links, source: :linked_article, source_type: 'Article'
+
   validates :name, :description, :original_text, presence: true
+  validate :linked_articles_count_within_limit
 
   scope :without_embedding, -> { where(embedding: nil) }
+
+  private
+
+  def linked_articles_count_within_limit
+    return unless linked_articles.size > 3
+
+    errors.add(:linked_articles, "cannot exceed 3")
+  end
 end
