@@ -28,6 +28,10 @@ class PillarJob < ApplicationJob
 
       # [x] Create embeddings for the Articles
       Articles::CreateEmbeddingsJob.perform_now
+
+      # [x] Attach links to Articles
+      Articles::CreateLinksJob.perform_now
+
     ensure
       # Unlock the job when finished
       lock.update(locked: false)
