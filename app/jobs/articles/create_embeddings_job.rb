@@ -3,7 +3,7 @@ class Articles::CreateEmbeddingsJob < ApplicationJob
 
   def perform(*args)
     Article.without_embedding.each do |article|
-      Articles::CreateEmbeddingJob.perform_later(article:)
+      Articles::CreateEmbeddingJob.perform_now(article:)
     end
   end
 end

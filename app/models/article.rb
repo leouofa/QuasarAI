@@ -18,6 +18,8 @@ class Article < ApplicationRecord
   belongs_to :pillar_column
   serialize :original_text
 
+  has_neighbors :embedding
+
   validates :name, :description, :original_text, presence: true
 
   scope :without_embedding, -> { where(embedding: nil) }
