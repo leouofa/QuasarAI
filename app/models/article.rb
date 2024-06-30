@@ -12,10 +12,13 @@
 #  rewritten_at     :datetime
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  embedding        :vector(768)
 #
 class Article < ApplicationRecord
   belongs_to :pillar_column
   serialize :original_text
 
   validates :name, :description, :original_text, presence: true
+
+  scope :without_embedding, -> { where(embedding: nil) }
 end
