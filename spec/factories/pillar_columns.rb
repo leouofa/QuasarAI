@@ -18,7 +18,7 @@ FactoryBot.define do
     association :pillar
 
     after(:create) do |pillar_column|
-      create_list(:pillar_topic, 3, pillar_column: pillar_column)
+      create_list(:pillar_topic, 3, pillar_column:)
     end
   end
 end

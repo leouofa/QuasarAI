@@ -16,23 +16,23 @@ require 'rails_helper'
 
 RSpec.describe PillarTopic, type: :model do
   let(:pillar_column) { create(:pillar_column) }
-  let(:pillar_topic) { create(:pillar_topic, pillar_column: pillar_column) }
+  let(:pillar_topic) { create(:pillar_topic, pillar_column:) }
 
   it { should belong_to(:pillar_column) }
 
   it 'validates uniqueness of title scoped to pillar_column_id' do
-    create(:pillar_topic, title: 'Unique Title', pillar_column: pillar_column)
+    create(:pillar_topic, title: 'Unique Title', pillar_column:)
     should validate_uniqueness_of(:title).scoped_to(:pillar_column_id)
   end
 
   it 'validates uniqueness of summary scoped to pillar_column_id' do
-    create(:pillar_topic, summary: 'Unique Summary', pillar_column: pillar_column)
+    create(:pillar_topic, summary: 'Unique Summary', pillar_column:)
     should validate_uniqueness_of(:summary).scoped_to(:pillar_column_id)
   end
 
   describe 'scopes' do
-    let!(:processed_topic) { create(:pillar_topic, processed: true, pillar_column: pillar_column) }
-    let!(:unprocessed_topic) { create(:pillar_topic, processed: false, pillar_column: pillar_column) }
+    let!(:processed_topic) { create(:pillar_topic, processed: true, pillar_column:) }
+    let!(:unprocessed_topic) { create(:pillar_topic, processed: false, pillar_column:) }
 
     it 'returns processed topics' do
       expect(PillarTopic.processed).to include(processed_topic)

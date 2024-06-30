@@ -19,12 +19,12 @@
 
 class PillarColumn < ApplicationRecord
   belongs_to :pillar
-  has_many :articles
-  has_many :pillar_topics
+  has_many :articles, dependent: :nullify
+  has_many :pillar_topics, dependent: :nullify
 
   serialize :topics
 
-  validates_presence_of :name, :description
+  validates :name, :description, presence: true
 
   scope :without_topics, -> { where(topics: nil) }
   scope :with_topics, -> { where.not(topics: nil) }

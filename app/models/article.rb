@@ -20,7 +20,7 @@ class Article < ApplicationRecord
 
   has_neighbors :embedding
 
-  has_many :article_links
+  has_many :article_links, dependent: :nullify
   has_many :linked_articles, through: :article_links, source: :linked_article, source_type: 'Article'
 
   validates :name, :description, :original_text, presence: true

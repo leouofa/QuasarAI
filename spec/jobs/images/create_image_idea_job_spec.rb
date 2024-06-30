@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Images::CreateImageIdeaJob, type: :job do
   include ActiveJob::TestHelper
 
-  let(:story) { create(:story) }  # Assuming you have FactoryBot in place
+  let(:story) { create(:story) } # Assuming you have FactoryBot in place
   subject(:job) { described_class.perform_later(story:) }
 
   let(:mock_response) do
