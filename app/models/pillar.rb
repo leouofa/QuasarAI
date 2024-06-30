@@ -9,7 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Pillar < ApplicationRecord
-  has_many :pillar_columns
-
-  validates_presence_of :title, :columns
+  has_many :pillar_columns, dependent: :nullify
+  validates :title, :columns, presence: true
 end

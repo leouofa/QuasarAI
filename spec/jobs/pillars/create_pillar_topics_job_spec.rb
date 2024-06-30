@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Pillars::CreatePillarTopicsJob, type: :job do
-  let!(:pillar_column_with_topics) { create(:pillar_column, topics: [{ "title" => "Topic 1", "summary" => "Summary 1" }, { "title" => "Topic 2", "summary" => "Summary 2" }]) }
+  let!(:pillar_column_with_topics) do
+    create(:pillar_column,
+           topics: [{ "title" => "Topic 1", "summary" => "Summary 1" }, { "title" => "Topic 2", "summary" => "Summary 2" }])
+  end
   let!(:pillar_column_without_topics) { create(:pillar_column, topics: nil) }
-  let!(:processed_pillar_column) { create(:pillar_column, topics: [{ "title" => "Topic 3", "summary" => "Summary 3" }], processed: true) }
+  let!(:processed_pillar_column) do
+    create(:pillar_column, topics: [{ "title" => "Topic 3", "summary" => "Summary 3" }], processed: true)
+  end
 
   describe '#perform' do
     it 'processes unprocessed pillar columns with topics' do

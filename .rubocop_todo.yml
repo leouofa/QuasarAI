@@ -61,6 +61,7 @@ Metrics/BlockLength:
     - 'spec/jobs/tweets/*'
     - 'spec/jobs/discussions/*'
     - 'app/lib/publisher.rb'
+    - 'spec/jobs/pillars/populate_pillar_columns_job_spec.rb'
 
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
@@ -68,6 +69,7 @@ Metrics/MethodLength:
   Max: 18
   Exclude:
     - 'app/lib/publisher.rb'
+    - 'app/lib/next_leg.rb'
 
 # Offense count: 8
 # Configuration parameters: AllowedConstants.
@@ -129,6 +131,7 @@ Layout/LineLength:
     - 'spec/jobs/images/*'
     - 'spec/models/*'
     - 'app/controllers/webhooks/midjourney_controller.rb'
+    - 'lib/tasks/blueprints.rake'
 
 
 Rails/FilePath:
@@ -164,7 +167,11 @@ Naming/VariableNumber:
 Metrics/CyclomaticComplexity:
   Exclude:
     - 'app/controllers/tweets_controller.rb'
-    -
+    - 'app/controllers/instapins_controller.rb'
+    - 'app/controllers/stories_controller.rb'
+
 Metrics/PerceivedComplexity:
   Exclude:
     - 'app/controllers/tweets_controller.rb'
+    - 'app/controllers/instapins_controller.rb'
+    - 'app/controllers/stories_controller.rb'

@@ -9,11 +9,13 @@ RSpec.describe Pillars::PopulatePillarColumnsJob, type: :job do
   before do
     allow(OpenAI::Client).to receive(:new).and_return(client)
 
-    allow(client).to receive(:chat).and_return({
-                                                 'choices' => [
-                                                   { 'message' => { 'content' => '{"topics":[{"title":"Topic 1","description":"Description 1"}]}' } }
-                                                 ]
-                                               })
+    allow(client).to receive(:chat)
+      .and_return({
+                    'choices' => [
+                      { 'message' =>
+                          { 'content' => '{"topics":[{"title":"Topic 1","description":"Description 1"}]}' } }
+                    ]
+                  })
 
     allow(pillar_column_class).to receive(:where).and_return(pillar_columns_relation)
     allow(pillar_columns_relation).to receive(:count).and_return(0)
@@ -22,11 +24,13 @@ RSpec.describe Pillars::PopulatePillarColumnsJob, type: :job do
 
   context 'when the response is valid JSON' do
     before do
-      allow(client).to receive(:chat).and_return({
-                                                   'choices' => [
-                                                     { 'message' => { 'content' => '{"topics":[{"title":"Topic 1","description":"Description 1"}]}' } }
-                                                   ]
-                                                 })
+      allow(client).to receive(:chat)
+        .and_return({
+                      'choices' => [
+                        { 'message' =>
+                            { 'content' => '{"topics":[{"title":"Topic 1","description":"Description 1"}]}' } }
+                      ]
+                    })
     end
 
     it 'creates a PillarColumn with the response content' do

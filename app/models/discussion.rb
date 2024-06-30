@@ -72,7 +72,7 @@ class Discussion < ApplicationRecord
       .joins(:tweet)
       .where(tweets: { uploaded: true, invalid_json: false, approved: true })
       .left_outer_joins(:instapin)
-      .where(instapins: { discussion_id: nil})
+      .where(instapins: { discussion_id: nil })
   }
 
   # used by the `instapins/publish_instapin_job` to decide which tweets are ready to be published
