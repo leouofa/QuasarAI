@@ -27,10 +27,16 @@ class Article < ApplicationRecord
   validate :linked_articles_count_within_limit
 
   scope :without_embedding, -> { where(embedding: nil) }
-  scope :without_three_links, -> {
+  scope :without_three_links, lambda {
     left_joins(:article_links)
       .group(:id)
       .having('COUNT(article_links.id) < 3')
+  }
+
+  scope :with_three_links, lambda {
+    joins(:article_links)
+      .group('articles.id')
+      .having('COUNT(article_links.id) = 3')
   }
 
   private
