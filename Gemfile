@@ -9,6 +9,7 @@ gem "puma", "~> 5.0"
 # Core
 gem 'apipie-rails'
 gem 'awesome_print'
+gem 'fancy_irb'
 gem "bootsnap", require: false
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'config'
