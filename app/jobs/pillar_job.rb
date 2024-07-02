@@ -32,6 +32,9 @@ class PillarJob < ApplicationJob
       # [x] Attach links to Articles
       Articles::CreateLinksJob.perform_now
 
+      # [x] Rewrite the Articles with Links to Other Articles
+      Articles::RewriteArticlesJob.perform_now
+
     ensure
       # Unlock the job when finished
       lock.update(locked: false)
