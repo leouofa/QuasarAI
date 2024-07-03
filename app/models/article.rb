@@ -39,6 +39,11 @@ class Article < ApplicationRecord
       .having('COUNT(article_links.id) = 3')
   }
 
+  scope :with_three_links_without_rewritten_text, lambda {
+    with_three_links
+      .where(rewritten_text: [nil, ''])
+  }
+
   private
 
   def linked_articles_count_within_limit
