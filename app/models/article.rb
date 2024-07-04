@@ -13,6 +13,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  embedding        :vector(768)
+#  invalid_json     :boolean          default(FALSE)
 #
 class Article < ApplicationRecord
   belongs_to :pillar_column
@@ -42,6 +43,7 @@ class Article < ApplicationRecord
   scope :with_three_links_without_rewritten_text, lambda {
     with_three_links
       .where(rewritten_text: [nil, ''])
+      .where(invalid_json: false)
   }
 
   private

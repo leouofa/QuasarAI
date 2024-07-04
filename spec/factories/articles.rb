@@ -13,6 +13,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  embedding        :vector(768)
+#  invalid_json     :boolean          default(FALSE)
 #
 FactoryBot.define do
   factory :article do
