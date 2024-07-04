@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_30_010230) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_03_164512) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_30_010230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.vector "embedding", limit: 768
+    t.boolean "invalid_json", default: false
     t.index ["pillar_column_id"], name: "index_articles_on_pillar_column_id"
   end
 

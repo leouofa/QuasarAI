@@ -86,14 +86,14 @@ class Articles::RewriteArticleJob < ApplicationJob
 
       Rails.logger.debug "invalid_json: #{invalid_json} | counter: #{counter}"
 
-      sleep(20)
+      sleep(25)
     end
 
     unless response["error"].present? || invalid_json
       parsed_response = JSON.parse(extracted_json_response)
-
       article.update(rewritten_text: parsed_response["content"])
-
+    else
+      article.update(invalid_json:)
     end
 
     sleep(10)
