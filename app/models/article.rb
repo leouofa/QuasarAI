@@ -46,6 +46,10 @@ class Article < ApplicationRecord
       .where(invalid_json: false)
   }
 
+  scope :with_original_text_and_no_published_date, -> {
+    where.not(original_text: nil).where(published_at: nil)
+  }
+
   private
 
   def linked_articles_count_within_limit
