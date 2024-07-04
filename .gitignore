@@ -45,3 +45,5 @@ node_modules
 
 .byebug_history
 dump.rdb
+
+/public/articles/*
