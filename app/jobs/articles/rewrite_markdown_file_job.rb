@@ -6,13 +6,18 @@ class Articles::RewriteMarkdownFileJob < ApplicationJob
     last_mod = add_random_days(article.published_at).strftime("%Y-%m-%d")
 
     markdown_content = generate_markdown(article:, last_mod:)
-    linked_content = replace_links(markdown_content)
 
-    file_path = Rails.root.join('public', 'rewritten_articles', "#{article.name.parameterize}.mdx")
+    begin
+      linked_content = replace_links(markdown_content)
 
-    File.open(file_path, 'w') { |file| file.write(linked_content) }
+      file_path = Rails.root.join('public', 'rewritten_articles', "#{article.name.parameterize}.mdx")
 
-    article.update(rewritten_at: last_mod)
+      File.open(file_path, 'w') { |file| file.write(linked_content) }
+
+      article.update(rewritten_at: last_mod)
+    rescue => e
+      Rails.logger.error "Failed to replace links or write file for article #{article.id}: #{e.message}"
+    end
   end
 
   private
@@ -48,7 +53,7 @@ class Articles::RewriteMarkdownFileJob < ApplicationJob
   end
 
   def replace_links(content)
-    content.gsub(/<a href=(\d+)>/) do |match|
+    content.gsub(/<a href[^>]*?(\d+)[^>]*>/) do |match|
       number = match[/\d+/].to_i
       link_lookup(number)
     end
