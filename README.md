@@ -74,19 +74,11 @@ QuasarAI is a practical embodiment of the principles of CASI, implementing these
 
 Join us on this exciting journey as we redefine the future of journalism together with QuasarAI and CASI!
 
-## Third Party Services
-### Required
+## Optional Third Party Services
 - [Feedly](https://feedly.com/i/welcome) – Seamless Content Aggregation ($12/month for Pro+ Plan)
 - [OpenAI](https://beta.openai.com/) – Content Creation (We are using gpt-3.5-turbo which costs $0.002 per 1000/tokens)
 - [NextLeg](https://thenextleg.io) – Visual Storytelling ($40/month for API Access + $30/month from Midjourney)
-
-__Total:__ $82/month + OpenAI Costs
-
-### Optional
-- [StoryPro](https://storypro.io/) – Next-Gen Publishing ($99/month for Basic Plan)
 - [Ayrshare](https://www.ayrshare.com/) – Multi-Channel Distribution ($99/month for Premium Plan)
-
-__Total:__ $198/month
 
 ## Next Steps
 1. [Setup-by-Step Setup Instructions](https://github.com/realstorypro/enterprise/wiki/Local-Setup)
@@ -95,7 +87,7 @@ __Total:__ $198/month
 ## License
 MIT License
 
-Copyright (c) 2023 QuasarAI
+Copyright (c) 2024 QuasarAI
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
