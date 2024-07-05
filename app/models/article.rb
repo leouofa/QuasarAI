@@ -18,6 +18,7 @@
 class Article < ApplicationRecord
   belongs_to :pillar_column
   serialize :original_text
+  serialize :rewritten_text
 
   has_neighbors :embedding
 
@@ -46,8 +47,14 @@ class Article < ApplicationRecord
       .where(invalid_json: false)
   }
 
-  scope :with_original_text_and_no_published_date, -> {
+  scope :with_original_text_and_no_published_date, lambda {
     where.not(original_text: nil).where(published_at: nil)
+  }
+
+  scope :with_rewritten_text_and_published_date, lambda {
+    where.not(rewritten_text: [nil, ''])
+         .where.not(published_at: nil)
+         .where(invalid_json: false)
   }
 
   private
