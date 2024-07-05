@@ -47,3 +47,4 @@ node_modules
 dump.rdb
 
 /public/articles/*
+/public/rewritten_articles/*
