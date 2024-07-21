@@ -41,6 +41,7 @@ class Pillars::PopulatePillarColumnsJob < ApplicationJob
       end
 
       Rails.logger.debug "invalid_json: #{invalid_json} | counter: #{counter}"
+      sleep(20)
     end
   end
 

@@ -11,4 +11,10 @@
 class Pillar < ApplicationRecord
   has_many :pillar_columns, dependent: :nullify
   validates :title, :columns, presence: true
+
+  scope :with_less_columns, lambda {
+    left_joins(:pillar_columns)
+      .group('pillars.id')
+      .having('COUNT(pillar_columns.id) < pillars.columns')
+  }
 end
