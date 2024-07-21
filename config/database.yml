@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: daily_planet_development
+  database: <%= ENV["LOCAL_DB"] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
