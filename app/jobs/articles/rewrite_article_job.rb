@@ -86,7 +86,7 @@ class Articles::RewriteArticleJob < ApplicationJob
 
       Rails.logger.debug "invalid_json: #{invalid_json} | counter: #{counter}"
 
-      sleep(25)
+      sleep(15)
     end
 
     unless response["error"].present? || invalid_json
