@@ -43,7 +43,7 @@ class Article < ApplicationRecord
 
   scope :with_three_links_without_rewritten_text, lambda {
     with_three_links
-      .where(rewritten_text: [nil, ''])
+      .where(rewritten_text: nil)
       .where(invalid_json: false)
   }
 
@@ -52,7 +52,7 @@ class Article < ApplicationRecord
   }
 
   scope :with_rewritten_text_and_published_date, lambda {
-    where.not(rewritten_text: [nil, ''])
+    where.not(rewritten_text: nil)
          .where.not(published_at: nil)
          .where(invalid_json: false)
   }

@@ -57,7 +57,7 @@ class Pillars::CreatePillarColumnTopicsJob < ApplicationJob
       invalid_json = false if valid_json?(extracted_json_response)
       Rails.logger.debug "invalid_json: #{invalid_json} | counter: #{counter}"
 
-      sleep(20)
+      sleep(15)
     end
 
     unless response["error"].present? || invalid_json
