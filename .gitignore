@@ -48,3 +48,5 @@ dump.rdb
 
 /public/articles/*
 /public/rewritten_articles/*
+
+.DS_Store

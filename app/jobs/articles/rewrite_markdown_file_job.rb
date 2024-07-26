@@ -5,9 +5,10 @@ class Articles::RewriteMarkdownFileJob < ApplicationJob
     puts article.name
     last_mod = add_random_days(article.published_at).strftime("%Y-%m-%d")
 
-    markdown_content = generate_markdown(article:, last_mod:)
 
     begin
+      markdown_content = generate_markdown(article:, last_mod:)
+
       linked_content = replace_links(markdown_content)
 
       file_path = Rails.root.join('public', 'rewritten_articles', "#{article.name.parameterize}.mdx")
