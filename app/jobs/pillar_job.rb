@@ -38,6 +38,9 @@ class PillarJob < ApplicationJob
       # [x] Rewrite the Articles with Links to Other Articles
       Articles::RewriteArticlesJob.perform_now
 
+      # [x] Rewriting Markdown Articles
+      Articles::RewriteMarkdownFilesJob.perform_now
+
     ensure
       # Unlock the job when finished
       lock.update(locked: false)
