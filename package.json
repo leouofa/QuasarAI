@@ -30,7 +30,7 @@
   "devDependencies": {
     "tailwindcss": "^3.3.0",
     "vite": "^5.0.0",
-    "vite-plugin-ruby": "^5.0.0"
+    "vite-plugin-ruby": "^5.1.0"
   },
   "browserslist": [
     "last 3 chrome versions and last 1 year",
