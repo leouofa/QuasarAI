@@ -53,7 +53,7 @@ jobs:
 #          bundler-cache: true
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3' # Not needed with a `.ruby-version` or `.tool-versions`
+#          ruby-version: '3.3' # Not needed with a `.ruby-version` or `.tool-versions`
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Set up database schema
         run: bin/rails db:schema:load
