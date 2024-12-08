@@ -38,6 +38,7 @@ jobs:
 
     env:
       RAILS_ENV: test
+      CI: true
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
       PGPASSWORD: password
       PGUSER: rails
