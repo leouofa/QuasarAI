@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_03_164512) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_08_223523) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
   enable_extension "vector"
 
@@ -110,16 +110,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_03_164512) do
 
   create_table "imaginations", force: :cascade do |t|
     t.integer "aspect_ratio", null: false
-    t.bigint "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "payload", default: {}, null: false
     t.integer "status", default: 0, null: false
     t.uuid "message_uuid", default: -> { "gen_random_uuid()" }, null: false
+    t.bigint "image_id"
     t.boolean "uploaded", default: false, null: false
     t.jsonb "uploadcare"
     t.string "upscaled_image_url"
-    t.index ["image_id"], name: "index_imaginations_on_image_id"
   end
 
   create_table "instapins", force: :cascade do |t|
@@ -288,7 +287,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_03_164512) do
   add_foreign_key "feed_items", "feeds"
   add_foreign_key "feeds", "sub_topics"
   add_foreign_key "images", "stories"
-  add_foreign_key "imaginations", "images"
   add_foreign_key "instapins", "discussions"
   add_foreign_key "pillar_columns", "pillars"
   add_foreign_key "pillar_topics", "pillar_columns"
