@@ -13,10 +13,10 @@
 #  pillars            :text
 #
 class Setting < ApplicationRecord
-  serialize :topics
-  serialize :prompts
-  serialize :tunings
-  serialize :pillars
+  serialize :topics, coder: YAML
+  serialize :prompts, coder: YAML
+  serialize :tunings, coder: YAML
+  serialize :pillars, coder: YAML
 
   before_create :set_default_publish_times
 
