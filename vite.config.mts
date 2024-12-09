@@ -1,8 +1,16 @@
 import { defineConfig } from 'vite'
-import ViteRails from 'vite-plugin-rails'
 import inject from "@rollup/plugin-inject";
+import ViteRails from 'vite-plugin-rails'
 
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        verbose: true,
+        silenceDeprecations: ['legacy-js-api', 'color-functions', 'global-builtin', 'import', 'mixed-decls'],
+      },
+    },
+  },
   plugins: [
     inject({   // => that should be first under plugins array
       $: 'jquery',

@@ -8,10 +8,13 @@ Apipie.configure do |config|
   config.copyright = "&copy; 2023 #{ENV['ORGANIZATION']}]}"
   config.markup = Apipie::Markup::Markdown.new
   config.api_controllers_matcher = "#{Rails.root}/app/controllers/api/**/*.rb"
-  config.swagger_content_type_input = :json
-  config.swagger_json_input_uses_refs = false
-  config.swagger_security_definitions = { ApiKeyAuth: { type: 'apiKey', in: 'header', name: 'X-API-Key' } }
-  config.swagger_global_security = [ApiKeyAuth: []]
+
+  # Updated deprecation warnings fixes
+  config.generator.swagger.content_type_input = :json
+  config.generator.swagger.json_input_uses_refs = false
+  config.generator.swagger.security_definitions = { ApiKeyAuth: { type: 'apiKey', in: 'header', name: 'X-API-Key' } }
+  config.generator.swagger.global_security = [{ ApiKeyAuth: [] }]
+
   config.authenticate = proc do
     authenticate_or_request_with_http_basic do |username, password|
       username == 'api' && password == ENV['API_KEY']

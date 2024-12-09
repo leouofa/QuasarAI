@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.2"
+ruby "3.3.0"
 
-gem "rails", "~> 7.0.4", ">= 7.0.4.3"
-gem "puma", "~> 5.0"
+gem "rails", "~> 7.1"
+gem "puma", "~> 6.5"
 
 # Core
 gem 'apipie-rails'
@@ -38,14 +38,14 @@ gem 'neighbor'
 
 # Authentication
 gem 'devise'
-gem 'devise-tailwindcssed', github: 'realstorypro/devise-tailwindcssed-ruby', branch: 'ruby-3.2-support'
+gem 'devise-tailwindcssed'
 
 # Pagination
 gem 'kaminari', github: 'kaminari/kaminari', branch: 'master'
 
 # Frontend
 gem 'meta-tags'
-gem 'rapid_ui', github: 'realstorypro/rapid-ui'
+gem 'rapid_ui', github: 'leouofa/rapid-ui'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'sprockets-rails'

@@ -22,7 +22,7 @@ class PillarColumn < ApplicationRecord
   has_many :articles, dependent: :nullify
   has_many :pillar_topics, dependent: :nullify
 
-  serialize :topics
+  serialize :topics, coder: JSON
 
   validates :name, :description, presence: true
 

@@ -17,8 +17,8 @@
 #
 class Article < ApplicationRecord
   belongs_to :pillar_column
-  serialize :original_text
-  serialize :rewritten_text
+  serialize :original_text, coder: JSON
+  serialize :rewritten_text, coder: JSON
 
   has_neighbors :embedding
 
