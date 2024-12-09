@@ -12,8 +12,8 @@
 
 ----
 <p align="center">
-    <img alt="ruby version: 3.2.2" src="https://img.shields.io/badge/Ruby-3.2.2-brightgreen" />
-    <img alt="rails version: 7.0.4" src="https://img.shields.io/badge/Rails-7.0.4-brightgreen" />
+    <img alt="ruby version: 3.3.0" src="https://img.shields.io/badge/Ruby-3.3.0-brightgreen" />
+    <img alt="rails version: 7.1.0" src="https://img.shields.io/badge/Rails-7.1.0-brightgreen" />
     <img alt="tailwind version: 3.3.0" src="https://img.shields.io/badge/Tailwind-3.3.0-blue" />
     <img alt="fomantic version: 2.9.2" src="https://img.shields.io/badge/Fomantic-2.9.2-blue" />
     <img alt="rspec tests" src="https://github.com/realstorypro/enterprise/actions/workflows/ruby_on_rails.yml/badge.svg" />
